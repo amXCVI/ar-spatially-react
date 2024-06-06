@@ -10,6 +10,9 @@ export default {
                 gray90: "#2A2A2B",
                 "gefault-bg": "#e2e2e2",
             },
+            animation: {
+                "spin-slow": "spin 15s linear infinite",
+            },
         },
     },
     plugins: [],
