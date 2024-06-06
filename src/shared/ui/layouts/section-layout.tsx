@@ -6,7 +6,7 @@ interface SectionLayoutProps {
 }
 
 const SectionLayout = ({ className, children }: SectionLayoutProps) => {
-    return <section className={`p-5 h-dvh w-full ${className ?? ""}`}>{children}</section>;
+    return <section className={`p-5 min-h-dvh w-full ${className ?? ""}`}>{children}</section>;
 };
 
 export default SectionLayout;

@@ -1,0 +1,83 @@
+:root {
+    --md: 640px;
+    --lg: 1024px;
+    --xl: 1280px;
+}
+
+.h1-90-600 {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 5.625rem;
+    line-height: 6.975rem;
+
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+}
+
+@media screen and (max-width: 640px) {
+    .h1-90-600 {
+        font-size: 3.125rem;
+        line-height: 3.75rem;
+    }
+}
+
+.h2-34-700 {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 2.125rem;
+    line-height: 2.563rem;
+}
+
+.t24-700 {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+}
+
+.semibold-26 {
+    /* 26_semibold */
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.625rem;
+    line-height: 1.938rem;
+}
+
+.bold-26 {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.625rem;
+    line-height: 1.938rem;
+}
+
+.medium-16 {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+.regular-14 {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+}
+
+.light-12 {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 300;
+    font-size: 0.75rem;
+    line-height: 0.938rem;
+    /* identical to box height */
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+}
