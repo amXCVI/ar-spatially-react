@@ -1,3 +1,3 @@
-import routes from "./routes";
+import routes, { menuLinks } from "./routes";
 
-export { routes };
+export { routes, menuLinks };
