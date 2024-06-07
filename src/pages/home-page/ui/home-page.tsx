@@ -68,7 +68,7 @@ const HomePage = () => {
                     <div className="flex flex-col items-center w-full h-full relative mt-16 lg:mt-0">
                         <img
                             src="/images/landing/start-section/bulb.png"
-                            className="absolute top-0 animate-spin-slow [scale:1.5] md:[scale:1]"
+                            className="absolute top-0 animate-spin-slow [scale:1.5] md:[scale:1] max-h-[80dvh] lg:max-h-[50dvh] object-contain"
                         />
 
                         <div className="relative h-full">
