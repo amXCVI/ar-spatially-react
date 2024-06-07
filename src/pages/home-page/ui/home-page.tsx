@@ -13,13 +13,14 @@ const HomePage = () => {
         <SectionLayout className="overflow-x-hidden">
             <div
                 className=" bg-[url(/images/landing/start-section/bg-image.svg)] 
-                            bg-cover bg-no-repeat bg-center lg:rounded-[40px]
-                            flex flex-col justify-between
-                            -m-5 lg:m-0 p-5 lg:p-0"
+                            bg-cover bg-no-repeat bg-center lg:rounded-[40px]                            
+                            -m-5 lg:m-0 p-5 lg:p-0
+                            h-full lg:max-h-full min-h-[calc(100dvh-2.5rem)] 
+                            flex flex-col justify-between"
             >
                 <Header />
 
-                <div className="container mx-auto flex flex-col items-center lg:flex-row py-10 lg:p-y-24">
+                <div className="container mx-auto flex flex-col items-center h-full lg:max-h-full lg:flex-row py-10 lg:p-y-24">
                     <div className="flex flex-col w-full">
                         <div className="flex flex-col items-center mx-auto max-w-80 md:max-w-prose w-full">
                             <h1 className="h1-90-600 text-gray90 mr-auto hidden lg:block">OUR</h1>
@@ -64,14 +65,14 @@ const HomePage = () => {
                         </div>
                     </div>
 
-                    <div className="flex flex-col items-center w-full relative mt-16 lg:mt-0">
+                    <div className="flex flex-col items-center w-full h-full relative mt-16 lg:mt-0">
                         <img
                             src="/images/landing/start-section/bulb.png"
                             className="absolute top-0 animate-spin-slow [scale:1.5] md:[scale:1]"
                         />
 
-                        <div className="relative">
-                            <img src={phone} />
+                        <div className="relative h-full">
+                            <img src={phone} className="object-contain h-full max-h-[80dvh] lg:max-h-[50dvh]" />
                             <div className="absolute -top-10 lg:top-12 -left-24 border border-white30 rounded-full p-8 lg:p-11 backdrop-blur">
                                 <img src={iconOnPhone} />
                             </div>
