@@ -73,7 +73,7 @@ const HomePage = () => {
 
                         <div className="relative h-full">
                             <img src={phone} className="object-contain h-full max-h-[80dvh] lg:max-h-[50dvh]" />
-                            <div className="absolute -top-10 lg:top-12 -left-24 border border-white30 rounded-full p-8 lg:p-11 backdrop-blur">
+                            <div className="absolute -top-10 lg:top-5 -left-24 border border-white30 rounded-full p-8 lg:p-9 backdrop-blur">
                                 <img src={iconOnPhone} />
                             </div>
                         </div>
