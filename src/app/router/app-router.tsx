@@ -1,8 +1,11 @@
-import ErrorPage from "@/pages/error-page";
-import HomePage from "@/pages/home-page";
 import { routes } from "@/shared/config";
 import { BaseLayout } from "@/shared/ui/layouts";
+import { lazy } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+
+const ErrorPage = lazy(() => import("@/pages/error-page"));
+const HomePage = lazy(() => import("@/pages/home-page"));
+const MapPage = lazy(() => import("@/pages/map-page"));
 
 const AppRouter = () => {
     const routers = createBrowserRouter([
@@ -12,6 +15,7 @@ const AppRouter = () => {
             children: [
                 { index: true, element: <HomePage /> },
 
+                { path: routes.map, element: <MapPage /> },
                 { path: routes.undefined, element: <ErrorPage /> },
             ],
         },
