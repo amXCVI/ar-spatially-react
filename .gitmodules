@@ -1,0 +1,4 @@
+[submodule "T-WebClient"]
+	path = T-WebClient
+	url = git@github.com:ivanking87/T-WebClient.git
+	branch = feature/ar-submodule
