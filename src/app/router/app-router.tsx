@@ -5,7 +5,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 const ErrorPage = lazy(() => import("@/pages/error-page"));
 const HomePage = lazy(() => import("@/pages/home-page"));
-const MapPage = lazy(() => import("@/pages/map-page"));
+import MapPage from "@/pages/map-page";
 
 const AppRouter = () => {
     const routers = createBrowserRouter([
