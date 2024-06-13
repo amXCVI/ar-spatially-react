@@ -1,3 +1,5 @@
+import routes from "./app-routes";
+
 export const menuLinks = [
     {
         id: "1",
@@ -12,7 +14,7 @@ export const menuLinks = [
     {
         id: "3",
         title: "Map",
-        href: "",
+        href: `/${routes.map}`,
     },
     {
         id: "4",

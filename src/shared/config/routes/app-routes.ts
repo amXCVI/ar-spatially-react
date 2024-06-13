@@ -1,5 +1,6 @@
 const routes = {
     home: "/",
+    map: "map",
 
     undefined: "*",
 };
