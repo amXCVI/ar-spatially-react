@@ -14,7 +14,7 @@
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-router-dom": "^6.23.1",
-        "ar-components-kit": "git@github.com:amXCVI/ar-components-kit.git"
+        "ar-components-kit": "https://github.com:amXCVI/ar-components-kit.git"
     },
     "devDependencies": {
         "@trivago/prettier-plugin-sort-imports": "^4.3.0",
