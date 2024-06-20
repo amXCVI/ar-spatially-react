@@ -3,7 +3,7 @@ import { MapComponent } from "ar-components-kit";
 import useMapHook from "../model";
 
 const MapPage = () => {
-    const { onChangeCoords } = useMapHook();
+    const { onChangeCoords, bounds, nftList, onClickMarker } = useMapHook();
 
     return (
         <div style={{ width: "100vw", height: "100dvh" }}>
@@ -16,7 +16,21 @@ const MapPage = () => {
                     },
                     defaultZoom: 10,
                 }}
+                bounds={bounds}
                 onChangeCoords={onChangeCoords}
+                onClickMarker={onClickMarker}
+                nftList={nftList.map((nftItem) => {
+                    return {
+                        id: nftItem.id,
+                        description: nftItem.description,
+                        imageUrl: nftItem.previewId,
+                        lat: nftItem.location.lat,
+                        lng: nftItem.location.lng,
+                        name: nftItem.title,
+                        ownerAvatarUrl: nftItem.ownerId,
+                        isHide: false,
+                    };
+                })}
             />
         </div>
     );
