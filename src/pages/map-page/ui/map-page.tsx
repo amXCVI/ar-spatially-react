@@ -1,6 +1,5 @@
-import { MapComponent } from "ar-components-kit";
-
 import useMapHook from "../model";
+import { MapComponent } from "./../../../../ar-components/ar-components-kit/dist";
 
 const MapPage = () => {
     const { onChangeCoords, bounds, nftList, onClickMarker } = useMapHook();

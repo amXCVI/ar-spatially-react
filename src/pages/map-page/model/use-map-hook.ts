@@ -1,7 +1,8 @@
 import apiClient from "@/shared/api";
 import { MarkerInterface } from "@/shared/types";
-import { ChangeEventValue } from "ar-components-kit";
 import { useEffect, useState } from "react";
+
+import { ChangeEventValue } from "./../../../../ar-components/ar-components-kit/dist";
 
 const useMapHook = () => {
     const [coords, setCoords] = useState<{
