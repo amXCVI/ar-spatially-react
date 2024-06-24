@@ -1,4 +1,4 @@
-import { MarkerInterface as ArMarkerInterface, ChangeEventValue } from "ar-components-kit";
+import { MarkerInterface as ArMarkerInterface, ChangeEventValue } from "@ar-kit/lib";
 import { useEffect, useState } from "react";
 
 import { pointsApi } from "../api/queryes";
@@ -38,7 +38,7 @@ const useMapHook = () => {
                         name: item.title,
                         id: item.id,
 
-                        ownerAvatarUrl: null,
+                        ownerAvatarUrl: undefined,
                         isHide: false,
                     };
                 });

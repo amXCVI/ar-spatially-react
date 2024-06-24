@@ -5,7 +5,7 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "build": "vite build",
+        "build": "tsc && vite build",
         "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
         "format": "prettier --write .",
         "preview": "vite preview --port 8080"
@@ -13,12 +13,16 @@
     "dependencies": {
         "ar-components-kit": "git@github.com:amXCVI/ar-components-kit.git",
         "axios": "^1.7.2",
+        "google-map-react": "^2.2.1",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
-        "react-router-dom": "^6.23.1"
+        "react-router-dom": "^6.23.1",
+        "styled-components": "^6.1.11",
+        "use-supercluster": "^1.2.0"
     },
     "devDependencies": {
         "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+        "@types/google-map-react": "^2.1.10",
         "@types/node": "^20.14.2",
         "@types/react": "^18.2.66",
         "@types/react-dom": "^18.2.22",

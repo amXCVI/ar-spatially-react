@@ -23,9 +23,10 @@
 
         //
         "paths": {
-            "@/*": ["./src/*"]
+            "@/*": ["./src/*"],
+            "@ar-kit/*": ["./ar-spatially-kit/*"]
         }
     },
-    "include": ["src"],
+    "include": ["src", "ar-spatially-kit"],
     "references": [{ "path": "./tsconfig.node.json" }]
 }

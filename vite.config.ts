@@ -8,6 +8,9 @@ import svgr from "vite-plugin-svgr";
 export default defineConfig({
     plugins: [svgr(), react()],
     resolve: {
-        alias: [{ find: "@", replacement: path.resolve(__dirname, "src") }],
+        alias: [
+            { find: "@", replacement: path.resolve(__dirname, "src") },
+            { find: "@ar-kit", replacement: path.resolve(__dirname, "ar-spatially-kit") },
+        ],
     },
 });

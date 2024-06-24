@@ -1,0 +1,30 @@
+import LoaderComponent from "@ar-kit/lib/loader-component";
+import { ButtonsContainer, GeoButton } from "./map-options.style";
+
+import iconMapGeolocation from "@ar-kit/assets/icons/icon-map-geolocation.svg";
+import googleMapReact from "google-map-react";
+
+interface GeolocationButtonProps {
+    setCenter: (e: googleMapReact.Coords) => void;
+    loading?: boolean;
+}
+
+export const GeolocationButton = ({ setCenter, loading }: GeolocationButtonProps) => {
+    const getGeolocation = () => {
+        navigator.geolocation.getCurrentPosition(function (position) {
+            setCenter({ lat: position.coords.latitude, lng: position.coords.longitude });
+        });
+    };
+
+    return (
+        <ButtonsContainer className="geolocation-button">
+            <GeoButton onClick={getGeolocation}>
+                {loading ? (
+                    <LoaderComponent style={{ transform: "scale(.35)", position: "absolute" }} />
+                ) : (
+                    <img src={iconMapGeolocation} />
+                )}
+            </GeoButton>
+        </ButtonsContainer>
+    );
+};

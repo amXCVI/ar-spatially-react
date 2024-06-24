@@ -1,4 +1,4 @@
-import { MapComponent } from "ar-components-kit";
+import { MapComponent } from "@ar-kit/lib";
 
 import useMapHook from "../model";
 
