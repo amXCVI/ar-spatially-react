@@ -11,10 +11,10 @@ import { BaseLayout } from "@/shared/ui/layouts";
 const AppRouter = () => {
     const routers = createBrowserRouter([
         {
-            path: routes.home,
+            path: "/",
             element: <BaseLayout />,
             children: [
-                { index: true, element: <HomePage /> },
+                { path: routes.home, element: <HomePage /> },
 
                 { path: routes.map, element: <MapPage /> },
 
