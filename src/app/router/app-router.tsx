@@ -25,7 +25,7 @@ const AppRouter = () => {
         },
     ]);
 
-    return <RouterProvider router={routers} />;
+    return <RouterProvider router={routers} fallbackElement={<div />} />;
 };
 
 export default AppRouter;
