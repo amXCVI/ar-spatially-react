@@ -11,7 +11,6 @@
         "preview": "vite preview --port 8080"
     },
     "dependencies": {
-        "ar-components-kit": "git@github.com:amXCVI/ar-components-kit.git",
         "axios": "^1.7.2",
         "google-map-react": "^2.2.1",
         "react": "^18.2.0",
