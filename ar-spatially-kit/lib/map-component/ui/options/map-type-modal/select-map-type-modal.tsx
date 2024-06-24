@@ -1,6 +1,8 @@
 import ModalComponent from "@ar-kit/shared/components";
-import { IconVector, Container, MapTypeTitle, Row, MapTypeItem } from "./select-map-type-modal.style";
+
 import iconVectorPath from "@ar-kit/assets/icons/icon-popup-vector.svg";
+
+import { Container, IconVector, MapTypeItem, MapTypeTitle, Row } from "./select-map-type-modal.style";
 
 type SelectMapTypeModal = {
     onCloseSelectModal: () => void;

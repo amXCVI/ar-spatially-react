@@ -1,5 +1,6 @@
 // import './style.css';
 import { CSSProperties, FC } from "react";
+
 import { LoadingSpinner } from "./loading.style";
 
 type LoadingProps = {

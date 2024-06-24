@@ -1,7 +1,9 @@
-import { CSSProperties, FC, ReactElement } from "react";
-import { Container, CloseIcon } from "./modal-container.style";
-import iconClose from "@ar-kit/assets/icons/icon-close.svg";
 import { useOutsideClick } from "@ar-kit/shared/hooks";
+import { CSSProperties, FC, ReactElement } from "react";
+
+import iconClose from "@ar-kit/assets/icons/icon-close.svg";
+
+import { CloseIcon, Container } from "./modal-container.style";
 
 type ModalContainerProps = {
     children?: ReactElement;

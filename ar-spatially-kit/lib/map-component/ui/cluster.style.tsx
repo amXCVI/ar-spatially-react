@@ -1,5 +1,5 @@
-import styled from "styled-components";
 import { AppColors, AppShadows } from "@ar-kit/shared/styles/global-styles";
+import styled from "styled-components";
 
 type MarkerImgProps = {
     isMonochrome?: boolean;

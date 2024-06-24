@@ -4,12 +4,12 @@
     "semi": true,
     "importOrder": [
         "<THIRD_PARTY_MODULES>",
-        "src/app",
-        "src/pages",
-        "src/widgets",
-        "src/features",
-        "src/entites",
-        "src/shared",
+        "@/app",
+        "@/pages",
+        "@/widgets",
+        "@/features",
+        "@/entites",
+        "@/shared",
         ".svg",
         ".css",
         "^[./]"

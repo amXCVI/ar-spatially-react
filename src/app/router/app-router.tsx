@@ -1,10 +1,12 @@
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+
 import ErrorPage from "@/pages/error-page";
 import ExamplePage from "@/pages/example-page";
 import HomePage from "@/pages/home-page";
 import MapPage from "@/pages/map-page";
+
 import { routes } from "@/shared/config";
 import { BaseLayout } from "@/shared/ui/layouts";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 const AppRouter = () => {
     const routers = createBrowserRouter([

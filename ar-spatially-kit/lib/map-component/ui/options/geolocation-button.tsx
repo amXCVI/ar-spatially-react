@@ -1,8 +1,9 @@
 import LoaderComponent from "@ar-kit/lib/loader-component";
-import { ButtonsContainer, GeoButton } from "./map-options.style";
+import googleMapReact from "google-map-react";
 
 import iconMapGeolocation from "@ar-kit/assets/icons/icon-map-geolocation.svg";
-import googleMapReact from "google-map-react";
+
+import { ButtonsContainer, GeoButton } from "./map-options.style";
 
 interface GeolocationButtonProps {
     setCenter: (e: googleMapReact.Coords) => void;

@@ -21,12 +21,12 @@ const useMapControlHook = ({
 }) => {
     const mapRef = useRef(null);
     const [zoom, setZoom] = useState<number>(
-        JSON.parse(localStorage.getItem(localStorageMapOptionsZoomKey) ?? "0") || defaultZoom || 10
+        JSON.parse(localStorage.getItem(localStorageMapOptionsZoomKey) ?? "0") || defaultZoom || 10,
     );
 
     const [center, setCenter] = useState<googleMapReact.Coords>(
         JSON.parse(localStorage.getItem(localStorageMapOptionsCenterKey) ?? "0") ||
-            defaultCenter || { lat: 55.753544, lng: 37.621202 }
+            defaultCenter || { lat: 55.753544, lng: 37.621202 },
     );
 
     const mapTypes = [

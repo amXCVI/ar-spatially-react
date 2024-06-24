@@ -1,18 +1,18 @@
+import Loading from "@ar-kit/lib/loader-component/Loading";
+import { MarkerInterface } from "@ar-kit/shared/types/nft-types";
 import { FC, useState } from "react";
 
 import IconVectorPath from "@ar-kit/assets/icons/icon-marker-vector.svg";
 
-import Loading from "@ar-kit/lib/loader-component/Loading";
 import { MarkerArrow } from "./cluster.style";
 import {
-    MarkerOwnerAvatar,
     // MarkerOwnerAvatarDefaultWrap,
     // MarkerOwnerAvatarDefault,
     MarkerContainer,
     MarkerImg,
     MarkerName,
+    MarkerOwnerAvatar,
 } from "./marker.style";
-import { MarkerInterface } from "@ar-kit/shared/types/nft-types";
 
 type MarkerProps = {
     lat: number;

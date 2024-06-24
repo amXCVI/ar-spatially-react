@@ -1,16 +1,17 @@
-import GoogleMapReact from "google-map-react";
-import googleMapStyles from "../resources/map_style.json";
-import { MapContainer } from "../resources/map.style";
-import { MapOptionsContainer } from "./options/map-options.style";
-import { ZoomButton } from "./options/zoom-button";
-import { GeolocationButton } from "./options/geolocation-button";
-import { SelectedMapTypeButton } from "./options/map-type-button";
-import googleMapReact from "google-map-react";
 import { MarkerInterface } from "@ar-kit/shared/types/nft-types";
+import GoogleMapReact from "google-map-react";
+import googleMapReact from "google-map-react";
+import { useRef } from "react";
+
 import { useMarkerControlHook } from "../model";
+import { MapContainer } from "../resources/map.style";
+import googleMapStyles from "../resources/map_style.json";
 import Cluster from "./cluster";
 import Marker from "./marker";
-import { useRef } from "react";
+import { GeolocationButton } from "./options/geolocation-button";
+import { MapOptionsContainer } from "./options/map-options.style";
+import { SelectedMapTypeButton } from "./options/map-type-button";
+import { ZoomButton } from "./options/zoom-button";
 
 interface MapProps {
     googleMapReactProps: GoogleMapReact.Props;

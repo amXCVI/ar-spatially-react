@@ -1,5 +1,6 @@
 import Header from "@/features/header";
 import SectionFooter from "@/features/section-footer";
+
 import { SectionLayout } from "@/shared/ui/layouts";
 
 import iconOnPhone from "/images/landing/start-section/icon-on-phone.svg";

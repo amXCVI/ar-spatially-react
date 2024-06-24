@@ -1,5 +1,5 @@
+import { AppColors, AppMedia } from "@ar-kit/shared/styles/global-styles";
 import styled from "styled-components";
-import { AppMedia, AppColors } from "@ar-kit/shared/styles/global-styles";
 
 type MapTypeItemProps = {
     isSelected: boolean;

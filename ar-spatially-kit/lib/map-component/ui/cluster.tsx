@@ -1,4 +1,11 @@
+// import NftViewer from "modules/NftViewer";
+import LoaderComponent from "@ar-kit/lib/loader-component";
+import { MarkerInterface } from "@ar-kit/shared/types/nft-types";
+import googleMapReact from "google-map-react";
 import { FC } from "react";
+
+import iconVectorPath from "@ar-kit/assets/icons/icon-marker-vector.svg";
+
 import {
     ClusterCircleOne,
     ClusterCircleThree,
@@ -10,11 +17,6 @@ import {
     MarkerArrow,
     PreviewMarkerImg,
 } from "./cluster.style";
-import iconVectorPath from "@ar-kit/assets/icons/icon-marker-vector.svg";
-// import NftViewer from "modules/NftViewer";
-import LoaderComponent from "@ar-kit/lib/loader-component";
-import googleMapReact from "google-map-react";
-import { MarkerInterface } from "@ar-kit/shared/types/nft-types";
 
 type ClusterProps = {
     cluster: any;
@@ -100,7 +102,7 @@ const Cluster: FC<ClusterProps> = ({
                         </ClusterSubContainer>
                     ) : (
                         <div key={`${cluster.id}-crime-${clusterLeaf.properties.id}-${index}`} />
-                    )
+                    ),
                 )}
                 {clusterLeavs.length <= 3 ? <></> : <ClusterCounts>+{pointCount - 3}</ClusterCounts>}
             </ClusterContainer>

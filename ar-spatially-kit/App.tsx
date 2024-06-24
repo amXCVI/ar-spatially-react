@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
+
 import { ChangeEventValue, MapComponent } from "./lib";
-import { MarkerInterface } from "./shared/types/nft-types";
 import apiClient from "./shared/api";
+import { MarkerInterface } from "./shared/types/nft-types";
+
 const useMapHook = () => {
     const [coords, setCoords] = useState<{
         lat: number;
@@ -40,7 +42,7 @@ const useMapHook = () => {
                             ownerAvatarUrl: nftItem.ownerId,
                             isHide: false,
                         };
-                    })
+                    }),
                 );
             });
     }, [coords?.lat, coords?.lng, coords?.radius]);

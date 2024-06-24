@@ -1,5 +1,6 @@
-import mapPlusIcon from "@ar-kit/assets/icons/icon-map-plus.svg";
 import mapMinusIcon from "@ar-kit/assets/icons/icon-map-minus.svg";
+import mapPlusIcon from "@ar-kit/assets/icons/icon-map-plus.svg";
+
 import { ButtonsContainer, ZoomButtonMinus, ZoomButtonPlus } from "./map-options.style";
 
 type ZoomButtonProps = {

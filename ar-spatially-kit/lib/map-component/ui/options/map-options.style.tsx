@@ -1,5 +1,5 @@
-import styled from "styled-components";
 import { AppBorders, AppColors, AppMedia } from "@ar-kit/shared/styles/global-styles";
+import styled from "styled-components";
 
 type MapTypeButtonProps = {
     isActiveButton: boolean;

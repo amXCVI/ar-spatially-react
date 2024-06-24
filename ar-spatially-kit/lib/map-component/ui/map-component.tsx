@@ -1,8 +1,10 @@
 import { MarkerInterface } from "@ar-kit/shared/types/nft-types";
-import useMapControlHook from "../model";
-import Map from "./map";
 import GoogleMapReact from "google-map-react";
 import googleMapReact from "google-map-react";
+
+import useMapControlHook from "../model";
+import Map from "./map";
+
 interface MapComponentProps {
     googleMapReact: GoogleMapReact.Props;
     loadingMap?: boolean;

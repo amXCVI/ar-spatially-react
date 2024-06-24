@@ -1,6 +1,7 @@
 import { CSSProperties, ReactNode } from "react";
-import ModalContainer from "./modal-container";
+
 import Modal from "./modal";
+import ModalContainer from "./modal-container";
 
 const ModalComponent = ({
     children,

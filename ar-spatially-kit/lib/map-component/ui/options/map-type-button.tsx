@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { ButtonsContainer, MapTypeButton } from "./map-options.style";
 
 import mapTypeIcon from "@ar-kit/assets/icons/icon-select-map-type.svg";
+
+import { ButtonsContainer, MapTypeButton } from "./map-options.style";
 import SelectMapTypeModal from "./map-type-modal/select-map-type-modal";
 
 export const SelectedMapTypeButton = ({
