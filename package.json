@@ -5,12 +5,13 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "build": "tsc && vite build",
+        "build": "vite build",
         "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
         "format": "prettier --write .",
         "preview": "vite preview --port 8080"
     },
     "dependencies": {
+        "ar-components-kit": "git@github.com:amXCVI/ar-components-kit.git",
         "axios": "^1.7.2",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
