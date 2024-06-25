@@ -1,5 +1,7 @@
 import { MapComponent } from "@ar-kit/lib";
 
+import MapHeader from "@/features/map-header";
+
 import useMapHook from "../model";
 
 const MapPage = () => {
@@ -7,6 +9,8 @@ const MapPage = () => {
 
     return (
         <div style={{ width: "100vw", height: "100dvh" }}>
+            <MapHeader />
+
             <MapComponent
                 googleMapReact={{
                     bootstrapURLKeys: { key: googpeMapApiKey, libraries: ["places"] },
