@@ -1,7 +1,7 @@
 const routes = {
     home: "/",
-    map: "/map",
-    example: "/example",
+    map: "map",
+    example: "example",
 
     undefined: "*",
 };

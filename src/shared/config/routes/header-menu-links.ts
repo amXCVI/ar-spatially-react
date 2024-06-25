@@ -8,7 +8,7 @@ export const menuLinks = [
     },
     {
         id: "2",
-        title: `${routes.example}`,
+        title: "Get stated",
         href: "",
     },
     {
