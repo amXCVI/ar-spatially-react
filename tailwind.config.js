@@ -10,6 +10,7 @@ export default {
                 gray70: "#575959",
                 gray90: "#2A2A2B",
                 "gefault-bg": "#e2e2e2",
+                "light-bg": "#EDEDED",
                 dark70: "#191919",
             },
             animation: {

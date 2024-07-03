@@ -18,7 +18,8 @@ export const DefaultButton: FC<PropsWithChildren<PropsButton>> = ({
 }) => {
     const variants = `py-4 px-6 min-w-32
     bg-gray90/30 rounded-full
-    backdrop-blur`;
+    backdrop-blur
+    ${className ?? ""}`;
     return (
         <button className={variants} onClick={onClick} disabled={disabled}>
             <span className={className}>{children}</span>

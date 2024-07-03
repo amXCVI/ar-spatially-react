@@ -66,6 +66,14 @@
     line-height: 1.813rem;
 }
 
+.bold-24 {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.5rem;
+    line-height: 1.813rem;
+}
+
 .medium-20 {
     font-family: "Inter";
     font-style: normal;
