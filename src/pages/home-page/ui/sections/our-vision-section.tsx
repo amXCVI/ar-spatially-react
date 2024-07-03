@@ -1,58 +1,51 @@
-import SectionFooter from "@/features/section-footer";
+import { DefaultButton } from "@/shared/ui/buttons";
 
 import headerCrosses from "/images/landing/our-vision-section/header-crosses.svg";
 import headerDots from "/images/landing/our-vision-section/header-points.svg";
 import logo from "/images/landing/our-vision-section/logo.svg";
-import textItemPointIcon from "/images/landing/start-section/text-item-point.svg";
 
 import bulb from "/images/landing/our-vision-section/bulb.png";
 
 const OurVisionSection = () => {
     return (
-        <div className="h-full lg:max-h-full min-h-dvh flex flex-col justify-between">
-            <div className="flex container mx-auto justify-between items-end pt-10">
-                <div className="hidden lg:flex flex-col poppuns-80 leading-12 whitespace-nowrap">
+        <div
+            className="bg-[url(/images/landing/start-section/bg-image.svg)] 
+                bg-cover bg-no-repeat bg-center lg:rounded-[40px]                            
+                -m-5 lg:m-0 p-5 lg:p-0
+                h-full lg:max-h-full min-h-[calc(100dvh-2.5rem)] 
+                flex flex-col justify-between"
+        >
+            <div className="hidden lg:flex relative container mx-auto justify-between items-end pt-5">
+                <div className="flex flex-col poppuns-80 leading-10 whitespace-nowrap">
                     <img src={headerDots} className="w-8 ml-8 mb-8" />
                     <span className="text-white30 blur-[3.5px]">At the forefront of transforming</span>
                     <span className="text-white50 blur-[2px] mx-auto">human interaction</span>
                     <span className="text-grey70 ml-16">with augmented reality </span>
                 </div>
 
-                <img src={headerCrosses} className="hidden lg:flex ml-auto" />
+                <img src={headerCrosses} className="absolute right-0 bottom-0" />
             </div>
 
-            <div className="container mx-auto grid grid-cols-1 lg:grid-cols-5 items-center h-full lg:max-h-full py-10 lg:p-y-24">
-                <div className="col-span-3 flex flex-col w-full">
-                    <div className="flex gap-8 lg:gap-0 lg:flex-col justify-center items-center mx-auto lg:max-w-prose w-full h1-90-600 text-gray90">
-                        <h1 className="lg:mr-auto lg:ml-8">OUR</h1>
-                        <h1 className="lg:mx-auto">Vision</h1>
-                    </div>
+            <div className="container mx-auto grid grid-cols-1 lg:grid-cols-5 h-full lg:max-h-full py-10 lg:p-y-24">
+                <div
+                    className="lg:col-span-3 flex flex-col gap-5 lg:gap-8 mx-auto 
+                               max-w-prose text-center md:text-left"
+                >
+                    <h2 className="h2-34-700 uppercase text-gray90">OUR Vision</h2>
 
-                    <div className="flex flex-col w-full gap-4 items-start lg:gap-9 mt-6">
-                        <div className="flex justify-start items-start lg:max-w-prose">
-                            <img src={textItemPointIcon} className="hidden lg:block mr-2" />
-                            <div className="flex flex-col semibold-26 text-gray90">
-                                <div className="my-1.5 uppercase">
-                                    We aim to become a market leader in augmented reality
-                                </div>
-                                <span className="medium-20 my-1.5">
-                                    with our creative solutions that benefit businesses and users in areas like
-                                    education, entertainment, and marketing.
-                                </span>
-                            </div>
-                        </div>
+                    <p className="regular-16 text-gray90 mt-5">
+                        We are bringing together AR application developers and AR artists to create a unified AR space
+                        that provides a new method of communication between physical businesses and users.
+                    </p>
+                    <p className="regular-16 text-gray90">
+                        We link AR objects with the real world using geolocation technologies and apply blockchain
+                        technology to secure this connection and ensure fair and transparent circulation of AR content.
+                        We aim to make AR and blockchain technologies a part of everyday life.
+                    </p>
 
-                        <div className="flex justify-start items-start lg:mx-auto lg:max-w-prose">
-                            <img src={textItemPointIcon} className="hidden lg:block mr-2" />
-                            <div className="flex flex-col semibold-26 text-gray90">
-                                <div className="my-1.5 uppercase">
-                                    We want to make AR technologies part of everyday life
-                                </div>
-                                <span className="medium-20 my-1.5">
-                                    allowing people to utilize blockchain technology and manage digital assets as NFTs.
-                                </span>
-                            </div>
-                        </div>
+                    <div className="flex gap-10 md:gap-24 mx-auto mt-10 lg:mt-24">
+                        <DefaultButton>Road Map</DefaultButton>
+                        <DefaultButton>Pricing</DefaultButton>
                     </div>
                 </div>
 
@@ -65,7 +58,7 @@ const OurVisionSection = () => {
                     </div>
                 </div>
             </div>
-            <SectionFooter allFooter={false} />
+            <div />
         </div>
     );
 };

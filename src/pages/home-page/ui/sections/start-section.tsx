@@ -9,7 +9,7 @@ import phone from "/images/landing/start-section/phone.png";
 const StartSection = () => {
     return (
         <div
-            className=" bg-[url(/images/landing/start-section/bg-image.svg)] 
+            className="bg-[url(/images/landing/start-section/bg-image.svg)] 
                 bg-cover bg-no-repeat bg-center lg:rounded-[40px]                            
                 -m-5 lg:m-0 p-5 lg:p-0
                 h-full lg:max-h-full min-h-[calc(100dvh-2.5rem)] 
