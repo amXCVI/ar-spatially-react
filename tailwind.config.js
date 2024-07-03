@@ -6,6 +6,7 @@ export default {
             colors: {
                 white: "#ffffff",
                 white30: "#ffffff30",
+                white50: "#ffffff50",
                 gray70: "#575959",
                 gray90: "#2A2A2B",
                 "gefault-bg": "#e2e2e2",
@@ -19,6 +20,9 @@ export default {
             },
             backgroundPosition: {
                 "right-6": "center right 1rem",
+            },
+            lineHeight: {
+                12: "3rem",
             },
         },
     },

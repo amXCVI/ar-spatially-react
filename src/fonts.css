@@ -55,6 +55,14 @@
     line-height: 1.938rem;
 }
 
+.medium-20 {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+}
+
 .medium-16 {
     font-family: "Inter";
     font-style: normal;
@@ -80,4 +88,12 @@
     /* identical to box height */
     letter-spacing: 0.25em;
     text-transform: uppercase;
+}
+
+.poppuns-80 {
+    font-family: "Poppins", "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 5.5rem;
+    line-height: 7.5rem;
 }
