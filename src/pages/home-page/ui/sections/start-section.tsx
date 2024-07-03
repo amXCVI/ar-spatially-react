@@ -18,12 +18,10 @@ const StartSection = () => {
             <Header />
 
             <div className="container mx-auto flex flex-col items-center h-full lg:max-h-full lg:flex-row py-10 lg:p-y-24">
-                <div className="flex flex-col w-full">
-                    <div className="flex flex-col items-center mx-auto max-w-80 md:max-w-prose w-full">
-                        <h1 className="h1-90-600 text-gray90 mr-auto hidden lg:block">OUR</h1>
-                        <h1 className="t24-700 text-gray90 mr-auto block lg:hidden">OUR</h1>
-                        <h1 className="h1-90-600 text-gray90 mr-auto lg:hidden">Innovative </h1>
-                        <h1 className="h1-90-600 text-gray90 ml-auto">Solution</h1>
+                <div className="flex flex-col items-start w-full">
+                    <div className="flex flex-col items-center">
+                        <h1 className="h1-90-600 text-gray90 mr-auto">OUR</h1>
+                        <h1 className="h1-90-600 text-gray90 ml-24">Solution</h1>
                     </div>
 
                     <div className="flex flex-col lg:max-w-prose w-full gap-4 items-start lg:gap-9 mt-6">

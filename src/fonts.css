@@ -1,6 +1,6 @@
 :root {
     --md: 640px;
-    --lg: 1024px;
+    --lg: 101.5rem;
     --xl: 1280px;
 }
 
@@ -15,11 +15,14 @@
     text-transform: uppercase;
 }
 
-@media screen and (max-width: 640px) {
-    .h1-90-600 {
-        font-size: 3.125rem;
-        line-height: 3.75rem;
-    }
+.h1-70-500 {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 4.375rem;
+    line-height: 5.313rem;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
 }
 
 .h2-34-700 {
@@ -34,8 +37,8 @@
     font-family: "Inter";
     font-style: normal;
     font-weight: 700;
-    font-size: 24px;
-    line-height: 29px;
+    font-size: 1.5rem;
+    line-height: 1.813rem;
 }
 
 .semibold-26 {
@@ -55,28 +58,36 @@
     line-height: 1.938rem;
 }
 
+.regular-24 {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.5rem;
+    line-height: 1.813rem;
+}
+
 .medium-20 {
     font-family: "Inter";
     font-style: normal;
     font-weight: 500;
-    font-size: 20px;
-    line-height: 24px;
+    font-size: 1.25rem;
+    line-height: 1.5rem;
 }
 
 .medium-16 {
     font-family: "Inter";
     font-style: normal;
     font-weight: 500;
-    font-size: 16px;
-    line-height: 19px;
+    font-size: 1rem;
+    line-height: 1.188rem;
 }
 
 .regular-16 {
     font-family: "Inter";
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 1rem;
+    line-height: 1.5rem;
 }
 
 .regular-14 {
