@@ -10,9 +10,9 @@ interface PropsButton {
 
 export const DefaultButton: FC<PropsWithChildren<PropsButton>> = ({
     children,
-    type = "primary",
+    // type = "primary",
     className,
-    size = "normal",
+    // size = "normal",
     onClick,
     disabled = false,
 }) => {
