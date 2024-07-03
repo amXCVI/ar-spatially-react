@@ -10,22 +10,22 @@ import bulb from "/images/landing/our-vision-section/bulb.png";
 const OurVisionSection = () => {
     return (
         <div className="h-full lg:max-h-full min-h-dvh flex flex-col justify-between">
-            <div className="hidden lg:flex container mx-auto justify-between items-end pt-10">
-                <div className="flex flex-col poppuns-80 leading-12 whitespace-nowrap">
+            <div className="flex container mx-auto justify-between items-end pt-10">
+                <div className="hidden lg:flex flex-col poppuns-80 leading-12 whitespace-nowrap">
                     <img src={headerDots} className="w-8 ml-8 mb-8" />
                     <span className="text-white30 blur-[3.5px]">At the forefront of transforming</span>
                     <span className="text-white50 blur-[2px] mx-auto">human interaction</span>
                     <span className="text-grey70 ml-16">with augmented reality </span>
                 </div>
 
-                <img src={headerCrosses} />
+                <img src={headerCrosses} className="hidden lg:flex ml-auto" />
             </div>
 
             <div className="container mx-auto grid grid-cols-1 lg:grid-cols-5 items-center h-full lg:max-h-full py-10 lg:p-y-24">
                 <div className="col-span-3 flex flex-col w-full">
-                    <div className="flex flex-col items-center mx-auto max-w-80 md:max-w-prose w-full">
-                        <h1 className="h1-90-600 text-gray90 mr-auto ml-8">OUR</h1>
-                        <h1 className="h1-90-600 text-gray90 mx-auto">Vision</h1>
+                    <div className="flex gap-8 lg:gap-0 lg:flex-col justify-center items-center mx-auto lg:max-w-prose w-full h1-90-600 text-gray90">
+                        <h1 className="lg:mr-auto lg:ml-8">OUR</h1>
+                        <h1 className="lg:mx-auto">Vision</h1>
                     </div>
 
                     <div className="flex flex-col w-full gap-4 items-start lg:gap-9 mt-6">
@@ -65,7 +65,7 @@ const OurVisionSection = () => {
                     </div>
                 </div>
             </div>
-            <SectionFooter />
+            <SectionFooter allFooter={false} />
         </div>
     );
 };

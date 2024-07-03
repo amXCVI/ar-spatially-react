@@ -8,13 +8,17 @@ import scrollDownIcon from "/images/landing/footer/scroll-down-to-explore.svg";
 import telegtamIcon from "/images/landing/footer/telegram.svg";
 import ticTocIcon from "/images/landing/footer/tik-tok.svg";
 
-const SectionFooter = () => {
+const SectionFooter = ({ allFooter = true }: { allFooter?: boolean }) => {
     return (
         <div className="container mx-auto flex flex-col items-center">
-            <div className="hidden md:flex justify-between items-center w-full mb-4 -mt-20">
-                <img src={footerStars} className="-ml-2" />
-                <img src={crosses} className="mr-4" />
-            </div>
+            {allFooter ? (
+                <div className="hidden md:flex justify-between items-center w-full mb-4 -mt-20">
+                    <img src={footerStars} className="-ml-2" />
+                    <img src={crosses} className="mr-4" />
+                </div>
+            ) : (
+                <></>
+            )}
 
             <div className="flex justify-between items-center w-full">
                 <div className="flex items-center regular-14 text-gray90">

@@ -1,7 +1,6 @@
 import Header from "@/features/header";
 import SectionFooter from "@/features/section-footer";
 
-import iconOnPhone from "/images/landing/start-section/icon-on-phone.svg";
 import leftArrow from "/images/landing/start-section/left-arrow.svg";
 import textItemPointIcon from "/images/landing/start-section/text-item-point.svg";
 
@@ -70,9 +69,9 @@ const StartSection = () => {
 
                     <div className="relative h-full">
                         <img src={phone} className="object-contain h-full max-h-[80dvh] lg:max-h-[50dvh]" />
-                        <div className="absolute -top-10 lg:top-5 -left-24 border border-white30 rounded-full p-8 lg:p-9 backdrop-blur">
+                        {/* <div className="absolute -top-10 lg:top-5 -left-24 border border-white30 rounded-full p-8 lg:p-9 backdrop-blur">
                             <img src={iconOnPhone} />
-                        </div>
+                        </div> */}
                     </div>
 
                     <div className="flex justify-around items-center mt-8">
