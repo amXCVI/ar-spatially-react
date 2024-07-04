@@ -1,5 +1,3 @@
-import { DefaultButton } from "@/shared/ui/buttons";
-
 import headerCrosses from "/images/landing/our-vision-section/header-crosses.svg";
 import headerDots from "/images/landing/our-vision-section/header-points.svg";
 import logo from "/images/landing/our-vision-section/logo.svg";
@@ -10,10 +8,10 @@ const OurVisionSection = () => {
     return (
         <div
             className="bg-[url(/images/landing/start-section/bg-image.svg)] 
-                bg-cover bg-no-repeat bg-center lg:rounded-[40px]                            
-                -m-5 lg:m-0 p-5 lg:p-0
-                h-full lg:max-h-full min-h-[calc(100dvh-2.5rem)] 
-                flex flex-col justify-between"
+                bg-cover bg-no-repeat bg-center rounded-[40px]                            
+                h-full md:min-h-[calc(100dvh-2.5rem)] 
+                flex flex-col justify-between
+                p-4"
         >
             <div className="hidden lg:flex relative container mx-auto justify-between items-end pt-5">
                 <div className="flex flex-col poppuns-80 leading-10 whitespace-nowrap">
@@ -43,14 +41,14 @@ const OurVisionSection = () => {
                         We aim to make AR and blockchain technologies a part of everyday life.
                     </p>
 
-                    <div className="flex gap-10 md:gap-24 mx-auto mt-10 lg:mt-24">
+                    {/* <div className="flex gap-10 md:gap-24 mx-auto mt-10 lg:mt-24">
                         <DefaultButton>Road Map</DefaultButton>
                         <DefaultButton>Pricing</DefaultButton>
-                    </div>
+                    </div> */}
                 </div>
 
                 <div className="lg:col-span-2 flex flex-col items-center w-full h-full relative mt-16 lg:mt-0">
-                    <div className="relative flex h-full max-w-xl">
+                    <div className="relative flex h-full max-w-[50vw] lg:max-w-xl">
                         <img src={bulb} className="object-contain h-full max-h-[80dvh] lg:max-h-[50dvh]" />
                         <div className="absolute top-0 right-0 bottom-0 left-0 flex justify-center items-center">
                             <img src={logo} className="" />

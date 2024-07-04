@@ -11,14 +11,14 @@ import phoneForMapTwo from "/images/landing/get-started-section/phone_3.png";
 
 const GetStartedSection = () => {
     return (
-        <div className="h-full lg:max-h-full min-h-dvh flex flex-col justify-between">
+        <div className="flex flex-col justify-between">
             <div
-                className="container mx-auto rounded-[40px] mt-10
+                className="container mx-auto rounded-[40px]
                            overflow-hidden
                            grid grid-cols-12 gap-1
                           "
             >
-                <div className="col-span-12 lg:col-span-5 bg-light-bg p-4 md:p-10">
+                <div className="col-span-12 lg:col-span-5 bg-light-bg p-4 py-10 md:p-10">
                     <div className="flex flex-col h-full">
                         <Title title="Developers" />
                         <Subtitle subtitle="Coming Soon" className="mt-2.5" />
@@ -32,9 +32,9 @@ const GetStartedSection = () => {
                         </div>
                     </div>
                 </div>
-                <div className="col-span-12 lg:col-span-7 bg-light-bg p-4 md:p-10">
+                <div className="col-span-12 lg:col-span-7 bg-light-bg p-4 py-10 md:p-10">
                     <div className="flex flex-col md:flex-row gap-4">
-                        <img src={phoneForUsers} className="object-contain" />
+                        <img src={phoneForUsers} className="object-contain max-h-[50dvh]" />
 
                         <div className="flex flex-col justify-between">
                             <div>
@@ -69,8 +69,8 @@ const GetStartedSection = () => {
                         </div>
                     </div>
                 </div>
-                <div className="col-span-12 bg-light-bg p-4 md:p-10">
-                    <div className="flex flex-col-reverse md:flex-row gap-4">
+                <div className="col-span-12 bg-light-bg px-4 py-10 md:p-10">
+                    <div className="flex gap-4">
                         <div className="flex flex-col justify-between">
                             <Title title="OUr Map" />
                             <Subtitle subtitle="We use geopositioning to navigate through objects." className="mt-5" />
@@ -93,8 +93,8 @@ const GetStartedSection = () => {
                             </div>
                         </div>
 
-                        <img src={phoneForMapTwo} className="object-contain" />
-                        <img src={phoneForMapOne} className="object-contain" />
+                        <img src={phoneForMapTwo} className="object-contain max-h-[50dvh]" />
+                        <img src={phoneForMapOne} className="object-contain max-h-[50dvh]" />
                     </div>
                 </div>
             </div>

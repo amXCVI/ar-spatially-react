@@ -10,14 +10,14 @@ const StartSection = () => {
     return (
         <div
             className="bg-[url(/images/landing/start-section/bg-image.svg)] 
-                bg-cover bg-no-repeat bg-center lg:rounded-[40px]                            
-                -m-5 lg:m-0 p-5 lg:p-0
-                h-full lg:max-h-full min-h-[calc(100dvh-2.5rem)] 
-                flex flex-col justify-between"
+                bg-cover bg-no-repeat bg-center rounded-[40px]                            
+                h-full min-h-[calc(100dvh-2.5rem)] 
+                flex flex-col justify-between
+                p-4"
         >
             <Header />
 
-            <div className="container mx-auto flex flex-col items-center h-full lg:max-h-full lg:flex-row py-10 lg:p-y-24">
+            <div className="container mx-auto flex flex-col items-center h-full lg:max-h-full lg:flex-row py-10 lg:py-0">
                 <div className="flex flex-col items-start w-full">
                     <div className="flex flex-col items-center">
                         <h1 className="h1-90-600 text-gray90 mr-auto">OUR</h1>
@@ -59,14 +59,16 @@ const StartSection = () => {
                     </div>
                 </div>
 
-                <div className="flex flex-col items-center w-full h-full relative mt-16 lg:mt-0">
-                    <img
-                        src="/images/landing/start-section/bulb.png"
-                        className="absolute top-0 animate-spin-slow [scale:1.5] md:[scale:1] max-h-[80dvh] lg:max-h-[50dvh] object-contain"
-                    />
-
+                <div className="flex flex-col items-center w-full h-full mt-16 lg:mt-0">
                     <div className="relative h-full">
-                        <img src={phone} className="object-contain h-full max-h-[80dvh] lg:max-h-[50dvh]" />
+                        <img
+                            src="/images/landing/start-section/bulb.png"
+                            className="absolute animate-spin-slow [scale:1.5] lg:[scale:2] md:top-1/4 z-0"
+                        />
+                        <img
+                            src={phone}
+                            className="relative object-contain h-full max-h-[80dvh] lg:max-h-[50dvh] z-10"
+                        />
                         {/* <div className="absolute -top-10 lg:top-5 -left-24 border border-white30 rounded-full p-8 lg:p-9 backdrop-blur">
                             <img src={iconOnPhone} />
                         </div> */}

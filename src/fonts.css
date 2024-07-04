@@ -15,6 +15,13 @@
     text-transform: uppercase;
 }
 
+@media screen and (max-width: 640px) {
+    .h1-90-600 {
+        font-size: 3.625rem;
+        line-height: 4.975rem;
+    }
+}
+
 .h1-70-500 {
     font-family: "Inter";
     font-style: normal;

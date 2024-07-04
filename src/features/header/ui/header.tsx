@@ -8,7 +8,7 @@ const Header = () => {
         <header className="">
             <div className="container mx-auto py-10 flex justify-between items-center">
                 <img src={logo} />
-                <div className="hidden lg:flex gap-14">
+                <div className="hidden lg:flex gap-14 ml-auto">
                     {menuLinks.map((item) => {
                         return (
                             <a
