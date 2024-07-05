@@ -24,7 +24,7 @@ const OurVisionSection = () => {
                 <img src={headerCrosses} className="absolute right-0 bottom-0" />
             </div>
 
-            <div className="container mx-auto grid grid-cols-1 lg:grid-cols-5 h-full lg:max-h-full py-10 lg:p-y-24">
+            <div className="container mx-auto flex flex-col xl:grid xl:grid-cols-5 gap-16 h-full lg:max-h-full py-10 lg:p-y-24">
                 <div
                     className="lg:col-span-3 flex flex-col gap-5 lg:gap-8 mx-auto 
                                max-w-prose text-center md:text-left"
@@ -47,8 +47,8 @@ const OurVisionSection = () => {
                     </div> */}
                 </div>
 
-                <div className="lg:col-span-2 flex flex-col items-center w-full h-full relative mt-16 lg:mt-0">
-                    <div className="relative flex h-full max-w-[50vw] lg:max-w-xl">
+                <div className="col-span-1 lg:col-span-2 flex flex-col items-center w-full">
+                    <div className="relative flex max-w-[50vw] lg:max-w-xl">
                         <img src={bulb} className="object-contain h-full max-h-[80dvh] lg:max-h-[50dvh]" />
                         <div className="absolute top-0 right-0 bottom-0 left-0 flex justify-center items-center">
                             <img src={logo} className="" />

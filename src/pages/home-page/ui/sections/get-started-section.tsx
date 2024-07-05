@@ -70,7 +70,7 @@ const GetStartedSection = () => {
                     </div>
                 </div>
                 <div className="col-span-12 bg-light-bg px-4 py-10 md:p-10">
-                    <div className="flex gap-4">
+                    <div className="flex flex-col-reverse md:flex-row gap-4">
                         <div className="flex flex-col justify-between">
                             <Title title="OUr Map" />
                             <Subtitle subtitle="We use geopositioning to navigate through objects." className="mt-5" />
@@ -93,8 +93,13 @@ const GetStartedSection = () => {
                             </div>
                         </div>
 
-                        <img src={phoneForMapTwo} className="object-contain max-h-[50dvh]" />
-                        <img src={phoneForMapOne} className="object-contain max-h-[50dvh]" />
+                        <div className="flex mx-auto md:hidden">
+                            <img src={phoneForMapTwo} className="object-contain h-full max-h-[50dvh]" />
+                            <img src={phoneForMapOne} className="object-contain h-full max-h-[50dvh]" />
+                        </div>
+
+                        <img src={phoneForMapTwo} className="object-contain max-h-[50dvh] hidden md:block" />
+                        <img src={phoneForMapOne} className="object-contain max-h-[50dvh] hidden md:block" />
                     </div>
                 </div>
             </div>
