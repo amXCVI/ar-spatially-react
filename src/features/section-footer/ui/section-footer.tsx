@@ -1,12 +1,10 @@
+import { Socials } from "@/shared/ui/socials";
+
 import crosses from "/images/landing/footer/crosses.svg";
-import discordIcon from "/images/landing/footer/discord.svg";
 import disks from "/images/landing/footer/disks.svg";
 import dots from "/images/landing/footer/dots.svg";
 import footerStars from "/images/landing/footer/footer-stars.svg";
-import linkedinIcon from "/images/landing/footer/linkedin.svg";
 import scrollDownIcon from "/images/landing/footer/scroll-down-to-explore.svg";
-import telegtamIcon from "/images/landing/footer/telegram.svg";
-import ticTocIcon from "/images/landing/footer/tik-tok.svg";
 
 const SectionFooter = ({ allFooter = true }: { allFooter?: boolean }) => {
     return (
@@ -34,20 +32,7 @@ const SectionFooter = ({ allFooter = true }: { allFooter?: boolean }) => {
                 </div>
             </div>
 
-            <div className="flex gap-10 lg:mb-5">
-                <a href="">
-                    <img src={discordIcon} />
-                </a>
-                <a href="">
-                    <img src={linkedinIcon} />
-                </a>
-                <a href="">
-                    <img src={telegtamIcon} />
-                </a>
-                <a href="">
-                    <img src={ticTocIcon} />
-                </a>
-            </div>
+            <Socials className="lg:mb-5 " itemClassName="fill-charleston-green" />
         </div>
     );
 };

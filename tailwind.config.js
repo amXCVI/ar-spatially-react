@@ -15,6 +15,7 @@ export default {
                 dark30: "#0000004D",
                 dark70: "#191919",
                 "spanish-gray": "#9E9C9C",
+                "charleston-green": "#2a2a2b"
             },
             animation: {
                 "spin-slow": "spin 15s linear infinite",

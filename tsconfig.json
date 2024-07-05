@@ -21,6 +21,7 @@
         "noFallthroughCasesInSwitch": true,
 
         //
+        "types": ["vite-plugin-svgr/client"],
         "paths": {
             "@/*": ["./src/*"],
             "@ar-kit/*": ["./ar-spatially-kit/*"]

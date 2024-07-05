@@ -79,7 +79,7 @@ const ProductPage = () => {
                 <div className="flex flex-col items-end gap-2 ml-auto">
                     <div className="medium-14 text-spanish-gray">Spatially AR-Planet</div>
                     <div className="light-12 text-spanish-gray">helps businesses create unique AR content</div>
-                    <Socials className="mt-2" />
+                    <Socials className="mt-2" itemClassName="fill-spanish-gray" />
                 </div>
             </footer>
         </DarkLayout>

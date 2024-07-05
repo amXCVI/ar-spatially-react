@@ -1,29 +1,29 @@
-import discord from "/images/socials/discord.svg";
-import ticToc from "/images/socials/discord.svg";
-import linkedin from "/images/socials/linkedin.svg";
-import telegram from "/images/socials/telegram.svg";
+import Discord from "./socials/discord.svg?react";
+import Linkedin from "./socials/linkedin.svg?react";
+import Telegram from "./socials/telegram.svg?react";
+import TicToc from "./socials/tik-tok.svg?react";
 
 const socials = [
     {
-        icon: discord,
+        icon: <Discord />,
         title: "Discord",
         link: "",
         id: "Discord",
     },
     {
-        icon: linkedin,
+        icon: <Linkedin />,
         title: "Linkedin",
         link: "",
         id: "Linkedin",
     },
     {
-        icon: telegram,
+        icon: <Telegram />,
         title: "Telegram",
         link: "",
         id: "Telegram",
     },
     {
-        icon: ticToc,
+        icon: <TicToc />,
         title: "Tic Toc",
         link: "",
         id: "Tic Toc",
@@ -32,14 +32,15 @@ const socials = [
 
 interface SocialsProps {
     className?: string;
+    itemClassName?: string;
 }
-const Socials = ({ className }: SocialsProps) => {
+const Socials = ({ className, itemClassName }: SocialsProps) => {
     return (
         <div className={`flex gap-10 ${className ?? ""}`}>
             {socials.map((item) => {
                 return (
-                    <a key={item.id + item.title} href={item.link}>
-                        <img src={item.icon} />
+                    <a key={item.id + item.title} href={item.link} className={`${itemClassName ?? ""}`}>
+                        {item.icon}
                     </a>
                 );
             })}
