@@ -4,7 +4,7 @@ export const menuLinks = [
     {
         id: "1",
         title: "Product",
-        href: "",
+        href: routes.product,
     },
     // {
     //     id: "2",

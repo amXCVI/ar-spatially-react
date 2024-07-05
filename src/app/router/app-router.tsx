@@ -4,6 +4,7 @@ import ErrorPage from "@/pages/error-page";
 import ExamplePage from "@/pages/example-page";
 import HomePage from "@/pages/home-page";
 import MapPage from "@/pages/map-page";
+import { ProductPage } from "@/pages/product-page";
 
 import { routes } from "@/shared/config";
 import { BaseLayout } from "@/shared/ui/layouts";
@@ -17,6 +18,8 @@ const AppRouter = () => {
                 { path: routes.home, element: <HomePage /> },
 
                 { path: routes.map, element: <MapPage /> },
+
+                { path: routes.product, element: <ProductPage /> },
 
                 { path: routes.example, element: <ExamplePage /> },
 

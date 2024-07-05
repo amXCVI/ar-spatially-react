@@ -89,6 +89,14 @@
     line-height: 1.5rem;
 }
 
+.bold-20 {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+}
+
 .medium-16 {
     font-family: "Inter";
     font-style: normal;
@@ -103,6 +111,22 @@
     font-weight: 400;
     font-size: 1rem;
     line-height: 1.5rem;
+}
+
+.bold-14 {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+.medium-14 {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
 }
 
 .regular-14 {
