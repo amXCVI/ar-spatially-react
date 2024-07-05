@@ -7,11 +7,13 @@ import bulb from "/images/landing/our-vision-section/bulb.png";
 const OurVisionSection = () => {
     return (
         <div
-            className="bg-[url(/images/landing/start-section/bg-image.svg)] 
-                bg-cover bg-no-repeat bg-center rounded-[40px]                            
-                h-full md:min-h-[calc(100dvh-2.5rem)] 
-                flex flex-col justify-between
-                p-4"
+            // className="
+            //     bg-[url(/images/landing/start-section/bg-image.svg)]
+            //     bg-cover bg-no-repeat bg-center rounded-[40px]
+            //     h-full md:min-h-[calc(100dvh-2.5rem)]
+            //     flex flex-col justify-between
+            //     p-4"
+            className="flex flex-col justify-between p-4"
         >
             <div className="hidden lg:flex relative container mx-auto justify-between items-end pt-5">
                 <div className="flex flex-col poppuns-80 leading-10 whitespace-nowrap">
