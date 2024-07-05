@@ -61,10 +61,10 @@ const StartSection = () => {
 
                 <div className="flex flex-col items-center w-full h-full mt-16 lg:mt-0">
                     <div className="relative h-full">
-                        <img
-                            src="/images/landing/start-section/bulb.png"
-                            className="absolute animate-spin-slow [scale:1.5] lg:[scale:2] md:top-1/4 z-0"
-                        />
+                        <div className="absolute animate-spin-slow h-full -left-1/2 -right-1/2 z-0">
+                            <img src="/images/landing/start-section/bulb.png" />
+                        </div>
+
                         <img
                             src={phone}
                             className="relative object-contain h-full max-h-[80dvh] lg:max-h-[50dvh] z-10"
