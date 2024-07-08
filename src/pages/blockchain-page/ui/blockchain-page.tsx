@@ -31,9 +31,11 @@ const BlockchainPage = () => {
                         various solutions to life. We also gather augmented reality tools and are open to partnering
                         with others through our platform. Feel free to get in touch with us!
                     </TextP>
-                    <DefaultButton className="m-auto">
-                        <span className="regular-14 text-white">DGES</span>
-                    </DefaultButton>
+                    <div className="m-auto">
+                        <DefaultButton className="mt-10">
+                            <span className="regular-14 text-white">DGES</span>
+                        </DefaultButton>
+                    </div>
                 </div>
 
                 <div className="col-span-12 bg-smoky-black-bg md:col-span-8 flex flex-col md:flex-row gap-10 px-4 py-10 md:p-10">

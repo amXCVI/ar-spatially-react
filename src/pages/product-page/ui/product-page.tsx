@@ -1,6 +1,9 @@
+import Header from "@/features/header";
+
 import { DefaultButton } from "@/shared/ui/buttons";
 import { DarkLayout } from "@/shared/ui/layouts";
 import { Socials } from "@/shared/ui/socials";
+import { Title } from "@/shared/ui/text-components";
 
 import dots from "/images/landing/footer/dots.svg";
 import scrollDownIcon from "/images/landing/footer/scroll-down-to-explore.svg";
@@ -13,8 +16,11 @@ const ProductPage = () => {
     return (
         <DarkLayout
             className="flex flex-col justify-between 
-                       bg-[url(/images/product/bg.svg)] bg-cover bg-no-repeat bg-center"
+                       bg-[url(/images/product/bg.svg)] bg-cover bg-no-repeat bg-center
+                       pt-40
+                       "
         >
+            <Header white />
             <div></div>
             <div
                 className="container mx-auto
@@ -22,7 +28,7 @@ const ProductPage = () => {
             "
             >
                 <div className="col-span-12 lg:col-span-5 flex flex-col my-auto">
-                    <h2 className="h2-34-700 text-white">Our Product</h2>
+                    <Title className="text-white" title="Our Product" />
                     <h3 className="bold-20 text-white mt-8">For developers</h3>
                     <p className="regular-16 mt-7">
                         We aim to create a comprehensive toolkit that allows both existing and emerging applications to
@@ -41,7 +47,7 @@ const ProductPage = () => {
                             <img src={bulb} />
                         </div>
 
-                        <img src={phone} className="relative object-contain h-full mx-auto z-10" />
+                        <img src={phone} className="relative object-contain h-full mx-auto z-10 max-h-[70dvh]" />
                     </div>
                     <div className="flex justify-around items-center mt-8 mx-auto max-w-min">
                         <div className="cursor-pointer w-10">

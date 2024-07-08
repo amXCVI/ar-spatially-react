@@ -45,6 +45,6 @@ export const menuLinks = [
         id: "7",
         title: "Docs",
         href: "",
-        desctopOnly: false,
+        desctopOnly: true,
     },
 ];
