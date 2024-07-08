@@ -18,6 +18,7 @@ export default {
                 "spanish-gray": "#9E9C9C",
                 "charleston-green": "#2a2a2b",
                 "american-silver": "#d1d1d1",
+                "american-silver20": "#d1d1d120",
             },
             animation: {
                 "spin-slow": "spin 15s linear infinite",

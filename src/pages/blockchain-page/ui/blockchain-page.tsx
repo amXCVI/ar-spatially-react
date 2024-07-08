@@ -1,3 +1,5 @@
+import Header from "@/features/header";
+
 import { DefaultButton } from "@/shared/ui/buttons";
 import { DarkLayout } from "@/shared/ui/layouts";
 import { Subtitle, TextP, Title } from "@/shared/ui/text-components";
@@ -14,8 +16,10 @@ const BlockchainPage = () => {
     return (
         <DarkLayout
             className="flex flex-col justify-between 
-               bg-[url(/images/product/bg.svg)] bg-cover bg-no-repeat bg-center"
+               bg-[url(/images/product/bg.svg)] bg-cover bg-no-repeat bg-center
+               pt-40"
         >
+            <Header white />
             <div
                 className="container mx-auto
                             grid grid-cols-12 gap-1

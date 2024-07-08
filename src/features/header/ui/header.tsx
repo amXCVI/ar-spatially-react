@@ -17,17 +17,9 @@ const Header = ({ white }: HeaderInterface) => {
 
     useEffect(() => {
         const controlNavbar = () => {
-            //   const startSection = document.getElementById(AppRoutes.startSection);
-
-            //   if (!startSection) {
-            //     return null;
-            //   }
-
             if (window.scrollY > window.innerHeight / 3) {
-                // if scroll down hide the navbar
                 setShow(false);
             } else {
-                // if scroll up show the navbar
                 setShow(true);
             }
         };
@@ -49,7 +41,7 @@ const Header = ({ white }: HeaderInterface) => {
             >
                 <div
                     className="flex justify-between items-center px-10 
-                                bg-american-silver
+                                bg-american-silver20 lg:backdrop-blur-xl
                                 rounded-[40px]
                                 "
                 >
@@ -65,7 +57,10 @@ const Header = ({ white }: HeaderInterface) => {
                                     className={`${item.desctopOnly ? "hidden" : "flex"} lg:flex items-center p-4 bg-white30 rounded-full lg:bg-[#ffffff00]`}
                                     key={item.id + "header-menu-item"}
                                 >
-                                    <a href={item.href} className="font-medium text-gray90 text-[14px]">
+                                    <a
+                                        href={item.href}
+                                        className={`font-medium text-[14px] ${white ? "text-white" : "text-gray90"}`}
+                                    >
                                         {item.title}
                                     </a>
                                 </div>
@@ -103,12 +98,14 @@ const MobileMenu = ({ white = false }: MobileMenuInterface) => {
                 <BurgerIcon className={white ? "stroke-white" : "stroke-charleston-green"} />
             </div>
 
-            <div className={`top-0 right-0 bottom-0 left-0 z-10 ${isOpenMobileMenu ? "fixed" : "relative"}`}>
+            <div
+                className={`top-0 right-0 bottom-0 left-0 z-10 ${isOpenMobileMenu ? "fixed" : "relative"} flex justify-center items-center`}
+            >
                 <div
-                    className={`fixed top-[calc(100vh-60%)] right-10 left-10 duration-500 ${
+                    className={`container duration-500 ${
                         isOpenMobileMenu ? "opacity-1" : "opacity-0"
                     } flex flex-col items-center justify-between overflow-hidden z-50
-                backdrop-blur-xl rounded-[34px] border border-white
+                backdrop-blur-xl rounded-[34px] border border-white h-min
                 `}
                     style={{
                         background:
