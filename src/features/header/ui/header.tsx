@@ -1,5 +1,5 @@
 import { useOutsideClick } from "@ar-kit/shared/hooks";
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 
 import { menuLinks, routes } from "@/shared/config";
 import { Socials } from "@/shared/ui/socials";
@@ -11,30 +11,69 @@ import logo from "/images/landing/header/logo.svg";
 interface HeaderInterface {
     white?: boolean;
 }
+
 const Header = ({ white }: HeaderInterface) => {
+    const [show, setShow] = useState(true);
+
+    useEffect(() => {
+        const controlNavbar = () => {
+            //   const startSection = document.getElementById(AppRoutes.startSection);
+
+            //   if (!startSection) {
+            //     return null;
+            //   }
+
+            if (window.scrollY > window.innerHeight / 3) {
+                // if scroll down hide the navbar
+                setShow(false);
+            } else {
+                // if scroll up show the navbar
+                setShow(true);
+            }
+        };
+
+        window.addEventListener("scroll", controlNavbar);
+
+        // cleanup function
+        return () => {
+            window.removeEventListener("scroll", controlNavbar);
+        };
+    }, []);
+
     return (
         <header className="fixed top-0 right-0 left-0 z-50">
-            <div className="container mx-auto px-10 py-10 flex justify-between items-center">
-                <a href={routes.home}>
-                    <img src={logo} className="hidden md:block" />
-                </a>
+            <div
+                className={`container mx-auto duration-500 
+                ${show ? "py-10" : "py-0"}
+                px-7 lg:px-0`}
+            >
+                <div
+                    className="flex justify-between items-center px-10 
+                                bg-american-silver
+                                rounded-[40px]
+                                "
+                >
+                    <a href={routes.home}>
+                        <img src={logo} className="hidden md:block" />
+                    </a>
 
-                <div />
-                <div className="flex gap-14 ml-auto">
-                    {menuLinks.map((item) => {
-                        return (
-                            <div
-                                className={`${item.desctopOnly ? "hidden" : "flex"} lg:flex items-center p-4 bg-white30 rounded-full lg:bg-[#ffffff00]`}
-                                key={item.id + "header-menu-item"}
-                            >
-                                <a href={item.href} className="font-medium text-gray90 text-[14px]">
-                                    {item.title}
-                                </a>
-                            </div>
-                        );
-                    })}
+                    <div />
+                    <div className="flex gap-14 ml-auto">
+                        {menuLinks.map((item) => {
+                            return (
+                                <div
+                                    className={`${item.desctopOnly ? "hidden" : "flex"} lg:flex items-center p-4 bg-white30 rounded-full lg:bg-[#ffffff00]`}
+                                    key={item.id + "header-menu-item"}
+                                >
+                                    <a href={item.href} className="font-medium text-gray90 text-[14px]">
+                                        {item.title}
+                                    </a>
+                                </div>
+                            );
+                        })}
 
-                    <MobileMenu white={white} />
+                        <MobileMenu white={white} />
+                    </div>
                 </div>
             </div>
         </header>
