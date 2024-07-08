@@ -1,4 +1,3 @@
-import Header from "@/features/header";
 import SectionFooter from "@/features/section-footer";
 
 import leftArrow from "/images/landing/start-section/left-arrow.svg";
@@ -15,7 +14,7 @@ const StartSection = () => {
                 flex flex-col justify-between
                 p-4"
         >
-            <Header />
+            <div className="h-16" />
 
             <div className="container mx-auto flex flex-col items-center h-full lg:max-h-full lg:flex-row py-10 lg:py-0">
                 <div className="flex flex-col items-start w-full">
@@ -61,7 +60,7 @@ const StartSection = () => {
 
                 <div className="flex flex-col items-center w-full h-full mt-16 lg:mt-0">
                     <div className="relative h-full">
-                        <div className="absolute animate-spin-slow h-full -left-1/2 -right-1/2 z-0">
+                        <div className="absolute h-full -left-1/2 -right-1/2 z-0">
                             <img src="/images/landing/start-section/bulb.png" />
                         </div>
 

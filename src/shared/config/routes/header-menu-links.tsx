@@ -1,3 +1,7 @@
+import BlockchainIcon from "./menu-icons/blockchain-icon.svg?react";
+import MapIcon from "./menu-icons/map-icon.svg?react";
+import ProductIcon from "./menu-icons/product-icon.svg?react";
+
 import routes from "./app-routes";
 
 export const menuLinks = [
@@ -5,6 +9,8 @@ export const menuLinks = [
         id: "1",
         title: "Product",
         href: routes.product,
+        desctopOnly: true,
+        icon: <ProductIcon />,
     },
     // {
     //     id: "2",
@@ -15,6 +21,8 @@ export const menuLinks = [
         id: "3",
         title: "Map",
         href: `${routes.map}`,
+        desctopOnly: true,
+        icon: <MapIcon />,
     },
     // {
     //     id: "4",
@@ -29,6 +37,14 @@ export const menuLinks = [
     {
         id: "6",
         title: "Blockchain",
+        href: routes.blockchain,
+        desctopOnly: true,
+        icon: <BlockchainIcon />,
+    },
+    {
+        id: "7",
+        title: "Docs",
         href: "",
+        desctopOnly: false,
     },
 ];
