@@ -1,6 +1,5 @@
-import { ReactNode } from "react";
-
 import { DefaultButton } from "@/shared/ui/buttons";
+import { Subtitle, TextP, Title } from "@/shared/ui/text-components";
 
 import appStoreButton from "/images/landing/get-started-section/app-store-button.svg";
 import playMarketButton from "/images/landing/get-started-section/play-market-button.svg";
@@ -105,18 +104,6 @@ const GetStartedSection = () => {
             </div>
         </div>
     );
-};
-
-const Title = ({ title }: { title: string }) => {
-    return <h2 className="h2-34-700 text-gray90 uppercase">{title}</h2>;
-};
-
-const Subtitle = ({ subtitle, className }: { subtitle: string; className?: string }) => {
-    return <h3 className={`medium-20 text-gray90 ${className ?? ""}`}>{subtitle}</h3>;
-};
-
-const TextP = ({ children, className }: { children: ReactNode; className?: string }) => {
-    return <p className={`regular-16 text-gray90 text-justify ${className ?? ""}`}>{children}</p>;
 };
 
 export { GetStartedSection };

@@ -1,5 +1,6 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
+import { BlockchainPage } from "@/pages/blockchain-page";
 import ErrorPage from "@/pages/error-page";
 import ExamplePage from "@/pages/example-page";
 import HomePage from "@/pages/home-page";
@@ -20,6 +21,8 @@ const AppRouter = () => {
                 { path: routes.map, element: <MapPage /> },
 
                 { path: routes.product, element: <ProductPage /> },
+
+                { path: routes.blockchain, element: <BlockchainPage /> },
 
                 { path: routes.example, element: <ExamplePage /> },
 
