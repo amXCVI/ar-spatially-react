@@ -50,7 +50,7 @@ const Header = ({ white }: HeaderInterface) => {
                     </a>
 
                     <div />
-                    <div className="flex gap-14 ml-auto">
+                    <div className="hidden lg:flex gap-14 ml-auto">
                         {menuLinks.map((item) => {
                             return (
                                 <div
@@ -66,9 +66,9 @@ const Header = ({ white }: HeaderInterface) => {
                                 </div>
                             );
                         })}
-
-                        <MobileMenu white={white} />
                     </div>
+
+                    <MobileMenu white={white} />
                 </div>
             </div>
         </header>
@@ -92,14 +92,14 @@ const MobileMenu = ({ white = false }: MobileMenuInterface) => {
     return (
         <div className="relative lg:hidden ">
             <div
-                className={`flex items-center p-4 rounded-full duration-500 ${isOpenMobileMenu ? "bg-dark30" : "bg-white30"} cursor-pointer`}
+                className={`flex items-center p-4 rounded-full duration-500 ${white ? "bg-dark30" : "bg-white30"} cursor-pointer`}
                 onClick={toggleMobileMenu}
             >
                 <BurgerIcon className={white ? "stroke-white" : "stroke-charleston-green"} />
             </div>
 
             <div
-                className={`top-0 right-0 bottom-0 left-0 z-10 ${isOpenMobileMenu ? "fixed" : "relative"} flex justify-center items-center`}
+                className={`fixed top-0 ${isOpenMobileMenu ? "right-0 bottom-0 left-0 z-10" : "!h-0 overflow-hidden"} flex justify-center items-center`}
             >
                 <div
                     className={`container duration-500 ${
@@ -116,7 +116,7 @@ const MobileMenu = ({ white = false }: MobileMenuInterface) => {
                     <div className="flex justify-end ml-auto p-10 cursor-pointer" onClick={toggleMobileMenu}>
                         <CloseMenuIcon />
                     </div>
-                    <div className="grid grid-cols-3 gap-4 my-10 static">
+                    <div className={`grid grid-cols-3 gap-4 my-10`}>
                         {menuLinks.map((item) => {
                             return item.desctopOnly ? (
                                 <a key={item.id} className="flex flex-col items-center" href={item.href}>

@@ -1,3 +1,4 @@
+import Header from "@/features/header";
 import SectionFooter from "@/features/section-footer";
 
 import leftArrow from "/images/landing/start-section/left-arrow.svg";
@@ -14,6 +15,7 @@ const StartSection = () => {
                 flex flex-col justify-between
                 p-4"
         >
+            <Header />
             <div className="h-16" />
 
             <div className="container mx-auto flex flex-col items-center h-full lg:max-h-full lg:flex-row py-10 lg:py-0">
