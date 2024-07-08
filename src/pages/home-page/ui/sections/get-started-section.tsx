@@ -33,7 +33,7 @@ const GetStartedSection = () => {
                 </div>
                 <div className="col-span-12 lg:col-span-7 bg-light-bg p-4 py-10 md:p-10">
                     <div className="flex flex-col md:flex-row gap-4">
-                        <img src={phoneForUsers} className="object-contain max-h-[50dvh]" />
+                        <img src={phoneForUsers} className="object-contain max-h-[50dvh] max-w-[40vw] mx-auto" />
 
                         <div className="flex flex-col justify-between">
                             <div>
@@ -93,12 +93,12 @@ const GetStartedSection = () => {
                         </div>
 
                         <div className="flex mx-auto md:hidden">
-                            <img src={phoneForMapTwo} className="object-contain h-full max-h-[50dvh]" />
-                            <img src={phoneForMapOne} className="object-contain h-full max-h-[50dvh]" />
+                            <img src={phoneForMapTwo} className="object-contain h-full max-h-[50vh] max-w-[40vw]" />
+                            <img src={phoneForMapOne} className="object-contain h-full max-h-[50vh] max-w-[40vw]" />
                         </div>
 
-                        <img src={phoneForMapTwo} className="object-contain max-h-[50dvh] hidden md:block" />
-                        <img src={phoneForMapOne} className="object-contain max-h-[50dvh] hidden md:block" />
+                        <img src={phoneForMapTwo} className="object-contain max-h-[50vh] hidden md:block" />
+                        <img src={phoneForMapOne} className="object-contain max-h-[50vh] hidden md:block" />
                     </div>
                 </div>
             </div>
