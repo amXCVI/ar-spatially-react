@@ -97,9 +97,11 @@ const MobileMenu = ({ white = false, show }: MobileMenuInterface) => {
     return (
         <div className={`relative ${show && "lg:hidden"} ml-auto`}>
             <div
-                className={`flex items-center p-4 rounded-full duration-500 ${white ? "bg-dark30" : "bg-white30"} cursor-pointer`}
+                className={`flex flex-col justify-center items-center gap-2 p-4 rounded-full duration-500
+                            ${white ? "text-white" : "text-charleston-green"} cursor-pointer`}
                 onClick={toggleMobileMenu}
             >
+                MENU
                 <BurgerIcon className={white ? "fill-white" : "fill-charleston-green"} />
             </div>
 
