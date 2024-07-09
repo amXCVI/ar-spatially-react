@@ -42,13 +42,14 @@ const PhoneSlider = ({ bgElement, videos }: PhoneSliderProps) => {
                         `}
                 >
                     <video
-                        className="h-full w-full object-cover rounded-[40px]"
+                        className="h-full w-full object-cover rounded-[30px]"
                         src={videos[selectedSlideId]}
                         playsInline
-                        poster=""
                         autoPlay
                         muted
-                        loop
+                        onEnded={() => {
+                            handleNextSlide();
+                        }}
                     />
                 </div>
             </div>

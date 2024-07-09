@@ -8,7 +8,7 @@ import { TextP, Title } from "@/shared/ui/text-components";
 import dots from "/images/landing/footer/dots.svg";
 import scrollDownIcon from "/images/landing/footer/scroll-down-to-explore.svg";
 
-import { PhoneSlider } from "./phone-slider";
+import { PhoneSlider } from "@/shared/ui/phones-video-slider";
 import bulb from "/images/product/bulb.png";
 
 const ProductPage = () => {
