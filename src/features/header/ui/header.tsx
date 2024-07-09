@@ -41,10 +41,14 @@ const Header = ({ white }: HeaderInterface) => {
             >
                 <div
                     className={`flex justify-between items-center  
-                                bg-american-silver20 lg:backdrop-blur-xl
                                 rounded-[40px]
                                 duration-500
                                 ${show ? "px-10 w-full" : "w-min ml-auto"}`}
+                    // className={`flex justify-between items-center
+                    //             bg-american-silver20 lg:backdrop-blur-xl
+                    //             rounded-[40px]
+                    //             duration-500
+                    //             ${show ? "px-10 w-full" : "w-min ml-auto"}`}
                 >
                     <a href={routes.home} className={`hidden ${show && "md:block"}`}>
                         <img src={logo} />
