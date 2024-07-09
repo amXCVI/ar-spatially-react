@@ -7,9 +7,8 @@ import { Title } from "@/shared/ui/text-components";
 
 import dots from "/images/landing/footer/dots.svg";
 import scrollDownIcon from "/images/landing/footer/scroll-down-to-explore.svg";
-import leftArrow from "/images/product/left-arrow.svg";
 
-import phone from "/images/landing/start-section/phone.png";
+import { PhoneSlider } from "./phone-slider";
 import bulb from "/images/product/bulb.png";
 
 const ProductPage = () => {
@@ -42,23 +41,14 @@ const ProductPage = () => {
                 </div>
 
                 <div className="col-span-12 lg:col-span-3">
-                    <div className="relative">
-                        <div className="absolute animate-spin-slow h-full -left-1/2 -right-1/2 z-0 flex justify-center items-center">
-                            <img src={bulb} />
-                        </div>
-
-                        <img src={phone} className="relative object-contain h-full mx-auto z-10 max-h-[70dvh]" />
-                    </div>
-                    <div className="flex justify-around items-center mt-8 mx-auto max-w-min">
-                        <div className="cursor-pointer w-10">
-                            <img src={leftArrow} />
-                        </div>
-                        <span className="h2-34-700 text-white ml-9 mr-2.5">01</span>
-                        <span className="light-12 text-spanish-gray mr-9">/03</span>
-                        <div className="cursor-pointer w-10">
-                            <img src={leftArrow} className="rotate-180" />
-                        </div>
-                    </div>
+                    <PhoneSlider
+                        bgElement={
+                            <div className="absolute animate-spin-slow h-full -left-1/2 -right-1/2 z-0 flex justify-center items-center">
+                                <img src={bulb} />
+                            </div>
+                        }
+                        videos={["/video/car_web.webm", "/video/cat_web.webm", "/video/cat1_web.webm"]}
+                    />
                 </div>
 
                 <div className="col-span-12 lg:col-span-4 mt-auto flex flex-col gap-5">
