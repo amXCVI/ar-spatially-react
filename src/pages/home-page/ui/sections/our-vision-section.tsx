@@ -1,3 +1,5 @@
+import { TextP } from "@/shared/ui/text-components";
+
 import headerCrosses from "/images/landing/our-vision-section/header-crosses.svg";
 import headerDots from "/images/landing/our-vision-section/header-points.svg";
 import logo from "/images/landing/our-vision-section/logo.svg";
@@ -32,15 +34,15 @@ const OurVisionSection = () => {
                 >
                     <h2 className="h2-34-700 uppercase text-gray90">OUR Vision</h2>
 
-                    <p className="regular-16 text-gray90 mt-5">
+                    <TextP className="text-gray90 mt-5 text-start">
                         We are bringing together AR application developers and AR artists to create a unified AR space
                         that provides a new method of communication between physical businesses and users.
-                    </p>
-                    <p className="regular-16 text-gray90">
+                    </TextP>
+                    <TextP className="text-gray90 text-start">
                         We link AR objects with the real world using geolocation technologies and apply blockchain
                         technology to secure this connection and ensure fair and transparent circulation of AR content.
                         We aim to make AR and blockchain technologies a part of everyday life.
-                    </p>
+                    </TextP>
 
                     {/* <div className="flex gap-10 md:gap-24 mx-auto mt-10 lg:mt-24">
                         <DefaultButton>Road Map</DefaultButton>

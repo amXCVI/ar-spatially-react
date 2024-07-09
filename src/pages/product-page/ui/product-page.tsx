@@ -3,7 +3,7 @@ import Header from "@/features/header";
 import { DefaultButton } from "@/shared/ui/buttons";
 import { DarkLayout } from "@/shared/ui/layouts";
 import { Socials } from "@/shared/ui/socials";
-import { Title } from "@/shared/ui/text-components";
+import { TextP, Title } from "@/shared/ui/text-components";
 
 import dots from "/images/landing/footer/dots.svg";
 import scrollDownIcon from "/images/landing/footer/scroll-down-to-explore.svg";
@@ -29,11 +29,11 @@ const ProductPage = () => {
                 <div className="col-span-12 lg:col-span-5 flex flex-col my-auto">
                     <Title className="text-white" title="Our Product" />
                     <h3 className="bold-20 text-white mt-8">For developers</h3>
-                    <p className="regular-16 mt-7">
+                    <TextP className="text-white mt-7 text-start">
                         We aim to create a comprehensive toolkit that allows both existing and emerging applications to
                         connect and utilize the open features of other applications in the ecosystem, including
                         blockchain functions.
-                    </p>
+                    </TextP>
 
                     <div className="mx-auto mt-10">
                         <DefaultButton className="bg-dark30">Playground</DefaultButton>
@@ -52,15 +52,15 @@ const ProductPage = () => {
                 </div>
 
                 <div className="col-span-12 lg:col-span-4 mt-auto flex flex-col gap-5">
-                    <p className="regular-14 text-white">
-                        <span className="bold-14">For AR Artists </span>we offer tools for creating 3D objects and a
-                        unified AR space for showcasing your work. Create and sell AR-NFTs, receive commissions from
-                        developers and businesses, and connect with peers, brands, and collectors.
-                    </p>
-                    <p className="regular-14 text-white">
-                        <span className="bold-14">For Businesses </span>we utilize AR to attract nearby consumers.
-                        Inform customers about promotions and discounts directly through AR-driven advertising events.
-                    </p>
+                    <TextP className="text-white text-start">
+                        <b>For AR Artists </b>we offer tools for creating 3D objects and a unified AR space for
+                        showcasing your work. Create and sell AR-NFTs, receive commissions from developers and
+                        businesses, and connect with peers, brands, and collectors.
+                    </TextP>
+                    <TextP className="text-white text-start">
+                        <b>For Businesses </b>we utilize AR to attract nearby consumers. Inform customers about
+                        promotions and discounts directly through AR-driven advertising events.
+                    </TextP>
                 </div>
             </div>
             <footer className="container mx-auto flex justify-between mt-20 lg:mt-0">
