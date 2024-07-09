@@ -40,17 +40,17 @@ const Header = ({ white }: HeaderInterface) => {
                 px-7 lg:px-0`}
             >
                 <div
-                    className="flex justify-between items-center px-10 
+                    className={`flex justify-between items-center  
                                 bg-american-silver20 lg:backdrop-blur-xl
                                 rounded-[40px]
-                                "
+                                duration-500
+                                ${show ? "px-10 w-full" : "w-min ml-auto"}`}
                 >
-                    <a href={routes.home}>
-                        <img src={logo} className="hidden md:block" />
+                    <a href={routes.home} className={`hidden ${show && "md:block"}`}>
+                        <img src={logo} />
                     </a>
 
-                    <div />
-                    <div className="hidden lg:flex gap-14 ml-auto">
+                    <div className={`hidden ${show && "lg:flex"} gap-14 ml-auto`}>
                         {menuLinks.map((item) => {
                             return (
                                 <div
@@ -68,7 +68,7 @@ const Header = ({ white }: HeaderInterface) => {
                         })}
                     </div>
 
-                    <MobileMenu white={white} />
+                    <MobileMenu white={white} show={show} />
                 </div>
             </div>
         </header>
@@ -77,8 +77,9 @@ const Header = ({ white }: HeaderInterface) => {
 
 interface MobileMenuInterface {
     white?: boolean;
+    show: boolean;
 }
-const MobileMenu = ({ white = false }: MobileMenuInterface) => {
+const MobileMenu = ({ white = false, show }: MobileMenuInterface) => {
     const [isOpenMobileMenu, setIsOpenMobileMenu] = useState<boolean>(false);
 
     const mobileMenuRef = useOutsideClick(() => {
@@ -90,12 +91,12 @@ const MobileMenu = ({ white = false }: MobileMenuInterface) => {
     };
 
     return (
-        <div className="relative lg:hidden ">
+        <div className={`relative ${show && "lg:hidden"} ml-auto`}>
             <div
                 className={`flex items-center p-4 rounded-full duration-500 ${white ? "bg-dark30" : "bg-white30"} cursor-pointer`}
                 onClick={toggleMobileMenu}
             >
-                <BurgerIcon className={white ? "stroke-white" : "stroke-charleston-green"} />
+                <BurgerIcon className={white ? "fill-white" : "fill-charleston-green"} />
             </div>
 
             <div
