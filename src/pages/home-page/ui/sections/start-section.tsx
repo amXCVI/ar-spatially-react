@@ -28,9 +28,9 @@ const StartSection = () => {
                     <div className="flex flex-col lg:max-w-prose w-full gap-4 items-start lg:gap-9 mt-6">
                         <div className="flex justify-start items-start">
                             <img src={textItemPointIcon} className="hidden lg:block mr-2" />
-                            <div className="flex flex-col regular-24 text-gray70">
+                            <div className="flex flex-col medium-20 text-gray70">
                                 <div className="my-1.5">
-                                    AGGREGATOR OF <span className="bold-24 text-gray90"> AR APPS</span>
+                                    AGGREGATOR OF <span className="bold-20 text-gray90"> AR APPS</span>
                                 </div>
                                 <span className="my-1.5">FOR REAL BUSINESSES AND USERS.</span>
                             </div>
@@ -38,9 +38,9 @@ const StartSection = () => {
 
                         <div className="flex justify-start items-start sm:mx-auto lg:ml-auto">
                             <img src={textItemPointIcon} className="hidden lg:block mr-2" />
-                            <div className="flex flex-col regular-24 text-gray70">
+                            <div className="flex flex-col medium-20 text-gray70">
                                 <div className="my-1.5">
-                                    <span className="bold-24 text-gray90">AR CONTENT </span>TIED TO REAL LOCATION
+                                    <span className="bold-20 text-gray90">AR CONTENT </span>TIED TO REAL LOCATION
                                 </div>
                                 <span className="my-1.5">ON THE GLOBAL MAP.</span>
                             </div>
@@ -49,11 +49,11 @@ const StartSection = () => {
                         <div className="flex justify-start items-start sm:ml-auto lg:mx-auto">
                             <img src={textItemPointIcon} className="hidden lg:block mr-2" />
                             <div className="flex flex-col regular-24 text-gray70">
-                                <div className="my-1.5">
-                                    <span className="bold-24 text-gray90">AR-NFT</span> IS A SPATIAL GEOLOCATION TOKEN
+                                <div className="medium-20 my-1.5">
+                                    <span className="bold-20 text-gray90">AR-NFT</span> IS A SPATIAL GEOLOCATION TOKEN
                                 </div>
-                                <span className="my-1.5">
-                                    THAT PROVIDE RIGHTS FOR<span className="bold-24 text-gray90"> AR CONTENT.</span>
+                                <span className="medium-20 my-1.5">
+                                    THAT PROVIDE RIGHTS FOR<span className="bold-20 text-gray90"> AR CONTENT.</span>
                                 </span>
                             </div>
                         </div>
