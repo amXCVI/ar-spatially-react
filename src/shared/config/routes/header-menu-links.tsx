@@ -1,10 +1,19 @@
 import BlockchainIcon from "./menu-icons/blockchain-icon.svg?react";
+import DocsIcon from "./menu-icons/docs-icon.svg?react";
+import HomeIcon from "./menu-icons/home-icon.svg?react";
 import MapIcon from "./menu-icons/map-icon.svg?react";
 import ProductIcon from "./menu-icons/product-icon.svg?react";
 
 import routes from "./app-routes";
 
 export const menuLinks = [
+    {
+        id: "0",
+        title: "Home",
+        href: routes.home,
+        desctopOnly: true,
+        icon: <HomeIcon />,
+    },
     {
         id: "1",
         title: "Product",
@@ -46,5 +55,6 @@ export const menuLinks = [
         title: "Docs",
         href: "",
         desctopOnly: true,
+        icon: <DocsIcon />,
     },
 ];
