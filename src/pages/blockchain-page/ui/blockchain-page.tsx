@@ -35,11 +35,11 @@ const BlockchainPage = () => {
                         various solutions to life. We also gather augmented reality tools and are open to partnering
                         with others through our platform. Feel free to get in touch with us!
                     </TextP>
-                    <div className="m-auto">
+                    <a className="m-auto" href={import.meta.env.VITE_APP_DGES_URL}>
                         <DefaultButton className="mt-10">
                             <span className="regular-14 text-white">DGES</span>
                         </DefaultButton>
-                    </div>
+                    </a>
                 </div>
 
                 <div className="col-span-12 bg-smoky-black-bg md:col-span-8 flex flex-col md:flex-row gap-10 px-4 py-10 md:p-10">
@@ -55,12 +55,16 @@ const BlockchainPage = () => {
                             while collectors gain access to a wide range of artwork and engagement opportunities.
                         </TextP>
                         <div className="flex gap-10 mt-10 justify-center md:justify-start">
-                            <DefaultButton className="">
-                                <img src={appStoreButton} />
-                            </DefaultButton>
-                            <DefaultButton className="">
-                                <img src={playMarketButton} />
-                            </DefaultButton>
+                            <a href={import.meta.env.VITE_APP_NFTST_APPSTORE_URL}>
+                                <DefaultButton className="">
+                                    <img src={appStoreButton} />
+                                </DefaultButton>
+                            </a>
+                            <a href={import.meta.env.VITE_APP_NFTST_PLAYMARKET_URL}>
+                                <DefaultButton className="">
+                                    <img src={playMarketButton} />
+                                </DefaultButton>
+                            </a>
                         </div>
                     </div>
                 </div>

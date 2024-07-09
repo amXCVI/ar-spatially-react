@@ -1,3 +1,4 @@
+import { routes } from "@/shared/config";
 import { DefaultButton } from "@/shared/ui/buttons";
 import { Subtitle, TextP, Title } from "@/shared/ui/text-components";
 
@@ -58,12 +59,16 @@ const GetStartedSection = () => {
                             </div>
 
                             <div className="flex gap-1 mt-10 justify-center md:justify-start">
-                                <DefaultButton className="bg-white">
-                                    <img src={appStoreButton} />
-                                </DefaultButton>
-                                <DefaultButton className="bg-white">
-                                    <img src={playMarketButton} />
-                                </DefaultButton>
+                                <a href={import.meta.env.VITE_APP_NFTST_APPSTORE_URL}>
+                                    <DefaultButton className="bg-white">
+                                        <img src={appStoreButton} />
+                                    </DefaultButton>
+                                </a>
+                                <a href={import.meta.env.VITE_APP_NFTST_PLAYMARKET_URL}>
+                                    <DefaultButton className="bg-white">
+                                        <img src={playMarketButton} />
+                                    </DefaultButton>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -87,9 +92,9 @@ const GetStartedSection = () => {
                                 description of the object.
                             </TextP>
 
-                            <div className="flex justify-center md:justify-start mt-4 ">
+                            <a className="flex justify-center md:justify-start mt-4 " href={routes.map}>
                                 <DefaultButton className="bg-white text-gray90">Map</DefaultButton>
-                            </div>
+                            </a>
                         </div>
 
                         <div className="flex mx-auto md:hidden">
