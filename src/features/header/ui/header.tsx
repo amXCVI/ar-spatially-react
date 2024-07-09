@@ -121,10 +121,10 @@ const MobileMenu = ({ white = false, show }: MobileMenuInterface) => {
                     <div className="flex justify-end ml-auto p-10 cursor-pointer" onClick={toggleMobileMenu}>
                         <CloseMenuIcon />
                     </div>
-                    <div className={`grid grid-cols-3 gap-4 my-10`}>
+                    <div className={`flex gap-6 flex-wrap justify-center my-10`}>
                         {menuLinks.map((item) => {
                             return item.desctopOnly ? (
-                                <a key={item.id} className="flex flex-col items-center" href={item.href}>
+                                <a key={item.id} className="flex flex-col items-center w-1/4" href={item.href}>
                                     <div className="w-10 h-12">{item.icon}</div>
                                     <label className="medium-14 text-white">{item.title}</label>
                                 </a>
