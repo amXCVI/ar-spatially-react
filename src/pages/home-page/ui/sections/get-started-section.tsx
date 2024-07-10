@@ -21,8 +21,8 @@ const GetStartedSection = () => {
                 <div className="col-span-12 lg:col-span-7 xl:col-span-5 bg-light-bg p-4 py-10 md:p-10">
                     <div className="flex flex-col h-full">
                         <Title title="Developers" />
-                        <Subtitle subtitle="Coming Soon" className="mt-2.5 uppercase text-blue-accent" />
-                        <TextP className="mt-2.5">
+                        <Subtitle subtitle="Coming Soon" className="mt-4 uppercase !text-blue-accent" />
+                        <TextP className="mt-4">
                             We aim to create a comprehensive toolkit that allows both existing and emerging applications
                             to connect and utilize the open features of other applications in the ecosystem, including
                             blockchain functions.
@@ -45,9 +45,9 @@ const GetStartedSection = () => {
 
                 <div className="col-span-12 bg-light-bg px-4 py-10 md:p-10">
                     <div className="flex flex-col-reverse xl:flex-row gap-10 xl:gap-4">
-                        <div className="flex flex-col justify-between lg:max-w-4xl mr-auto">
+                        <div className="flex flex-col justify-start lg:max-w-4xl mr-auto">
                             <Title title="OUr Map" />
-                            <Subtitle subtitle="Why do we need geo positioning?" className="mt-5 uppercase " />
+                            <Subtitle subtitle="Why do we need geo positioning?" className="mt-8 uppercase " />
                             <TextP className="mt-4">
                                 A coordinate system that enables the integration of AR with the real world. Find
                                 products and services right in your line of sight. Geopositioning allows you to turn

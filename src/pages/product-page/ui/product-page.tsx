@@ -6,9 +6,6 @@ import { PhoneSlider } from "@/shared/ui/phones-video-slider";
 import { Socials } from "@/shared/ui/socials";
 import { TextP, Title } from "@/shared/ui/text-components";
 
-import dots from "/images/landing/footer/dots.svg";
-import scrollDownIcon from "/images/landing/footer/scroll-down-to-explore.svg";
-
 import bulb from "/images/product/bulb.png";
 
 const ProductPage = () => {
@@ -67,13 +64,7 @@ const ProductPage = () => {
                 </div>
             </div>
             <footer className="container mx-auto flex justify-between mt-20 lg:mt-0">
-                <div className="hidden md:flex items-center regular-14 text-white">
-                    <img src={scrollDownIcon} className="mr-2" />
-                    Scroll down
-                    <br />
-                    to explore
-                    <img src={dots} className="ml-12" />
-                </div>
+                <div className="mt-auto text-white">© 2024 AR Spatially</div>
 
                 <div className="flex flex-col items-end gap-2 ml-auto">
                     <div className="medium-14 text-spanish-gray">Spatially AR-Planet</div>

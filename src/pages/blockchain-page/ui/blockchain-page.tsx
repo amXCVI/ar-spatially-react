@@ -6,8 +6,6 @@ import { Socials } from "@/shared/ui/socials";
 import { Subtitle, TextP, Title } from "@/shared/ui/text-components";
 
 import dgesIcon from "/images/blockchain/dges-icon.svg";
-import dots from "/images/landing/footer/dots.svg";
-import scrollDownIcon from "/images/landing/footer/scroll-down-to-explore.svg";
 import appStoreButton from "/images/landing/get-started-section/app-store-button.svg";
 import playMarketButton from "/images/landing/get-started-section/play-market-button.svg";
 
@@ -89,13 +87,7 @@ const BlockchainPage = () => {
             </div>
 
             <footer className="container mx-auto flex justify-between mt-20 lg:mt-0">
-                <div className="hidden md:flex items-center regular-14 text-white">
-                    <img src={scrollDownIcon} className="mr-2" />
-                    Scroll down
-                    <br />
-                    to explore
-                    <img src={dots} className="ml-12" />
-                </div>
+                <div className="mt-auto text-white">© 2024 AR Spatially</div>
 
                 <div className="flex flex-col items-end gap-2 ml-auto">
                     <div className="medium-14 text-spanish-gray">Spatially AR-Planet</div>
