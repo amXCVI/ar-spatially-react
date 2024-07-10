@@ -2,13 +2,13 @@ import Header from "@/features/header";
 
 import { DefaultButton } from "@/shared/ui/buttons";
 import { DarkLayout } from "@/shared/ui/layouts";
+import { PhoneSlider } from "@/shared/ui/phones-video-slider";
 import { Socials } from "@/shared/ui/socials";
 import { TextP, Title } from "@/shared/ui/text-components";
 
 import dots from "/images/landing/footer/dots.svg";
 import scrollDownIcon from "/images/landing/footer/scroll-down-to-explore.svg";
 
-import { PhoneSlider } from "@/shared/ui/phones-video-slider";
 import bulb from "/images/product/bulb.png";
 
 const ProductPage = () => {
@@ -48,6 +48,7 @@ const ProductPage = () => {
                             </div>
                         }
                         videos={["/video/car_web.webm", "/video/cat_web.webm", "/video/cat1_web.webm"]}
+                        className="max-h-[80vh] max-w-[60vw]  mx-auto"
                     />
                 </div>
 

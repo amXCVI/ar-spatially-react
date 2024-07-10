@@ -8,7 +8,7 @@ import scrollDownIcon from "/images/landing/footer/scroll-down-to-explore.svg";
 
 const SectionFooter = ({ allFooter = true }: { allFooter?: boolean }) => {
     return (
-        <div className="container mx-auto flex flex-col items-center">
+        <div className="container mx-auto flex flex-col items-center px-9">
             {allFooter ? (
                 <div className="hidden xl:flex justify-between items-center w-full mb-4 -mt-20">
                     <img src={footerStars} className="-ml-2" />

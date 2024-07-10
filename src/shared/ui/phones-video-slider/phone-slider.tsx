@@ -5,8 +5,9 @@ import leftArrow from "/images/product/left-arrow.svg";
 interface PhoneSliderProps {
     bgElement?: ReactNode;
     videos: string[];
+    className?: string;
 }
-const PhoneSlider = ({ bgElement, videos }: PhoneSliderProps) => {
+const PhoneSlider = ({ bgElement, videos, className }: PhoneSliderProps) => {
     const [selectedSlideId, setSelectedSlideId] = useState<number>(0);
 
     const handleNextSlide = () => {
@@ -31,26 +32,28 @@ const PhoneSlider = ({ bgElement, videos }: PhoneSliderProps) => {
     };
 
     return (
-        <div>
+        <div className={className}>
             <div className="relative">
                 {bgElement}
 
                 <div
-                    className={`bg-[url(/images/product/phone.svg)] bg-cover bg-no-repeat bg-center p-2 overflow-hidden
-                        max-w-[50vw] max-h-[60vh] mx-auto
+                    className={`bg-[url(/images/product/phone.svg)] bg-cover bg-no-repeat bg-center overflow-hidden
+                        mx-auto p-3
                         aspect-[165/343]
                         `}
                 >
-                    <video
-                        className="h-full w-full object-cover rounded-[30px]"
-                        src={videos[selectedSlideId]}
-                        playsInline
-                        autoPlay
-                        muted
-                        onEnded={() => {
-                            handleNextSlide();
-                        }}
-                    />
+                    <div className="h-full rounded-[30px] overflow-hidden">
+                        <video
+                            className="h-full w-full object-cover"
+                            src={videos[selectedSlideId]}
+                            playsInline
+                            autoPlay
+                            muted
+                            onEnded={() => {
+                                handleNextSlide();
+                            }}
+                        />
+                    </div>
                 </div>
             </div>
             <div className="flex justify-around items-center mt-8 mx-auto max-w-min">

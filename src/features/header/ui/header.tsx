@@ -17,7 +17,7 @@ const Header = ({ white }: HeaderInterface) => {
 
     useEffect(() => {
         const controlNavbar = () => {
-            if (window.scrollY > window.innerHeight / 3) {
+            if (window.scrollY > window.innerHeight / 16) {
                 setShow(false);
             } else {
                 setShow(true);
@@ -37,7 +37,7 @@ const Header = ({ white }: HeaderInterface) => {
             <div
                 className={`container mx-auto duration-500 
                 ${show ? "py-10" : "py-0"}
-                px-7 lg:px-0`}
+                px-12 xl:px-0`}
             >
                 <div
                     className={`flex justify-between items-center  
@@ -54,7 +54,7 @@ const Header = ({ white }: HeaderInterface) => {
                         <img src={logo} />
                     </a>
 
-                    <div className={`hidden ${show && "lg:flex"} gap-14 ml-auto`}>
+                    <div className={`hidden ${show && "lg:flex"} gap-5 ml-auto`}>
                         {menuLinks.map((item) => {
                             return (
                                 <div
@@ -63,9 +63,9 @@ const Header = ({ white }: HeaderInterface) => {
                                 >
                                     <a
                                         href={item.href}
-                                        className={`font-medium text-[14px] ${white ? "text-white" : "text-gray90"}`}
+                                        className={`font-medium text-[14px] uppercase duration-200 text-white hover:text-blue-accent`}
                                     >
-                                        {item.title}
+                                        <b className={white ? "text-white" : "text-gray70"}>{item.title}</b>
                                     </a>
                                 </div>
                             );
@@ -98,11 +98,11 @@ const MobileMenu = ({ white = false, show }: MobileMenuInterface) => {
         <div className={`relative ${show && "lg:hidden"} ml-auto`}>
             <div
                 className={`flex flex-col justify-center items-center gap-2 p-4 rounded-full duration-500
-                            ${white ? "text-white" : "text-charleston-green"} cursor-pointer`}
+                            cursor-pointer`}
                 onClick={toggleMobileMenu}
             >
-                MENU
-                <BurgerIcon className={white ? "fill-white" : "fill-charleston-green"} />
+                <b className={white ? "text-white" : "text-gray70"}>MENU</b>
+                <BurgerIcon className={white ? "fill-white" : "fill-blue-accent"} />
             </div>
 
             <div

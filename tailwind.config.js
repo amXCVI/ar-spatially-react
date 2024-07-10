@@ -19,6 +19,7 @@ export default {
                 "charleston-green": "#2a2a2b",
                 "american-silver": "#d1d1d1",
                 "american-silver20": "#d1d1d120",
+                "blue-accent": "#4BB2F2",
             },
             animation: {
                 "spin-slow": "spin 15s linear infinite",
