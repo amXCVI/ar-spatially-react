@@ -35,7 +35,7 @@ const StartSection = () => {
                             </div>
                         </div>
 
-                        <div className="flex justify-start items-start sm:mx-auto xl:ml-auto">
+                        <div className="flex justify-start items-start sm:mx-auto">
                             <img src={textItemPointIcon} className="hidden md:block mr-2" />
                             <div className="flex flex-col medium-20 text-gray70">
                                 <div className="my-1.5">
@@ -45,7 +45,7 @@ const StartSection = () => {
                             </div>
                         </div>
 
-                        <div className="flex justify-start items-start sm:ml-auto xl:mx-auto">
+                        <div className="flex justify-start items-start sm:ml-auto">
                             <img src={textItemPointIcon} className="hidden md:block mr-2" />
                             <div className="flex flex-col regular-24 text-gray70">
                                 <div className="medium-20 my-1.5">

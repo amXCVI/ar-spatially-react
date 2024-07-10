@@ -45,9 +45,12 @@ const GetStartedSection = () => {
 
                 <div className="col-span-12 bg-light-bg px-4 py-10 md:p-10">
                     <div className="flex flex-col-reverse xl:flex-row gap-10 xl:gap-4">
-                        <div className="flex flex-col justify-between">
+                        <div className="flex flex-col justify-between lg:max-w-4xl mr-auto">
                             <Title title="OUr Map" />
-                            <Subtitle subtitle="We use geopositioning to navigate through objects." className="mt-5" />
+                            <Subtitle
+                                subtitle="We use geopositioning to navigate through objects."
+                                className="mt-5 uppercase "
+                            />
                             <TextP className="mt-4">
                                 A coordinate system that enables the integration of AR with the real world. Find
                                 products and services right in your line of sight. Geopositioning allows you to turn
@@ -55,7 +58,7 @@ const GetStartedSection = () => {
                                 for others to discover.
                             </TextP>
 
-                            <Subtitle subtitle="Why do we need a map?" className="mt-5" />
+                            <Subtitle subtitle="Why do we need geo positioning?" className="mt-5 uppercase" />
                             <TextP className="mt-4">
                                 On the map, users have the ability to build a route to any object and view it in
                                 augmented reality. Additionally, users can view the history of movements and a
@@ -93,7 +96,7 @@ const ForUsersText = ({ className }: { className?: string }) => {
             </div>
 
             <div className="mt-8">
-                <Subtitle subtitle="How can you choose Apps?" />
+                <Subtitle subtitle="How can you choose Apps?" className="uppercase" />
                 <TextP className="mt-4">
                     Each Layer is a stream of content that you can choose to include or exclude from your augmented
                     reality experience. For example, if you want to focus solely on the navigation, you can remove it
