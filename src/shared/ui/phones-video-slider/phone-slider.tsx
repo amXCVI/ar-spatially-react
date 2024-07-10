@@ -6,8 +6,9 @@ interface PhoneSliderProps {
     bgElement?: ReactNode;
     videos: string[];
     className?: string;
+    height?: string;
 }
-const PhoneSlider = ({ bgElement, videos, className }: PhoneSliderProps) => {
+const PhoneSlider = ({ bgElement, videos, className, height }: PhoneSliderProps) => {
     const [selectedSlideId, setSelectedSlideId] = useState<number>(0);
 
     const handleNextSlide = () => {
@@ -40,9 +41,12 @@ const PhoneSlider = ({ bgElement, videos, className }: PhoneSliderProps) => {
                     className={`bg-[url(/images/product/phone.svg)] bg-cover bg-no-repeat bg-center overflow-hidden
                         mx-auto p-3
                         aspect-[165/343]
+                        z-10 relative
+                        max-w-full
                         `}
+                    style={{ maxHeight: height }}
                 >
-                    <div className="h-full rounded-[30px] overflow-hidden">
+                    <div className="h-full rounded-[4vh] overflow-hidden">
                         <video
                             className="h-full w-full object-cover"
                             src={videos[selectedSlideId]}

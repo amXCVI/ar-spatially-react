@@ -29,8 +29,8 @@ const OurVisionSection = () => {
             <div
                 className="container mx-auto 
                         flex flex-col items-center 
-                        md:grid md:grid-cols-6 md:max-h-full 
-                        gap-16 h-full py-10 md:p-y-24"
+                        md:grid md:grid-cols-6
+                        gap-16 py-10 md:p-y-24"
             >
                 <div
                     className="md:col-span-3 flex flex-col justify-center gap-5 md:gap-8 md:mx-auto xl:ml-40

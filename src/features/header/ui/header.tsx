@@ -43,7 +43,7 @@ const Header = ({ white }: HeaderInterface) => {
                     className={`flex justify-between items-center  
                                 rounded-[40px]
                                 duration-500
-                                ${show ? "px-10 w-full" : "w-min ml-auto"}`}
+                                ${show ? "px-4 w-full" : "w-min ml-auto"}`}
                     // className={`flex justify-between items-center
                     //             bg-american-silver20 lg:backdrop-blur-xl
                     //             rounded-[40px]
