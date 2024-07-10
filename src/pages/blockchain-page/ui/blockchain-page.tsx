@@ -2,9 +2,12 @@ import Header from "@/features/header";
 
 import { DefaultButton } from "@/shared/ui/buttons";
 import { DarkLayout } from "@/shared/ui/layouts";
+import { Socials } from "@/shared/ui/socials";
 import { Subtitle, TextP, Title } from "@/shared/ui/text-components";
 
 import dgesIcon from "/images/blockchain/dges-icon.svg";
+import dots from "/images/landing/footer/dots.svg";
+import scrollDownIcon from "/images/landing/footer/scroll-down-to-explore.svg";
 import appStoreButton from "/images/landing/get-started-section/app-store-button.svg";
 import playMarketButton from "/images/landing/get-started-section/play-market-button.svg";
 
@@ -25,7 +28,10 @@ const BlockchainPage = () => {
                             grid grid-cols-12 gap-1
             "
             >
-                <div className="col-span-12 bg-smoky-black-bg md:col-span-4 flex flex-col px-4 py-10 md:p-10">
+                <div
+                    className="col-span-12 lg:col-span-7 xl:col-span-5
+                             bg-smoky-black-bg flex flex-col px-4 py-10 md:p-10"
+                >
                     <div>
                         <img src={dgesIcon} />
                     </div>
@@ -40,33 +46,17 @@ const BlockchainPage = () => {
                             <span className="regular-14 text-white">DGES</span>
                         </DefaultButton>
                     </a>
+
+                    <NftstText className="hidden lg:flex xl:hidden" />
                 </div>
 
-                <div className="col-span-12 bg-smoky-black-bg md:col-span-8 flex flex-col md:flex-row gap-10 px-4 py-10 md:p-10">
-                    <img src={nftStPhone} className="object-contain h-full max-h-[50dvh]" />
-                    <div className="flex flex-col">
-                        <Title title="nft street" className="text-white" />
-                        <Subtitle subtitle="What is this project about?" className="text-white mt-7" />
-                        <TextP className="text-spanish-gray mt-10">
-                            NFT Street is a platform driven by a deep passion for street art and the vibrant communities
-                            it embodies. One of the groundbreaking features is the establishment of digital ownership
-                            for street art by assigning each piece a unique NFT linked to its physical location -
-                            GeoNFT. Through NFT Street, artists are encouraged to explore new avenues of expression,
-                            while collectors gain access to a wide range of artwork and engagement opportunities.
-                        </TextP>
-                        <div className="flex gap-10 mt-10 justify-center md:justify-start">
-                            <a href={import.meta.env.VITE_APP_NFTST_APPSTORE_URL}>
-                                <DefaultButton className="">
-                                    <img src={appStoreButton} />
-                                </DefaultButton>
-                            </a>
-                            <a href={import.meta.env.VITE_APP_NFTST_PLAYMARKET_URL}>
-                                <DefaultButton className="">
-                                    <img src={playMarketButton} />
-                                </DefaultButton>
-                            </a>
-                        </div>
-                    </div>
+                <div
+                    className="col-span-12 lg:col-span-5 xl:col-span-7 
+                              bg-smoky-black-bg flex flex-col md:flex-row gap-10 px-4 py-10 md:p-10"
+                >
+                    <img src={nftStPhone} className="object-contain h-full max-h-[50dvh] mx-auto" />
+
+                    <NftstText className="flex lg:hidden xl:flex" />
                 </div>
 
                 <div className="col-span-12 bg-smoky-black-bg px-4 py-10 md:p-10">
@@ -97,7 +87,51 @@ const BlockchainPage = () => {
                     </div>
                 </div>
             </div>
+
+            <footer className="container mx-auto flex justify-between mt-20 lg:mt-0">
+                <div className="hidden md:flex items-center regular-14 text-white">
+                    <img src={scrollDownIcon} className="mr-2" />
+                    Scroll down
+                    <br />
+                    to explore
+                    <img src={dots} className="ml-12" />
+                </div>
+
+                <div className="flex flex-col items-end gap-2 ml-auto">
+                    <div className="medium-14 text-spanish-gray">Spatially AR-Planet</div>
+                    <div className="light-12 text-spanish-gray">helps businesses create unique AR content</div>
+                    <Socials className="mt-2" itemClassName="fill-spanish-gray" />
+                </div>
+            </footer>
         </DarkLayout>
+    );
+};
+
+const NftstText = ({ className }: { className?: string }) => {
+    return (
+        <div className={`flex flex-col ${className ?? ""}`}>
+            <Title title="nft street" className="text-white" />
+            <Subtitle subtitle="What is this project about?" className="text-white mt-7" />
+            <TextP className="text-spanish-gray mt-10">
+                NFT Street is a platform driven by a deep passion for street art and the vibrant communities it
+                embodies. One of the groundbreaking features is the establishment of digital ownership for street art by
+                assigning each piece a unique NFT linked to its physical location - GeoNFT. Through NFT Street, artists
+                are encouraged to explore new avenues of expression, while collectors gain access to a wide range of
+                artwork and engagement opportunities.
+            </TextP>
+            <div className="flex gap-10 mt-10 justify-center md:justify-start">
+                <a href={import.meta.env.VITE_APP_NFTST_APPSTORE_URL}>
+                    <DefaultButton className="">
+                        <img src={appStoreButton} />
+                    </DefaultButton>
+                </a>
+                <a href={import.meta.env.VITE_APP_NFTST_PLAYMARKET_URL}>
+                    <DefaultButton className="">
+                        <img src={playMarketButton} />
+                    </DefaultButton>
+                </a>
+            </div>
+        </div>
     );
 };
 
