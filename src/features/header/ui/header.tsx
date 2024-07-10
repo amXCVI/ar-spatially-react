@@ -113,6 +113,7 @@ const MobileMenu = ({ white = false, show }: MobileMenuInterface) => {
                         isOpenMobileMenu ? "opacity-1" : "opacity-0"
                     } flex flex-col items-center justify-between overflow-hidden z-50
                 backdrop-blur-xl rounded-[34px] border border-white h-min
+                mx-10 max-w-prose
                 `}
                     style={{
                         background:
@@ -120,7 +121,9 @@ const MobileMenu = ({ white = false, show }: MobileMenuInterface) => {
                     }}
                     ref={mobileMenuRef}
                 >
-                    <div className="flex justify-end ml-auto p-10 cursor-pointer" onClick={toggleMobileMenu}>
+                    <div className="flex justify-between w-full p-10 cursor-pointer" onClick={toggleMobileMenu}>
+                        <div className="w-4" />
+                        <b className="uppercase text-white">Menu</b>
                         <CloseMenuIcon />
                     </div>
                     <div className={`flex gap-6 flex-wrap justify-center my-10`}>
