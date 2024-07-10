@@ -37,7 +37,7 @@ const Header = ({ white }: HeaderInterface) => {
             <div
                 className={`container mx-auto duration-500 
                 ${show ? "py-10" : "py-0"}
-                px-12 xl:px-0`}
+                lg:px-12 xl:px-0`}
             >
                 <div
                     className={`flex justify-between items-center  
