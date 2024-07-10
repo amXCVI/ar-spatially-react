@@ -1,7 +1,9 @@
 import Discord from "./socials/discord.svg?react";
+import Instagram from "./socials/instagram.svg?react";
 import Linkedin from "./socials/linkedin.svg?react";
 import Telegram from "./socials/telegram.svg?react";
 import TicToc from "./socials/tik-tok.svg?react";
+import X from "./socials/x.svg?react";
 
 const socials = [
     {
@@ -27,6 +29,18 @@ const socials = [
         title: "Tic Toc",
         link: "",
         id: "Tic Toc",
+    },
+    {
+        icon: <Instagram />,
+        title: "Instagram",
+        link: "",
+        id: "Instagram",
+    },
+    {
+        icon: <X />,
+        title: "X",
+        link: "",
+        id: "X",
     },
 ];
 
