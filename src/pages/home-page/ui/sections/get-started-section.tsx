@@ -47,10 +47,7 @@ const GetStartedSection = () => {
                     <div className="flex flex-col-reverse xl:flex-row gap-10 xl:gap-4">
                         <div className="flex flex-col justify-between lg:max-w-4xl mr-auto">
                             <Title title="OUr Map" />
-                            <Subtitle
-                                subtitle="We use geopositioning to navigate through objects."
-                                className="mt-5 uppercase "
-                            />
+                            <Subtitle subtitle="Why do we need geo positioning?" className="mt-5 uppercase " />
                             <TextP className="mt-4">
                                 A coordinate system that enables the integration of AR with the real world. Find
                                 products and services right in your line of sight. Geopositioning allows you to turn
@@ -58,7 +55,7 @@ const GetStartedSection = () => {
                                 for others to discover.
                             </TextP>
 
-                            <Subtitle subtitle="Why do we need geo positioning?" className="mt-5 uppercase" />
+                            <Subtitle subtitle="Why do we need a map?" className="mt-5 uppercase" />
                             <TextP className="mt-4">
                                 On the map, users have the ability to build a route to any object and view it in
                                 augmented reality. Additionally, users can view the history of movements and a
