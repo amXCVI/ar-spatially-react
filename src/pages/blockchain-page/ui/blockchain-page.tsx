@@ -59,9 +59,9 @@ const BlockchainPage = () => {
 
                 <div className="col-span-12 bg-smoky-black-bg px-4 py-10 md:p-10">
                     <div className="flex flex-col md:flex-row gap-10">
-                        <div className="flex gap-10 mx-auto md:hidden">
-                            <img src={phone1} className="object-contain h-full max-h-[50dvh]" />
-                            <img src={phone2} className="object-contain h-full max-h-[50dvh]" />
+                        <div className="flex gap-4 mx-auto md:hidden">
+                            <img src={phone1} className="object-contain h-full max-h-[50dvh] max-w-[40vw]" />
+                            <img src={phone2} className="object-contain h-full max-h-[50dvh] max-w-[40vw]" />
                         </div>
 
                         <img src={phone1} className="object-contain max-h-[50dvh] hidden md:block" />
