@@ -58,7 +58,7 @@ const PhoneSlider = ({ bgElement, videos, className, height }: PhoneSliderProps)
                         playsInline
                         autoPlay
                         muted
-                        preload="auto"
+                        // preload="auto"
                         onEnded={() => {
                             handleNextSlide();
                         }}
