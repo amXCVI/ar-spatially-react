@@ -1,8 +1,8 @@
+import { Footer } from "@/features/footer";
 import Header from "@/features/header";
 
 import { DefaultButton } from "@/shared/ui/buttons";
 import { DarkLayout } from "@/shared/ui/layouts";
-import { Socials } from "@/shared/ui/socials";
 import { Subtitle, TextP, Title } from "@/shared/ui/text-components";
 
 import dgesIcon from "/images/blockchain/dges-icon.svg";
@@ -86,15 +86,7 @@ const BlockchainPage = () => {
                 </div>
             </div>
 
-            <footer className="container mx-auto flex justify-between mt-20 lg:mt-0">
-                <div className="mt-auto text-white">© 2024 AR Spatially</div>
-
-                <div className="flex flex-col items-end gap-2 ml-auto">
-                    <div className="medium-14 text-spanish-gray">Spatially AR-Planet</div>
-                    <div className="light-12 text-spanish-gray">helps businesses create unique AR content</div>
-                    <Socials className="mt-2" itemClassName="fill-spanish-gray" />
-                </div>
-            </footer>
+            <Footer />
         </DarkLayout>
     );
 };
