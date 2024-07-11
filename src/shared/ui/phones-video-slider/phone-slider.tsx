@@ -11,18 +11,17 @@ interface PhoneSliderProps {
 const PhoneSlider = ({ bgElement, videos, className, height }: PhoneSliderProps) => {
     const [selectedSlideId, setSelectedSlideId] = useState<number>(0);
 
-    useEffect(() => {
-        const phone = document.getElementById("phone-border-img");
-        const videoContainer = document.getElementById("video-rect-container");
+    const phone = document.getElementById("phone-border-img");
+    const videoContainer = document.getElementById("video-rect-container");
 
-        console.log(phone);
+    useEffect(() => {
         if (phone && videoContainer) {
             const clientRect = phone.getBoundingClientRect();
 
             videoContainer.style.width = `calc(${clientRect.width}px - 1rem)`;
             videoContainer.style.height = `calc(${clientRect.height}px - 1rem)`;
         }
-    }, []);
+    }, [phone, videoContainer]);
 
     const handleNextSlide = () => {
         setSelectedSlideId((e) => {
