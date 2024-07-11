@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useLayoutEffect, useRef, useState } from "react";
 
 import leftArrow from "/images/product/left-arrow.svg";
 
@@ -11,17 +11,18 @@ interface PhoneSliderProps {
 const PhoneSlider = ({ bgElement, videos, className, height }: PhoneSliderProps) => {
     const [selectedSlideId, setSelectedSlideId] = useState<number>(0);
 
-    const phone = document.getElementById("phone-border-img");
-    const videoContainer = document.getElementById("video-rect-container");
+    const phoneRef = useRef<null | HTMLImageElement>(null);
+    const videoRef = useRef<null | HTMLDivElement>(null);
 
-    useEffect(() => {
-        if (phone && videoContainer) {
-            const clientRect = phone.getBoundingClientRect();
-
-            videoContainer.style.width = `calc(${clientRect.width}px - 1rem)`;
-            videoContainer.style.height = `calc(${clientRect.height}px - 1rem)`;
-        }
-    }, [phone, videoContainer]);
+    useLayoutEffect(() => {
+        setTimeout(() => {
+            if (phoneRef.current && videoRef.current) {
+                videoRef.current.style.width = `${phoneRef.current.offsetWidth * 0.94}px`;
+                videoRef.current.style.height = `${phoneRef.current.offsetHeight * 0.98}px`;
+                videoRef.current.style.borderRadius = `${phoneRef.current.height / 14}px`;
+            }
+        }, 100);
+    }, []);
 
     const handleNextSlide = () => {
         setSelectedSlideId((e) => {
@@ -48,9 +49,14 @@ const PhoneSlider = ({ bgElement, videos, className, height }: PhoneSliderProps)
             <div className="relative flex justify-center items-center h-full" style={{ maxHeight: height }}>
                 {bgElement}
 
-                <img src="/images/product/phone.svg" className={`z-10 max-h-[inherit] w-fit`} id="phone-border-img" />
+                <img
+                    src="/images/product/phone.svg"
+                    className={`z-10 max-h-[inherit] w-fit`}
+                    id="phone-border-img"
+                    ref={phoneRef}
+                />
 
-                <div id="video-rect-container" className="absolute rounded-[4vh] overflow-hidden w-60 h-full">
+                <div id="video-rect-container" className="absolute overflow-hidden w-0 h-0" ref={videoRef}>
                     <video
                         className="h-full w-full object-cover"
                         src={videos[selectedSlideId]}
