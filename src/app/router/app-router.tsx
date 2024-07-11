@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 import { BlockchainPage } from "@/pages/blockchain-page";
@@ -31,7 +32,11 @@ const AppRouter = () => {
         },
     ]);
 
-    return <RouterProvider router={routers} fallbackElement={<div />} />;
+    return (
+        <Suspense>
+            <RouterProvider router={routers} fallbackElement={<div />} />
+        </Suspense>
+    );
 };
 
 export default AppRouter;
