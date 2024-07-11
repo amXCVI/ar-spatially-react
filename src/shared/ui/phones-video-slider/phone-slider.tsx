@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useRef, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 
 import leftArrow from "/images/product/left-arrow.svg";
 
@@ -10,7 +10,6 @@ interface PhoneSliderProps {
 }
 const PhoneSlider = ({ bgElement, videos, className, height }: PhoneSliderProps) => {
     const [selectedSlideId, setSelectedSlideId] = useState<number>(0);
-    const [phoneSize, setPhoneSize] = useState<{ width: number; height: number }>({ width: 0, height: 0 });
 
     useEffect(() => {
         const phone = document.getElementById("phone-border-img");
@@ -19,9 +18,6 @@ const PhoneSlider = ({ bgElement, videos, className, height }: PhoneSliderProps)
         console.log(phone);
         if (phone && videoContainer) {
             const clientRect = phone.getBoundingClientRect();
-            setPhoneSize({ width: clientRect.width, height: clientRect.height });
-
-            console.log({ width: clientRect.width, height: clientRect.height });
 
             videoContainer.style.width = `calc(${clientRect.width}px - 1rem)`;
             videoContainer.style.height = `calc(${clientRect.height}px - 1rem)`;
