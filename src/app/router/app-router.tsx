@@ -1,15 +1,15 @@
 import { Suspense } from "react";
+import React from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-
-import { BlockchainPage } from "@/pages/blockchain-page";
-import ErrorPage from "@/pages/error-page";
-import ExamplePage from "@/pages/example-page";
-import HomePage from "@/pages/home-page";
-import MapPage from "@/pages/map-page";
-import { ProductPage } from "@/pages/product-page";
 
 import { routes } from "@/shared/config";
 import { BaseLayout } from "@/shared/ui/layouts";
+
+const BlockchainPage = React.lazy(() => import("@/pages/blockchain-page"));
+const ErrorPage = React.lazy(() => import("@/pages/error-page"));
+const HomePage = React.lazy(() => import("@/pages/home-page"));
+const MapPage = React.lazy(() => import("@/pages/map-page"));
+const ProductPage = React.lazy(() => import("@/pages/product-page"));
 
 const AppRouter = () => {
     const routers = createBrowserRouter([
@@ -24,8 +24,6 @@ const AppRouter = () => {
                 { path: routes.product, element: <ProductPage /> },
 
                 { path: routes.blockchain, element: <BlockchainPage /> },
-
-                { path: routes.example, element: <ExamplePage /> },
 
                 { path: routes.undefined, element: <ErrorPage /> },
             ],

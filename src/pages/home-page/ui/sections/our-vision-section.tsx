@@ -3,7 +3,7 @@ import { TextP, Title } from "@/shared/ui/text-components";
 import headerCrosses from "/images/landing/our-vision-section/header-crosses.svg";
 import headerDots from "/images/landing/our-vision-section/header-points.svg";
 
-import bulb from "/images/landing/our-vision-section/bulb.png";
+import bulb from "/images/landing/our-vision-section/bulb.webp";
 
 const OurVisionSection = () => {
     return (

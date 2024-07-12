@@ -3,7 +3,6 @@ const routes = {
     map: "/map",
     product: "/product",
     blockchain: "/blockchain",
-    example: "example",
 
     undefined: "*",
 };

@@ -1,3 +1,3 @@
 import { BlockchainPage } from "./ui";
 
-export { BlockchainPage };
+export default BlockchainPage;
