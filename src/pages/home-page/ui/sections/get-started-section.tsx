@@ -5,9 +5,9 @@ import { Subtitle, TextP, Title } from "@/shared/ui/text-components";
 import appStoreButton from "/images/landing/get-started-section/app-store-button.svg";
 import playMarketButton from "/images/landing/get-started-section/play-market-button.svg";
 
-import phoneForUsers from "/images/landing/get-started-section/phone_1.png";
-import phoneForMapOne from "/images/landing/get-started-section/phone_2.png";
-import phoneForMapTwo from "/images/landing/get-started-section/phone_3.png";
+import phoneForUsers from "/images/landing/get-started-section/phone_1.webp";
+import phoneForMapOne from "/images/landing/get-started-section/phone_2.webp";
+import phoneForMapTwo from "/images/landing/get-started-section/phone_3.webp";
 
 const GetStartedSection = () => {
     return (

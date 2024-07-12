@@ -3,7 +3,7 @@ import SectionFooter from "@/features/section-footer";
 
 import textItemPointIcon from "/images/landing/start-section/text-item-point.svg";
 
-import phone from "/images/landing/start-section/phone.png";
+import phone from "/images/landing/start-section/phone.webp";
 
 const StartSection = () => {
     return (
@@ -62,7 +62,7 @@ const StartSection = () => {
                 <div className="flex flex-col items-center w-full h-full mt-16 xl:mt-0">
                     <div className="relative h-full">
                         <div className="absolute h-full -left-1/2 -right-1/2 z-0 xl:scale-110">
-                            <img src="/images/landing/start-section/bulb.png" />
+                            <img src="/images/landing/start-section/bulb.webp" />
                         </div>
 
                         <img

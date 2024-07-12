@@ -9,9 +9,9 @@ import dgesIcon from "/images/blockchain/dges-icon.svg";
 import appStoreButton from "/images/landing/get-started-section/app-store-button.svg";
 import playMarketButton from "/images/landing/get-started-section/play-market-button.svg";
 
-import nftStPhone from "/images/blockchain/nftst-phone.png";
-import phone1 from "/images/blockchain/phone_7.png";
-import phone2 from "/images/blockchain/phone_8.png";
+import nftStPhone from "/images/blockchain/phone_20.webp";
+import phone1 from "/images/blockchain/phone_21.webp";
+import phone2 from "/images/blockchain/phone_22.webp";
 
 const BlockchainPage = () => {
     return (
@@ -52,7 +52,7 @@ const BlockchainPage = () => {
                     className="col-span-12 lg:col-span-5 xl:col-span-7 
                               bg-smoky-black-bg flex flex-col md:flex-row gap-10 px-4 py-10 md:p-10"
                 >
-                    <img src={nftStPhone} className="object-contain h-full max-h-[50dvh] mx-auto" />
+                    <img src={nftStPhone} className="object-contain h-full max-h-[50vh] lg:max-h-[40vh] mx-auto" />
 
                     <NftstText className="flex lg:hidden xl:flex" />
                 </div>
@@ -60,12 +60,18 @@ const BlockchainPage = () => {
                 <div className="col-span-12 bg-smoky-black-bg px-4 py-10 md:p-10">
                     <div className="flex flex-col md:flex-row gap-10">
                         <div className="flex gap-4 mx-auto md:hidden">
-                            <img src={phone1} className="object-contain h-full max-h-[50dvh] max-w-[40vw]" />
-                            <img src={phone2} className="object-contain h-full max-h-[50dvh] max-w-[40vw]" />
+                            <img
+                                src={phone1}
+                                className="object-contain h-full max-h-[50vh] lg:max-h-[40vh] max-w-[40vw]"
+                            />
+                            <img
+                                src={phone2}
+                                className="object-contain h-full max-h-[50vh] lg:max-h-[40vh] max-w-[40vw]"
+                            />
                         </div>
 
-                        <img src={phone1} className="object-contain max-h-[50dvh] hidden md:block" />
-                        <img src={phone2} className="object-contain max-h-[50dvh] hidden md:block" />
+                        <img src={phone1} className="object-contain max-h-[50vh] lg:max-h-[40vh] hidden md:block" />
+                        <img src={phone2} className="object-contain max-h-[50vh] lg:max-h-[40vh] hidden md:block" />
 
                         <div className="flex flex-col justify-between">
                             <Title title="Blockchain" className="text-white" />
