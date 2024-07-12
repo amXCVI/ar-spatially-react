@@ -37,7 +37,10 @@ const GetStartedSection = () => {
 
                 <div className="col-span-12 lg:col-span-5 xl:col-span-7 bg-light-bg p-4 py-10 md:p-10">
                     <div className="flex flex-col xl:flex-row gap-10 md:gap-4">
-                        <img src={phoneForUsers} className="object-contain max-h-[50dvh] max-w-[40vw] mx-auto" />
+                        <img
+                            src={phoneForUsers}
+                            className="object-contain max-h-[50vh] lg:max-h-[40vh] max-w-[40vw] mx-auto"
+                        />
 
                         <ForUsersText className="flex lg:hidden xl:flex" />
                     </div>
@@ -72,12 +75,24 @@ const GetStartedSection = () => {
                         </div>
 
                         <div className="flex gap-4 mx-auto xl:hidden">
-                            <img src={phoneForMapTwo} className="object-contain h-full max-h-[50vh] max-w-[40vw]" />
-                            <img src={phoneForMapOne} className="object-contain h-full max-h-[50vh] max-w-[40vw]" />
+                            <img
+                                src={phoneForMapTwo}
+                                className="object-contain h-full max-h-[50vh] lg:max-h-[40vh] max-w-[40vw]"
+                            />
+                            <img
+                                src={phoneForMapOne}
+                                className="object-contain h-full max-h-[50vh] lg:max-h-[40vh] max-w-[40vw]"
+                            />
                         </div>
 
-                        <img src={phoneForMapTwo} className="object-contain max-h-[50vh] hidden xl:block" />
-                        <img src={phoneForMapOne} className="object-contain max-h-[50vh] hidden xl:block" />
+                        <img
+                            src={phoneForMapTwo}
+                            className="object-contain max-h-[50vh] lg:max-h-[40vh] hidden xl:block"
+                        />
+                        <img
+                            src={phoneForMapOne}
+                            className="object-contain max-h-[50vh] lg:max-h-[40vh] hidden xl:block"
+                        />
                     </div>
                 </div>
             </div>
