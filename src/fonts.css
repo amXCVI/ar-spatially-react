@@ -114,6 +114,14 @@
     line-height: 1.5rem;
 }
 
+@media screen and (max-width: 640px) {
+    .regular-16 {
+        font-weight: 400;
+        font-size: 1.2rem;
+        line-height: 1.7rem;
+    }
+}
+
 .medium-14 {
     font-family: "line-seed-sans-bold";
     font-style: normal;
