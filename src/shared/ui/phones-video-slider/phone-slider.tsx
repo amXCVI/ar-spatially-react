@@ -15,13 +15,13 @@ const PhoneSlider = ({ bgElement, videos, className, height }: PhoneSliderProps)
     const videoRef = useRef<null | HTMLDivElement>(null);
 
     useLayoutEffect(() => {
-        setTimeout(() => {
+        setInterval(() => {
             if (phoneRef.current && videoRef.current) {
                 videoRef.current.style.width = `${phoneRef.current.offsetWidth * 0.94}px`;
                 videoRef.current.style.height = `${phoneRef.current.offsetHeight * 0.98}px`;
                 videoRef.current.style.borderRadius = `${phoneRef.current.height / 14}px`;
             }
-        }, 100);
+        }, 500);
     }, []);
 
     const handleNextSlide = () => {
