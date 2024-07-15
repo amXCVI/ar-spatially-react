@@ -6,13 +6,15 @@ import SearchField from "./search-field";
 
 const MapHeader = () => {
     return (
-        <header className="drop-shadow-mapHeaderBg fixed z-20 top-0 right-0 left-0">
+        <header
+            className="fixed z-20 top-0 right-0 left-0
+                       bg-map-header-bg
+                       "
+        >
             <div className="">
-                <div className="container mx-auto py-4 flex flex-col md:flex-row gap-3 justify-between">
-                    <a href={routes.home}>
-                        <div>
-                            <img src={logo} />
-                        </div>
+                <div className="container mx-auto py-4 flex flex-col md:flex-row gap-6 justify-start">
+                    <a href={routes.home} className="flex items-center">
+                        <img src={logo} />
                     </a>
 
                     <SearchField />

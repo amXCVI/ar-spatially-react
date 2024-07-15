@@ -30,6 +30,9 @@ export default {
             backgroundPosition: {
                 "right-6": "center right 1rem",
             },
+            backgroundImage: {
+                "map-header-bg": "linear-gradient(180deg,#000000 42.71%,rgba(0,0,0,0) 100%)",
+            },
             lineHeight: {
                 12: "3rem",
             },
