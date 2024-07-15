@@ -8,7 +8,7 @@ interface PhoneSliderProps {
     className?: string;
     height?: string;
 }
-const PhoneSlider = ({ bgElement, videos, className, height }: PhoneSliderProps) => {
+const PhoneSlider = ({ bgElement, videos, className }: PhoneSliderProps) => {
     const [selectedSlideId, setSelectedSlideId] = useState<number>(0);
 
     const phoneRef = useRef<null | HTMLImageElement>(null);
@@ -46,7 +46,7 @@ const PhoneSlider = ({ bgElement, videos, className, height }: PhoneSliderProps)
 
     return (
         <div className={className}>
-            <div className="relative flex justify-center items-center h-full" style={{ maxHeight: height }}>
+            <div className="relative flex justify-center items-center h-full">
                 {bgElement}
 
                 <img

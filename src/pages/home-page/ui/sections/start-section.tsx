@@ -47,7 +47,7 @@ const StartSection = () => {
 
                         <div className="flex justify-start items-start sm:ml-auto">
                             <img src={textItemPointIcon} className="hidden md:block mr-2" />
-                            <div className="flex flex-col regular-24 text-gray70">
+                            <div className="flex flex-col text-gray70">
                                 <div className="medium-20 my-1.5">
                                     <span className="bold-20 text-gray90">AR-NFT</span> IS A SPATIAL GEOLOCATION TOKEN
                                 </div>

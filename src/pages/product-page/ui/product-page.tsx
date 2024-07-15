@@ -47,7 +47,7 @@ const ProductPage = () => {
                         }
                         videos={["/video/cat1_web.webm", "/video/cat_web.webm", "/video/car_web.webm"]}
                         className="mx-auto"
-                        height="60vh"
+                        // height="60vh"
                     />
                 </div>
 

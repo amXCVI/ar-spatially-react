@@ -8,19 +8,31 @@
 }
 
 @font-face {
-    font-family: "line-seed-sans-bold";
+    font-family: "sloth-regular";
     src:
-        local("line-seed-sans-bold"),
-        url("/fonts/LINE_seed_sans/LINE_Seed_Sans_EN/LINE_Seed_Sans_V1.003/Desktop/TTF/LINESeedSans_Bd.ttf")
-            format("truetype");
+        local("sloth-regular"),
+        url("/fonts/sloth/Sloth-Regular.ttf") format("truetype");
 }
 
 @font-face {
-    font-family: "line-seed-sans-regular";
+    font-family: "onest-medium";
     src:
-        local("line-seed-sans-regular"),
-        url("/fonts/LINE_seed_sans/LINE_Seed_Sans_EN/LINE_Seed_Sans_V1.003/Desktop/TTF/LINESeedSans_Rg.ttf")
-            format("truetype");
+        local("onest-medium"),
+        url("/fonts/onest/OnestMedium1602-hint.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "onest-regular";
+    src:
+        local("onest-regular"),
+        url("/fonts/onest/OnestRegular1602-hint.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "onest-bold";
+    src:
+        local("onest-bold"),
+        url("/fonts/onest/OnestBold1602-hint.ttf") format("truetype");
 }
 
 :root {
@@ -28,7 +40,7 @@
     --lg: 101.5rem;
     --xl: 1280px;
 
-    font-family: "line-seed-sans-regular";
+    font-family: "onest-regular";
 }
 
 .h1-90-600 {
@@ -56,18 +68,8 @@
     }
 }
 
-.h1-70-500 {
-    font-family: "line-seed-sans-regular";
-    font-style: normal;
-    font-weight: 500;
-    font-size: 4.375rem;
-    line-height: 5.313rem;
-    letter-spacing: -0.02em;
-    text-transform: uppercase;
-}
-
 .h2-34-700 {
-    font-family: "sloth-bold";
+    font-family: "sloth-regular";
     font-style: normal;
     font-weight: 700;
     font-size: 2.125rem;
@@ -82,16 +84,8 @@
     line-height: 1.813rem;
 }
 
-.regular-24 {
-    font-family: "line-seed-sans-regular";
-    font-style: normal;
-    font-weight: 500;
-    font-size: 1.5rem;
-    line-height: 1.813rem;
-}
-
 .medium-20 {
-    font-family: "line-seed-sans-bold";
+    font-family: "onest-medium";
     font-style: normal;
     font-weight: 500;
     font-size: 1.25rem;
@@ -99,7 +93,7 @@
 }
 
 .bold-20 {
-    font-family: "line-seed-sans-bold";
+    font-family: "onest-bold";
     font-style: normal;
     font-weight: 600;
     font-size: 1.25rem;
@@ -107,7 +101,7 @@
 }
 
 .regular-16 {
-    font-family: "line-seed-sans-regular";
+    font-family: "onest-regular";
     font-style: normal;
     font-weight: 400;
     font-size: 1rem;
@@ -123,7 +117,7 @@
 }
 
 .medium-14 {
-    font-family: "line-seed-sans-bold";
+    font-family: "onest-medium";
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
@@ -131,7 +125,7 @@
 }
 
 .regular-14 {
-    font-family: "line-seed-sans-regular";
+    font-family: "onest-regular";
     font-style: normal;
     font-weight: 400;
     font-size: 0.875rem;
@@ -139,7 +133,7 @@
 }
 
 .light-12 {
-    font-family: "line-seed-sans-regular";
+    font-family: "onest-regular";
     font-style: normal;
     font-weight: 300;
     font-size: 0.75rem;
@@ -150,7 +144,7 @@
 }
 
 .poppuns-80 {
-    font-family: "line-seed-sans-regular";
+    font-family: "onest-regular";
     font-style: normal;
     font-weight: 400;
     font-size: 5.5rem;
