@@ -4,7 +4,7 @@ import { Fragment, useEffect, useState } from "react";
 import { menuLinks, routes } from "@/shared/config";
 import { Socials } from "@/shared/ui/socials";
 
-import BurgerIcon from "./burger-icon.svg?react";
+// import BurgerIcon from "./burger-icon.svg?react";
 import CloseMenuIcon from "./close-menu-icon.svg?react";
 import MenuIcon from "./menu-icon.svg?react";
 import logo from "/images/landing/header/logo.svg";
