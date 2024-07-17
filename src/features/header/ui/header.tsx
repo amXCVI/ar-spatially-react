@@ -6,6 +6,7 @@ import { Socials } from "@/shared/ui/socials";
 
 import BurgerIcon from "./burger-icon.svg?react";
 import CloseMenuIcon from "./close-menu-icon.svg?react";
+import MenuIcon from "./menu-icon.svg?react";
 import logo from "/images/landing/header/logo.svg";
 
 interface HeaderInterface {
@@ -97,12 +98,15 @@ const MobileMenu = ({ white = false, show }: MobileMenuInterface) => {
     return (
         <div className={`relative ${show && "lg:hidden"} ml-auto`}>
             <div
-                className={`flex flex-col justify-center items-center gap-2 p-4 rounded-full duration-500
-                            cursor-pointer`}
+                className={`flex flex-col justify-center items-center gap-2 duration-500
+                            cursor-pointer hover:bg-white50 w-28 h-28
+                            fixed bottom-4 right-4
+                            border border-white30 bg-white30 rounded-full p-4 backdrop-blur`}
                 onClick={toggleMobileMenu}
             >
+                <MenuIcon className={white ? "fill-white" : "fill-blue-accent"} />
                 <b className={white ? "text-white" : "text-gray70"}>MENU</b>
-                <BurgerIcon className={white ? "fill-white" : "fill-blue-accent"} />
+                {/* <BurgerIcon className={white ? "fill-white" : "fill-blue-accent"} /> */}
             </div>
 
             <div
