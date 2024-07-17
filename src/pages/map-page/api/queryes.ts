@@ -6,7 +6,8 @@ const fintPointsByLocation = async ({ lat, lng, radius }: { lat: number; lng: nu
         .post("/gateway/object/find/location", {
             lat: lat,
             lng: lng,
-            radius: radius,
+            // Здесь инвертирую радиус (значение подобрал эмпирически)
+            radius: (1 / radius) * 100,
         })
         .then((res) => {
             const markers: MarkerInterface[] = res.data.data.objectsList;

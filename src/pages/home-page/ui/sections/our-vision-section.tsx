@@ -1,3 +1,4 @@
+import { DefaultButton } from "@/shared/ui/buttons";
 import { TextP, Title } from "@/shared/ui/text-components";
 
 import headerCrosses from "/images/landing/our-vision-section/header-crosses.svg";
@@ -48,10 +49,9 @@ const OurVisionSection = () => {
                         We aim to make AR and blockchain technologies a part of everyday life.
                     </TextP>
 
-                    {/* <div className="flex gap-10 md:gap-24 mx-auto mt-10 lg:mt-24">
-                        <DefaultButton>Road Map</DefaultButton>
-                        <DefaultButton>Pricing</DefaultButton>
-                    </div> */}
+                    <div className="">
+                        <DefaultButton className="bg-white text-gray90">Docs</DefaultButton>
+                    </div>
                 </div>
 
                 <div className="col-span-1 md:col-span-3 flex flex-col items-center w-full">
