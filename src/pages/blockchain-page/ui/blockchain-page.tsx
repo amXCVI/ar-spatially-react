@@ -18,7 +18,7 @@ const BlockchainPage = () => {
         <DarkLayout
             className="flex flex-col justify-between 
                bg-[url(/images/product/bg.svg)] bg-cover bg-no-repeat bg-center
-               pt-40"
+               pt-10 lg:pt-40"
         >
             <Header white />
             <div
@@ -28,19 +28,19 @@ const BlockchainPage = () => {
             >
                 <div
                     className="col-span-12 lg:col-span-7 xl:col-span-5
-                             bg-smoky-black-bg flex flex-col px-4 py-10 md:p-10"
+                             bg-smoky-black-bg flex flex-col px-4 py-6 md:p-10"
                 >
                     <div>
                         <img src={dgesIcon} />
                     </div>
-                    <h2 className="medium-20 text-white mt-3">Decentralized Geo Ecosystem</h2>
-                    <TextP className="text-spanish-gray mt-10">
+                    <h2 className="medium-20 text-white mt-6">Decentralized Geo Ecosystem</h2>
+                    <TextP className="text-spanish-gray mt-6">
                         We create technology that works seamlessly across different types of businesses, bringing
                         various solutions to life. We also gather augmented reality tools and are open to partnering
                         with others through our platform. Feel free to get in touch with us!
                     </TextP>
                     <a className="m-auto" href={import.meta.env.VITE_APP_DGES_URL}>
-                        <DefaultButton className="mt-10">
+                        <DefaultButton className="mt-6">
                             <span className="regular-14 text-white">DGES</span>
                         </DefaultButton>
                     </a>
@@ -50,14 +50,14 @@ const BlockchainPage = () => {
 
                 <div
                     className="col-span-12 lg:col-span-5 xl:col-span-7 
-                              bg-smoky-black-bg flex flex-col md:flex-row gap-10 px-4 py-10 md:p-10"
+                              bg-smoky-black-bg flex flex-col md:flex-row gap-6 px-4 py-6 md:p-10"
                 >
                     <img src={nftStPhone} className="object-contain h-full max-h-[50vh] lg:max-h-[40vh] mx-auto" />
 
                     <NftstText className="flex lg:hidden xl:flex" />
                 </div>
 
-                <div className="col-span-12 bg-smoky-black-bg px-4 py-10 md:p-10">
+                <div className="col-span-12 bg-smoky-black-bg px-4 py-6 md:p-10">
                     <div className="flex flex-col md:flex-row gap-10">
                         <div className="flex gap-4 mx-auto md:hidden">
                             <img
@@ -75,7 +75,7 @@ const BlockchainPage = () => {
 
                         <div className="flex flex-col justify-between">
                             <Title title="Blockchain" className="text-white" />
-                            <Subtitle subtitle="We are more than just AR technologies" className="text-white mt-7" />
+                            <Subtitle subtitle="We are more than just AR technologies" className="text-white mt-6" />
                             <TextP className="text-spanish-gray mt-6">
                                 We utilize geospatial NFT (Non-Fungible Token) technology. Geospatial NFTs enable the
                                 establishment of location-based copyrights on AR objects and their monetization.
@@ -101,8 +101,8 @@ const NftstText = ({ className }: { className?: string }) => {
     return (
         <div className={`flex flex-col ${className ?? ""}`}>
             <Title title="nft street" className="text-white" />
-            <Subtitle subtitle="What is this project about?" className="text-white mt-7" />
-            <TextP className="text-spanish-gray mt-10">
+            <Subtitle subtitle="What is this project about?" className="text-white mt-6" />
+            <TextP className="text-spanish-gray mt-6">
                 NFT Street is a platform driven by a deep passion for street art and the vibrant communities it
                 embodies. One of the groundbreaking features is the establishment of digital ownership for street art by
                 assigning each piece a unique NFT linked to its physical location - GeoNFT. Through NFT Street, artists

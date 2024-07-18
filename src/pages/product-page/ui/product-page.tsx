@@ -13,27 +13,27 @@ const ProductPage = () => {
         <DarkLayout
             className="flex flex-col justify-between 
                        bg-[url(/images/product/bg.svg)] bg-cover bg-no-repeat bg-center
-                       pt-40
+                       pt-10 lg:pt-40
                        "
         >
             <Header white />
             <div></div>
             <div
                 className="container mx-auto
-                           grid grid-cols-8 gap-10
+                           grid grid-cols-8 gap-6
                            mb-20
             "
             >
                 <div className="col-span-8 xl:col-span-3 flex flex-col m-auto max-w-xl">
                     <Title className="text-white" title="Our Product" />
-                    <h3 className="bold-20 text-white mt-8">For Developers</h3>
-                    <TextP className="text-white mt-7">
+                    <h3 className="bold-20 text-white mt-6">For Developers</h3>
+                    <TextP className="text-white mt-6">
                         We aim to create a comprehensive toolkit that allows both existing and emerging applications to
                         connect and utilize the open features of other applications in the ecosystem, including
                         blockchain functions.
                     </TextP>
 
-                    <div className="mx-auto mt-10">
+                    <div className="mx-auto mt-6">
                         <DefaultButton>Playground</DefaultButton>
                     </div>
                 </div>
