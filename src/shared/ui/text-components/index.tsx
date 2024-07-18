@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 
 export const Title = ({ title, className }: { title: string; className?: string }) => {
-    return <h2 className={`h2-34-700 text-gray90 uppercase ${className ?? ""}`}>{title}</h2>;
+    return <h2 className={`t24-700 text-gray90 uppercase ${className ?? ""}`}>{title}</h2>;
 };
 
 export const Subtitle = ({ subtitle, className }: { subtitle: string; className?: string }) => {

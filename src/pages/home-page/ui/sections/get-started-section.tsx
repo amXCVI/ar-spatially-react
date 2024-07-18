@@ -5,7 +5,8 @@ import { Subtitle, TextP, Title } from "@/shared/ui/text-components";
 import appStoreButton from "/images/landing/get-started-section/app-store-button.svg";
 import playMarketButton from "/images/landing/get-started-section/play-market-button.svg";
 
-import phoneForUsers from "/images/landing/get-started-section/phone_1.webp";
+import phone1 from "/images/blockchain/phone_22.webp";
+import phone2 from "/images/landing/get-started-section/phone_1.webp";
 import phoneForMapOne from "/images/landing/get-started-section/phone_2.webp";
 import phoneForMapTwo from "/images/landing/get-started-section/phone_3.webp";
 
@@ -18,7 +19,7 @@ const GetStartedSection = () => {
                            grid grid-cols-12 gap-1
                           "
             >
-                <div className="col-span-12 lg:col-span-7 xl:col-span-5 bg-light-bg p-4 py-10 md:p-10">
+                {/* <div className="col-span-12 lg:col-span-7 xl:col-span-5 bg-light-bg p-4 py-10 md:p-10">
                     <div className="flex flex-col h-full">
                         <Title title="Developers" />
                         <Subtitle subtitle="Coming Soon" className="mt-4 uppercase !text-blue-accent" />
@@ -33,9 +34,9 @@ const GetStartedSection = () => {
 
                         <ForUsersText className="hidden lg:flex xl:hidden" />
                     </div>
-                </div>
+                </div> */}
 
-                <div className="col-span-12 lg:col-span-5 xl:col-span-7 bg-light-bg p-4 py-10 md:p-10">
+                {/* <div className="col-span-12 lg:col-span-5 xl:col-span-7 bg-light-bg p-4 py-10 md:p-10">
                     <div className="flex flex-col xl:flex-row gap-10 md:gap-4">
                         <img
                             src={phoneForUsers}
@@ -44,34 +45,106 @@ const GetStartedSection = () => {
 
                         <ForUsersText className="flex lg:hidden xl:flex" />
                     </div>
+                </div> */}
+
+                <div className="col-span-12 bg-light-bg px-4 py-10 md:p-10">
+                    <div className="flex flex-col-reverse xl:flex-row gap-10 xl:gap-4">
+                        <div className="flex gap-4 mx-auto xl:hidden">
+                            <img
+                                src={phone1}
+                                className="object-contain h-full max-h-[50vh] lg:max-h-[40vh] max-w-[40vw]"
+                            />
+                            <img
+                                src={phone2}
+                                className="object-contain h-full max-h-[50vh] lg:max-h-[40vh] max-w-[40vw]"
+                            />
+                        </div>
+
+                        <img src={phone1} className="object-contain max-h-[50vh] lg:max-h-[40vh] hidden xl:block" />
+                        <img src={phone2} className="object-contain max-h-[50vh] lg:max-h-[40vh] hidden xl:block" />
+
+                        <div className="flex flex-col justify-between xl:max-w-[50rem] ml-auto">
+                            <div>
+                                <Title title="For Developers" />
+                                <TextP className="mt-4">
+                                    We create a playground that allows existing and new applications to jointly use IT
+                                    and blockchain solutions.
+                                </TextP>
+                            </div>
+
+                            <div>
+                                <Title title="For Business" />
+                                <TextP className="mt-4">
+                                    We create a new way of communication with customers in the visibility zone. The
+                                    ability to create AR advertising and digital rights for it.
+                                </TextP>
+                            </div>
+
+                            <div>
+                                <Title title="AR Nft" />
+                                <TextP className="mt-4">
+                                    A special format of NFT for AR objects, allowing the creation and exchange of
+                                    digital rights for advertising, objects, facts, and achievements in the AR space,
+                                    with spatial position and volume of the object recorded on the blockchain.
+                                </TextP>
+                            </div>
+
+                            <div className="flex gap-2 md:gap-4">
+                                <a href={routes.product}>
+                                    <DefaultButton className="bg-white text-gray90">Product</DefaultButton>
+                                </a>
+                                <a href={routes.product}>
+                                    <DefaultButton className="bg-white text-gray90">Ar</DefaultButton>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div className="col-span-12 bg-light-bg px-4 py-10 md:p-10">
                     <div className="flex flex-col-reverse xl:flex-row gap-10 xl:gap-4">
-                        <div className="flex flex-col justify-between lg:max-w-4xl mr-auto">
-                            <Title title="OUr Map" />
+                        <div className="flex flex-col justify-between xl:max-w-[50rem] mr-auto">
                             <div>
-                                <Subtitle subtitle="Why do we need geo positioning?" className="mt-8 uppercase " />
+                                <Title title="OUr Map" />
+                                <Subtitle subtitle="A coordinate system that integrates AR with the real world." />
                                 <TextP className="mt-4">
-                                    A coordinate system that enables the integration of AR with the real world. Find
-                                    products and services right in your line of sight. Geopositioning allows you to turn
-                                    your object into a geolocated NFT using blockchain, showcasing it in its actual
-                                    location for others to discover.
-                                </TextP>
-                            </div>
-
-                            <div>
-                                <Subtitle subtitle="Why do we need a map?" className="mt-5 uppercase" />
-                                <TextP className="mt-4">
-                                    On the map, users have the ability to build a route to any object and view it in
-                                    augmented reality. Additionally, users can view the history of movements and a
+                                    Geolocation allows you to link and discover AR objects in their actual location, map
+                                    a route, and find them in augmented reality, view the history of movements, and the
                                     description of the object.
                                 </TextP>
                             </div>
 
-                            <a className="flex justify-center md:justify-start mt-4 " href={routes.map}>
-                                <DefaultButton className="bg-white text-gray90">Map</DefaultButton>
-                            </a>
+                            <div>
+                                <Title title="For Artists" />
+                                <TextP className="mt-4">
+                                    We create a space for creating, publishing, and selling AR objects, collaborating
+                                    with brands and businesses.
+                                </TextP>
+                            </div>
+
+                            <div>
+                                <Title title="For Users" />
+                                <TextP className="mt-4">
+                                    We create a personalized space for any AR tools, searching for objects, goods, and
+                                    services nearby.
+                                </TextP>
+                            </div>
+
+                            <div className="flex gap-2 md:gap-4 justify-end">
+                                <a href={routes.map}>
+                                    <DefaultButton className="bg-white text-gray90">Map</DefaultButton>
+                                </a>
+                                <a href={import.meta.env.VITE_APP_NFTST_APPSTORE_URL}>
+                                    <DefaultButton className="bg-white">
+                                        <img src={appStoreButton} />
+                                    </DefaultButton>
+                                </a>
+                                <a href={import.meta.env.VITE_APP_NFTST_PLAYMARKET_URL}>
+                                    <DefaultButton className="bg-white">
+                                        <img src={playMarketButton} />
+                                    </DefaultButton>
+                                </a>
+                            </div>
                         </div>
 
                         <div className="flex gap-4 mx-auto xl:hidden">
@@ -100,42 +173,42 @@ const GetStartedSection = () => {
     );
 };
 
-const ForUsersText = ({ className }: { className?: string }) => {
-    return (
-        <div className={`flex flex-col justify-between ${className ?? ""}`}>
-            <div>
-                <Title title="for Users" />
-                <TextP className="mt-4">
-                    Users can personalise the AR space according to their preferences, use various AR services within a
-                    single space, and searching for objects, goods, and services within the field of view.
-                </TextP>
-            </div>
+// const ForUsersText = ({ className }: { className?: string }) => {
+//     return (
+//         <div className={`flex flex-col justify-between ${className ?? ""}`}>
+//             <div>
+//                 <Title title="for Users" />
+//                 <TextP className="mt-4">
+//                     Users can personalise the AR space according to their preferences, use various AR services within a
+//                     single space, and searching for objects, goods, and services within the field of view.
+//                 </TextP>
+//             </div>
 
-            <div className="mt-8">
-                <Subtitle subtitle="How can you choose Apps?" className="uppercase" />
-                <TextP className="mt-4">
-                    Each Layer is a stream of content that you can choose to include or exclude from your augmented
-                    reality experience. For example, if you want to focus solely on the navigation, you can remove it
-                    from the main screen it your App. We integrate a variety of augmented reality apps, offering them to
-                    you at no cost. Create your personalised augmented reality experience by connecting the layers that
-                    are interesting for you with AR Spatially.
-                </TextP>
-            </div>
+//             <div className="mt-8">
+//                 <Subtitle subtitle="How can you choose Apps?" className="uppercase" />
+//                 <TextP className="mt-4">
+//                     Each Layer is a stream of content that you can choose to include or exclude from your augmented
+//                     reality experience. For example, if you want to focus solely on the navigation, you can remove it
+//                     from the main screen it your App. We integrate a variety of augmented reality apps, offering them to
+//                     you at no cost. Create your personalised augmented reality experience by connecting the layers that
+//                     are interesting for you with AR Spatially.
+//                 </TextP>
+//             </div>
 
-            <div className="flex gap-1 mt-10 justify-center md:justify-start">
-                <a href={import.meta.env.VITE_APP_NFTST_APPSTORE_URL}>
-                    <DefaultButton className="bg-white">
-                        <img src={appStoreButton} />
-                    </DefaultButton>
-                </a>
-                <a href={import.meta.env.VITE_APP_NFTST_PLAYMARKET_URL}>
-                    <DefaultButton className="bg-white">
-                        <img src={playMarketButton} />
-                    </DefaultButton>
-                </a>
-            </div>
-        </div>
-    );
-};
+//             <div className="flex gap-1 mt-10 justify-center md:justify-start">
+//                 <a href={import.meta.env.VITE_APP_NFTST_APPSTORE_URL}>
+//                     <DefaultButton className="bg-white">
+//                         <img src={appStoreButton} />
+//                     </DefaultButton>
+//                 </a>
+//                 <a href={import.meta.env.VITE_APP_NFTST_PLAYMARKET_URL}>
+//                     <DefaultButton className="bg-white">
+//                         <img src={playMarketButton} />
+//                     </DefaultButton>
+//                 </a>
+//             </div>
+//         </div>
+//     );
+// };
 
 export { GetStartedSection };
