@@ -14,7 +14,7 @@ const OurVisionSection = () => {
                 bg-cover bg-no-repeat bg-center rounded-[40px]
                 h-full xl:min-h-[calc(100dvh-2.5rem)]
                 flex flex-col justify-between
-                p-4 mx-auto container"
+                px-4 mx-auto container"
         >
             <div className="hidden xl:flex relative mx-auto justify-between items-end pt-5">
                 <div className="flex flex-col poppuns-80 leading-10 whitespace-nowrap">
@@ -31,15 +31,15 @@ const OurVisionSection = () => {
                 className="container mx-auto 
                         flex flex-col items-center 
                         md:grid md:grid-cols-6
-                        gap-16 py-10 md:p-y-24"
+                        gap-16 md:p-y-24"
             >
                 <div
-                    className="md:col-span-3 flex flex-col justify-center gap-5 md:gap-8 md:mx-auto xl:ml-40
+                    className="md:col-span-3 flex flex-col justify-center gap-4 md:mx-auto xl:ml-40
                                text-center md:text-left max-w-prose md:max-w-md"
                 >
                     <Title title="OUR Vision" />
 
-                    <TextP className="text-gray90 mt-5">
+                    <TextP className="text-gray90">
                         We are bringing together AR application developers and AR artists to create a unified AR space
                         that provides a new method of communication between physical businesses and users.
                     </TextP>

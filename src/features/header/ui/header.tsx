@@ -51,7 +51,7 @@ const Header = ({ white }: HeaderInterface) => {
                     //             duration-500
                     //             ${show ? "px-10 w-full" : "w-min ml-auto"}`}
                 >
-                    <a href={routes.home} className={`hidden ${show && "md:block"}`}>
+                    <a href={routes.home} className={`hidden ${show && "lg:block"}`}>
                         <img src={logo} />
                     </a>
 

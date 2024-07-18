@@ -1,6 +1,6 @@
 import { routes } from "@/shared/config";
 import { DefaultButton } from "@/shared/ui/buttons";
-import { Subtitle, TextP, Title } from "@/shared/ui/text-components";
+import { TextP, Title } from "@/shared/ui/text-components";
 
 import appStoreButton from "/images/landing/get-started-section/app-store-button.svg";
 import playMarketButton from "/images/landing/get-started-section/play-market-button.svg";
@@ -48,7 +48,7 @@ const GetStartedSection = () => {
                 </div> */}
 
                 <div className="col-span-12 bg-light-bg px-4 py-10 md:p-10">
-                    <div className="flex flex-col-reverse xl:flex-row gap-10 xl:gap-4">
+                    <div className="flex flex-col-reverse xl:flex-row gap-10 xl:gap-4 max-w-7xl mx-auto">
                         <div className="flex gap-4 mx-auto xl:hidden">
                             <img
                                 src={phone1}
@@ -63,7 +63,7 @@ const GetStartedSection = () => {
                         <img src={phone1} className="object-contain max-h-[50vh] lg:max-h-[40vh] hidden xl:block" />
                         <img src={phone2} className="object-contain max-h-[50vh] lg:max-h-[40vh] hidden xl:block" />
 
-                        <div className="flex flex-col justify-between xl:max-w-[50rem] ml-auto">
+                        <div className="flex flex-col justify-between gap-4 ml-auto">
                             <div>
                                 <Title title="For Developers" />
                                 <TextP className="mt-4">
@@ -102,15 +102,15 @@ const GetStartedSection = () => {
                 </div>
 
                 <div className="col-span-12 bg-light-bg px-4 py-10 md:p-10">
-                    <div className="flex flex-col-reverse xl:flex-row gap-10 xl:gap-4">
-                        <div className="flex flex-col justify-between xl:max-w-[50rem] mr-auto">
+                    <div className="flex flex-col-reverse xl:flex-row gap-10 xl:gap-4 max-w-7xl mx-auto">
+                        <div className="flex flex-col justify-between gap-4 mr-auto">
                             <div>
                                 <Title title="OUr Map" />
-                                <Subtitle subtitle="A coordinate system that integrates AR with the real world." />
                                 <TextP className="mt-4">
-                                    Geolocation allows you to link and discover AR objects in their actual location, map
-                                    a route, and find them in augmented reality, view the history of movements, and the
-                                    description of the object.
+                                    A coordinate system that integrates AR with the real world. Geolocation allows you
+                                    to link and discover AR objects in their actual location, map a route, and find them
+                                    in augmented reality, view the history of movements, and the description of the
+                                    object.
                                 </TextP>
                             </div>
 
@@ -130,9 +130,9 @@ const GetStartedSection = () => {
                                 </TextP>
                             </div>
 
-                            <div className="flex gap-2 md:gap-4 justify-end">
+                            <div className="flex gap-2 md:gap-4 justify-center md:justify-end flex-wrap">
                                 <a href={routes.map}>
-                                    <DefaultButton className="bg-white text-gray90">Map</DefaultButton>
+                                    <DefaultButton className="bg-white text-gray90 h-full">Map</DefaultButton>
                                 </a>
                                 <a href={import.meta.env.VITE_APP_NFTST_APPSTORE_URL}>
                                     <DefaultButton className="bg-white">

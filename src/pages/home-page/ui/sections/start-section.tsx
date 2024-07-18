@@ -17,9 +17,9 @@ const StartSection = () => {
             <Header />
             <div className="hidden md:block h-16" />
 
-            <div className="container mx-auto flex flex-col items-center h-full xl:max-h-full xl:flex-row py-10 xl:py-0">
+            <div className="container mx-auto flex flex-col items-center h-full xl:max-h-full xl:flex-row pb-10 lg:py-10 xl:py-0">
                 <div className="flex flex-col items-end w-full">
-                    <div className="flex flex-wrap xl:flex-col items-center mx-auto md:mt-20 xl:mt-0">
+                    <div className="flex flex-wrap xl:flex-col items-center mx-auto lg:mt-10 xl:mt-0">
                         <h1 className="h1-90-600 text-white mr-auto">OUR</h1>
                         <h1 className="h1-90-600 text-white ml-12 xl:ml-24">Solution</h1>
                     </div>
@@ -28,30 +28,30 @@ const StartSection = () => {
                         <div className="flex justify-start items-start">
                             <img src={textItemPointIcon} className="hidden md:block mr-2" />
                             <div className="flex flex-col medium-20 text-gray70">
-                                <div className="my-1.5">
+                                <div className="md:my-1.5">
                                     AGGREGATOR OF <span className="bold-20 text-gray90"> AR APPS</span>
                                 </div>
-                                <span className="my-1.5">FOR REAL BUSINESSES AND USERS.</span>
+                                <span className="md:my-1.5">FOR REAL BUSINESSES AND USERS.</span>
                             </div>
                         </div>
 
                         <div className="flex justify-start items-start sm:mx-auto">
                             <img src={textItemPointIcon} className="hidden md:block mr-2" />
                             <div className="flex flex-col medium-20 text-gray70">
-                                <div className="my-1.5">
+                                <div className="md:my-1.5">
                                     <span className="bold-20 text-gray90">AR CONTENT </span>TIED TO REAL LOCATION
                                 </div>
-                                <span className="my-1.5">ON THE GLOBAL MAP.</span>
+                                <span className="md:my-1.5">ON THE GLOBAL MAP.</span>
                             </div>
                         </div>
 
                         <div className="flex justify-start items-start sm:ml-auto">
                             <img src={textItemPointIcon} className="hidden md:block mr-2" />
                             <div className="flex flex-col text-gray70">
-                                <div className="medium-20 my-1.5">
+                                <div className="medium-20 md:my-1.5">
                                     <span className="bold-20 text-gray90">AR-NFT</span> IS A SPATIAL GEOLOCATION TOKEN
                                 </div>
-                                <span className="medium-20 my-1.5">
+                                <span className="medium-20 md:my-1.5">
                                     THAT PROVIDE RIGHTS FOR<span className="bold-20 text-gray90"> AR CONTENT.</span>
                                 </span>
                             </div>
@@ -59,7 +59,7 @@ const StartSection = () => {
                     </div>
                 </div>
 
-                <div className="flex flex-col items-center w-full h-full mt-16 xl:mt-0">
+                <div className="flex flex-col items-center w-full h-full mt-6 xl:mt-0">
                     <div className="relative h-full">
                         <div className="absolute h-full -left-1/2 -right-1/2 z-0 xl:scale-110">
                             <img src="/images/landing/start-section/bulb.webp" />

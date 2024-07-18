@@ -12,12 +12,12 @@ const socials = [
         link: "",
         id: "Discord",
     },
-    {
-        icon: <Linkedin />,
-        title: "Linkedin",
-        link: "",
-        id: "Linkedin",
-    },
+    // {
+    //     icon: <Linkedin />,
+    //     title: "Linkedin",
+    //     link: "",
+    //     id: "Linkedin",
+    // },
     {
         icon: <Telegram />,
         title: "Telegram",
