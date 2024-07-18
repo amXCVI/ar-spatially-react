@@ -15,11 +15,11 @@ const StartSection = () => {
                 p-4 mx-auto container"
         >
             <Header />
-            <div className="h-16" />
+            <div className="hidden md:block h-16" />
 
-            <div className="container mx-auto flex flex-col items-center h-full xl:max-h-full xl:flex-row py-10 xl:py-0">
+            <div className="container mx-auto flex flex-col items-center h-full xl:max-h-full xl:flex-row md:py-10 xl:py-0">
                 <div className="flex flex-col items-end w-full">
-                    <div className="flex flex-wrap xl:flex-col items-center mx-auto mt-20 xl:mt-0">
+                    <div className="flex flex-wrap xl:flex-col items-center mx-auto md:mt-20 xl:mt-0">
                         <h1 className="h1-90-600 text-white mr-auto">OUR</h1>
                         <h1 className="h1-90-600 text-white ml-12 xl:ml-24">Solution</h1>
                     </div>
