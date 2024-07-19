@@ -32,6 +32,7 @@ export default {
             },
             backgroundImage: {
                 "map-header-bg": "linear-gradient(180deg,#000000 42.71%,rgba(0,0,0,0) 100%)",
+                "nft-viewer-desc-bg": "linear-gradient(0deg,#000000 -20%,rgba(0,0,0,0) 100%)"
             },
             lineHeight: {
                 12: "3rem",

@@ -1,11 +1,13 @@
 import { MapComponent } from "@ar-kit/lib";
 
 import MapHeader from "@/features/map-header";
+import { NftItem } from "@/features/nft-item";
 
 import useMapHook from "../model";
 
 const MapPage = () => {
-    const { onChangeCoords, bounds, nftList, onClickMarker, googpeMapApiKey } = useMapHook();
+    const { onChangeCoords, bounds, nftList, onClickMarker, googpeMapApiKey, selectedMarker, onCloseViewer } =
+        useMapHook();
 
     return (
         <div style={{ width: "100vw", height: "100dvh" }}>
@@ -25,6 +27,8 @@ const MapPage = () => {
                 onClickMarker={onClickMarker}
                 nftList={nftList}
             />
+
+            <NftItem selectedMarker={selectedMarker} onCloseViewer={onCloseViewer} />
         </div>
     );
 };

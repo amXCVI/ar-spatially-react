@@ -13,6 +13,7 @@ const useMapHook = () => {
         [number, number, number, number] | [number, number, number, number, number, number] | undefined
     >(undefined);
     const [nftList, setNftList] = useState<ArMarkerInterface[]>([]);
+    const [selectedMarker, setSelectedMarker] = useState<ArMarkerInterface | null>(null);
 
     const googpeMapApiKey = import.meta.env.VITE_APP_GOOGLE_MAP_API_KEY;
 
@@ -22,7 +23,15 @@ const useMapHook = () => {
     };
 
     const onClickMarker = (markerId: string) => {
-        console.log("###", markerId);
+        const markerItem = nftList.find((item) => item.id === markerId);
+
+        if (markerItem) {
+            setSelectedMarker(markerItem);
+        }
+    };
+
+    const onCloseViewer = () => {
+        setSelectedMarker(null);
     };
 
     useEffect(() => {
@@ -48,7 +57,7 @@ const useMapHook = () => {
         }
     }, [coords?.lat, coords?.lng, coords?.radius]);
 
-    return { onChangeCoords, bounds, nftList, onClickMarker, googpeMapApiKey };
+    return { onChangeCoords, bounds, nftList, onClickMarker, googpeMapApiKey, selectedMarker, onCloseViewer };
 };
 
 export default useMapHook;
