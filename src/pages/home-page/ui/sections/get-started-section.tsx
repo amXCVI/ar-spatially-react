@@ -17,6 +17,7 @@ const GetStartedSection = () => {
                 className="container mx-auto rounded-[40px]
                            overflow-hidden
                            grid grid-cols-12 gap-1
+                           max-w-7xl
                           "
             >
                 {/* <div className="col-span-12 lg:col-span-7 xl:col-span-5 bg-light-bg p-4 py-10 md:p-10">
@@ -48,7 +49,7 @@ const GetStartedSection = () => {
                 </div> */}
 
                 <div className="col-span-12 bg-light-bg px-4 py-10 md:p-10">
-                    <div className="flex flex-col-reverse xl:flex-row gap-6 xl:gap-4 max-w-7xl mx-auto">
+                    <div className="flex flex-col-reverse xl:flex-row gap-6 xl:gap-4 mx-auto">
                         <div className="flex gap-4 mx-auto xl:hidden">
                             <img
                                 src={phone1}
@@ -102,7 +103,7 @@ const GetStartedSection = () => {
                 </div>
 
                 <div className="col-span-12 bg-light-bg px-4 py-10 md:p-10">
-                    <div className="flex flex-col-reverse xl:flex-row gap-6 xl:gap-4 max-w-7xl mx-auto">
+                    <div className="flex flex-col-reverse xl:flex-row gap-6 xl:gap-4 mx-auto">
                         <div className="flex flex-col justify-between gap-4 mr-auto">
                             <div>
                                 <Title title="OUr Map" />
