@@ -1,9 +1,15 @@
 import { MarkerInterface as ArMarkerInterface, ChangeEventValue } from "@ar-kit/lib";
 import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 
 import { pointsApi } from "../api/queryes";
 
+const markerIdSearchParamsKey = "markerid";
+
 const useMapHook = () => {
+    const [searchParams, setSearchParams] = useSearchParams();
+    const selectedMarkerId = searchParams.get(markerIdSearchParamsKey);
+
     const [coords, setCoords] = useState<{
         lat: number;
         lng: number;
@@ -23,16 +29,27 @@ const useMapHook = () => {
     };
 
     const onClickMarker = (markerId: string) => {
-        const markerItem = nftList.find((item) => item.id === markerId);
-
-        if (markerItem) {
-            setSelectedMarker(markerItem);
-        }
+        setSearchParams({ [markerIdSearchParamsKey]: markerId });
     };
 
     const onCloseViewer = () => {
         setSelectedMarker(null);
+        setSearchParams({});
     };
+
+    useEffect(() => {
+        if (selectedMarkerId) {
+            const markerItem = nftList.find((item) => item.id === selectedMarkerId);
+
+            if (markerItem) {
+                setSelectedMarker(markerItem);
+            }
+        }
+
+        return () => {
+            setSelectedMarker(null);
+        };
+    }, [nftList, selectedMarkerId]);
 
     useEffect(() => {
         if (coords) {
