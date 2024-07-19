@@ -26,7 +26,10 @@ const NftItem = ({ selectedMarker, onCloseViewer }: NftItemInterface) => {
                            flex justify-center items-center
                            p-5 md:p-10 lg:p-20 pt-40 md:pt-10"
         >
-            <div className="h-full max-w-full bg-gray90 rounded-3xl overflow-hidden relative" ref={nftViewerRef}>
+            <div
+                className="h-full max-w-full min-w-[50vw] bg-gray90 rounded-3xl overflow-hidden relative"
+                ref={nftViewerRef}
+            >
                 <div
                     className="absolute top-3 right-3 bg-gray70 rounded-full p-4 
                                 cursor-pointer hover:opacity-50 duration-300"
