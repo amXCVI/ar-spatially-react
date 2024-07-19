@@ -20,6 +20,7 @@ export default {
                 "american-silver": "#d1d1d1",
                 "american-silver20": "#d1d1d120",
                 "blue-accent": "#4BB2F2",
+                "blue-link": "#366EF9",
             },
             animation: {
                 "spin-slow": "spin 15s linear infinite",
@@ -32,7 +33,7 @@ export default {
             },
             backgroundImage: {
                 "map-header-bg": "linear-gradient(180deg,#000000 42.71%,rgba(0,0,0,0) 100%)",
-                "nft-viewer-desc-bg": "linear-gradient(0deg,#000000 -20%,rgba(0,0,0,0) 100%)"
+                "nft-viewer-desc-bg": "linear-gradient(0deg,#000000 -20%,rgba(0,0,0,0) 100%)",
             },
             lineHeight: {
                 12: "3rem",

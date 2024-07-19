@@ -1,7 +1,10 @@
 import Header from "@/features/header";
 import SectionFooter from "@/features/section-footer";
 
+import { routes } from "@/shared/config";
+
 import textItemPointIcon from "/images/landing/start-section/text-item-point.svg";
+import topRightArrow from "/images/landing/start-section/top-right-arrow.svg";
 
 import phone from "/images/landing/start-section/phone.webp";
 
@@ -41,7 +44,12 @@ const StartSection = () => {
                                 <div className="md:my-1.5">
                                     <span className="bold-20 text-gray90">AR CONTENT </span>TIED TO REAL LOCATION
                                 </div>
-                                <span className="md:my-1.5">ON THE GLOBAL MAP.</span>
+                                <span className="md:my-1.5 flex gap-2">
+                                    ON THE GLOBAL
+                                    <a href={routes.map} className="text-blue-link flex gap-2">
+                                        MAP. <img src={topRightArrow} />
+                                    </a>
+                                </span>
                             </div>
                         </div>
 
@@ -51,8 +59,13 @@ const StartSection = () => {
                                 <div className="medium-20 md:my-1.5">
                                     <span className="bold-20 text-gray90">AR-NFT</span> IS A SPATIAL GEOLOCATION TOKEN
                                 </div>
-                                <span className="medium-20 md:my-1.5">
-                                    THAT PROVIDE RIGHTS FOR<span className="bold-20 text-gray90"> AR CONTENT.</span>
+                                <span className="medium-20 md:my-1.5 flex gap-2">
+                                    THAT PROVIDE RIGHTS FOR
+                                    <span className="bold-20 text-gray90">
+                                        <a href={routes.product} className="text-blue-link flex gap-2">
+                                            AR CONTENT. <img src={topRightArrow} />
+                                        </a>
+                                    </span>
                                 </span>
                             </div>
                         </div>
