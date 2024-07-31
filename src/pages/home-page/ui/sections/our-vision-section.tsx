@@ -1,3 +1,5 @@
+import Spline from "@splinetool/react-spline";
+
 import { DefaultButton } from "@/shared/ui/buttons";
 import { TextP, Title } from "@/shared/ui/text-components";
 
@@ -56,7 +58,11 @@ const OurVisionSection = () => {
 
                 <div className="col-span-1 md:col-span-3 flex flex-col items-center w-full">
                     <div className="relative flex max-w-[50vw] lg:max-w-xl">
-                        <img src={bulb} className="object-contain h-full max-h-[80dvh] lg:max-h-[50dvh]" />
+                        <Spline
+                            scene="https://prod.spline.design/E4hR0-EIBU2Zxshz/scene.splinecode"
+                            className="object-contain h-full max-h-[80dvh] lg:max-h-[50dvh]"
+                        />
+                        {/* <img src={bulb} className="object-contain h-full max-h-[80dvh] lg:max-h-[50dvh]" /> */}
                         {/* <div className="absolute top-0 right-0 bottom-0 left-0 flex justify-center items-center">
                             <img src={logo} className="" />
                         </div> */}
