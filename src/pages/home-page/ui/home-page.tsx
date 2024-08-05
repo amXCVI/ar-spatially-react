@@ -1,6 +1,7 @@
 import { SectionLayout } from "@/shared/ui/layouts";
 import { Socials } from "@/shared/ui/socials";
 
+import { ContactSection } from "./sections/contact-section";
 import { GetStartedSection } from "./sections/get-started-section";
 import { OurVisionSection } from "./sections/our-vision-section";
 import { StartSection } from "./sections/start-section";
@@ -11,6 +12,7 @@ const HomePage = () => {
             <StartSection />
             <OurVisionSection />
             <GetStartedSection />
+            <ContactSection />
             <footer className="container mx-auto flex flex-col-reverse md:flex-row justify-between gap-4 mt-20 lg:mt-0 w-full">
                 <div className="mt-auto text-gray70">
                     <div>
