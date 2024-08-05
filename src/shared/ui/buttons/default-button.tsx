@@ -20,6 +20,7 @@ export const DefaultButton: FC<PropsWithChildren<PropsButton>> = ({
     rounded-full
     backdrop-blur
     border border-blue-accent
+    button-font
     ${className ?? ""}
     duration-300
     hover:invert`;

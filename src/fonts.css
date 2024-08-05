@@ -189,3 +189,11 @@
     font-size: 5.5rem;
     line-height: 7.5rem;
 }
+
+.button-font {
+    font-family: "onest-medium";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.875rem;
+    line-height: 1.125rem;
+}
