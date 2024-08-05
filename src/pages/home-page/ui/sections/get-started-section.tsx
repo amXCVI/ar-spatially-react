@@ -22,7 +22,7 @@ const GetStartedSection = () => {
                 <div className="col-span-12 bg-light-bg px-4 py-10 md:p-10">
                     <div className="flex flex-col-reverse xl:flex-row gap-6 xl:gap-4 mx-auto max-w-7xl">
                         <a href={routes.product} className="xl:hidden mx-auto">
-                            <DefaultButton className="bg-white text-gray90">Product</DefaultButton>
+                            <DefaultButton className="text-gray90 bg-none">Product</DefaultButton>
                         </a>
 
                         <div className="flex gap-4 mx-auto xl:hidden">
@@ -36,38 +36,39 @@ const GetStartedSection = () => {
                             />
                         </div>
 
-                        <img src={phone1} className="object-contain max-h-[50vh] lg:max-h-[40vh] hidden xl:block" />
                         <img src={phone2} className="object-contain max-h-[50vh] lg:max-h-[40vh] hidden xl:block" />
+                        <img src={phone1} className="object-contain max-h-[50vh] lg:max-h-[40vh] hidden xl:block" />
 
                         <div className="flex flex-col justify-between gap-4 ml-auto">
                             <div>
-                                <Title title="For Developers" />
+                                <Title title="Our Product" />
                                 <TextP className="mt-4">
-                                    We create a playground that allows existing and new applications to jointly use IT
-                                    and blockchain solutions.
+                                    Our platform serves four key audiences: developers, businesses, artists, and users.
+                                    Each group finds personalised tools for development and creation. Developers can use
+                                    our Playground to create AR apps and promote them within the AR Spatially ecosystem.
+                                    Businesses leverage AR to attract nearby consumers and inform them about promotions
+                                    and discounts through AR-driven advertising events. AR artists access tools to
+                                    create 3D objects, showcase their work, create and sell AR-NFTs, receive
+                                    commissions, and connect with peers, brands, and collectors. Users enjoy a
+                                    personalised AR space, enabling the search for nearby objects, goods, and services.
                                 </TextP>
                             </div>
 
                             <div>
-                                <Title title="For Business" />
+                                <Title title="AR NFT" />
                                 <TextP className="mt-4">
-                                    We create a new way of communication with customers in the visibility zone. The
-                                    ability to create AR advertising and digital rights for it.
+                                    A unique NFT format for AR objects enables the creation and exchange of digital
+                                    rights for advertising, objects, facts, and achievements in the AR space, with their
+                                    spatial position and volume recorded on the blockchain.
                                 </TextP>
                             </div>
 
-                            <div>
-                                <Title title="AR Nft" />
-                                <TextP className="mt-4">
-                                    A special format of NFT for AR objects, allowing the creation and exchange of
-                                    digital rights for advertising, objects, facts, and achievements in the AR space,
-                                    with spatial position and volume of the object recorded on the blockchain.
-                                </TextP>
-                            </div>
-
-                            <div className="gap-2 md:gap-4 hidden xl:flex">
+                            <div className="gap-2 md:gap-5 hidden xl:flex">
                                 <a href={routes.product} className="">
-                                    <DefaultButton className="bg-white text-gray90">Product</DefaultButton>
+                                    <DefaultButton className="text-gray90 bg-none">Product</DefaultButton>
+                                </a>
+                                <a href={routes.arNFT} className="">
+                                    <DefaultButton className="text-gray90 bg-none">AR NFT</DefaultButton>
                                 </a>
                             </div>
                         </div>
@@ -78,45 +79,49 @@ const GetStartedSection = () => {
                     <div className="flex flex-col-reverse xl:flex-row gap-6 xl:gap-4 mx-auto max-w-7xl">
                         <div className="flex flex-col justify-between gap-4 mr-auto">
                             <div>
-                                <Title title="OUr Map" />
+                                <Title title="Our Map" />
                                 <TextP className="mt-4">
-                                    A coordinate system that integrates AR with the real world. Geolocation allows you
-                                    to link and discover AR objects in their actual location, map a route, and find them
-                                    in augmented reality, view the history of movements, and the description of the
-                                    object.
+                                    A coordinate system that integrates AR with the real world, allowing geolocation to
+                                    link and discover AR objects in their actual locations. It enables users to map
+                                    routes, find objects in augmented reality, view movement history, and access
+                                    detailed descriptions of each object.
                                 </TextP>
-                            </div>
-
-                            <div>
-                                <Title title="For Artists" />
-                                <TextP className="mt-4">
-                                    We create a space for creating, publishing, and selling AR objects, collaborating
-                                    with brands and businesses.
-                                </TextP>
-                            </div>
-
-                            <div>
-                                <Title title="For Users" />
-                                <TextP className="mt-4">
-                                    We create a personalized space for any AR tools, searching for objects, goods, and
-                                    services nearby.
-                                </TextP>
-                            </div>
-
-                            <div className="flex gap-2 md:gap-4 justify-center md:justify-end flex-wrap">
                                 <a href={routes.map}>
-                                    <DefaultButton className="bg-white text-gray90 h-full">Map</DefaultButton>
+                                    <DefaultButton className="bg-none text-gray90 mt-4">Map</DefaultButton>
                                 </a>
-                                <a href={import.meta.env.VITE_APP_NFTST_APPSTORE_URL}>
-                                    <DefaultButton className="bg-white">
-                                        <img src={appStoreButton} />
-                                    </DefaultButton>
-                                </a>
-                                <a href={import.meta.env.VITE_APP_NFTST_PLAYMARKET_URL}>
-                                    <DefaultButton className="bg-white">
-                                        <img src={playMarketButton} />
-                                    </DefaultButton>
-                                </a>
+                            </div>
+
+                            <div>
+                                <Title title="Our Playground" />
+                                <TextP className="mt-4">
+                                    You can now upload 3D objects to the map in your personal Playground. Later, you'll
+                                    be able to customise your AR Space and create your own solutions. Playground enables
+                                    developers to create new applications and seamlessly integrate them into the AR
+                                    Spatially ecosystem.
+                                </TextP>
+                                <div className="flex flex-col md:flex-row w-full justify-between gap-5">
+                                    <div className="flex gap-2 md:gap-5 mt-4">
+                                        <a href={""}>
+                                            <DefaultButton className="bg-none text-gray90">Playground</DefaultButton>
+                                        </a>
+                                        <a href={routes.undefined}>
+                                            <DefaultButton className="bg-none text-gray90">Pricing</DefaultButton>
+                                        </a>
+                                    </div>
+
+                                    <div className="flex gap-2 md:gap-5 mt-4">
+                                        <a href={import.meta.env.VITE_APP_NFTST_APPSTORE_URL}>
+                                            <DefaultButton className="bg-none text-gray90">
+                                                <img src={appStoreButton} />
+                                            </DefaultButton>
+                                        </a>
+                                        <a href={import.meta.env.VITE_APP_NFTST_PLAYMARKET_URL}>
+                                            <DefaultButton className="bg-none text-gray90">
+                                                <img src={playMarketButton} />
+                                            </DefaultButton>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 

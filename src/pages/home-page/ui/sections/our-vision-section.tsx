@@ -66,7 +66,7 @@ const OurVisionSection = () => {
                         text="We are creating a unique ecosystem that unites all applications, making it accessible for both users and businesses through our app. Our Playground ensures seamless integration, simplifying the process for everyone involved."
                     />
 
-                    <div className="flex gap-5 mx-auto">
+                    <div className="flex gap-2 md:gap-5 mx-auto">
                         <a href={import.meta.env.VITE_APP_NFTST_APPSTORE_URL}>
                             <DefaultButton className="bg-white">
                                 <img src={appStoreButton} />

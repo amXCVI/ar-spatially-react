@@ -91,6 +91,14 @@
     line-height: 1.813rem;
 }
 
+.manrope-bold-24 {
+    font-family: "Manrope";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: 2.063rem;
+}
+
 .manrope-regular-26 {
     font-family: "Manrope";
     font-style: normal;
