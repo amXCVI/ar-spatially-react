@@ -2,6 +2,9 @@
 export default {
     content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
     theme: {
+        fontFamily: {
+            manrope: ["manrope", "ui-sans-serif", "system-ui"],
+        },
         extend: {
             colors: {
                 white: "#ffffff",
@@ -34,6 +37,7 @@ export default {
             backgroundImage: {
                 "map-header-bg": "linear-gradient(180deg,#000000 42.71%,rgba(0,0,0,0) 100%)",
                 "nft-viewer-desc-bg": "linear-gradient(0deg,#000000 -20%,rgba(0,0,0,0) 100%)",
+                "start-section-text-gradient": "linear-gradient(99.41deg, #0071BD -12.47%, #00BDFF 110.44%)",
             },
             lineHeight: {
                 12: "3rem",

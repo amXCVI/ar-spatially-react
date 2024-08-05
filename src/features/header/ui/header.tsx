@@ -64,9 +64,9 @@ const Header = ({ white }: HeaderInterface) => {
                                 >
                                     <a
                                         href={item.href}
-                                        className={`font-medium text-[14px] uppercase duration-200 text-white hover:text-blue-accent`}
+                                        className={`font-medium font-manrope text-[14px] duration-200 text-white hover:text-blue-accent`}
                                     >
-                                        <b className={white ? "text-white" : "text-gray70"}>{item.title}</b>
+                                        <b className={white ? "text-white" : "text-gray90"}>{item.title}</b>
                                     </a>
                                 </div>
                             );

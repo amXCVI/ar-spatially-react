@@ -23,7 +23,7 @@ const AppRouter = () => {
 
                 { path: routes.product, element: <ProductPage /> },
 
-                { path: routes.blockchain, element: <BlockchainPage /> },
+                { path: routes.arNFT, element: <BlockchainPage /> },
 
                 { path: routes.undefined, element: <ErrorPage /> },
             ],

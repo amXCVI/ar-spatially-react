@@ -1,8 +1,5 @@
 import { Socials } from "@/shared/ui/socials";
 
-import crosses from "/images/landing/footer/crosses.svg";
-import disks from "/images/landing/footer/disks.svg";
-import dots from "/images/landing/footer/dots.svg";
 import footerStars from "/images/landing/footer/footer-stars.svg";
 import scrollDownIcon from "/images/landing/footer/scroll-down-to-explore.svg";
 
@@ -12,7 +9,6 @@ const SectionFooter = ({ allFooter = true }: { allFooter?: boolean }) => {
             {allFooter ? (
                 <div className="hidden xl:flex justify-between items-center w-full mb-4 -mt-20">
                     <img src={footerStars} className="-ml-2" />
-                    <img src={crosses} className="mr-4" />
                 </div>
             ) : (
                 <></>
@@ -24,12 +20,9 @@ const SectionFooter = ({ allFooter = true }: { allFooter?: boolean }) => {
                     Scroll down
                     <br />
                     to explore
-                    <img src={dots} className="ml-12" />
                 </div>
 
-                <div>
-                    <img src={disks} />
-                </div>
+                <div></div>
             </div>
 
             <Socials className="lg:mb-5 " itemClassName="fill-charleston-green" />

@@ -8,6 +8,13 @@
 }
 
 @font-face {
+    font-family: "sloth-semibold";
+    src:
+        local("sloth-bold"),
+        url("/fonts/sloth/Sloth-SemiBold.ttf") format("truetype");
+}
+
+@font-face {
     font-family: "sloth-regular";
     src:
         local("sloth-regular"),
@@ -44,7 +51,7 @@
 }
 
 .h1-90-600 {
-    font-family: "sloth-bold";
+    font-family: "sloth-semibold";
     font-style: normal;
     font-weight: 600;
     font-size: 5.625rem;
@@ -82,6 +89,14 @@
     font-weight: 700;
     font-size: 1.5rem;
     line-height: 1.813rem;
+}
+
+.manrope-regular-26 {
+    font-family: "Manrope";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.625rem;
+    line-height: 2.25rem;
 }
 
 .medium-20 {

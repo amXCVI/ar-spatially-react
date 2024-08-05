@@ -2,9 +2,9 @@ import Header from "@/features/header";
 import SectionFooter from "@/features/section-footer";
 
 import { routes } from "@/shared/config";
+import { DefaultButton } from "@/shared/ui/buttons";
 
 import textItemPointIcon from "/images/landing/start-section/text-item-point.svg";
-import topRightArrow from "/images/landing/start-section/top-right-arrow.svg";
 
 import phone from "/images/landing/start-section/phone.webp";
 
@@ -23,51 +23,52 @@ const StartSection = () => {
             <div className="container mx-auto flex flex-col items-center h-full xl:max-h-full xl:flex-row pb-10 lg:py-10 xl:py-0">
                 <div className="flex flex-col items-end w-full">
                     <div className="flex flex-wrap xl:flex-col items-center mx-auto lg:mt-10 xl:mt-0">
-                        <h1 className="h1-90-600 text-white mr-auto">OUR</h1>
-                        <h1 className="h1-90-600 text-white ml-12 xl:ml-24">Solution</h1>
+                        <h1 className="h1-90-600 bg-start-section-text-gradient bg-clip-text text-transparent mr-auto">
+                            OUR
+                        </h1>
+                        <h1 className="h1-90-600 bg-start-section-text-gradient bg-clip-text text-transparent ml-12 xl:ml-24">
+                            Solution
+                        </h1>
                     </div>
 
                     <div className="flex flex-col md:max-w-3xl lg:max-w-5xl w-full gap-4 items-start xl:gap-9 mt-6 mx-auto">
-                        <div className="flex justify-start items-start">
+                        <div className="flex justify-start items-start manrope-regular-26 text-gray70">
                             <img src={textItemPointIcon} className="hidden md:block mr-2" />
-                            <div className="flex flex-col medium-20 text-gray70">
+                            <div className="flex flex-col">
                                 <div className="md:my-1.5">
-                                    AGGREGATOR OF <span className="bold-20 text-gray90"> AR APPS</span>
+                                    Aggregator of <b className="text-gray90"> AR apps </b>
                                 </div>
-                                <span className="md:my-1.5">FOR REAL BUSINESSES AND USERS.</span>
+                                <span className="md:my-1.5">for real busenesses and users</span>
                             </div>
                         </div>
 
-                        <div className="flex justify-start items-start sm:mx-auto">
+                        <div className="flex justify-start items-start sm:mx-auto manrope-regular-26 text-gray70">
                             <img src={textItemPointIcon} className="hidden md:block mr-2" />
-                            <div className="flex flex-col medium-20 text-gray70">
+                            <div className="flex flex-col ">
                                 <div className="md:my-1.5">
-                                    <span className="bold-20 text-gray90">AR CONTENT </span>TIED TO REAL LOCATION
+                                    <b className="text-gray90">AR content </b>tied to location
+                                </div>
+                                <span className="md:my-1.5 flex gap-2">on thr global map</span>
+                            </div>
+                        </div>
+
+                        <div className="flex justify-start items-start sm:ml-auto manrope-regular-26 text-gray70">
+                            <img src={textItemPointIcon} className="hidden md:block mr-2" />
+                            <div className="flex flex-col ">
+                                <div className="md:my-1.5">
+                                    <b className="text-gray90">AR-NFT</b> is a spatial geolocation token
                                 </div>
                                 <span className="md:my-1.5 flex gap-2">
-                                    ON THE GLOBAL
-                                    <a href={routes.map} className="text-blue-link flex gap-2">
-                                        MAP. <img src={topRightArrow} />
-                                    </a>
+                                    that provide rights for
+                                    <span className="text-gray90">AR content</span>
                                 </span>
                             </div>
                         </div>
 
-                        <div className="flex justify-start items-start sm:ml-auto">
-                            <img src={textItemPointIcon} className="hidden md:block mr-2" />
-                            <div className="flex flex-col text-gray70">
-                                <div className="medium-20 md:my-1.5">
-                                    <span className="bold-20 text-gray90">AR-NFT</span> IS A SPATIAL GEOLOCATION TOKEN
-                                </div>
-                                <span className="medium-20 md:my-1.5 flex gap-2">
-                                    THAT PROVIDE RIGHTS FOR
-                                    <span className="bold-20 text-gray90">
-                                        <a href={routes.product} className="text-blue-link flex gap-2">
-                                            AR CONTENT. <img src={topRightArrow} />
-                                        </a>
-                                    </span>
-                                </span>
-                            </div>
+                        <div className="mx-auto">
+                            <a href={routes.arNFT}>
+                                <DefaultButton className="backdrop-blur bg-white text-gray90">AR</DefaultButton>
+                            </a>
                         </div>
                     </div>
                 </div>

@@ -2,7 +2,8 @@ const routes = {
     home: "/",
     map: "/map",
     product: "/product",
-    blockchain: "/blockchain",
+    arNFT: "/ar-nft",
+    event: "/event",
 
     undefined: "*",
 };
