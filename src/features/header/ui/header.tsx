@@ -62,11 +62,16 @@ const Header = ({ white }: HeaderInterface) => {
                                     className={`${item.desctopOnly ? "hidden" : "flex"} lg:flex items-center p-4 bg-white30 rounded-full lg:bg-[#ffffff00]`}
                                     key={item.id + "header-menu-item"}
                                 >
-                                    <a
-                                        href={item.href}
-                                        className={`font-medium font-manrope text-[14px] duration-200 text-white hover:text-blue-accent`}
-                                    >
-                                        <b className={white ? "text-white" : "text-gray90"}>{item.title}</b>
+                                    <a href={item.href} className={`font-medium font-manrope text-[14px]`}>
+                                        <b
+                                            className={
+                                                white
+                                                    ? "text-white hover:text-blue-accent duration-200"
+                                                    : "text-gray90 hover:text-blue-accent duration-200"
+                                            }
+                                        >
+                                            {item.title}
+                                        </b>
                                     </a>
                                 </div>
                             );
@@ -100,7 +105,7 @@ const MobileMenu = ({ white = false, show }: MobileMenuInterface) => {
             <div
                 className={`flex flex-col justify-center items-center gap-2 duration-500
                             cursor-pointer hover:bg-white50 w-20 h-20
-                            fixed bottom-4 right-4
+                            fixed ${"bottom-4 right-4 lg:top-6"}
                             border border-white30 bg-white30 rounded-full p-4 backdrop-blur`}
                 onClick={toggleMobileMenu}
             >
