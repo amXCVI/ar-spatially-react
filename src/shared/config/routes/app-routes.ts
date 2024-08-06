@@ -4,6 +4,7 @@ const routes = {
     product: "/product",
     arNFT: "/ar-nft",
     event: "/event",
+    playground: "/playground",
 
     undefined: "*",
 };

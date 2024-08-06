@@ -2,11 +2,14 @@ import { useOutsideClick } from "@ar-kit/shared/hooks";
 import { Fragment, useEffect, useState } from "react";
 
 import { menuLinks, routes } from "@/shared/config";
+import { DefaultButton } from "@/shared/ui/buttons";
 import { Socials } from "@/shared/ui/socials";
 
 // import BurgerIcon from "./burger-icon.svg?react";
 import CloseMenuIcon from "./close-menu-icon.svg?react";
 import MenuIcon from "./menu-icon.svg?react";
+import appStoreButton from "/images/landing/get-started-section/app-store-button.svg";
+import playMarketButton from "/images/landing/get-started-section/play-market-button.svg";
 import logo from "/images/landing/header/logo.svg";
 
 interface HeaderInterface {
@@ -132,20 +135,33 @@ const MobileMenu = ({ white = false, show }: MobileMenuInterface) => {
                 >
                     <div className="flex justify-between w-full p-10 cursor-pointer" onClick={toggleMobileMenu}>
                         <div className="w-4" />
-                        <b className="uppercase text-white">Menu</b>
+                        <b className="text-white">Menu</b>
                         <CloseMenuIcon />
                     </div>
                     <div className={`flex gap-6 flex-wrap justify-center my-10`}>
                         {menuLinks.map((item) => {
                             return item.desctopOnly ? (
                                 <a key={item.id} className="flex flex-col items-center w-1/4" href={item.href}>
-                                    <div className="w-10 h-12">{item.icon}</div>
+                                    <div className="flex justify-center items-center w-10 h-12">{item.icon}</div>
                                     <label className="medium-14 text-white">{item.title}</label>
                                 </a>
                             ) : (
                                 <Fragment key={item.id} />
                             );
                         })}
+                    </div>
+
+                    <div className="flex gap-2 md:gap-5">
+                        <a href={import.meta.env.VITE_APP_NFTST_APPSTORE_URL}>
+                            <DefaultButton className="bg-none text-white !py-3">
+                                <img src={appStoreButton} />
+                            </DefaultButton>
+                        </a>
+                        <a href={import.meta.env.VITE_APP_NFTST_PLAYMARKET_URL}>
+                            <DefaultButton className="bg-none text-white !py-3">
+                                <img src={playMarketButton} />
+                            </DefaultButton>
+                        </a>
                     </div>
 
                     <Socials className="my-10" itemClassName="fill-white" />
