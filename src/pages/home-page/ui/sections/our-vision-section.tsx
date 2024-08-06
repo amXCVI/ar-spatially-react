@@ -123,7 +123,7 @@ const OurVisionSection = () => {
 };
 
 const Model = () => {
-    const { scene } = useGLTF("/3d-objects/DadecaedrLight.glb");
+    const { scene } = useGLTF("/3d-objects/DodText.glb");
     useFrame(() => (scene.rotation.y += 0.002));
     return <primitive scale={0.95} rotate object={scene} />;
 };
