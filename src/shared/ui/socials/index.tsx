@@ -1,5 +1,6 @@
 import Discord from "./socials/discord.svg?react";
 import Instagram from "./socials/instagram.svg?react";
+import Medium from "./socials/medium.svg?react";
 // import Linkedin from "./socials/linkedin.svg?react";
 import Telegram from "./socials/telegram.svg?react";
 import TicToc from "./socials/tik-tok.svg?react";
@@ -41,6 +42,12 @@ const socials = [
         title: "X",
         link: "",
         id: "X",
+    },
+    {
+        icon: <Medium />,
+        title: "Medium",
+        link: "",
+        id: "Medium",
     },
 ];
 

@@ -25,7 +25,7 @@ const SectionFooter = ({ allFooter = true }: { allFooter?: boolean }) => {
                 <div></div>
             </div>
 
-            <Socials className="lg:mb-5 " itemClassName="fill-charleston-green" />
+            <Socials className="lg:mb-5 gap-8" itemClassName="fill-charleston-green" />
         </div>
     );
 };

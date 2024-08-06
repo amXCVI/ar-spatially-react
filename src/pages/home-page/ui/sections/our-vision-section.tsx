@@ -13,12 +13,18 @@ import bulb from "/images/landing/our-vision-section/bulb.webp";
 const OurVisionSection = () => {
     return (
         <div
+            // className="
+            //     xl:bg-[url(/images/landing/start-section/bg-image.svg)]
+            //     bg-cover bg-no-repeat bg-center rounded-[40px]
+            //     h-full xl:min-h-[calc(100dvh-2.5rem)]
+            //     flex flex-col justify-between
+            //     px-4 mx-auto container"
             className="
                 xl:bg-[url(/images/landing/start-section/bg-image.svg)]
-                bg-cover bg-no-repeat bg-center rounded-[40px]
-                h-full xl:min-h-[calc(100dvh-2.5rem)]
+                bg-cover bg-no-repeat bg-center
+                h-full xl:min-h-[100dvh]
                 flex flex-col justify-between
-                px-4 mx-auto container"
+                "
         >
             <div className="hidden xl:flex relative mx-auto justify-between items-end pt-5">
                 <div className="flex flex-col poppuns-80 leading-10 whitespace-nowrap">
