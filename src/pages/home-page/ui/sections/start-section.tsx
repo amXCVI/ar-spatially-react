@@ -77,7 +77,7 @@ const StartSection = () => {
 
                             <div className="mx-auto">
                                 <a href={routes.arNFT}>
-                                    <DefaultButton className="backdrop-blur bg-white text-gray90">AR</DefaultButton>
+                                    <DefaultButton className="backdrop-blur bg-none text-gray90">AR</DefaultButton>
                                 </a>
                             </div>
                         </div>

@@ -5,10 +5,10 @@ import { TextP, Title } from "@/shared/ui/text-components";
 import appStoreButton from "/images/landing/get-started-section/app-store-button.svg";
 import playMarketButton from "/images/landing/get-started-section/play-market-button.svg";
 
-import phone1 from "/images/blockchain/phone_22.webp";
 import phone2 from "/images/landing/get-started-section/phone_1.webp";
 import phoneForMapOne from "/images/landing/get-started-section/phone_2.webp";
 import phoneForMapTwo from "/images/landing/get-started-section/phone_3.webp";
+import phone1 from "/images/landing/get-started-section/phone_4.webp";
 
 const GetStartedSection = () => {
     return (
@@ -111,12 +111,12 @@ const GetStartedSection = () => {
 
                                     <div className="flex gap-2 md:gap-5 mt-4">
                                         <a href={import.meta.env.VITE_APP_NFTST_APPSTORE_URL}>
-                                            <DefaultButton className="bg-none text-gray90">
+                                            <DefaultButton className="bg-none text-gray90 !py-3">
                                                 <img src={appStoreButton} />
                                             </DefaultButton>
                                         </a>
                                         <a href={import.meta.env.VITE_APP_NFTST_PLAYMARKET_URL}>
-                                            <DefaultButton className="bg-none text-gray90">
+                                            <DefaultButton className="bg-none text-gray90 !py-3">
                                                 <img src={playMarketButton} />
                                             </DefaultButton>
                                         </a>
