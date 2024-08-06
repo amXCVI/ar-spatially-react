@@ -95,11 +95,11 @@ const OurVisionSection = () => {
                     </div>
 
                     <div className="col-span-1 md:col-span-3 flex flex-col items-center w-full h-full">
-                        <div className="relative flex w-full h-full max-w-[50vw] lg:max-w-xl">
+                        <div className="relative flex w-full h-full">
                             <Spline
                                 scene="https://prod.spline.design/oMmUby6YEqG3VTjS/scene.splinecode"
                                 // style={{ width: "150%", height: "160%" }}
-                                className="h-full max-h-[80dvh] lg:max-h-[50dvh]"
+                                className="h-full"
                                 // className="object-contain h-full max-h-[80dvh] lg:max-h-[50dvh]"
                             />
                             {/* <img src={bulb} className="object-contain h-full max-h-[80dvh] lg:max-h-[50dvh]" /> */}
