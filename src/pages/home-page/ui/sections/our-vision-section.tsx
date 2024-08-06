@@ -22,7 +22,7 @@ const OurVisionSection = () => {
             //     flex flex-col justify-between
             //     px-4 mx-auto container"
             className="
-                xl:bg-[url(/images/landing/start-section/bg-image.svg)]
+                xl:bg-[url(/images/landing/start-section/bg-image.png)]
                 bg-cover bg-no-repeat bg-center
                 h-full xl:min-h-[100dvh]
                 flex flex-col justify-between

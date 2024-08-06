@@ -16,13 +16,14 @@ const StartSection = () => {
             //     h-full min-h-[calc(100dvh-2.5rem)]
             //     flex flex-col justify-between
             //     mx-auto container"
-            className="bg-[url(/images/landing/start-section/bg-image.svg)]
+            className="bg-[url(/images/landing/start-section/bg-image.png)]
                 bg-cover bg-no-repeat bg-center
                 h-full min-h-[100dvh]
+                p-4 flex flex-col justify-between
                 "
         >
             <div
-                className="bg-[url(/images/landing/start-section/ellipsis.svg)] 
+                className="bg-[url(/images/landing/start-section/bg-lines.svg)] 
                             bg-cover bg-no-repeat bg-center
                             h-full w-full min-h-[inherit]
                             p-4 flex flex-col justify-between"
