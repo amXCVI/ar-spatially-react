@@ -9,7 +9,7 @@ import { StartSection } from "./sections/start-section";
 
 const HomePage = () => {
     return (
-        <SectionLayout className="overflow-x-hidden flex flex-col gap-6 py-5">
+        <SectionLayout className="overflow-x-hidden flex flex-col gap-6 pb-5">
             <StartSection />
             <OurVisionSection />
             <GetStartedSection />
