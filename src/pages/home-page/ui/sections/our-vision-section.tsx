@@ -1,4 +1,8 @@
 // import Spline from "@splinetool/react-spline";
+import { OrbitControls, useGLTF } from "@react-three/drei";
+import { Suspense } from "react";
+import { Canvas, useFrame } from "react-three-fiber";
+
 import { DefaultButton } from "@/shared/ui/buttons";
 
 import appStoreButton from "/images/landing/get-started-section/app-store-button.svg";
@@ -7,8 +11,6 @@ import headerCrosses from "/images/landing/our-vision-section/header-crosses.svg
 import headerDots from "/images/landing/our-vision-section/header-points.svg";
 import textParagraphPoint from "/images/landing/our-vision-section/paragraph-point.svg";
 import textItemPointIcon from "/images/landing/start-section/text-item-point.svg";
-
-import bulb from "/images/landing/our-vision-section/bulb.webp";
 
 const OurVisionSection = () => {
     return (
@@ -92,18 +94,25 @@ const OurVisionSection = () => {
                         </div>
                     </div>
 
-                    <div className="col-span-1 md:col-span-3 flex flex-col items-center w-full">
-                        <div className="relative flex max-w-[50vw] lg:max-w-xl">
+                    <div className="col-span-1 md:col-span-3 flex flex-col items-center w-full h-full">
+                        <div className="relative flex w-full h-full max-w-[50vw] lg:max-w-xl">
                             {/* <Spline
                             scene="https://prod.spline.design/iNtH9gSjzq69JwJ5/scene.splinecode"
                             // style={{ width: "150%", height: "160%" }}
                             className="h-full max-h-[80dvh] lg:max-h-[50dvh]"
                             // className="object-contain h-full max-h-[80dvh] lg:max-h-[50dvh]"
                         /> */}
-                            <img src={bulb} className="object-contain h-full max-h-[80dvh] lg:max-h-[50dvh]" />
+                            {/* <img src={bulb} className="object-contain h-full max-h-[80dvh] lg:max-h-[50dvh]" /> */}
                             {/* <div className="absolute top-0 right-0 bottom-0 left-0 flex justify-center items-center">
                             <img src={logo} className="" />
                         </div> */}
+                            <Canvas>
+                                <ambientLight intensity={1} />
+                                <Suspense fallback={null}>
+                                    <Model />
+                                </Suspense>
+                                <OrbitControls />
+                            </Canvas>
                         </div>
                     </div>
                 </div>
@@ -111,6 +120,12 @@ const OurVisionSection = () => {
             </div>
         </div>
     );
+};
+
+const Model = () => {
+    const { scene } = useGLTF("/3d-objects/DadecaedrLight.glb");
+    useFrame(() => (scene.rotation.y += 0.002));
+    return <primitive scale={0.95} rotate object={scene} />;
 };
 
 const Paragraph = ({ title, text, className }: { title: string; text: string; className?: string }) => {

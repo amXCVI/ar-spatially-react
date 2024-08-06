@@ -11,6 +11,7 @@
         "preview": "vite preview --port 8080"
     },
     "dependencies": {
+        "@react-three/drei": "^9.109.2",
         "@splinetool/react-spline": "^4.0.0",
         "@splinetool/runtime": "^1.9.3",
         "axios": "^1.7.2",
@@ -19,6 +20,7 @@
         "react-dom": "^18.2.0",
         "react-modal-sheet": "^3.1.0",
         "react-router-dom": "^6.23.1",
+        "react-three-fiber": "^6.0.13",
         "styled-components": "^6.1.11",
         "use-supercluster": "^1.2.0"
     },
