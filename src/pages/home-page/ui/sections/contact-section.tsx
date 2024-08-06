@@ -1,7 +1,7 @@
+import Spline from "@splinetool/react-spline";
+
 import { DefaultButton } from "@/shared/ui/buttons";
 import { Title } from "@/shared/ui/text-components";
-
-import icon from "/images/landing/contact-section/icon.png";
 
 const ContactSection = () => {
     return (
@@ -34,7 +34,16 @@ const ContactSection = () => {
                             className="col-span-8 row-span-2 row-start-3 h-full"
                             textarea
                         />
-                        <img src={icon} className="col-span-3 row-span-5 col-start-9 row-start-1 hidden md:block" />
+                        <div className="col-span-3 row-span-5 col-start-9 row-start-1 hidden md:block">
+                            <Spline
+                                scene="https://prod.spline.design/K1GucrIZAgAvvtHu/scene.splinecode"
+                                className="h-full lg:max-h-[40dvh]"
+                                // style={{ width: "150%", height: "160%" }}
+                                // className="h-full max-h-[80dvh] lg:max-h-[50dvh]"
+                                // className="object-contain h-full max-h-[80dvh] lg:max-h-[50dvh]"
+                            />
+                        </div>
+                        {/* <img src={icon} className="col-span-3 row-span-5 col-start-9 row-start-1 hidden md:block" /> */}
                         <div className="col-span-8 row-start-5 flex justify-end">
                             <DefaultButton className="text-gray90 h-min">Send info</DefaultButton>
                         </div>
@@ -81,3 +90,5 @@ const TextField = ({
 };
 
 export { ContactSection };
+
+// https://prod.spline.design/K1GucrIZAgAvvtHu/scene.splinecode
