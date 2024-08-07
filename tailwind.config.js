@@ -4,6 +4,7 @@ export default {
     theme: {
         fontFamily: {
             manrope: ["manrope", "ui-sans-serif", "system-ui"],
+            inter: ["inter", "manrope", "ui-sans-serif", "system-ui"],
         },
         extend: {
             colors: {

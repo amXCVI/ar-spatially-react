@@ -7,10 +7,10 @@ import { Socials } from "@/shared/ui/socials";
 
 // import BurgerIcon from "./burger-icon.svg?react";
 import CloseMenuIcon from "./close-menu-icon.svg?react";
+import Logo from "./logo.svg?react";
 import MenuIcon from "./menu-icon.svg?react";
 import appStoreButton from "/images/landing/get-started-section/app-store-button.svg";
 import playMarketButton from "/images/landing/get-started-section/play-market-button.svg";
-import logo from "/images/landing/header/logo.svg";
 
 interface HeaderInterface {
     white?: boolean;
@@ -55,7 +55,7 @@ const Header = ({ white }: HeaderInterface) => {
                     //             ${show ? "px-10 w-full" : "w-min ml-auto"}`}
                 >
                     <a href={routes.home} className={`hidden ${show && "lg:block"}`}>
-                        <img src={logo} />
+                        <Logo style={{ fill: white ? "white" : "#1F2020" }} />
                     </a>
 
                     <div className={`hidden ${show && "lg:flex"} gap-5 ml-auto`}>

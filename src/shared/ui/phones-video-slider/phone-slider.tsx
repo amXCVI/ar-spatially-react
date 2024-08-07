@@ -46,12 +46,12 @@ const PhoneSlider = ({ bgElement, videos, className }: PhoneSliderProps) => {
 
     return (
         <div className={className}>
-            <div className="relative flex justify-center items-center h-full">
+            <div className="relative flex justify-center items-center ">
                 {bgElement}
 
                 <img
                     src="/images/product/phone.svg"
-                    className={`z-10 max-h-[inherit] w-fit`}
+                    className={`z-10 w-[80%] max-w-[40vh]`}
                     id="phone-border-img"
                     ref={phoneRef}
                 />
