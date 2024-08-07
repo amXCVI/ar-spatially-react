@@ -25,6 +25,8 @@ const AppRouter = () => {
 
                 { path: routes.arNFT, element: <BlockchainPage /> },
 
+                { path: routes.playground, element: <BlockchainPage /> },
+
                 { path: routes.undefined, element: <ErrorPage /> },
             ],
         },

@@ -3,9 +3,8 @@ import Header from "@/features/header";
 
 import { DefaultButton } from "@/shared/ui/buttons";
 import { DarkLayout } from "@/shared/ui/layouts";
-import { Subtitle, TextP, Title } from "@/shared/ui/text-components";
+import { SectionTitle, Subtitle, TextP, Title } from "@/shared/ui/text-components";
 
-import dgesIcon from "/images/blockchain/dges-icon.svg";
 import appStoreButton from "/images/landing/get-started-section/app-store-button.svg";
 import playMarketButton from "/images/landing/get-started-section/play-market-button.svg";
 
@@ -27,32 +26,31 @@ const BlockchainPage = () => {
             "
             >
                 <div
-                    className="col-span-12 lg:col-span-7 xl:col-span-5
+                    className="col-span-12 lg:col-span-7 xl:col-span-4
                              bg-smoky-black-bg flex flex-col px-4 py-6 md:p-10"
                 >
-                    <div>
-                        <img src={dgesIcon} />
-                    </div>
-                    <h2 className="medium-20 text-white mt-6">Decentralized Geo Ecosystem</h2>
-                    <TextP className="text-spanish-gray mt-6">
-                        We create technology that works seamlessly across different types of businesses, bringing
-                        various solutions to life. We also gather augmented reality tools and are open to partnering
-                        with others through our platform. Feel free to get in touch with us!
+                    <SectionTitle title="PLAYGROUND" className="text-white" />
+                    <h2 className="manrope-medium-22 text-white mt-6"> Upload 3D objects to the map now!</h2>
+                    <TextP className="text-spanish-gray mt-4">
+                        We aim to provide a comprehensive toolkit that enables existing and new applications to connect
+                        and utilize open features, including blockchain functions, within the ecosystem. Our Playground
+                        allows developers to create and seamlessly integrate new applications into the AR Spatially
+                        ecosystem, offering IT and blockchain solutions to simplify development.
                     </TextP>
-                    <a className="m-auto" href={import.meta.env.VITE_APP_DGES_URL}>
+                    <a className="m-auto" href={""}>
                         <DefaultButton className="mt-6">
-                            <span className="regular-14 text-white">DGES</span>
+                            <span className="text-white">Coming soon</span>
                         </DefaultButton>
                     </a>
 
-                    <NftstText className="hidden lg:flex xl:hidden" />
+                    <NftstText className="hidden lg:flex xl:hidden mt-6" />
                 </div>
 
                 <div
-                    className="col-span-12 lg:col-span-5 xl:col-span-7 
+                    className="col-span-12 lg:col-span-5 xl:col-span-8 
                               bg-smoky-black-bg flex flex-col md:flex-row gap-6 px-4 py-6 md:p-10"
                 >
-                    <img src={nftStPhone} className="object-contain h-full max-h-[50vh] lg:max-h-[40vh] mx-auto" />
+                    <img src={nftStPhone} className="object-contain h-full max-h-[50vh] lg:max-h-[40vh] m-auto" />
 
                     <NftstText className="flex lg:hidden xl:flex" />
                 </div>
@@ -73,20 +71,22 @@ const BlockchainPage = () => {
                         <img src={phone1} className="object-contain max-h-[50vh] lg:max-h-[40vh] hidden md:block" />
                         <img src={phone2} className="object-contain max-h-[50vh] lg:max-h-[40vh] hidden md:block" />
 
-                        <div className="flex flex-col justify-between">
-                            <Title title="Blockchain" className="text-white" />
-                            <Subtitle subtitle="We are more than just AR technologies" className="text-white mt-6" />
-                            <TextP className="text-spanish-gray mt-6">
-                                We utilize geospatial NFT (Non-Fungible Token) technology. Geospatial NFTs enable the
-                                establishment of location-based copyrights on AR objects and their monetization.
-                                Geospatial NFTs are a part of the Decentralized Geo Ecosystem (DGES). DGES is a
-                                collection of smart contracts that provide the opportunity to own, gift, buy, and sell
-                                tokens on any blockchain system.
+                        <div className="flex flex-col">
+                            <SectionTitle title="Use cases" className="text-white" />
+                            <h2 className="manrope-medium-22 text-white mt-6">
+                                Use our solutions to create and extend the reality with us{" "}
+                            </h2>
+                            <TextP className="text-spanish-gray mt-4">
+                                The AR Spatially ecosystem can support an unlimited number of diverse applications. We
+                                welcome developers to join us in leveraging shared experiences for new creations, with a
+                                Playground that helps bring ideas to life. We also plan to grow our community by
+                                offering grants to talented developers.
                             </TextP>
-
-                            <div className="flex justify-center md:justify-start mt-4 ">
-                                <DefaultButton className="text-white">Blockchain Solution</DefaultButton>
-                            </div>
+                            <TextP className="text-spanish-gray mt-4">
+                                Mood Map is the next application ready to be integrated into the AR Spatially ecosystem.
+                                It will display users' moods in specific locations within the AR space, based on their
+                                feedback.
+                            </TextP>
                         </div>
                     </div>
                 </div>
@@ -100,14 +100,15 @@ const BlockchainPage = () => {
 const NftstText = ({ className }: { className?: string }) => {
     return (
         <div className={`flex flex-col ${className ?? ""}`}>
-            <Title title="nft street" className="text-white" />
-            <Subtitle subtitle="What is this project about?" className="text-white mt-6" />
-            <TextP className="text-spanish-gray mt-6">
-                NFT Street is a platform driven by a deep passion for street art and the vibrant communities it
-                embodies. One of the groundbreaking features is the establishment of digital ownership for street art by
-                assigning each piece a unique NFT linked to its physical location - GeoNFT. Through NFT Street, artists
-                are encouraged to explore new avenues of expression, while collectors gain access to a wide range of
-                artwork and engagement opportunities.
+            <SectionTitle title="nft street" className="text-white" />
+            <h2 className="manrope-medium-22 text-white mt-6">What is this project about?</h2>
+            <TextP className="text-spanish-gray mt-4">
+                NFT Street is driven by a passion for street art and its vibrant communities. One key feature is
+                establishing digital rights to street art through geolocation NFTs. As the first standalone application
+                to join the AR Spatially ecosystem, NFT Street enables collaboration between AR and street artists,
+                showcasing joint projects and destroyed works in AR space. This collaboration allows artists to explore
+                new forms of self-expression and provides collectors access to a diverse range of artworks and
+                interactive opportunities.
             </TextP>
             <div className="flex gap-10 mt-10 justify-center md:justify-start">
                 <a href={import.meta.env.VITE_APP_NFTST_APPSTORE_URL}>
