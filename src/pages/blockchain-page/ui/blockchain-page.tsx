@@ -3,7 +3,7 @@ import Header from "@/features/header";
 
 import { DefaultButton } from "@/shared/ui/buttons";
 import { DarkLayout } from "@/shared/ui/layouts";
-import { SectionTitle, Subtitle, TextP, Title } from "@/shared/ui/text-components";
+import { SectionTitle, TextP } from "@/shared/ui/text-components";
 
 import appStoreButton from "/images/landing/get-started-section/app-store-button.svg";
 import playMarketButton from "/images/landing/get-started-section/play-market-button.svg";
