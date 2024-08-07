@@ -10,6 +10,7 @@ const ErrorPage = React.lazy(() => import("@/pages/error-page"));
 const HomePage = React.lazy(() => import("@/pages/home-page"));
 const MapPage = React.lazy(() => import("@/pages/map-page"));
 const ProductPage = React.lazy(() => import("@/pages/product-page"));
+const ArNftPage = React.lazy(() => import("@/pages/ar-nft-page"));
 
 const AppRouter = () => {
     const routers = createBrowserRouter([
@@ -23,7 +24,7 @@ const AppRouter = () => {
 
                 { path: routes.product, element: <ProductPage /> },
 
-                { path: routes.arNFT, element: <BlockchainPage /> },
+                { path: routes.arNFT, element: <ArNftPage /> },
 
                 { path: routes.playground, element: <BlockchainPage /> },
 
