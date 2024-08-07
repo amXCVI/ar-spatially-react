@@ -55,7 +55,7 @@ const ProductPage = () => {
                                 <img src={bulb} />
                             </div>
                         }
-                        videos={["/video/cat1_web.webm", "/video/cat_web.webm", "/video/car_web.webm"]}
+                        videos={["/video/cat1_web.webm", "/video/cat_web.webm", "/video/tuning.webm"]}
                         className="mx-auto h-full"
                         // height="60vh"
                     />
