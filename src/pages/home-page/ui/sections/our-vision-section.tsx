@@ -30,12 +30,15 @@ const OurVisionSection = () => {
                 p-4
                 "
         >
-            <div className="hidden xl:flex relative mx-auto justify-between items-end -mt-24">
-                <div className="flex flex-col poppuns-80 leading-10 whitespace-nowrap">
-                    <img src={headerDots} className="w-8 ml-8 mb-8" />
-                    <span className="text-white60 blur-[3.5px]">At the forefront of transforming</span>
-                    <span className="text-white90 blur-[1px] mx-auto">human interaction</span>
-                    <span className="text-white ml-16">with augmented reality </span>
+            <div className="hidden xl:flex relative mx-auto justify-between items-end">
+                <div className="flex gap-8 animate-running-line poppuns-80 leading-10 whitespace-nowrap">
+                    {[1, 2].map((item) => {
+                        return (
+                            <span key={item + "key"} className="text-white60 blur-[2.5px]">
+                                At the forefront of transforming human interaction with augmented reality
+                            </span>
+                        );
+                    })}
                 </div>
 
                 <img src={headerCrosses} className="absolute right-0 -bottom-20" />
