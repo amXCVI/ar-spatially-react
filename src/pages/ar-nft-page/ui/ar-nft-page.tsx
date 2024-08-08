@@ -24,9 +24,10 @@ const ArNftPage = () => {
             <div
                 className="container mx-auto
                             grid grid-cols-12 gap-1
+                            rounded-[40px] overflow-hidden
             "
             >
-                <div className="col-span-12 bg-smoky-black-bg px-4 py-6 md:p-10">
+                <div className="col-span-12 bg-smoky-black-bg20 px-4 py-6 md:p-10">
                     <div className="flex flex-col lg:flex-row gap-10">
                         <div className="flex gap-4 mx-auto lg:hidden">
                             <img
@@ -68,7 +69,7 @@ const ArNftPage = () => {
 
                 <div
                     className="col-span-12 lg:col-span-7 xl:col-span-4
-                             bg-smoky-black-bg flex flex-col px-4 py-6 md:p-10"
+                             bg-smoky-black-bg20 flex flex-col px-4 py-6 md:p-10"
                 >
                     <SectionTitle title="AR Demo" className="text-white" />
                     <h2 className="manrope-medium-22 text-white mt-6">Test your first AR object now </h2>
@@ -86,7 +87,7 @@ const ArNftPage = () => {
 
                 <div
                     className="col-span-12 lg:col-span-5 xl:col-span-8 
-                              bg-smoky-black-bg flex flex-col md:flex-row gap-6 px-4 py-6 md:p-10"
+                              bg-smoky-black-bg20 flex flex-col md:flex-row gap-6 px-4 py-6 md:p-10"
                 >
                     <img src={nftStPhone} className="object-contain h-full max-h-[50vh] lg:max-h-[40vh] m-auto" />
 

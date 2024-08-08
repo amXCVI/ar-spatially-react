@@ -16,6 +16,7 @@ export default {
                 "gefault-bg": "#e2e2e2",
                 "light-bg": "#EDEDED",
                 "smoky-black-bg": "#0d0d0d",
+                "smoky-black-bg20": "#0d0d0d20",
                 "dark-bg": "#0F1010",
                 dark30: "#0000004D",
                 dark70: "#191919",

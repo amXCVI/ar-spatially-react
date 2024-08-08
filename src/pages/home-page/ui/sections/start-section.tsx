@@ -17,8 +17,8 @@ const StartSection = () => {
             //     flex flex-col justify-between
             //     mx-auto container"
             className="lg:bg-[url(/images/landing/start-section/bg-image.png)]
-                bg-cover bg-no-repeat bg-center
-                h-full min-h-[100dvh]
+                bg-[length:auto_100vh] bg-no-repeat bg-bottom
+                h-full min-h-[calc(100dvh-2rem)]
                 p-4 flex flex-col justify-between
                 "
         >

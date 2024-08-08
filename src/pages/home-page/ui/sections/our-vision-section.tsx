@@ -22,7 +22,8 @@ const OurVisionSection = () => {
             //     px-4 mx-auto container"
             className="
                 xl:bg-[url(/images/landing/our-vision-section/bg-image.png)]
-                bg-cover bg-no-repeat bg-center
+                bg-[length:auto_100vh]
+                bg-no-repeat bg-top
                 h-full xl:min-h-[80dvh]
                 flex flex-col justify-between
                 -mt-6
@@ -90,12 +91,14 @@ const OurVisionSection = () => {
                     </div>
                 </div>
 
-                <div className="col-span-1 md:col-span-3 flex flex-col items-center w-full h-full">
-                    <div className="relative flex justify-center w-full h-full">
+                <div className="col-span-1 md:col-span-3 flex flex-col items-center w-full h-min">
+                    <div
+                        className="relative flex justify-center w-full h-min
+                                    scale-75 md:scale-90 lg:scale-100 xl:scale-110"
+                    >
                         <Spline
                             scene="https://prod.spline.design/oMmUby6YEqG3VTjS/scene.splinecode"
-                            // style={{ width: "150%", height: "160%" }}
-                            className="!h-[600px] !w-[750px]"
+                            className="!h-[400px] !xl:h-[600px] !w-[600px]"
                             // className="object-contain h-full max-h-[80dvh] lg:max-h-[50dvh]"
                         />
                         {/* <img src={bulb} className="object-contain h-full max-h-[80dvh] lg:max-h-[50dvh]" /> */}
