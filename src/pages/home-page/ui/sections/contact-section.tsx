@@ -7,7 +7,7 @@ const ContactSection = () => {
     return (
         <div className="flex flex-col justify-between">
             <div
-                className="container mx-auto rounded-[40px]
+                className="container mx-auto max-w-7xl xl:max-w-screen-2xl rounded-[40px]
                            overflow-hidden
                           "
             >
@@ -69,7 +69,7 @@ const TextField = ({
 }) => {
     return (
         <div className={`flex flex-col gap-1 ${className}`}>
-            <label htmlFor={id} className="manrope-regular-12 text-black ml-8">
+            <label htmlFor={id} className="button-font text-gray90 ml-8">
                 {label}
             </label>
             {textarea ? (

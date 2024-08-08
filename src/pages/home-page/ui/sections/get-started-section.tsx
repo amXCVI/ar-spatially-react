@@ -14,13 +14,13 @@ const GetStartedSection = () => {
     return (
         <div className="flex flex-col justify-between">
             <div
-                className="container mx-auto rounded-[40px]
+                className="container mx-auto max-w-7xl xl:max-w-screen-2xl rounded-[40px]
                            overflow-hidden
                            grid grid-cols-12 gap-1
                           "
             >
                 <div className="col-span-12 bg-light-bg px-4 py-10 md:p-10">
-                    <div className="flex flex-col-reverse xl:flex-row gap-6 xl:gap-4 mx-auto max-w-7xl">
+                    <div className="flex flex-col-reverse xl:flex-row gap-6 xl:gap-4">
                         <a href={routes.product} className="xl:hidden mx-auto">
                             <DefaultButton className="text-gray90 bg-none">Product</DefaultButton>
                         </a>
@@ -76,7 +76,7 @@ const GetStartedSection = () => {
                 </div>
 
                 <div className="col-span-12 bg-light-bg px-4 py-10 md:p-10">
-                    <div className="flex flex-col-reverse xl:flex-row gap-6 xl:gap-4 mx-auto max-w-7xl">
+                    <div className="flex flex-col-reverse xl:flex-row gap-6 xl:gap-4">
                         <div className="flex flex-col justify-between gap-4 mr-auto">
                             <div>
                                 <Title title="Our Map" />
