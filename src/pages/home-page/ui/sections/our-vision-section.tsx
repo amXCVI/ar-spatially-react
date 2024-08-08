@@ -99,7 +99,7 @@ const OurVisionSection = () => {
                             <Spline
                                 scene="https://prod.spline.design/oMmUby6YEqG3VTjS/scene.splinecode"
                                 // style={{ width: "150%", height: "160%" }}
-                                className="h-full"
+                                className="!h-[600px] !w-[750px]"
                                 // className="object-contain h-full max-h-[80dvh] lg:max-h-[50dvh]"
                             />
                             {/* <img src={bulb} className="object-contain h-full max-h-[80dvh] lg:max-h-[50dvh]" /> */}
