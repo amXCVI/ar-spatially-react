@@ -18,7 +18,7 @@ const ArNftPage = () => {
         <DarkLayout
             className="flex flex-col justify-between 
                bg-[url(/images/product/bg.svg)] bg-cover bg-no-repeat bg-center
-               pt-10 lg:pt-40"
+               pt-20 lg:pt-40"
         >
             <Header white />
             <div
@@ -27,8 +27,8 @@ const ArNftPage = () => {
             "
             >
                 <div className="col-span-12 bg-smoky-black-bg px-4 py-6 md:p-10">
-                    <div className="flex flex-col md:flex-row gap-10">
-                        <div className="flex gap-4 mx-auto md:hidden">
+                    <div className="flex flex-col lg:flex-row gap-10">
+                        <div className="flex gap-4 mx-auto lg:hidden">
                             <img
                                 src={phone1}
                                 className="object-contain h-full max-h-[50vh] lg:max-h-[40vh] max-w-[40vw]"
@@ -39,10 +39,10 @@ const ArNftPage = () => {
                             />
                         </div>
 
-                        <img src={phone1} className="object-contain max-h-[50vh] lg:max-h-[40vh] hidden md:block" />
-                        <img src={phone2} className="object-contain max-h-[50vh] lg:max-h-[40vh] hidden md:block" />
+                        <img src={phone1} className="object-contain max-h-[50vh] lg:max-h-[40vh] hidden lg:block" />
+                        <img src={phone2} className="object-contain max-h-[50vh] lg:max-h-[40vh] hidden lg:block" />
 
-                        <div className="flex flex-col justify-end">
+                        <div className="flex flex-col">
                             <SectionTitle title="AR NFT" className="text-white" />
                             <h2 className="manrope-medium-22 text-white mt-6">We are more than just AR technologies</h2>
                             <TextP className="text-spanish-gray mt-4">

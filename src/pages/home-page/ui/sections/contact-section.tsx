@@ -13,7 +13,7 @@ const ContactSection = () => {
             >
                 <div className="bg-light-bg px-4 py-10 md:p-10">
                     <Title title="Contact form" className="mb-6" />
-                    <div className="grid grid-cols-8 md:grid-cols-11 grid-rows-5 grid-flow-col gap-4">
+                    <div className="grid grid-cols-8 xl:grid-cols-11 grid-rows-5 grid-flow-col gap-4">
                         <TextField
                             id="project-name"
                             label="Project name"
@@ -34,7 +34,7 @@ const ContactSection = () => {
                             className="col-span-8 row-span-2 row-start-3 h-full"
                             textarea
                         />
-                        <div className="col-span-3 row-span-5 col-start-9 row-start-1 hidden md:block">
+                        <div className="col-span-3 row-span-5 col-start-9 row-start-1 hidden xl:block">
                             <Spline
                                 scene="https://prod.spline.design/K1GucrIZAgAvvtHu/scene.splinecode"
                                 className="h-full lg:max-h-[40dvh]"

@@ -11,6 +11,7 @@ import Logo from "./logo.svg?react";
 import MenuIcon from "./menu-icon.svg?react";
 import appStoreButton from "/images/landing/get-started-section/app-store-button.svg";
 import playMarketButton from "/images/landing/get-started-section/play-market-button.svg";
+import shortLogo from "/images/landing/header/short-logo.svg";
 
 interface HeaderInterface {
     white?: boolean;
@@ -43,6 +44,9 @@ const Header = ({ white }: HeaderInterface) => {
                 ${show ? "py-10" : "py-0"}
                 lg:px-12 xl:px-0`}
             >
+                <a href={routes.home} className={show ? "lg:hidden" : `hidden`}>
+                    <img src={shortLogo} className="ml-5 w-12" />
+                </a>
                 <div
                     className={`flex justify-between items-center  
                                 rounded-[40px]

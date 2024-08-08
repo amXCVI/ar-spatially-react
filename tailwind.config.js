@@ -45,6 +45,15 @@ export default {
                 12: "3rem",
             },
         },
+        // screens: {
+        //     "2xl": "1380px",
+        // },
     },
     plugins: [],
 };
+
+// max-sm	@media not all and (min-width: 640px) { ... }
+// max-md	@media not all and (min-width: 768px) { ... }
+// max-lg	@media not all and (min-width: 1024px) { ... }
+// max-xl	@media not all and (min-width: 1280px) { ... }
+// max-2xl	@media not all and (min-width: 1536px) { ... }

@@ -16,7 +16,7 @@ const StartSection = () => {
             //     h-full min-h-[calc(100dvh-2.5rem)]
             //     flex flex-col justify-between
             //     mx-auto container"
-            className="bg-[url(/images/landing/start-section/bg-image.png)]
+            className="lg:bg-[url(/images/landing/start-section/bg-image.png)]
                 bg-cover bg-no-repeat bg-center
                 h-full min-h-[100dvh]
                 p-4 flex flex-col justify-between
@@ -29,15 +29,15 @@ const StartSection = () => {
                             p-4 flex flex-col justify-between"
             >
                 <Header />
-                <div className="hidden md:block h-16" />
+                <div className="h-16" />
 
-                <div className="container mx-auto flex flex-col items-center h-full xl:max-h-full xl:flex-row pb-10 lg:py-10 xl:py-0">
+                <div className="container mx-auto flex flex-col items-center xl:gap-8 2xl:gap-32 h-full xl:max-h-full xl:flex-row pb-10 lg:py-10 xl:py-0">
                     <div className="flex flex-col items-end w-full">
                         <div className="flex flex-wrap xl:flex-col items-center mx-auto lg:mt-10 xl:mt-0">
                             <h1 className="h1-90-600 bg-start-section-text-gradient bg-clip-text text-transparent mr-auto">
                                 OUR
                             </h1>
-                            <h1 className="h1-90-600 bg-start-section-text-gradient bg-clip-text text-transparent ml-12 xl:ml-24">
+                            <h1 className="h1-90-600 bg-start-section-text-gradient bg-clip-text text-transparent md:ml-12 xl:ml-24 mt-20 xl:mt-0">
                                 Solution
                             </h1>
                         </div>
@@ -53,7 +53,7 @@ const StartSection = () => {
                                 </div>
                             </div>
 
-                            <div className="flex justify-start items-start sm:mx-auto manrope-regular-26 text-gray70">
+                            <div className="flex justify-start items-start sm:mx-auto pr-20 lg:pr-0 manrope-regular-26 text-gray70">
                                 <img src={textItemPointIcon} className="hidden md:block mr-2" />
                                 <div className="flex flex-col ">
                                     <div className="md:my-1.5">
@@ -78,7 +78,7 @@ const StartSection = () => {
 
                             <div className="mx-auto">
                                 <a href={routes.arNFT}>
-                                    <DefaultButton className="backdrop-blur bg-none text-gray90">AR</DefaultButton>
+                                    <DefaultButton className="backdrop-blur bg-none text-gray90">Try AR</DefaultButton>
                                 </a>
                             </div>
                         </div>

@@ -16,7 +16,7 @@ const ProductPage = () => {
         <DarkLayout
             className="flex flex-col justify-between 
                        bg-[url(/images/product/bg.svg)] bg-cover bg-no-repeat bg-center
-                       pt-10 lg:pt-40
+                       pt-24 lg:pt-40
                        "
         >
             <Header white />

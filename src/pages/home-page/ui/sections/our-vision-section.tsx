@@ -10,7 +10,6 @@ import playMarketButton from "/images/landing/get-started-section/play-market-bu
 import headerCrosses from "/images/landing/our-vision-section/header-crosses.svg";
 import headerDots from "/images/landing/our-vision-section/header-points.svg";
 import textParagraphPoint from "/images/landing/our-vision-section/paragraph-point.svg";
-import textItemPointIcon from "/images/landing/start-section/text-item-point.svg";
 
 const OurVisionSection = () => {
     return (
@@ -27,6 +26,7 @@ const OurVisionSection = () => {
                 h-full xl:min-h-[80dvh]
                 flex flex-col justify-between
                 -mt-6
+                p-4
                 "
         >
             <div className="hidden xl:flex relative mx-auto justify-between items-end -mt-24">
@@ -43,15 +43,15 @@ const OurVisionSection = () => {
             <div
                 className="container mx-auto 
                         flex flex-col items-center 
-                        md:grid md:grid-cols-6
+                        xl:grid xl:grid-cols-6
                         gap-6 md:p-y-24
-                        xl:pl-28"
+                        xl:pl-16 2xl:pl-28"
             >
                 <div
                     className="md:col-span-3 flex flex-col justify-center gap-4
-                               text-center md:text-left max-w-prose md:max-w-full"
+                               text-center max-w-prose md:max-w-full"
                 >
-                    <div className="flex gap-6">
+                    <div className="flex gap-6 justify-center">
                         <h1 className="h1-90-600 bg-our-vision-secton-text-gradient bg-clip-text text-transparent">
                             OUR
                         </h1>
@@ -66,7 +66,7 @@ const OurVisionSection = () => {
                     />
 
                     <Paragraph
-                        className="md:ml-20"
+                        className="xl:ml-20"
                         title="We link AR objects with the real world"
                         text="using geolocation technologies and apply blockchain technology to secure this connection and ensure fair and transparent circulation of AR content. "
                     />
@@ -76,7 +76,7 @@ const OurVisionSection = () => {
                         text="We are creating a unique ecosystem that unites all applications, making it accessible for both users and businesses through our app. Our Playground ensures seamless integration, simplifying the process for everyone involved."
                     />
 
-                    <div className="flex gap-2 md:gap-5 mx-auto">
+                    <div className="flex gap-2 md:gap-5 mx-auto mt-6">
                         <a href={import.meta.env.VITE_APP_NFTST_APPSTORE_URL}>
                             <DefaultButton className="bg-none !py-3">
                                 <img src={appStoreButton} />
@@ -91,7 +91,7 @@ const OurVisionSection = () => {
                 </div>
 
                 <div className="col-span-1 md:col-span-3 flex flex-col items-center w-full h-full">
-                    <div className="relative flex w-full h-full">
+                    <div className="relative flex justify-center w-full h-full">
                         <Spline
                             scene="https://prod.spline.design/oMmUby6YEqG3VTjS/scene.splinecode"
                             // style={{ width: "150%", height: "160%" }}
@@ -125,11 +125,10 @@ const OurVisionSection = () => {
 
 const Paragraph = ({ title, text, className }: { title: string; text: string; className?: string }) => {
     return (
-        <div className={`flex items-start gap-2 sm:ml-auto text-gray70 ${className}`}>
-            <img src={textItemPointIcon} className="hidden md:block" />
+        <div className={`flex items-start gap-2 xl:ml-auto justify-center text-gray70 ${className}`}>
             <div className="flex flex-col gap-2">
                 <div className="flex flex-col manrope-semibold-20 text-black mt-2">{title}</div>
-                <div className="flex gap-2 items-start md:ml-10">
+                <div className="flex gap-2 items-start xl:ml-10">
                     <img src={textParagraphPoint} />
                     <span className="manrope-regular-16">{text}</span>
                 </div>

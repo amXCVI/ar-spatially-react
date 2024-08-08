@@ -21,9 +21,14 @@ const GetStartedSection = () => {
             >
                 <div className="col-span-12 bg-light-bg px-4 py-10 md:p-10">
                     <div className="flex flex-col-reverse xl:flex-row gap-6 xl:gap-4">
-                        <a href={routes.product} className="xl:hidden mx-auto">
-                            <DefaultButton className="text-gray90 bg-none">Product</DefaultButton>
-                        </a>
+                        <div className="gap-2 md:gap-5 flex xl:hidden mx-auto">
+                            <a href={routes.product} className="xl:hidden mx-auto">
+                                <DefaultButton className="text-gray90 bg-none">Product</DefaultButton>
+                            </a>
+                            <a href={routes.arNFT} className="xl:hidden mx-auto">
+                                <DefaultButton className="text-gray90 bg-none">Ar NFT</DefaultButton>
+                            </a>
+                        </div>
 
                         <div className="flex gap-4 mx-auto xl:hidden">
                             <img
@@ -103,9 +108,6 @@ const GetStartedSection = () => {
                                     <div className="flex gap-2 md:gap-5 mt-4">
                                         <a href={""}>
                                             <DefaultButton className="bg-none text-gray90">Playground</DefaultButton>
-                                        </a>
-                                        <a href={routes.undefined}>
-                                            <DefaultButton className="bg-none text-gray90">Pricing</DefaultButton>
                                         </a>
                                     </div>
 
