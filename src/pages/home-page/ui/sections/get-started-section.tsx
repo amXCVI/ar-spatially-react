@@ -26,7 +26,7 @@ const GetStartedSection = () => {
                                 <DefaultButton className="text-gray90 bg-none">Product</DefaultButton>
                             </a>
                             <a href={routes.arNFT} className="xl:hidden mx-auto">
-                                <DefaultButton className="text-gray90 bg-none">Ar NFT</DefaultButton>
+                                <DefaultButton className="text-gray90 bg-none">AR NFT</DefaultButton>
                             </a>
                         </div>
 

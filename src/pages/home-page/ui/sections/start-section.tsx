@@ -53,7 +53,7 @@ const StartSection = () => {
                                 <div className="">
                                     Aggregator of <b className="text-gray90"> AR apps </b>
                                     <br className="hidden sm:block" />
-                                    for real busenesses and users
+                                    for real businesses and users
                                 </div>
                             </div>
 
