@@ -29,7 +29,7 @@ export default {
             },
             animation: {
                 "spin-slow": "spin 15s linear infinite",
-                "running-line": "ticker 50s linear infinite",
+                "running-line": "ticker 100s linear infinite",
             },
             dropShadow: {
                 mapHeaderBg: "0px 4px 4px rgba(0, 0, 0, 0.25)",

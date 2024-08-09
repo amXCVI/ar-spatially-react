@@ -8,7 +8,6 @@ import { DefaultButton } from "@/shared/ui/buttons";
 import appStoreButton from "/images/landing/get-started-section/app-store-button.svg";
 import playMarketButton from "/images/landing/get-started-section/play-market-button.svg";
 import headerCrosses from "/images/landing/our-vision-section/header-crosses.svg";
-import headerDots from "/images/landing/our-vision-section/header-points.svg";
 import textParagraphPoint from "/images/landing/our-vision-section/paragraph-point.svg";
 
 const OurVisionSection = () => {
@@ -22,7 +21,7 @@ const OurVisionSection = () => {
             //     px-4 mx-auto container"
             className="
                 xl:bg-[url(/images/landing/our-vision-section/bg-image.png)]
-                bg-[length:auto_100vh]
+                bg-[length:auto_150vh]
                 bg-no-repeat bg-top
                 h-full xl:min-h-[80dvh]
                 flex flex-col justify-between
@@ -32,7 +31,7 @@ const OurVisionSection = () => {
         >
             <div className="hidden xl:flex relative mx-auto justify-between items-end">
                 <div className="flex gap-8 animate-running-line poppuns-80 leading-10 whitespace-nowrap">
-                    {[1, 2].map((item) => {
+                    {[1, 2, 3, 4, 5, 6].map((item) => {
                         return (
                             <span key={item + "key"} className="text-white60 blur-[2.5px]">
                                 At the forefront of transforming human interaction with augmented reality

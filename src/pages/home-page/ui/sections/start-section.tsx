@@ -17,19 +17,19 @@ const StartSection = () => {
             //     flex flex-col justify-between
             //     mx-auto container"
             className="lg:bg-[url(/images/landing/start-section/bg-image.png)]
-                bg-[length:auto_100vh] bg-no-repeat bg-bottom
+                bg-cover xl:bg-[length:auto_150vh] bg-no-repeat bg-bottom
                 h-full min-h-[calc(100dvh-2rem)]
-                p-4 flex flex-col justify-between
+                p-4 pt-0 flex flex-col justify-between
                 "
         >
             <div
                 className="bg-[url(/images/landing/start-section/bg-lines.svg)] 
                             bg-cover bg-no-repeat bg-center
                             h-full w-full min-h-[inherit]
-                            p-4 flex flex-col justify-between"
+                            p-4 pt-0 flex flex-col justify-between"
             >
                 <Header />
-                <div className="h-16" />
+                <div className="h-24" />
 
                 <div className="container mx-auto flex flex-col items-center xl:gap-8 2xl:gap-32 h-full xl:max-h-full xl:flex-row pb-10 lg:py-10 xl:py-0">
                     <div className="flex flex-col items-end w-full">

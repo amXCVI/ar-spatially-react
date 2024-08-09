@@ -153,42 +153,4 @@ const GetStartedSection = () => {
     );
 };
 
-// const ForUsersText = ({ className }: { className?: string }) => {
-//     return (
-//         <div className={`flex flex-col justify-between ${className ?? ""}`}>
-//             <div>
-//                 <Title title="for Users" />
-//                 <TextP className="mt-4">
-//                     Users can personalise the AR space according to their preferences, use various AR services within a
-//                     single space, and searching for objects, goods, and services within the field of view.
-//                 </TextP>
-//             </div>
-
-//             <div className="mt-8">
-//                 <Subtitle subtitle="How can you choose Apps?" className="uppercase" />
-//                 <TextP className="mt-4">
-//                     Each Layer is a stream of content that you can choose to include or exclude from your augmented
-//                     reality experience. For example, if you want to focus solely on the navigation, you can remove it
-//                     from the main screen it your App. We integrate a variety of augmented reality apps, offering them to
-//                     you at no cost. Create your personalised augmented reality experience by connecting the layers that
-//                     are interesting for you with AR Spatially.
-//                 </TextP>
-//             </div>
-
-//             <div className="flex gap-1 mt-10 justify-center md:justify-start">
-//                 <a href={import.meta.env.VITE_APP_NFTST_APPSTORE_URL}>
-//                     <DefaultButton className="bg-white">
-//                         <img src={appStoreButton} />
-//                     </DefaultButton>
-//                 </a>
-//                 <a href={import.meta.env.VITE_APP_NFTST_PLAYMARKET_URL}>
-//                     <DefaultButton className="bg-white">
-//                         <img src={playMarketButton} />
-//                     </DefaultButton>
-//                 </a>
-//             </div>
-//         </div>
-//     );
-// };
-
 export { GetStartedSection };

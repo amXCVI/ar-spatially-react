@@ -11,7 +11,7 @@ import playMarketButton from "/images/landing/get-started-section/play-market-bu
 
 import phone1 from "/images/ar-nft/phone_33.webp";
 import phone2 from "/images/ar-nft/phone_34.webp";
-import nftStPhone from "/images/blockchain/phone_20.webp";
+import nftStPhone from "/images/ar-nft/phone_35.webp";
 
 const ArNftPage = () => {
     return (
