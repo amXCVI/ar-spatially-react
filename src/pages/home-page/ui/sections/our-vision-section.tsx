@@ -27,6 +27,7 @@ const OurVisionSection = () => {
                 flex flex-col justify-between
                 -mt-6
                 p-4
+                lg:rounded-b-[80px] overflow-hidden
                 "
         >
             <div className="hidden xl:flex relative mx-auto justify-between items-end">

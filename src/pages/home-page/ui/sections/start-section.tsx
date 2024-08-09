@@ -35,7 +35,7 @@ const StartSection = () => {
                 <div className="container mx-auto flex flex-col items-center xl:gap-8 2xl:gap-32 h-full xl:max-h-full xl:flex-row pb-10 lg:py-10 xl:py-0">
                     <div className="flex flex-col items-end w-full">
                         <div
-                            className="flex flex-wrap xl:flex-col items-center gap-4 mx-auto lg:mt-10 xl:mt-0
+                            className="flex flex-wrap xl:flex-col items-center gap-4 lg:gap-0 ml-auto lg:ml-4 mr-auto lg:mt-20
                                         h1-90-600"
                         >
                             <h1 className="bg-start-section-text-gradient bg-clip-text text-transparent md:mr-auto">
