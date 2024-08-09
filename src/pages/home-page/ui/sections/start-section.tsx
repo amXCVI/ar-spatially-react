@@ -50,36 +50,31 @@ const StartSection = () => {
                             <div className="flex justify-start items-start manrope-regular-26 text-gray70">
                                 <img src={textItemPointIcon} className="hidden md:block mr-2" />
                                 <img src={textParagraphPoint} className="block md:hidden mr-2 mt-2" />
-                                <div className="flex flex-col">
-                                    <div className="md:my-1.5">
-                                        Aggregator of <b className="text-gray90"> AR apps </b>
-                                    </div>
-                                    <span className="md:my-1.5">for real busenesses and users</span>
+                                <div className="">
+                                    Aggregator of <b className="text-gray90"> AR apps </b>
+                                    <br className="hidden sm:block" />
+                                    for real busenesses and users
                                 </div>
                             </div>
 
                             <div className="flex justify-start items-start sm:mx-auto pr-20 lg:pr-0 manrope-regular-26 text-gray70">
                                 <img src={textItemPointIcon} className="hidden md:block mr-2" />
                                 <img src={textParagraphPoint} className="block md:hidden mr-2 mt-2" />
-                                <div className="flex flex-col ">
-                                    <div className="md:my-1.5">
-                                        <b className="text-gray90">AR content </b>tied to location
-                                    </div>
-                                    <span className="md:my-1.5 flex gap-2">on thr global map</span>
+                                <div className="">
+                                    <b className="text-gray90">AR content </b>tied to location
+                                    <br className="hidden sm:block" />
+                                    on thr global map
                                 </div>
                             </div>
 
                             <div className="flex justify-start items-start sm:ml-auto manrope-regular-26 text-gray70">
                                 <img src={textItemPointIcon} className="hidden md:block mr-2" />
                                 <img src={textParagraphPoint} className="block md:hidden mr-2 mt-2" />
-                                <div className="flex flex-col ">
-                                    <div className="md:my-1.5">
-                                        <b className="text-gray90">AR-NFT</b> is a spatial geolocation token
-                                    </div>
-                                    <span className="md:my-1.5 flex gap-2">
-                                        that provide rights for
-                                        <span className="text-gray90">AR content</span>
-                                    </span>
+                                <div className="">
+                                    <b className="text-gray90">AR-NFT</b> is a spatial geolocation token{" "}
+                                    <br className="hidden sm:block" />
+                                    that provide rights for
+                                    <span className="text-gray90 ml-2">AR content</span>
                                 </div>
                             </div>
 
