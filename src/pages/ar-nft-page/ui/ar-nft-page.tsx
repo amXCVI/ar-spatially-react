@@ -76,7 +76,7 @@ const ArNftPage = () => {
                     <TextP className="text-spanish-gray mt-4">
                         This is our Web AR demo experience. You can try it now and explore our solution in practice.
                     </TextP>
-                    <a className="mt-auto mx-auto mb-6" href={""}>
+                    <a className="mt-auto mx-auto xl:mb-6" href={""}>
                         <DefaultButton className="mt-6">
                             <span className="text-white">Try AR Now</span>
                         </DefaultButton>

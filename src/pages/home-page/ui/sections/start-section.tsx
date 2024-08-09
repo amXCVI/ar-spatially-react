@@ -74,7 +74,7 @@ const StartSection = () => {
                                     <b className="text-gray90">AR-NFT</b> is a spatial geolocation token{" "}
                                     <br className="hidden sm:block" />
                                     that provide rights for
-                                    <span className="text-gray90 ml-2">AR content</span>
+                                    <span className="md:text-gray90 ml-2">AR content</span>
                                 </div>
                             </div>
 
