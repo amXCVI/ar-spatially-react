@@ -54,7 +54,7 @@ const OurVisionSection = () => {
                     className="md:col-span-3 flex flex-col justify-center gap-4
                                text-center max-w-prose md:max-w-full"
                 >
-                    <div className="flex gap-6 justify-center">
+                    <div className="flex gap-6 justify-center flex-wrap">
                         <h1 className="h1-90-600 bg-our-vision-secton-text-gradient bg-clip-text text-transparent">
                             OUR
                         </h1>
