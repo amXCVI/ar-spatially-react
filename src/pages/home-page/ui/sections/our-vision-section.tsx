@@ -25,6 +25,7 @@ const OurVisionSection = () => {
                 bg-no-repeat bg-top
                 h-full xl:min-h-[80dvh]
                 flex flex-col justify-between
+                xl:-mt-6
                 p-4
                 lg:rounded-b-[80px] overflow-hidden
                 "
