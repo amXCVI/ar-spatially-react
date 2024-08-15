@@ -25,12 +25,11 @@ const OurVisionSection = () => {
                 bg-no-repeat bg-top
                 h-full xl:min-h-[80dvh]
                 flex flex-col justify-between
-                -mt-6
                 p-4
                 lg:rounded-b-[80px] overflow-hidden
                 "
         >
-            <div className="hidden xl:flex relative mx-auto justify-between items-end">
+            {/* <div className="hidden xl:flex relative mx-auto justify-between items-end">
                 <div className="flex gap-8 animate-running-line poppuns-80 leading-10 whitespace-nowrap">
                     {[1, 2, 3, 4, 5, 6].map((item) => {
                         return (
@@ -42,7 +41,7 @@ const OurVisionSection = () => {
                 </div>
 
                 <img src={headerCrosses} className="absolute right-0 -bottom-20" />
-            </div>
+            </div> */}
 
             <div
                 className="container mx-auto 
