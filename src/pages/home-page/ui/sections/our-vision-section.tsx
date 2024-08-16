@@ -7,7 +7,6 @@ import { DefaultButton } from "@/shared/ui/buttons";
 
 import appStoreButton from "/images/landing/get-started-section/app-store-button.svg";
 import playMarketButton from "/images/landing/get-started-section/play-market-button.svg";
-import headerCrosses from "/images/landing/our-vision-section/header-crosses.svg";
 import textParagraphPoint from "/images/landing/our-vision-section/paragraph-point.svg";
 
 const OurVisionSection = () => {
