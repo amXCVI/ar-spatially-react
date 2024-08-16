@@ -14,22 +14,13 @@ const GetStartedSection = () => {
     return (
         <div className="flex flex-col justify-between">
             <div
-                className="container mx-auto max-w-7xl xl:max-w-screen-2xl rounded-[40px]
+                className="container mx-auto max-w-7xl lg:max-w-screen-2xl rounded-[40px]
                            overflow-hidden
                            grid grid-cols-12 gap-1
                           "
             >
                 <div className="col-span-12 bg-light-bg px-4 py-10 md:p-10">
-                    <div className="flex flex-col-reverse xl:flex-row gap-6 xl:gap-4">
-                        <div className="gap-2 md:gap-5 flex xl:hidden mx-auto">
-                            <a href={routes.product} className="xl:hidden mx-auto">
-                                <DefaultButton className="text-gray90 bg-none">Product</DefaultButton>
-                            </a>
-                            <a href={routes.arNFT} className="xl:hidden mx-auto">
-                                <DefaultButton className="text-gray90 bg-none">AR NFT</DefaultButton>
-                            </a>
-                        </div>
-
+                    <div className="flex flex-col lg:flex-row gap-6 xl:gap-4">
                         <div className="flex gap-4 mx-auto xl:hidden">
                             <img
                                 src={phone1}
@@ -68,7 +59,7 @@ const GetStartedSection = () => {
                                 </TextP>
                             </div>
 
-                            <div className="gap-2 md:gap-5 hidden xl:flex">
+                            <div className="gap-2 md:gap-5 flex">
                                 <a href={routes.product} className="">
                                     <DefaultButton className="text-gray90 bg-none">Product</DefaultButton>
                                 </a>
@@ -81,7 +72,7 @@ const GetStartedSection = () => {
                 </div>
 
                 <div className="col-span-12 bg-light-bg px-4 py-10 md:p-10">
-                    <div className="flex flex-col-reverse xl:flex-row gap-6 xl:gap-4">
+                    <div className="flex flex-col lg:flex-row gap-6 lg:gap-4">
                         <div className="flex flex-col justify-between gap-4 mr-auto">
                             <div>
                                 <Title title="Our Map" />
@@ -111,7 +102,7 @@ const GetStartedSection = () => {
                                         </a>
                                     </div>
 
-                                    <div className="flex gap-2 md:gap-5 mt-4">
+                                    <div className="flex justify-around md:justify-end w-full gap-2 md:gap-5 flex-wrap mt-4">
                                         <a href={import.meta.env.VITE_APP_NFTST_APPSTORE_URL}>
                                             <DefaultButton className="bg-none text-gray90 !py-3">
                                                 <img src={appStoreButton} />
