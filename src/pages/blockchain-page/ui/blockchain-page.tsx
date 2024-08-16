@@ -17,7 +17,7 @@ const BlockchainPage = () => {
         <DarkLayout
             className="flex flex-col justify-between 
                bg-[url(/images/product/bg.svg)] bg-cover bg-no-repeat bg-center
-               pt-20 lg:pt-40"
+               pt-36 lg:pt-40"
         >
             <Header white />
             <div

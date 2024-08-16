@@ -32,7 +32,7 @@ const StartSection = () => {
                 "
             >
                 <Header />
-                <div className="h-24" />
+                <div className="h-36" />
 
                 <div className="container mx-auto flex flex-col items-center lg:gap-8 h-full lg:max-h-full lg:flex-row pb-10 lg:py-10">
                     <div className="flex flex-col justify-between w-full h-full gap-10 md:gap-20">
