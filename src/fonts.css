@@ -55,7 +55,7 @@
     font-style: normal;
     font-weight: 600;
     font-size: 5.625rem;
-    line-height: 6.975rem;
+    line-height: 5.975rem;
 
     letter-spacing: -0.02em;
     text-transform: uppercase;
@@ -64,7 +64,7 @@
 @media screen and (max-width: 1024px) {
     .h1-90-600 {
         font-size: 4.625rem;
-        line-height: 5.975rem;
+        line-height: 4.975rem;
     }
 }
 /* 
