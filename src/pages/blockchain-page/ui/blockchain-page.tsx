@@ -26,39 +26,9 @@ const BlockchainPage = () => {
                             rounded-[40px] overflow-hidden
             "
             >
-                <div
-                    className="col-span-12 lg:col-span-7 xl:col-span-4
-                             bg-smoky-black-bg20 flex flex-col px-4 py-6 md:p-10"
-                >
-                    <SectionTitle title="PLAYGROUND" className="text-white" />
-                    <h2 className="manrope-medium-22 text-white mt-6"> Upload 3D objects to the map now!</h2>
-                    <TextP className="text-spanish-gray mt-4">
-                        We aim to provide a comprehensive toolkit that enables existing and new applications to connect
-                        and utilize open features, including blockchain functions, within the ecosystem. Our Playground
-                        allows developers to create and seamlessly integrate new applications into the AR Spatially
-                        ecosystem, offering IT and blockchain solutions to simplify development.
-                    </TextP>
-                    <a className="m-auto" href={""}>
-                        <DefaultButton className="mt-6">
-                            <span className="text-white">Coming soon</span>
-                        </DefaultButton>
-                    </a>
-
-                    <NftstText className="hidden lg:flex xl:hidden mt-6" />
-                </div>
-
-                <div
-                    className="col-span-12 lg:col-span-5 xl:col-span-8 
-                              bg-smoky-black-bg20 flex flex-col md:flex-row gap-6 px-4 py-6 md:p-10"
-                >
-                    <img src={nftStPhone} className="object-contain h-full max-h-[50vh] lg:max-h-[40vh] m-auto" />
-
-                    <NftstText className="flex lg:hidden xl:flex" />
-                </div>
-
                 <div className="col-span-12 bg-smoky-black-bg20 px-4 py-6 md:p-10">
-                    <div className="flex flex-col md:flex-row gap-10">
-                        <div className="flex gap-4 mx-auto md:hidden">
+                    <div className="flex flex-col lg:flex-row gap-10">
+                        <div className="flex gap-4 mx-auto lg:hidden">
                             <img
                                 src={phone1}
                                 className="object-contain h-full max-h-[50vh] lg:max-h-[40vh] max-w-[40vw]"
@@ -69,10 +39,10 @@ const BlockchainPage = () => {
                             />
                         </div>
 
-                        <img src={phone1} className="object-contain max-h-[50vh] lg:max-h-[40vh] hidden md:block" />
-                        <img src={phone2} className="object-contain max-h-[50vh] lg:max-h-[40vh] hidden md:block" />
+                        <img src={phone1} className="object-contain max-h-[50vh] lg:max-h-[40vh] hidden lg:block" />
+                        <img src={phone2} className="object-contain max-h-[50vh] lg:max-h-[40vh] hidden lg:block" />
 
-                        <div className="flex flex-col">
+                        <div className="flex flex-col justify-center">
                             <SectionTitle title="Use cases" className="text-white" />
                             <h2 className="manrope-medium-22 text-white mt-6">
                                 Use our solutions to create and extend the reality with us{" "}
@@ -90,6 +60,36 @@ const BlockchainPage = () => {
                             </TextP>
                         </div>
                     </div>
+                </div>
+
+                <div
+                    className="col-span-12 xl:col-span-7
+                             bg-smoky-black-bg20 px-4 py-6 md:p-10
+                             flex flex-col md:flex-row gap-10"
+                >
+                    <div className="flex flex-col">
+                        <SectionTitle title="PLAYGROUND" className="text-white" />
+                        <h2 className="manrope-medium-22 text-white mt-6"> Upload 3D objects to the map now!</h2>
+                        <TextP className="text-spanish-gray mt-4">
+                            We aim to provide a comprehensive toolkit that enables existing and new applications to
+                            connect and utilize open features, including blockchain functions, within the ecosystem. Our
+                            Playground allows developers to create and seamlessly integrate new applications into the AR
+                            Spatially ecosystem, offering IT and blockchain solutions to simplify development.
+                        </TextP>
+                        <a className="m-auto" href={""}>
+                            <DefaultButton className="mt-6">
+                                <span className="text-white">Coming soon</span>
+                            </DefaultButton>
+                        </a>
+                    </div>
+                    <img src={nftStPhone} className="object-contain h-full max-h-[50vh] lg:max-h-[40vh] m-auto" />
+                </div>
+
+                <div
+                    className="col-span-12 xl:col-span-5
+                              bg-smoky-black-bg20 flex flex-col md:flex-row gap-6 px-4 py-6 md:p-10"
+                >
+                    <NftstText className="flex" />
                 </div>
             </div>
 

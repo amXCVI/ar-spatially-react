@@ -38,7 +38,7 @@ const GetStartedSection = () => {
                         <div className="flex flex-col justify-between gap-4 ml-auto">
                             <div>
                                 <Title title="Our Product" />
-                                <TextP className="mt-4">
+                                <TextP className="mt-4 !text-justify">
                                     Our platform serves four key audiences: developers, businesses, artists, and users.
                                     Each group finds personalised tools for development and creation. Developers can use
                                     our Playground to create AR apps and promote them within the AR Spatially ecosystem.
@@ -52,7 +52,7 @@ const GetStartedSection = () => {
 
                             <div>
                                 <Title title="AR NFT" />
-                                <TextP className="mt-4">
+                                <TextP className="mt-4 !text-justify">
                                     A unique NFT format for AR objects enables the creation and exchange of digital
                                     rights for advertising, objects, facts, and achievements in the AR space, with their
                                     spatial position and volume recorded on the blockchain.
@@ -76,7 +76,7 @@ const GetStartedSection = () => {
                         <div className="flex flex-col justify-between gap-4 mr-auto">
                             <div>
                                 <Title title="Our Map" />
-                                <TextP className="mt-4">
+                                <TextP className="mt-4 !text-justify">
                                     A coordinate system that integrates AR with the real world, allowing geolocation to
                                     link and discover AR objects in their actual locations. It enables users to map
                                     routes, find objects in augmented reality, view movement history, and access
@@ -89,7 +89,7 @@ const GetStartedSection = () => {
 
                             <div>
                                 <Title title="Our Playground" />
-                                <TextP className="mt-4">
+                                <TextP className="mt-4 !text-justify">
                                     You can now upload 3D objects to the map in your personal Playground. Later, you'll
                                     be able to customise your AR Space and create your own solutions. Playground enables
                                     developers to create new applications and seamlessly integrate them into the AR
