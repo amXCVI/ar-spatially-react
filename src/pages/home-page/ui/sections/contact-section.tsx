@@ -14,29 +14,29 @@ const ContactSection = () => {
                 <div className="bg-light-bg px-4 py-10 md:p-10">
                     <Title title="Contact form" className="mb-6" />
                     <div className="flex w-full">
-                        <div className="grid grid-cols-8 grid-rows-5 grid-flow-col gap-4 w-full">
+                        <div className="grid grid-cols-8 grid-rows-6 grid-flow-col gap-4 w-full">
                             <TextField
                                 id="project-name"
                                 label="Project name"
                                 placeholder="Project name"
-                                className="col-span-4"
+                                className="col-span-8 md:col-span-4"
                             />
                             <TextField
                                 id="your-email"
                                 label="Your email"
                                 placeholder="Email name"
-                                className="col-span-4 col-start-5"
+                                className="col-span-8 md:col-span-4 md:col-start-5"
                             />
                             <TextField id="subject" label="Subject" placeholder="Subject" className="col-span-8" />
                             <TextField
                                 id="Description"
                                 label="Description"
                                 placeholder="Description"
-                                className="col-span-8 row-span-2 row-start-3 h-full"
+                                className="col-span-8 row-span-2 md:row-start-3 h-full"
                                 textarea
                             />
 
-                            <div className="col-span-8 row-start-5 flex justify-end">
+                            <div className="col-span-8 md:row-start-5 flex justify-end">
                                 <DefaultButton className="text-gray90 h-min">Send info</DefaultButton>
                             </div>
                         </div>
