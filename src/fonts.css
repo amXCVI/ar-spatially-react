@@ -61,20 +61,6 @@
     text-transform: uppercase;
 }
 
-@media screen and (max-width: 1024px) {
-    .h1-90-600 {
-        font-size: 4.625rem;
-        line-height: 4.975rem;
-    }
-}
-/* 
-@media screen and (max-width: 640px) {
-    .h1-90-600 {
-        font-size: 3.625rem;
-        line-height: 4.975rem;
-    }
-} */
-
 .h2-34-700 {
     font-family: "sloth-regular";
     font-style: normal;
