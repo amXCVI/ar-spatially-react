@@ -97,7 +97,7 @@ const GetStartedSection = () => {
                                 </TextP>
                                 <div className="flex flex-col md:flex-row w-full justify-between gap-5">
                                     <div className="flex gap-2 md:gap-5 mt-4">
-                                        <a href={""}>
+                                        <a href={routes.playground}>
                                             <DefaultButton className="bg-none text-gray90">Playground</DefaultButton>
                                         </a>
                                     </div>
