@@ -25,10 +25,16 @@ const ProductPage = () => {
                             container mx-auto h-full mb-10"
             >
                 <div
-                    className="col-span-8 lg:col-span-3 lg:row-span-3 lg:row-start-2
+                    className="col-span-8 lg:col-span-5 xl:col-span-3 lg:row-span-1 lg:row-start-2
                                 flex flex-col gap-7"
                 >
                     <SectionTitle className="text-white mb-6 lg:mb-12" title="Our Product" />
+                </div>
+
+                <div
+                    className="col-span-8 lg:col-span-5 xl:col-span-3 lg:row-span-3 xl:row-start-3
+                                flex flex-col gap-7"
+                >
                     <TextP className="text-spanish-gray">
                         <b className="text-xl text-white mr-2">For AR Artists</b>
                         we offer space to upload 3D objects and a unified AR space for showcasing your work. Create and
@@ -48,7 +54,7 @@ const ProductPage = () => {
                         <DefaultButton>Sign up</DefaultButton>
                     </div>
                 </div>
-                <div className="col-span-8 lg:col-span-2 lg:row-span-5 lg:row-start-1">
+                <div className="col-span-8 lg:col-span-3 xl:col-span-2 lg:row-span-5 lg:row-start-1">
                     <PhoneSlider
                         bgElement={
                             <div className="absolute animate-spin-slow h-full -left-1/2 -right-1/2 z-0 flex justify-center items-center">
@@ -61,7 +67,7 @@ const ProductPage = () => {
                     />
                 </div>
                 <div
-                    className="col-span-8 lg:col-span-3 lg:row-span-2 lg:row-start-4
+                    className="col-span-8 xl:col-span-3 xl:row-span-2 xl:row-start-3
                                 flex flex-col gap-7"
                 >
                     <TextP className="text-spanish-gray">

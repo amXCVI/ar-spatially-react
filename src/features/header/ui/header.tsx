@@ -2,7 +2,6 @@ import { useOutsideClick } from "@ar-kit/shared/hooks";
 import { Fragment, useEffect, useState } from "react";
 
 import { menuLinks, routes } from "@/shared/config";
-import { DefaultButton } from "@/shared/ui/buttons";
 import { Socials } from "@/shared/ui/socials";
 
 import AppStoreButton from "./app-store-white-icon.svg?react";
