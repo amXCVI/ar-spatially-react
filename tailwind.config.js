@@ -9,6 +9,7 @@ export default {
         extend: {
             colors: {
                 white: "#ffffff",
+                white5: "#ffffff05",
                 white15: "#ffffff15",
                 white30: "#ffffff30",
                 white50: "#ffffff50",

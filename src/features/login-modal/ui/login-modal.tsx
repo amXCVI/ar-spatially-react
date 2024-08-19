@@ -7,6 +7,7 @@ import XIcon from "./../icons/x.svg?react";
 import logo from "/images/login-popup/logo.svg";
 
 import { useLoginHook } from "../model";
+import { SignInPopupModes } from "./auth-provider";
 
 const socials = [
     {
@@ -36,19 +37,19 @@ const socials = [
 ];
 
 const LoginModal = () => {
-    const { isOpenLoginPopup, closeLoginModal } = useLoginHook();
+    const { isOpenLoginPopup, closeLoginModal, handleClickSignIn, handleClickSignUp } = useLoginHook();
 
     const modalRef = useOutsideClick(() => {
         closeLoginModal();
     });
 
-    if (!isOpenLoginPopup) {
+    if (isOpenLoginPopup === SignInPopupModes.Closed) {
         return <div />;
     }
 
     return (
         <div
-            className={`fixed top-0 right-0 bottom-0 left-0 flex justify-center items-center backdrop-blur-sm z-[100] p-0 sm:p-5`}
+            className={`fixed top-0 right-0 bottom-0 left-0 flex justify-center items-center backdrop-blur-sm z-[100] p-0 sm:p-5 bg-white5`}
         >
             <div
                 ref={modalRef}
@@ -70,15 +71,27 @@ const LoginModal = () => {
                     <div className="flex flex-col w-full gap-2.5">
                         <TextField id="password" label="Password" placeholder="Your Password" type="password" />
 
-                        <TextField id="password_again" label="" placeholder="Your Password Again" type="password" />
+                        {isOpenLoginPopup === SignInPopupModes.SignUp && (
+                            <TextField id="password_again" label="" placeholder="Your Password Again" type="password" />
+                        )}
                     </div>
 
                     <div className="flex flex-col-reverse lg:flex-row gap-4 w-full">
-                        <div className="flex justify-center flex-nowrap w-full text-nowrap gap-2.5 border border-gray70 rounded-[18px] px-5 py-3 manrope-semibold-16 text-white">
-                            <span className="hidden md:block">Already have an account?</span>
+                        <div
+                            onClick={handleClickSignIn}
+                            className={`flex justify-center flex-nowrap w-full text-nowrap gap-2.5 border border-gray70 rounded-[18px] px-5 py-3 manrope-semibold-16 cursor-pointer ${isOpenLoginPopup === SignInPopupModes.SignIn ? "bg-white text-black" : "bg-none text-white"}`}
+                        >
+                            <span
+                                className={isOpenLoginPopup === SignInPopupModes.SignIn ? "hidden" : "hidden md:block"}
+                            >
+                                Already have an account?
+                            </span>
                             <a className="underline cursor-pointer">Sign in</a>
                         </div>
-                        <div className="flex w-full text-nowrap justify-center items-center bg-white rounded-[18px] px-5 py-3 manrope-semibold-16 text-black">
+                        <div
+                            onClick={handleClickSignUp}
+                            className={`flex w-full text-nowrap justify-center items-center border border-gray70 rounded-[18px] px-5 py-3 manrope-semibold-16 cursor-pointer ${isOpenLoginPopup === SignInPopupModes.SignUp ? "bg-white text-black" : "bg-none text-white"}`}
+                        >
                             Create an account
                         </div>
                     </div>

@@ -1,5 +1,5 @@
-import { AuthContext, AuthProvider, LoginModal } from "./ui";
+import { AuthContext, AuthProvider, LoginModal, SignInPopupModes } from "./ui";
 
 export { LoginModal };
 
-export { AuthContext, AuthProvider };
+export { AuthContext, AuthProvider, SignInPopupModes };

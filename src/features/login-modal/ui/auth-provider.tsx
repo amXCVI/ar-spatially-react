@@ -4,6 +4,12 @@ const getAuthStatus = () => {
     return false;
 };
 
+enum SignInPopupModes {
+    SignIn = "signin",
+    SignUp = "signup",
+    Closed = "closed",
+}
+
 type Props = {
     children?: ReactNode;
 };
@@ -11,14 +17,14 @@ type Props = {
 type IAuthContext = {
     authenticated: boolean;
     setAuthenticated: (newState: boolean) => void;
-    isOpenLoginPopup: boolean;
-    openLoginModal: () => void;
+    isOpenLoginPopup: SignInPopupModes;
+    openLoginModal: (e: SignInPopupModes) => void;
     closeLoginModal: () => void;
 };
 
 const initialValue = {
     authenticated: getAuthStatus(),
-    isOpenLoginPopup: false,
+    isOpenLoginPopup: SignInPopupModes.Closed,
 
     setAuthenticated: () => {},
     openLoginModal: () => {},
@@ -30,14 +36,14 @@ const AuthContext = createContext<IAuthContext>(initialValue);
 const AuthProvider = ({ children }: Props) => {
     //Initializing an auth state with false value (unauthenticated)
     const [authenticated, setAuthenticated] = useState(initialValue.authenticated);
-    const [isOpenLoginPopup, setIsOpenLoginPopup] = useState<boolean>(initialValue.isOpenLoginPopup);
+    const [isOpenLoginPopup, setIsOpenLoginPopup] = useState<SignInPopupModes>(initialValue.isOpenLoginPopup);
 
-    const openLoginModal = () => {
-        setIsOpenLoginPopup(true);
+    const openLoginModal = (e: SignInPopupModes) => {
+        setIsOpenLoginPopup(e);
     };
 
     const closeLoginModal = () => {
-        setIsOpenLoginPopup(false);
+        setIsOpenLoginPopup(SignInPopupModes.Closed);
     };
 
     return (
@@ -55,4 +61,4 @@ const AuthProvider = ({ children }: Props) => {
     );
 };
 
-export { AuthContext, AuthProvider };
+export { AuthContext, AuthProvider, SignInPopupModes };

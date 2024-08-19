@@ -2,7 +2,7 @@ import { useContext } from "react";
 
 import { Footer } from "@/features/footer";
 import Header from "@/features/header";
-import { AuthContext } from "@/features/login-modal";
+import { AuthContext, SignInPopupModes } from "@/features/login-modal";
 
 import { DefaultButton } from "@/shared/ui/buttons";
 import { DarkLayout } from "@/shared/ui/layouts";
@@ -55,8 +55,8 @@ const ProductPage = () => {
                     </TextP>
 
                     <div className="flex gap-2 md:gap-5 justify-center lg:justify-start">
-                        <DefaultButton onClick={openLoginModal}>Log in</DefaultButton>
-                        <DefaultButton onClick={openLoginModal}>Sign up</DefaultButton>
+                        <DefaultButton onClick={() => openLoginModal(SignInPopupModes.SignIn)}>Log in</DefaultButton>
+                        <DefaultButton onClick={() => openLoginModal(SignInPopupModes.SignUp)}>Sign up</DefaultButton>
                     </div>
                 </div>
                 <div className="col-span-8 lg:col-span-3 xl:col-span-2 lg:row-span-5 lg:row-start-1">
