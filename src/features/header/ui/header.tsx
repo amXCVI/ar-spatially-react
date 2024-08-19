@@ -5,12 +5,12 @@ import { menuLinks, routes } from "@/shared/config";
 import { DefaultButton } from "@/shared/ui/buttons";
 import { Socials } from "@/shared/ui/socials";
 
+import AppStoreButton from "./app-store-white-icon.svg?react";
 // import BurgerIcon from "./burger-icon.svg?react";
 import CloseMenuIcon from "./close-menu-icon.svg?react";
+import PlayMarketButton from "./google-play-white-icon.svg?react";
 import Logo from "./logo.svg?react";
 import MenuIcon from "./menu-icon.svg?react";
-import appStoreButton from "/images/landing/get-started-section/app-store-button.svg";
-import playMarketButton from "/images/landing/get-started-section/play-market-button.svg";
 
 // import shortLogo from "/images/landing/header/short-logo.svg";
 
@@ -158,14 +158,14 @@ const MobileMenu = ({ white = false, show }: MobileMenuInterface) => {
 
                     <div className="flex gap-2 md:gap-5">
                         <a href={import.meta.env.VITE_APP_NFTST_APPSTORE_URL}>
-                            <DefaultButton className="bg-none text-white !py-3">
-                                <img src={appStoreButton} />
-                            </DefaultButton>
+                            <div className="p-4">
+                                <AppStoreButton />
+                            </div>
                         </a>
                         <a href={import.meta.env.VITE_APP_NFTST_PLAYMARKET_URL}>
-                            <DefaultButton className="bg-none text-white !py-3">
-                                <img src={playMarketButton} />
-                            </DefaultButton>
+                            <div className="p-4">
+                                <PlayMarketButton />
+                            </div>
                         </a>
                     </div>
 
