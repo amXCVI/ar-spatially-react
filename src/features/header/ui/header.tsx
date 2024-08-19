@@ -38,55 +38,43 @@ const Header = ({ white }: HeaderInterface) => {
     }, []);
 
     return (
-        <header className="fixed top-0 right-0 left-0 z-50">
+        <header className="z-50">
             <div
-                className={`container mx-auto duration-500 
-                ${show ? "py-10" : "py-0"}
-                lg:px-12 xl:px-0`}
+                className={`container mx-auto py-10 px-7
+                            lg:px-12 xl:px-0\
+                            flex justify-between`}
             >
-                <a href={routes.home} className={show ? "lg:hidden" : `hidden`}>
+                <a href={routes.home} className="2sm:hidden">
                     <img src={shortLogo} className="ml-5 w-12" />
                 </a>
-                <div
-                    className={`flex justify-between items-center  
-                                rounded-[40px]
-                                duration-500
-                                ${show ? "px-4 w-full" : "w-min ml-auto"}`}
-                    // className={`flex justify-between items-center
-                    //             bg-american-silver20 lg:backdrop-blur-xl
-                    //             rounded-[40px]
-                    //             duration-500
-                    //             ${show ? "px-10 w-full" : "w-min ml-auto"}`}
-                >
-                    <a href={routes.home} className={`hidden ${show && "lg:block"}`}>
-                        <Logo style={{ fill: white ? "white" : "#1F2020" }} />
-                    </a>
+                <a href={routes.home} className="hidden 2sm:block">
+                    <Logo style={{ fill: white ? "white" : "#1F2020" }} />
+                </a>
 
-                    <div className={`hidden ${show && "lg:flex"} gap-5 ml-auto`}>
-                        {menuLinks.map((item) => {
-                            return (
-                                <div
-                                    className={`${item.desctopOnly ? "hidden" : "flex"} lg:flex items-center p-4 bg-white30 rounded-full lg:bg-[#ffffff00]`}
-                                    key={item.id + "header-menu-item"}
-                                >
-                                    <a href={item.href} className={`font-medium font-manrope text-[14px]`}>
-                                        <b
-                                            className={
-                                                white
-                                                    ? "text-white hover:text-blue-accent duration-200"
-                                                    : "text-gray90 hover:text-blue-accent duration-200"
-                                            }
-                                        >
-                                            {item.title}
-                                        </b>
-                                    </a>
-                                </div>
-                            );
-                        })}
-                    </div>
-
-                    <MobileMenu white={white} show={show} />
+                <div className={`hidden lg:flex gap-6 ml-auto`}>
+                    {menuLinks.map((item) => {
+                        return (
+                            <div
+                                className={`${item.desctopOnly ? "hidden" : "flex"} lg:flex items-center p-4 bg-white30 rounded-full lg:bg-[#ffffff00]`}
+                                key={item.id + "header-menu-item"}
+                            >
+                                <a href={item.href} className={`font-medium font-manrope text-[14px]`}>
+                                    <b
+                                        className={
+                                            white
+                                                ? "text-white hover:text-blue-accent duration-200"
+                                                : "text-gray90 hover:text-blue-accent duration-200"
+                                        }
+                                    >
+                                        {item.title}
+                                    </b>
+                                </a>
+                            </div>
+                        );
+                    })}
                 </div>
+
+                <MobileMenu white={white} show={show} />
             </div>
         </header>
     );
@@ -112,13 +100,11 @@ const MobileMenu = ({ white = false, show }: MobileMenuInterface) => {
             <div
                 className={`flex flex-col justify-center items-center gap-2 duration-500
                             cursor-pointer hover:bg-white50 w-20 h-20
-                            fixed ${"bottom-4 right-4 lg:top-6"}
+                            fixed ${show ? "top-4 right-4 lg:top-6" : "bottom-4 right-4 lg:top-6"}
                             border border-white30 bg-white30 rounded-full p-4 backdrop-blur`}
                 onClick={toggleMobileMenu}
             >
                 <MenuIcon className={white ? "fill-white" : "fill-blue-accent"} />
-                {/* <b className={white ? "text-white" : "text-gray70"}>MENU</b> */}
-                {/* <BurgerIcon className={white ? "fill-white" : "fill-blue-accent"} /> */}
             </div>
 
             <div

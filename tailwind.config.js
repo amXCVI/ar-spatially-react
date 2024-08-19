@@ -47,9 +47,15 @@ export default {
                 12: "3rem",
             },
         },
-        // screens: {
-        //     "2xl": "1380px",
-        // },
+        screens: {
+            "3sm": "375px",
+            "2sm": "480px",
+            sm: "640px",
+            md: "768px",
+            lg: "1024px",
+            xl: "1280px",
+            "2xl": "1536px",
+        },
     },
     plugins: [],
 };

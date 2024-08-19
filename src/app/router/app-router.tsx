@@ -2,6 +2,8 @@ import { Suspense } from "react";
 import React from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
+import { TempPage } from "@/pages/temp-page";
+
 import { routes } from "@/shared/config";
 import { BaseLayout } from "@/shared/ui/layouts";
 
@@ -27,6 +29,8 @@ const AppRouter = () => {
                 { path: routes.arNFT, element: <ArNftPage /> },
 
                 { path: routes.playground, element: <BlockchainPage /> },
+
+                { path: routes.tempPage, element: <TempPage /> },
 
                 { path: routes.undefined, element: <ErrorPage /> },
             ],

@@ -3,7 +3,7 @@ import DocsIcon from "./menu-icons/docs-icon.svg?react";
 import EventIcon from "./menu-icons/event-icon.svg?react";
 import HomeIcon from "./menu-icons/home-icon.svg?react";
 import MapIcon from "./menu-icons/map-icon.svg?react";
-import PlaygroundIcon from "./menu-icons/playground-icon.svg?react";
+// import PlaygroundIcon from "./menu-icons/playground-icon.svg?react";
 import ProductIcon from "./menu-icons/product-icon.svg?react";
 
 import routes from "./app-routes";
@@ -45,13 +45,13 @@ export const menuLinks = [
     //     title: "Pricing",
     //     href: "",
     // },
-    {
-        id: "6",
-        title: "Playground",
-        href: routes.playground,
-        desctopOnly: true,
-        icon: <PlaygroundIcon />,
-    },
+    // {
+    //     id: "6",
+    //     title: "Playground",
+    //     href: routes.playground,
+    //     desctopOnly: true,
+    //     icon: <PlaygroundIcon />,
+    // },
     {
         id: "7",
         title: "AR NFT",
