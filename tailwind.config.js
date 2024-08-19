@@ -9,8 +9,11 @@ export default {
         extend: {
             colors: {
                 white: "#ffffff",
+                white5: "#ffffff05",
+                white15: "#ffffff15",
                 white30: "#ffffff30",
                 white50: "#ffffff50",
+                white60: "#ffffff60",
                 gray70: "#575959",
                 gray90: "#2A2A2B",
                 "gefault-bg": "#e2e2e2",
@@ -33,6 +36,9 @@ export default {
             },
             dropShadow: {
                 mapHeaderBg: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+            },
+            boxShadow: {
+                "popup-shadow": "0px 0px 200px #000000, 0px 12px 28px rgba(0, 0, 0, 0.25)",
             },
             backgroundPosition: {
                 "right-6": "center right 1rem",

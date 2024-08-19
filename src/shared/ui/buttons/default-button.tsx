@@ -16,7 +16,7 @@ export const DefaultButton: FC<PropsWithChildren<PropsButton>> = ({
     onClick,
     disabled = false,
 }) => {
-    const variants = `py-4 px-6 min-w-32
+    const variants = `px-6 min-w-32 !h-12 flex justify-center items-center
     rounded-full
     backdrop-blur
     border border-blue-accent
@@ -26,7 +26,7 @@ export const DefaultButton: FC<PropsWithChildren<PropsButton>> = ({
     hover:invert`;
     return (
         <button className={variants} onClick={onClick} disabled={disabled}>
-            <span className={className}>{children}</span>
+            <span>{children}</span>
         </button>
     );
 };

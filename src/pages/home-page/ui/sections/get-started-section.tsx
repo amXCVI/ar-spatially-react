@@ -14,22 +14,13 @@ const GetStartedSection = () => {
     return (
         <div className="flex flex-col justify-between">
             <div
-                className="container mx-auto max-w-7xl xl:max-w-screen-2xl rounded-[40px]
+                className="container mx-auto max-w-7xl lg:max-w-screen-2xl rounded-[40px]
                            overflow-hidden
                            grid grid-cols-12 gap-1
                           "
             >
                 <div className="col-span-12 bg-light-bg px-4 py-10 md:p-10">
-                    <div className="flex flex-col-reverse xl:flex-row gap-6 xl:gap-4">
-                        <div className="gap-2 md:gap-5 flex xl:hidden mx-auto">
-                            <a href={routes.product} className="xl:hidden mx-auto">
-                                <DefaultButton className="text-gray90 bg-none">Product</DefaultButton>
-                            </a>
-                            <a href={routes.arNFT} className="xl:hidden mx-auto">
-                                <DefaultButton className="text-gray90 bg-none">AR NFT</DefaultButton>
-                            </a>
-                        </div>
-
+                    <div className="flex flex-col lg:flex-row gap-6 xl:gap-4">
                         <div className="flex gap-4 mx-auto xl:hidden">
                             <img
                                 src={phone1}
@@ -47,7 +38,7 @@ const GetStartedSection = () => {
                         <div className="flex flex-col justify-between gap-4 ml-auto">
                             <div>
                                 <Title title="Our Product" />
-                                <TextP className="mt-4">
+                                <TextP className="mt-4 !text-justify">
                                     Our platform serves four key audiences: developers, businesses, artists, and users.
                                     Each group finds personalised tools for development and creation. Developers can use
                                     our Playground to create AR apps and promote them within the AR Spatially ecosystem.
@@ -61,14 +52,14 @@ const GetStartedSection = () => {
 
                             <div>
                                 <Title title="AR NFT" />
-                                <TextP className="mt-4">
+                                <TextP className="mt-4 !text-justify">
                                     A unique NFT format for AR objects enables the creation and exchange of digital
                                     rights for advertising, objects, facts, and achievements in the AR space, with their
                                     spatial position and volume recorded on the blockchain.
                                 </TextP>
                             </div>
 
-                            <div className="gap-2 md:gap-5 hidden xl:flex">
+                            <div className="gap-2 md:gap-5 flex">
                                 <a href={routes.product} className="">
                                     <DefaultButton className="text-gray90 bg-none">Product</DefaultButton>
                                 </a>
@@ -81,11 +72,11 @@ const GetStartedSection = () => {
                 </div>
 
                 <div className="col-span-12 bg-light-bg px-4 py-10 md:p-10">
-                    <div className="flex flex-col-reverse xl:flex-row gap-6 xl:gap-4">
+                    <div className="flex flex-col lg:flex-row gap-6 lg:gap-4">
                         <div className="flex flex-col justify-between gap-4 mr-auto">
                             <div>
                                 <Title title="Our Map" />
-                                <TextP className="mt-4">
+                                <TextP className="mt-4 !text-justify">
                                     A coordinate system that integrates AR with the real world, allowing geolocation to
                                     link and discover AR objects in their actual locations. It enables users to map
                                     routes, find objects in augmented reality, view movement history, and access
@@ -98,7 +89,7 @@ const GetStartedSection = () => {
 
                             <div>
                                 <Title title="Our Playground" />
-                                <TextP className="mt-4">
+                                <TextP className="mt-4 !text-justify">
                                     You can now upload 3D objects to the map in your personal Playground. Later, you'll
                                     be able to customise your AR Space and create your own solutions. Playground enables
                                     developers to create new applications and seamlessly integrate them into the AR
@@ -106,12 +97,12 @@ const GetStartedSection = () => {
                                 </TextP>
                                 <div className="flex flex-col md:flex-row w-full justify-between gap-5">
                                     <div className="flex gap-2 md:gap-5 mt-4">
-                                        <a href={""}>
+                                        <a href={routes.playground}>
                                             <DefaultButton className="bg-none text-gray90">Playground</DefaultButton>
                                         </a>
                                     </div>
 
-                                    <div className="flex gap-2 md:gap-5 mt-4">
+                                    <div className="flex justify-around md:justify-end w-full gap-2 md:gap-5 flex-wrap mt-4">
                                         <a href={import.meta.env.VITE_APP_NFTST_APPSTORE_URL}>
                                             <DefaultButton className="bg-none text-gray90 !py-3">
                                                 <img src={appStoreButton} />
