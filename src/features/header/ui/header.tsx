@@ -22,7 +22,7 @@ const Header = ({ white }: HeaderInterface) => {
 
     useEffect(() => {
         const controlNavbar = () => {
-            if (window.scrollY > window.innerHeight / 16) {
+            if (window.scrollY > window.innerHeight / 32) {
                 setShow(false);
             } else {
                 setShow(true);

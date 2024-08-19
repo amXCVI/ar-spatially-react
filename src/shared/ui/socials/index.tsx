@@ -16,7 +16,7 @@ const socials = [
     // {
     //     icon: <Linkedin />,
     //     title: "Linkedin",
-    //     link: "",
+    //     link: "https://www.linkedin.com/in/ar-spatially-481b342a8/",
     //     id: "Linkedin",
     // },
     {
@@ -28,25 +28,25 @@ const socials = [
     {
         icon: <TicToc />,
         title: "Tic Toc",
-        link: "",
+        link: "https://www.tiktok.com/@ar.spatially",
         id: "Tic Toc",
     },
     {
         icon: <Instagram />,
         title: "Instagram",
-        link: "",
+        link: "https://www.instagram.com/ar.spatiallyy/?hl=en",
         id: "Instagram",
     },
     {
         icon: <X />,
         title: "X",
-        link: "",
+        link: "https://x.com/ARSpatially",
         id: "X",
     },
     {
         icon: <Medium />,
         title: "Medium",
-        link: "",
+        link: "https://medium.com/@spatiallyar",
         id: "Medium",
     },
 ];
