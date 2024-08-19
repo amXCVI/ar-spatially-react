@@ -95,7 +95,10 @@ const StartSection = () => {
                                         bg-no-repeat bg-contain lg:bg-auto bg-center lg:bg-left 
                                         z-0"
                         />
-                        <img src={phone} className="object-contain h-full max-h-[80vh] lg:max-h-[65dvh] z-10 my-16" />
+                        <img
+                            src={phone}
+                            className="object-contain h-full max-h-[80vh] lg:max-h-[65vh] lg:max-w-[30vw] z-10 my-16 ml-auto xl:mr-auto"
+                        />
                     </div>
                 </div>
 
