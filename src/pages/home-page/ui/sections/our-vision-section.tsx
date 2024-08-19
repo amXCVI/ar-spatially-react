@@ -5,7 +5,7 @@ import { DefaultButton } from "@/shared/ui/buttons";
 import appStoreButton from "/images/landing/get-started-section/app-store-button.svg";
 import playMarketButton from "/images/landing/get-started-section/play-market-button.svg";
 import textParagraphPoint from "/images/landing/our-vision-section/paragraph-point.svg";
-import topText from "/images/landing/our-vision-section/top-text.svg";
+// import topText from "/images/landing/our-vision-section/top-text.svg";
 import textItemPointIcon from "/images/landing/start-section/text-item-point.svg";
 
 const OurVisionSection = () => {
@@ -52,7 +52,7 @@ const OurVisionSection = () => {
                         -mb-10
                         "
             >
-                <img src={topText} className="hidden lg:block mr-auto" />
+                {/* <img src={topText} className="hidden lg:block mr-auto" /> */}
 
                 <div className="flex flex-col lg:flex-row w-full items-center">
                     <div
