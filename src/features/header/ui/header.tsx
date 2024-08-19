@@ -111,9 +111,9 @@ const MobileMenu = ({ white = false, show }: MobileMenuInterface) => {
         <div className={`relative ${show && "lg:hidden"} ml-auto`}>
             <div
                 className={`flex flex-col justify-center items-center gap-2 duration-500
-                            cursor-pointer hover:bg-white50 w-20 h-20
+                            cursor-pointer hover:bg-white50 w-20 h-20 lg:w-28 lg:h-28
                             fixed ${"bottom-4 right-4 lg:top-6"}
-                            border border-white30 bg-white30 rounded-full p-4 backdrop-blur`}
+                            border border-blue-accent bg-white30 rounded-full p-4 backdrop-blur`}
                 onClick={toggleMobileMenu}
             >
                 <MenuIcon className={white ? "fill-white" : "fill-blue-accent"} />
