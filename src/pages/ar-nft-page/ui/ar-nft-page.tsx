@@ -40,8 +40,8 @@ const ArNftPage = () => {
                             />
                         </div>
 
-                        <img src={phone1} className="object-contain max-h-[50vh] lg:max-h-[40vh] hidden lg:block" />
-                        <img src={phone2} className="object-contain max-h-[50vh] lg:max-h-[40vh] hidden lg:block" />
+                        <img src={phone1} className="object-contain max-h-[50vh] lg:max-w-[20vw] hidden lg:block" />
+                        <img src={phone2} className="object-contain max-h-[50vh] lg:max-w-[20vw] hidden lg:block" />
 
                         <div className="flex flex-col lg:pt-12">
                             <SectionTitle title="AR NFT" className="text-white" />

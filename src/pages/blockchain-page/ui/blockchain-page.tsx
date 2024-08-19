@@ -39,8 +39,8 @@ const BlockchainPage = () => {
                             />
                         </div>
 
-                        <img src={phone1} className="object-contain max-h-[50vh] lg:max-h-[40vh] hidden lg:block" />
-                        <img src={phone2} className="object-contain max-h-[50vh] lg:max-h-[40vh] hidden lg:block" />
+                        <img src={phone1} className="object-contain max-h-[50vh] lg:max-w-[20vw] hidden lg:block" />
+                        <img src={phone2} className="object-contain max-h-[50vh] lg:max-w-[20vw] hidden lg:block" />
 
                         <div className="flex flex-col justify-center">
                             <SectionTitle title="Use cases" className="text-white" />

@@ -77,7 +77,7 @@ const OurVisionSection = () => {
                             />
 
                             <Paragraph
-                                className="xl:ml-20"
+                                className="lg:ml-10 xl:ml-20"
                                 title="We link AR objects with the real world"
                                 text="using geolocation technologies and apply blockchain technology to secure this connection and ensure fair and transparent circulation of AR content. "
                             />
