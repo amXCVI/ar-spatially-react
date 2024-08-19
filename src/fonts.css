@@ -123,12 +123,44 @@
     line-height: 1.6rem;
 }
 
+.manrope-medium-18 {
+    font-family: "Manrope";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.125rem;
+    line-height: 1.563rem;
+}
+
+.manrope-bold-18 {
+    font-family: "Manrope";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.125rem;
+    line-height: 1.688rem;
+}
+
+.onest-regular-18 {
+    font-family: "onest-regular";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.125rem;
+    line-height: 1.688rem;
+}
+
 .manrope-regular-16 {
     font-family: "Manrope";
     font-style: normal;
     font-weight: 400;
     font-size: 1rem;
     line-height: 1.5rem;
+}
+
+.manrope-semibold-16 {
+    font-family: "Manrope";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.688rem;
 }
 
 .medium-20 {
