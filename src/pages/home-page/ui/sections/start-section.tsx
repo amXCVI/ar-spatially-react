@@ -38,7 +38,7 @@ const StartSection = () => {
 
                     <div className="flex flex-col w-full gap-6 items-start">
                         <div className="flex justify-start items-center manrope-regular-26 text-gray70">
-                            <img src={textItemPointIcon} className="mr-2" />
+                            <img src={textItemPointIcon} className="mr-2 w-8 h-8 2sm:w-11 2sm:h-11" />
                             <div className="">
                                 <b className="text-gray90">Aggregator of AR apps </b>
                                 <br className="hidden sm:block" />
@@ -47,7 +47,7 @@ const StartSection = () => {
                         </div>
 
                         <div className="flex justify-start items-center  manrope-regular-26 text-gray70 lg:ml-24 2xl:ml-40">
-                            <img src={textItemPointIcon} className="mr-2" />
+                            <img src={textItemPointIcon} className="mr-2 w-8 h-8 2sm:w-11 2sm:h-11" />
                             <div className="">
                                 <b className="text-gray90">AR content </b>tied to location
                                 <br className="hidden sm:block" />
@@ -56,7 +56,7 @@ const StartSection = () => {
                         </div>
 
                         <div className="flex justify-start items-center  manrope-regular-26 text-gray70 lg:ml-10 2xl:ml-16">
-                            <img src={textItemPointIcon} className="mr-2" />
+                            <img src={textItemPointIcon} className="mr-2 w-8 h-8 2sm:w-11 2sm:h-11" />
                             <div className="">
                                 <b className="text-gray90">AR-NFT</b> is a spatial geolocation token{" "}
                                 <br className="hidden sm:block" />

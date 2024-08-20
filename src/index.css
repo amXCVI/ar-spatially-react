@@ -20,7 +20,7 @@
     --main-color: #0000004d;
 }
 
-@media screen and (max-width: 1536px) {
+/* @media screen and (max-width: 1536px) {
     :root {
         font-size: 15px;
     }
@@ -42,7 +42,7 @@
     :root {
         font-size: 12px;
     }
-}
+} */
 
 body {
     margin: 0;

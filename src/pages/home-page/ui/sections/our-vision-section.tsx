@@ -21,9 +21,9 @@ const OurVisionSection = () => {
             >
                 <div
                     className="flex flex-col justify-center
-                                   w-full
-                                   pt-6 gap-10 lg:gap-20
-                                   lg:max-w-prose lg:mr-auto"
+                               w-full
+                               pt-6 gap-10 lg:gap-20
+                               lg:max-w-[40%] lg:mr-auto"
                 >
                     <div className="flex flex-col lg:flex-row gap-6 justify-center items-center flex-wrap mr-auto ml-auto lg:ml-0 lg:flex-nowrap">
                         <h1 className="h1-90-600 bg-our-vision-secton-text-gradient bg-clip-text text-transparent">
@@ -87,12 +87,12 @@ const Paragraph = ({ title, text, className }: { title: string; text: string; cl
         <div className={`flex items-start gap-2 justify-center text-gray70 ${className}`}>
             <div className="flex flex-col gap-2">
                 <div className="flex items-center">
-                    <img src={textItemPointIcon} className="mr-2" />
+                    <img src={textItemPointIcon} className="mr-2 w-8 h-8 2sm:w-11 2sm:h-11" />
                     <div className="flex flex-col manrope-semibold-22 text-black mt-2">{title}</div>
                 </div>
 
                 <div className="flex gap-2 items-start ml-10 lg:ml-16">
-                    <img src={textParagraphPoint} />
+                    <img src={textParagraphPoint} className="mt-2" />
                     <span className="manrope-regular-16">{text}</span>
                 </div>
             </div>
