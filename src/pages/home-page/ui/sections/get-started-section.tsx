@@ -88,31 +88,31 @@ const GetStartedSection = () => {
                                 <Title title="Our Playground" />
                                 <TextP className="mt-2.5 !text-justify">
                                     You can now upload 3D objects to the map in your personal Playground. Later, you'll
-                                    be able to customise your AR Space and create your own solutions. Playground enables
+                                    be able to customize your AR Space and create your own solutions. Playground enables
                                     developers to create new applications and seamlessly integrate them into the AR
                                     Spatially ecosystem.
                                 </TextP>
-                                <div className="flex flex-col md:flex-row w-full justify-between items-center 2sm:items-start gap-5">
-                                    <div className="flex gap-2 md:gap-5 mt-2.5">
+                                <div className="flex flex-col md:flex-row w-full justify-between items-center sm:items-start gap-4">
+                                    <div className="flex gap-4 mt-2.5">
                                         <a href={routes.playground}>
                                             <DefaultButton className="bg-none text-gray90">Playground</DefaultButton>
                                         </a>
                                     </div>
 
-                                    <div className="flex justify-around md:justify-end w-full gap-2 md:gap-5 flex-wrap mt-2.5">
+                                    <div className="flex justify-around md:justify-end w-full gap-4 flex-wrap md:mt-2.5">
                                         <a
                                             href={import.meta.env.VITE_APP_NFTST_APPSTORE_URL}
-                                            className="w-full 2sm:w-auto"
+                                            className="w-full sm:w-auto"
                                         >
-                                            <DefaultButton className="bg-none text-gray90 !py-3 w-full">
+                                            <DefaultButton className="bg-none text-gray90 !py-3 w-full min-w-[170px]">
                                                 <img src={appStoreButton} />
                                             </DefaultButton>
                                         </a>
                                         <a
                                             href={import.meta.env.VITE_APP_NFTST_PLAYMARKET_URL}
-                                            className="w-full 2sm:w-auto"
+                                            className="w-full sm:w-auto"
                                         >
-                                            <DefaultButton className="bg-none text-gray90 !py-3 w-full">
+                                            <DefaultButton className="bg-none text-gray90 !py-3 w-full min-w-[170px]">
                                                 <img src={playMarketButton} />
                                             </DefaultButton>
                                         </a>
