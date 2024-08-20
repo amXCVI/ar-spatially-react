@@ -27,7 +27,7 @@ const StartSection = () => {
                 <div className="flex flex-col justify-between w-full h-full gap-10 lg:gap-20">
                     <div
                         className="flex flex-wrap flex-col w-full lg:px-6 xl:px-12
-                                   h1-90-600 text-[65px] sm:text-[86px] lg:text-[96px]
+                                   h1-90-600 leading-none text-[65px] sm:text-[86px] lg:text-[96px] lg:font-[96px]
                                    mt-6 lg:mt-0"
                     >
                         <h1 className="bg-start-section-text-gradient bg-clip-text text-transparent lg:mr-auto">OUR</h1>
