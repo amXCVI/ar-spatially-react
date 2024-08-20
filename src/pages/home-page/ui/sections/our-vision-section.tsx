@@ -25,7 +25,7 @@ const OurVisionSection = () => {
                                pt-6 gap-10 lg:gap-20
                                lg:max-w-[40%] lg:mr-auto"
                 >
-                    <div className="flex flex-col lg:flex-row gap-6 justify-center items-center flex-wrap mr-auto ml-auto lg:ml-0 lg:flex-nowrap">
+                    <div className="flex flex-col lg:flex-row lg:gap-6 justify-center items-center flex-wrap mr-auto ml-auto lg:ml-0 lg:flex-nowrap">
                         <h1 className="h1-90-600 bg-our-vision-secton-text-gradient bg-clip-text text-transparent">
                             OUR
                         </h1>
@@ -69,7 +69,7 @@ const OurVisionSection = () => {
                 <div className="col-span-1 md:col-span-3 flex flex-col items-center w-full h-min">
                     <div
                         className="relative flex justify-center w-full h-min
-                                    scale-75 md:scale-90 lg:scale-125 xl:scale-150"
+                                   scale-90 lg:scale-125 xl:scale-150"
                     >
                         <Spline
                             scene="https://prod.spline.design/oMmUby6YEqG3VTjS/scene.splinecode"
