@@ -5,16 +5,17 @@ import { Title } from "@/shared/ui/text-components";
 
 const ContactSection = () => {
     return (
-        <div className="flex flex-col justify-between">
+        <section className="mt-11 px-6">
             <div
-                className="container mx-auto max-w-7xl xl:max-w-screen-2xl rounded-[40px]
-                           overflow-hidden
+                className="container mx-auto 
+                           rounded-[40px] overflow-hidden
+                           flex flex-col gap-1
                           "
             >
-                <div className="bg-light-bg px-4 py-10 md:p-10">
+                <div className="bg-light-bg px-9 py-6 gap-5">
                     <Title title="Contact form" className="mb-6" />
                     <div className="flex w-full">
-                        <div className="grid grid-cols-8 grid-rows-6 grid-flow-col gap-4 w-full">
+                        <div className="grid grid-cols-8 grid-rows-6 md:grid-rows-5 grid-flow-col gap-5 w-full">
                             <TextField
                                 id="project-name"
                                 label="Project name"
@@ -36,7 +37,7 @@ const ContactSection = () => {
                                 textarea
                             />
 
-                            <div className="col-span-8 md:row-start-5 flex justify-end">
+                            <div className="col-span-8 md:row-start-5 flex justify-end mt-1">
                                 <DefaultButton className="text-gray90 h-min">Send info</DefaultButton>
                             </div>
                         </div>
@@ -49,7 +50,7 @@ const ContactSection = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 
