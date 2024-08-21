@@ -7,7 +7,7 @@ interface DarkLayoutProps {
 
 const DarkLayout = ({ className, children }: DarkLayoutProps) => {
     return (
-        <section className={`p-5 min-h-dvh overflow-y-scroll overflow-x-hidden w-full bg-dark-bg ${className ?? ""}`}>
+        <section className={`min-h-dvh overflow-y-scroll overflow-x-hidden w-full bg-dark-bg ${className ?? ""}`}>
             {children}
         </section>
     );

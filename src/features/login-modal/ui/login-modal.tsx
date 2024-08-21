@@ -116,7 +116,9 @@ const LoginModal = () => {
                     </div>
                 </div>
 
-                <div className="mx-auto manrope-medium-22 text-white underline">Skip for now</div>
+                <div onClick={closeLoginModal} className="mx-auto manrope-medium-22 text-white underline">
+                    Skip for now
+                </div>
             </div>
         </div>
     );

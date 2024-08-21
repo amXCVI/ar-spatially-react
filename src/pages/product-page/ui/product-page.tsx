@@ -21,40 +21,37 @@ const ProductPage = () => {
         <DarkLayout
             className="flex flex-col justify-between 
                        bg-[url(/images/product/bg.svg)] bg-cover bg-no-repeat bg-center
-                       pt-36 lg:pt-40
                        "
         >
             <Header white />
+
             <div
                 className="grid grid-cols-8 lg:grid-rows-5 gap-6
-                            container mx-auto h-full mb-10"
+                            container mx-auto h-full px-6"
             >
                 <div
-                    className="col-span-8 lg:col-span-5 xl:col-span-3 lg:row-span-1 lg:row-start-2
-                                flex flex-col gap-7"
+                    className="col-span-8 lg:col-span-5 xl:col-span-3 lg:row-span-3 lg:row-start-2
+                                flex flex-col gap-6 justify-between"
                 >
-                    <SectionTitle className="text-white mb-6 lg:mb-12" title="Our Product" />
-                </div>
+                    <SectionTitle className="text-white" title="Our Product" />
 
-                <div
-                    className="col-span-8 lg:col-span-5 xl:col-span-3 lg:row-span-3 xl:row-start-3
-                                flex flex-col gap-7"
-                >
-                    <TextP className="text-spanish-gray">
-                        <b className="text-xl text-white mr-2">For AR Artists</b>
-                        we offer space to upload 3D objects and a unified AR space for showcasing your work. Create and
-                        sell AR-NFTs, receive commissions from developers and businesses, and connect with peers,
-                        brands, and collectors.
-                    </TextP>
+                    <div className="flex flex-col gap-6">
+                        <TextP className="text-spanish-gray text-start">
+                            <b className="text-xl text-white mr-2">For AR Artists</b>
+                            we offer space to upload 3D objects and a unified AR space for showcasing your work. Create
+                            and sell AR-NFTs, receive commissions from developers and businesses, and connect with
+                            peers, brands, and collectors.
+                        </TextP>
 
-                    <TextP className="text-spanish-gray">
-                        <b className="text-xl text-white mr-2">For developers </b>
-                        we aim to create a comprehensive toolkit that allows both existing and emerging applications to
-                        connect and utilise the open features of other applications in the ecosystem, including
-                        blockchain functions.
-                    </TextP>
+                        <TextP className="text-spanish-gray text-start">
+                            <b className="text-xl text-white mr-2">For developers </b>
+                            we aim to create a comprehensive toolkit that allows both existing and emerging applications
+                            to connect and utilise the open features of other applications in the ecosystem, including
+                            blockchain functions.
+                        </TextP>
+                    </div>
 
-                    <div className="flex gap-2 md:gap-5 justify-center lg:justify-start">
+                    <div className="flex gap-4 justify-start">
                         <DefaultButton onClick={() => openLoginModal(SignInPopupModes.SignIn)}>Log in</DefaultButton>
                         <DefaultButton onClick={() => openLoginModal(SignInPopupModes.SignUp)}>Sign up</DefaultButton>
                     </div>
@@ -72,22 +69,25 @@ const ProductPage = () => {
                     />
                 </div>
                 <div
-                    className="col-span-8 xl:col-span-3 xl:row-span-2 xl:row-start-3
-                                flex flex-col gap-7"
+                    className="col-span-8 xl:col-span-3 xl:row-span-3 xl:row-start-2
+                                flex flex-col gap-6 justify-between"
                 >
-                    <TextP className="text-spanish-gray">
-                        <b className="text-xl text-white mr-2">Users</b>
-                        can personalise their space by adding or removing applications and AR objects based on their
-                        preferences. They can also search for objects, goods, and services within the visibility zone.
-                        Beyond this, users have access to AR content libraries, allowing them to pin AR content to
-                        specific locations and create AR NFTs.
-                    </TextP>
-                    <TextP className="text-spanish-gray">
-                        <b className="text-xl text-white mr-2">For Businesses</b>
-                        we utilize AR to attract nearby consumers. Inform customers about promotions and discounts
-                        directly through AR-driven advertising events.
-                    </TextP>
-                    <div className="flex gap-2 md:gap-5 justify-center lg:justify-start">
+                    <div className="flex flex-col gap-6">
+                        <TextP className="text-spanish-gray text-start">
+                            <b className="text-xl text-white mr-2">Users</b>
+                            can personalise their space by adding or removing applications and AR objects based on their
+                            preferences. They can also search for objects, goods, and services within the visibility
+                            zone. Beyond this, users have access to AR content libraries, allowing them to pin AR
+                            content to specific locations and create AR NFTs.
+                        </TextP>
+                        <TextP className="text-spanish-gray text-start">
+                            <b className="text-xl text-white mr-2">For Businesses</b>
+                            we utilize AR to attract nearby consumers. Inform customers about promotions and discounts
+                            directly through AR-driven advertising events.
+                        </TextP>
+                    </div>
+
+                    <div className="flex gap-2 md:gap-5 justify-start">
                         <a href={import.meta.env.VITE_APP_NFTST_APPSTORE_URL}>
                             <DefaultButton className="bg-none text-gray90 !py-3">
                                 <img src={appStoreButton} />
