@@ -1,5 +1,7 @@
 import { useOutsideClick } from "@ar-kit/shared/hooks";
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useContext, useEffect, useState } from "react";
+
+import { AuthContext, SignInPopupModes } from "@/features/login-modal";
 
 import { menuLinks, routes } from "@/shared/config";
 import { DefaultButton } from "@/shared/ui/buttons";
@@ -9,6 +11,7 @@ import { Socials } from "@/shared/ui/socials";
 import CloseMenuIcon from "./close-menu-icon.svg?react";
 import Logo from "./logo.svg?react";
 import MenuIcon from "./menu-icon.svg?react";
+import PersonIcon from "./person-icon.svg?react";
 import appStoreButton from "/images/landing/get-started-section/app-store-button.svg";
 import playMarketButton from "/images/landing/get-started-section/play-market-button.svg";
 import shortLogo from "/images/landing/header/short-logo.svg";
@@ -75,6 +78,8 @@ const Header = ({ white }: HeaderInterface) => {
                 </div>
 
                 <MobileMenu white={white} show={show} />
+
+                <Profile show={show} />
             </div>
         </header>
     );
@@ -157,6 +162,24 @@ const MobileMenu = ({ white = false, show }: MobileMenuInterface) => {
                     <Socials className="my-10" itemClassName="fill-white" />
                 </div>
             </div>
+        </div>
+    );
+};
+
+const Profile = ({ show }: { show: boolean }) => {
+    const { openLoginModal } = useContext(AuthContext);
+
+    return (
+        <div
+            onClick={() => {
+                openLoginModal(SignInPopupModes.SignUp);
+            }}
+            className={`flex justify-center items-center
+                            cursor-pointer hover:bg-white50 w-20 h-20
+                            fixed ${show ? "top-32 right-4 lg:top-6" : "bottom-32 right-4 lg:top-32"}
+                            border border-white30 bg-white30 rounded-full p-4 backdrop-blur`}
+        >
+            <PersonIcon />
         </div>
     );
 };

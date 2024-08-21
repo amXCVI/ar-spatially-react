@@ -43,6 +43,16 @@ const LoginModal = () => {
         closeLoginModal();
     });
 
+    if (isOpenLoginPopup) {
+        // push to history when modal opens
+        window.history.pushState(null, "", window.location.href);
+
+        // close modal on 'back'
+        window.onpopstate = () => {
+            closeLoginModal();
+        };
+    }
+
     if (isOpenLoginPopup === SignInPopupModes.Closed) {
         return <div />;
     }
