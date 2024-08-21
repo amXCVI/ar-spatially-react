@@ -101,7 +101,7 @@ const MobileMenu = ({ white = false, show }: MobileMenuInterface) => {
     };
 
     return (
-        <div className={`relative ${show && "lg:hidden"} ml-auto`}>
+        <div className={`fixed ${show && "lg:hidden"} ml-auto`}>
             <div
                 className={`flex flex-col justify-center items-center gap-2 duration-500
                             cursor-pointer hover:bg-white50 w-20 h-20
