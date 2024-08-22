@@ -5,7 +5,7 @@ const routes = {
     arNFT: "/ar-nft",
     event: "/event",
     playground: "/playground",
-    tempPage: "/tmppg",
+    lk: "/personal_page",
 
     undefined: "*",
 };

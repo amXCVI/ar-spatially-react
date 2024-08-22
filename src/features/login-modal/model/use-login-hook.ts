@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
+import { routes } from "@/shared/config";
 import { LSConstants } from "@/shared/config/constants";
 
 import { loginApi } from "../api";
@@ -8,6 +10,8 @@ import { LoginFormInterface } from "../types";
 import { AuthContext, SignInPopupModes } from "../ui";
 
 const useLoginHook = () => {
+    const navigate = useNavigate();
+
     const { isOpenLoginPopup, closeLoginModal, openLoginModal, setAuthenticated } = useContext(AuthContext);
 
     const {
@@ -29,6 +33,7 @@ const useLoginHook = () => {
             login(e).then((res) => {
                 localStorage.setItem(LSConstants.accessToken, res.token);
                 setAuthenticated(true);
+                navigate(routes.lk);
                 closeLoginModal();
             });
         }
@@ -39,6 +44,7 @@ const useLoginHook = () => {
             signup(e).then((res) => {
                 localStorage.setItem(LSConstants.accessToken, res.token);
                 setAuthenticated(true);
+                navigate(routes.lk);
                 closeLoginModal();
             });
         }

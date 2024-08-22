@@ -2,10 +2,12 @@ import { Suspense } from "react";
 import React from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
-import { TempPage } from "@/pages/temp-page";
-
 import { routes } from "@/shared/config";
 import { BaseLayout } from "@/shared/ui/layouts";
+
+import PrivateRoute from "./private-route";
+
+const LkPage = React.lazy(() => import("@/pages/lk"));
 
 const BlockchainPage = React.lazy(() => import("@/pages/blockchain-page"));
 const ErrorPage = React.lazy(() => import("@/pages/error-page"));
@@ -30,7 +32,7 @@ const AppRouter = () => {
 
                 { path: routes.playground, element: <BlockchainPage /> },
 
-                { path: routes.tempPage, element: <TempPage /> },
+                { path: routes.lk, element: <PrivateRoute />, children: [{ index: true, element: <LkPage /> }] },
 
                 { path: routes.undefined, element: <ErrorPage /> },
             ],
