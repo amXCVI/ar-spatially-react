@@ -1,4 +1,5 @@
 import { useOutsideClick } from "@ar-kit/shared/hooks";
+import React from "react";
 
 import AppleIcon from "./../icons/apple.svg?react";
 import FacebookIcon from "./../icons/facebook.svg?react";
@@ -37,7 +38,16 @@ const socials = [
 ];
 
 const LoginModal = () => {
-    const { isOpenLoginPopup, closeLoginModal, handleClickSignIn, handleClickSignUp } = useLoginHook();
+    const {
+        isOpenLoginPopup,
+        closeLoginModal,
+        toggleSigninModalMode,
+        handleClickSignIn,
+        handleClickSignUp,
+        register,
+        handleSubmit,
+        errors,
+    } = useLoginHook();
 
     const modalRef = useOutsideClick(() => {
         closeLoginModal();
@@ -73,22 +83,61 @@ const LoginModal = () => {
                     </div>
                 </div>
 
-                <div className="flex flex-col w-full gap-4">
+                <form
+                    className="flex flex-col w-full gap-4"
+                    onSubmit={
+                        isOpenLoginPopup === SignInPopupModes.SignIn
+                            ? handleSubmit(handleClickSignIn)
+                            : handleSubmit(handleClickSignUp)
+                    }
+                >
                     <div className="flex flex-col w-full gap-2.5">
-                        <TextField id="email" label="Email" placeholder="Your Email" type="email" />
+                        <TextField
+                            {...register("login", {
+                                required: "Required field",
+                            })}
+                            type="email"
+                            label="Email"
+                            id="email"
+                            placeholder="Your Email"
+                            errorMessage={errors.login?.message}
+                        />
                     </div>
 
                     <div className="flex flex-col w-full gap-2.5">
-                        <TextField id="password" label="Password" placeholder="Your Password" type="password" />
+                        <TextField
+                            {...register("password", {
+                                required: "Required field",
+                            })}
+                            id="password"
+                            label="Password"
+                            placeholder="Your Password"
+                            type="password"
+                            errorMessage={errors.password?.message}
+                        />
 
                         {isOpenLoginPopup === SignInPopupModes.SignUp && (
-                            <TextField id="password_again" label="" placeholder="Your Password Again" type="password" />
+                            <TextField
+                                {...register("passwordAgain", {
+                                    required: "Required field",
+                                })}
+                                id="password_again"
+                                label=""
+                                placeholder="Your Password Again"
+                                type="password"
+                                errorMessage={errors.passwordAgain?.message}
+                            />
                         )}
                     </div>
 
                     <div className="flex flex-col-reverse lg:flex-row gap-4 w-full">
-                        <div
-                            onClick={handleClickSignIn}
+                        <button
+                            type={isOpenLoginPopup === SignInPopupModes.SignIn ? "submit" : "button"}
+                            onClick={
+                                isOpenLoginPopup === SignInPopupModes.SignIn
+                                    ? handleSubmit(handleClickSignIn)
+                                    : () => toggleSigninModalMode(SignInPopupModes.SignIn)
+                            }
                             className={`flex justify-center flex-nowrap w-full text-nowrap gap-2.5 border border-gray70 rounded-[18px] px-5 py-3 manrope-semibold-16 cursor-pointer ${isOpenLoginPopup === SignInPopupModes.SignIn ? "bg-white text-black" : "bg-none text-white"}`}
                         >
                             <span
@@ -97,13 +146,18 @@ const LoginModal = () => {
                                 Already have an account?
                             </span>
                             <a className="underline cursor-pointer">Sign in</a>
-                        </div>
-                        <div
-                            onClick={handleClickSignUp}
+                        </button>
+                        <button
+                            type={isOpenLoginPopup === SignInPopupModes.SignUp ? "submit" : "button"}
+                            onClick={
+                                isOpenLoginPopup === SignInPopupModes.SignUp
+                                    ? handleSubmit(handleClickSignUp)
+                                    : () => toggleSigninModalMode(SignInPopupModes.SignUp)
+                            }
                             className={`flex w-full text-nowrap justify-center items-center border border-gray70 rounded-[18px] px-5 py-3 manrope-semibold-16 cursor-pointer ${isOpenLoginPopup === SignInPopupModes.SignUp ? "bg-white text-black" : "bg-none text-white"}`}
                         >
                             Create an account
-                        </div>
+                        </button>
                     </div>
 
                     <div className="flex flex-col items-center gap-4">
@@ -114,9 +168,12 @@ const LoginModal = () => {
                             })}
                         </div>
                     </div>
-                </div>
+                </form>
 
-                <div onClick={closeLoginModal} className="mx-auto manrope-medium-22 text-white underline">
+                <div
+                    onClick={closeLoginModal}
+                    className="mx-auto manrope-medium-22 text-white underline cursor-pointer"
+                >
                     Skip for now
                 </div>
             </div>
@@ -124,36 +181,33 @@ const LoginModal = () => {
     );
 };
 
-const TextField = ({
-    id,
-    label,
-    className,
-    placeholder,
-    type,
-}: {
+interface TextFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
     id: string;
     label: string;
-    placeholder?: string;
-    className?: string;
-    type: string;
-}) => {
-    return (
-        <div className={`flex flex-col gap-2.5 ${className}`}>
-            {label && (
-                <label htmlFor={id} className="manrope-bold-18 text-white">
-                    {label}
-                </label>
-            )}
+    errorMessage?: string;
+}
 
-            <input
-                id={id}
-                placeholder={placeholder}
-                className="border border-gray70 text-white onest-regular-18 px-6 py-3 rounded-[25px]"
-                type={type}
-            />
-        </div>
-    );
-};
+const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
+    ({ id, label, className, errorMessage, ...props }: TextFieldProps, ref) => {
+        return (
+            <div className={`relative flex flex-col gap-2.5 ${className}`}>
+                {label && (
+                    <label htmlFor={id} className="manrope-bold-18 text-white">
+                        {label}
+                    </label>
+                )}
+
+                <input
+                    id={id}
+                    className={`border ${errorMessage ? "border-gray70" : "border-gray70"} text-white onest-regular-18 px-6 py-3 rounded-[25px]`}
+                    ref={ref}
+                    {...props}
+                />
+                {/* <div className="absolute -bottom-4 manrope-regular-12 text-red-500">{errorMessage}</div> */}
+            </div>
+        );
+    },
+);
 
 const SocialButton = ({ text, icon }: { text?: string; icon: JSX.Element }) => {
     return (

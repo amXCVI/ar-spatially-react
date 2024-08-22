@@ -1,6 +1,14 @@
 import { ReactNode, createContext, useState } from "react";
 
+import { LSConstants } from "@/shared/config/constants";
+
 const getAuthStatus = () => {
+    const token = localStorage.getItem(LSConstants.accessToken);
+
+    if (token) {
+        return true;
+    }
+
     return false;
 };
 

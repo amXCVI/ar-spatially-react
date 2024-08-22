@@ -1,25 +1,63 @@
 import { useContext } from "react";
+import { useForm } from "react-hook-form";
 
+import { LSConstants } from "@/shared/config/constants";
+
+import { loginApi } from "../api";
+import { LoginFormInterface } from "../types";
 import { AuthContext, SignInPopupModes } from "../ui";
 
 const useLoginHook = () => {
-    const { isOpenLoginPopup, closeLoginModal, openLoginModal } = useContext(AuthContext);
+    const { isOpenLoginPopup, closeLoginModal, openLoginModal, setAuthenticated } = useContext(AuthContext);
 
-    const handleClickSignIn = () => {
-        if (isOpenLoginPopup !== SignInPopupModes.SignIn) {
-            openLoginModal(SignInPopupModes.SignIn);
-            return;
+    const {
+        register,
+        handleSubmit,
+        formState: { errors, isValid },
+    } = useForm<LoginFormInterface>();
+
+    const login = (e: LoginFormInterface) => {
+        return loginApi.login(e);
+    };
+
+    const signup = (e: LoginFormInterface) => {
+        return loginApi.signup(e);
+    };
+
+    const handleClickSignIn = (e: LoginFormInterface) => {
+        if (isValid) {
+            login(e).then((res) => {
+                localStorage.setItem(LSConstants.accessToken, res.token);
+                setAuthenticated(true);
+                closeLoginModal();
+            });
         }
     };
 
-    const handleClickSignUp = () => {
-        if (isOpenLoginPopup !== SignInPopupModes.SignUp) {
-            openLoginModal(SignInPopupModes.SignUp);
-            return;
+    const handleClickSignUp = (e: LoginFormInterface) => {
+        if (isValid && e.password === e.passwordAgain) {
+            signup(e).then((res) => {
+                localStorage.setItem(LSConstants.accessToken, res.token);
+                setAuthenticated(true);
+                closeLoginModal();
+            });
         }
     };
 
-    return { isOpenLoginPopup, closeLoginModal, handleClickSignIn, handleClickSignUp };
+    const toggleSigninModalMode = (e: SignInPopupModes) => {
+        openLoginModal(e);
+    };
+
+    return {
+        isOpenLoginPopup,
+        closeLoginModal,
+        toggleSigninModalMode,
+        handleClickSignIn,
+        handleClickSignUp,
+        register,
+        handleSubmit,
+        errors,
+    };
 };
 
 export { useLoginHook };
