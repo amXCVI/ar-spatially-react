@@ -22,7 +22,7 @@ const ArNftPage = () => {
         >
             <Header white />
             <div
-                className="container mx-auto 
+                className="container mx-auto px-6
                            rounded-[40px] overflow-hidden
                            grid grid-cols-3 gap-11"
             >
