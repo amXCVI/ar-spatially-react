@@ -1,6 +1,7 @@
 import { Footer } from "@/features/footer";
 import Header from "@/features/header";
 
+import { routes } from "@/shared/config";
 import { DefaultButton } from "@/shared/ui/buttons";
 import { DarkLayout } from "@/shared/ui/layouts";
 import { SectionTitle, TextP } from "@/shared/ui/text-components";
@@ -67,7 +68,7 @@ const ArNftPage = () => {
                     <TextP className="text-spanish-gray text-start">
                         This is our Web AR demo experience. You can try it now and explore our solution in practice.
                     </TextP>
-                    <a className="mx-auto mt-5 xl:mt-auto" href={""}>
+                    <a className="mx-auto mt-5 xl:mt-auto" href={`${routes.home}#contact`}>
                         <DefaultButton className="">
                             <span className="text-white">Try AR Now</span>
                         </DefaultButton>

@@ -209,10 +209,10 @@ const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
     },
 );
 
-const SocialButton = ({ text, icon }: { text?: string; icon: JSX.Element }) => {
+const SocialButton = ({ icon }: { text?: string; icon: JSX.Element }) => {
     return (
-        <div className="bg-white15 rounded-[25px] px-4 py-3 flex items-center gap-2.5 cursor-pointer">
-            <span className="hidden md:block manrope-bold-18 text-white">{text}</span>
+        <div className="rounded-[25px] px-4 py-3 flex items-center gap-2.5 cursor-pointer">
+            {/* <span className="hidden md:block manrope-bold-18 text-white">{text}</span> */}
             {icon}
         </div>
     );

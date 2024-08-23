@@ -5,7 +5,7 @@ import { Title } from "@/shared/ui/text-components";
 
 const ContactSection = () => {
     return (
-        <section className="mt-11 px-6">
+        <section className="mt-11 px-6" id={"contact"}>
             <div
                 className="container mx-auto 
                            rounded-[40px] overflow-hidden

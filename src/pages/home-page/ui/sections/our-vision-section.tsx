@@ -22,7 +22,7 @@ const OurVisionSection = () => {
                 <div
                     className="flex flex-col justify-center
                                w-full
-                               pt-6 gap-10 lg:gap-20
+                               pt-6 gap-10 lg:gap-16 xl:gap-20
                                lg:max-w-[40%] lg:mr-auto"
                 >
                     <div

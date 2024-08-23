@@ -7,13 +7,13 @@ import { menuLinks, routes } from "@/shared/config";
 import { DefaultButton } from "@/shared/ui/buttons";
 import { Socials } from "@/shared/ui/socials";
 
+import AppStoreButton from "../assets/app-store-white-icon.svg?react";
 // import BurgerIcon from "./burger-icon.svg?react";
-import CloseMenuIcon from "./close-menu-icon.svg?react";
-import Logo from "./logo.svg?react";
-import MenuIcon from "./menu-icon.svg?react";
-import PersonIcon from "./person-icon.svg?react";
-import appStoreButton from "/images/landing/get-started-section/app-store-button.svg";
-import playMarketButton from "/images/landing/get-started-section/play-market-button.svg";
+import CloseMenuIcon from "../assets/close-menu-icon.svg?react";
+import PlayMarketButton from "../assets/google-play-white-icon.svg?react";
+import Logo from "../assets/logo.svg?react";
+import MenuIcon from "../assets/menu-icon.svg?react";
+import PersonIcon from "../assets/person-icon.svg?react";
 import shortLogo from "/images/landing/header/short-logo.svg";
 
 interface HeaderInterface {
@@ -43,15 +43,12 @@ const Header = ({ white }: HeaderInterface) => {
     return (
         <header className="z-50">
             <div
-                className={`container mx-auto py-10 px-7
+                className={`container mx-auto py-5 lg:py-10 px-7
                             lg:px-12 xl:px-0\
                             flex justify-between`}
             >
-                <a href={routes.home} className="2sm:hidden">
-                    <img src={shortLogo} className="ml-5 w-12" />
-                </a>
-                <a href={routes.home} className="hidden 2sm:block">
-                    <Logo style={{ fill: white ? "white" : "#1F2020" }} />
+                <a href={routes.home} className="block">
+                    <Logo style={{ fill: white ? "white" : "#1F2020", maxWidth: "65vw" }} />
                 </a>
 
                 <div className={`hidden lg:flex gap-6 ml-auto`}>
@@ -106,7 +103,7 @@ const MobileMenu = ({ white = false, show }: MobileMenuInterface) => {
                 className={`flex flex-col justify-center items-center gap-2 duration-500
                             cursor-pointer hover:bg-white50 w-20 h-20
                             fixed ${show ? "top-4 right-4 lg:top-6" : "bottom-4 right-4 lg:top-6"}
-                            border border-white30 bg-white30 rounded-full p-4 backdrop-blur`}
+                            border border-blue-accent bg-white30 rounded-full p-4 backdrop-blur`}
                 onClick={toggleMobileMenu}
             >
                 <MenuIcon className={white ? "fill-white" : "fill-blue-accent"} />
@@ -148,13 +145,13 @@ const MobileMenu = ({ white = false, show }: MobileMenuInterface) => {
 
                     <div className="flex gap-2 md:gap-5">
                         <a href={import.meta.env.VITE_APP_NFTST_APPSTORE_URL}>
-                            <DefaultButton className="bg-none text-white !py-3">
-                                <img src={appStoreButton} />
+                            <DefaultButton className="bg-none text-white !py-3 border-none">
+                                <AppStoreButton style={{ fill: "#7a7a7a" }} />
                             </DefaultButton>
                         </a>
                         <a href={import.meta.env.VITE_APP_NFTST_PLAYMARKET_URL}>
-                            <DefaultButton className="bg-none text-white !py-3">
-                                <img src={playMarketButton} />
+                            <DefaultButton className="bg-none text-white !py-3 border-none">
+                                <PlayMarketButton style={{ fill: "#7a7a7a" }} />
                             </DefaultButton>
                         </a>
                     </div>
@@ -177,7 +174,7 @@ const Profile = ({ show }: { show: boolean }) => {
             className={`flex justify-center items-center
                             cursor-pointer hover:bg-white50 w-20 h-20
                             fixed ${show ? "top-32 right-4 lg:top-6" : "bottom-32 right-4 lg:top-32"}
-                            border border-white30 bg-white30 rounded-full p-4 backdrop-blur`}
+                            border border-blue-accent bg-white30 rounded-full p-4 backdrop-blur`}
         >
             <PersonIcon />
         </div>

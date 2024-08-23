@@ -39,8 +39,8 @@ const StartSection = () => {
                     <div className="flex flex-col w-full gap-6 items-start z-10">
                         <div className="flex justify-start items-center manrope-regular-26 text-gray70">
                             <img src={textItemPointIcon} className="mr-2 w-8 h-8 2sm:w-11 2sm:h-11" />
-                            <div className="">
-                                <b className="text-gray90">Aggregator of AR apps </b>
+                            <div className="text-[1.25rem] lg:text-[1.625rem]">
+                                <b className="text-gray90 text-[1.625rem]">Aggregator of AR apps </b>
                                 <br className="hidden sm:block" />
                                 for real businesses and users
                             </div>
@@ -48,27 +48,27 @@ const StartSection = () => {
 
                         <div className="flex justify-start items-center  manrope-regular-26 text-gray70 lg:ml-24 2xl:ml-40">
                             <img src={textItemPointIcon} className="mr-2 w-8 h-8 2sm:w-11 2sm:h-11" />
-                            <div className="">
-                                <b className="text-gray90">AR content </b>tied to location
+                            <div className="text-[1.25rem] lg:text-[1.625rem]">
+                                <b className="text-gray90 text-[1.625rem]">AR content </b>tied to location
                                 <br className="hidden sm:block" />
-                                on thr global map
+                                on the global map
                             </div>
                         </div>
 
                         <div className="flex justify-start items-center  manrope-regular-26 text-gray70 lg:ml-10 2xl:ml-16">
                             <img src={textItemPointIcon} className="mr-2 w-8 h-8 2sm:w-11 2sm:h-11" />
-                            <div className="">
-                                <b className="text-gray90">AR-NFT</b> is a spatial geolocation token{" "}
+                            <div className="text-[1.25rem] lg:text-[1.625rem]">
+                                <b className="text-gray90 text-[1.625rem]">AR-NFT</b> is a spatial geolocation token{" "}
                                 <br className="hidden xl:block" />
                                 that provide rights for
-                                <b className="text-gray90 ml-2">AR content</b>
+                                <span className="text-gray90 ml-2">AR content</span>
                             </div>
                         </div>
                     </div>
 
                     <div className="flex justify-between lg:justify-center w-full">
                         <img src={footerStars} className="-ml-2 lg:hidden" />
-                        <a href={routes.arNFT}>
+                        <a href={`${routes.home}#contact`}>
                             <DefaultButton className="backdrop-blur bg-none text-gray90">Try AR</DefaultButton>
                         </a>
                         <div />
@@ -80,7 +80,7 @@ const StartSection = () => {
                            relative"
                 >
                     <div
-                        className="absolute top-0 md:-top-10 lg:-top-2/3 -right-40 lg:-right-[100vw] bottom-0 lg:-bottom-2/3 -left-40 lg:-left-20
+                        className="absolute top-0 md:-top-10 lg:-top-2/3 -right-40 lg:-right-[100vw] bottom-0 lg:-bottom-2/3 -left-40 lg:-left-10 xs:-left-20
                                 bg-[url(/images/landing/start-section/bulb.webp)]
                                 bg-no-repeat bg-cover md:bg-contain lg:bg-auto bg-top md:bg-center lg:bg-left 
                                 z-0"
