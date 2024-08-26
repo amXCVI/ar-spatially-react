@@ -14,7 +14,7 @@ import PlayMarketButton from "../assets/google-play-white-icon.svg?react";
 import Logo from "../assets/logo.svg?react";
 import MenuIcon from "../assets/menu-icon.svg?react";
 import PersonIcon from "../assets/person-icon.svg?react";
-import shortLogo from "/images/landing/header/short-logo.svg";
+// import shortLogo from "/images/landing/header/short-logo.svg";
 
 interface HeaderInterface {
     white?: boolean;

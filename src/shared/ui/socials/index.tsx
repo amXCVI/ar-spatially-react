@@ -22,7 +22,7 @@ const socials = [
     {
         icon: <Telegram />,
         title: "Telegram",
-        link: "",
+        link: "https://t.me/arspatially",
         id: "Telegram",
     },
     {
