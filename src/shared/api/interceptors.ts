@@ -1,8 +1,10 @@
 import { AxiosError, AxiosInstance, AxiosResponse, InternalAxiosRequestConfig } from "axios";
 
+import { LSConstants } from "../config/constants";
+
 const onRequest = (config: InternalAxiosRequestConfig): InternalAxiosRequestConfig => {
     config.headers.set("x-api-key", "Key CxgSuxAVKjs8fRkcVLwZo3M9wn1t6tpr");
-    // config.headers.set("Authorization", `Bearer ${localStorage.getItem("token")}`);
+    config.headers.set("Authorization", `Bearer ${localStorage.getItem(LSConstants.accessToken)}`);
     // config.headers.set(
     //     "Authorization",
     //     `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJsb2dpbjEiLCJpc3MiOiJnYXRld2F5IiwiZXhwIjoxNzE4OTg2MzU3fQ.quJO1hfMUMOgCjC07Tq4JjFt3iz5munNGyYbTmXrnfI5gwyJd_S4RvBk9bjz1C0W7bYEMQq8_b7h9CUgT-Ptsw`,

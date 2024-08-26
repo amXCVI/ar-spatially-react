@@ -1,5 +1,6 @@
 import { useRef } from "react";
 
+import GooglePlaceIcon from "../assets/google-place-icon.svg?react";
 import SearchIcon from "../assets/search-icon.svg?react";
 
 import { useSearchFieldHook } from "../domain";
@@ -73,8 +74,9 @@ const PlaceItem = ({
     return (
         <div
             onClick={() => onSelect(item)}
-            className="flex gap-2.5 px-4 py-3 rounded-[15px] hover:bg-[#6565657f] border border-dark-gray hover:border-[#9c9c9c26] cursor-pointer"
+            className="flex gap-2.5 items-center px-4 py-3 rounded-[15px] hover:bg-[#6565657f] border border-dark-gray hover:border-[#9c9c9c26] cursor-pointer"
         >
+            <GooglePlaceIcon className="min-h-3.5 min-w-3.5" />
             {item.description}
         </div>
     );

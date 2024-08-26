@@ -86,7 +86,7 @@ interface MobileMenuInterface {
     white?: boolean;
     show: boolean;
 }
-const MobileMenu = ({ white = false, show }: MobileMenuInterface) => {
+export const MobileMenu = ({ white = false, show }: MobileMenuInterface) => {
     const [isOpenMobileMenu, setIsOpenMobileMenu] = useState<boolean>(false);
 
     const mobileMenuRef = useOutsideClick(() => {

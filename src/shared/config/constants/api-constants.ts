@@ -1,3 +1,5 @@
+import { SystemName } from "@/shared/types";
+
 export const ApiConstants = {
-    system: "web",
+    system: SystemName.DESKTOP,
 };

@@ -1,3 +1,5 @@
+import { MobileMenu } from "@/features/header";
+
 import { routes } from "@/shared/config";
 
 import Logo from "../assets/logo.svg?react";
@@ -5,6 +7,7 @@ import shortLogo from "/images/landing/header/short-logo.svg";
 
 import { AppsSelect } from "./apps-select";
 import SearchField from "./search-field";
+import { UserAvatar } from "./user-avatar";
 
 const MapHeader = () => {
     return (
@@ -23,6 +26,10 @@ const MapHeader = () => {
                         <SearchField />
 
                         <AppsSelect />
+
+                        <UserAvatar />
+
+                        <MobileMenu show={false} />
                     </div>
                 </div>
             </div>
