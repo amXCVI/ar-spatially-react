@@ -67,8 +67,9 @@ const OurVisionSection = () => {
 
                 <div className="col-span-1 md:col-span-3 flex flex-col items-center w-full h-min">
                     <div
-                        className="relative flex justify-center w-full h-min
-                                   scale-90 lg:scale-125 xl:scale-150"
+                        className="relative flex justify-center h-min
+                                   scale-90 lg:scale-125 xl:scale-150 
+                                   w-[100vw] sm:w-full"
                     >
                         <Spline
                             scene="https://prod.spline.design/oMmUby6YEqG3VTjS/scene.splinecode"

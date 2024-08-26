@@ -14,6 +14,7 @@ import PlayMarketButton from "../assets/google-play-white-icon.svg?react";
 import Logo from "../assets/logo.svg?react";
 import MenuIcon from "../assets/menu-icon.svg?react";
 import PersonIcon from "../assets/person-icon.svg?react";
+
 // import shortLogo from "/images/landing/header/short-logo.svg";
 
 interface HeaderInterface {
@@ -156,7 +157,7 @@ export const MobileMenu = ({ white = false, show }: MobileMenuInterface) => {
                         </a>
                     </div>
 
-                    <Socials className="my-10" itemClassName="fill-white" />
+                    <Socials className="my-10 gap-5 2sm:gap-10" itemClassName="fill-white" />
                 </div>
             </div>
         </div>
@@ -171,7 +172,7 @@ const Profile = ({ show }: { show: boolean }) => {
             onClick={() => {
                 openLoginModal(SignInPopupModes.SignUp);
             }}
-            className={`flex justify-center items-center
+            className={`flex justify-center items-center z-[1]
                             cursor-pointer hover:bg-white50 w-20 h-20
                             fixed ${show ? "top-32 right-4 lg:top-6" : "bottom-32 right-4 lg:top-32"}
                             border border-blue-accent bg-white30 rounded-full p-4 backdrop-blur`}

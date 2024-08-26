@@ -69,7 +69,9 @@ const LoginModal = () => {
 
     return (
         <div
-            className={`fixed top-0 right-0 bottom-0 left-0 flex justify-center items-center backdrop-blur-sm z-[100] p-0 sm:p-5 bg-white5`}
+            className={`fixed top-0 right-0 bottom-0 left-0 
+                        flex justify-center items-center 
+                        backdrop-blur-sm z-[100] p-0 sm:p-5 pt-40 sm:pt-5 bg-white5 overflow-y-scroll`}
         >
             <div
                 ref={modalRef}
@@ -138,7 +140,7 @@ const LoginModal = () => {
                                     ? handleSubmit(handleClickSignIn)
                                     : () => toggleSigninModalMode(SignInPopupModes.SignIn)
                             }
-                            className={`flex justify-center flex-nowrap w-full text-nowrap gap-2.5 border border-gray70 rounded-[18px] px-5 py-3 manrope-semibold-16 cursor-pointer ${isOpenLoginPopup === SignInPopupModes.SignIn ? "bg-white text-black" : "bg-none text-white"}`}
+                            className={`flex justify-center flex-nowrap w-full text-nowrap gap-2.5 border border-gray70 rounded-[25px] px-5 py-3 manrope-semibold-16 cursor-pointer ${isOpenLoginPopup === SignInPopupModes.SignIn ? "bg-white text-black" : "bg-none text-white"}`}
                         >
                             <span
                                 className={isOpenLoginPopup === SignInPopupModes.SignIn ? "hidden" : "hidden md:block"}
@@ -154,7 +156,7 @@ const LoginModal = () => {
                                     ? handleSubmit(handleClickSignUp)
                                     : () => toggleSigninModalMode(SignInPopupModes.SignUp)
                             }
-                            className={`flex w-full text-nowrap justify-center items-center border border-gray70 rounded-[18px] px-5 py-3 manrope-semibold-16 cursor-pointer ${isOpenLoginPopup === SignInPopupModes.SignUp ? "bg-white text-black" : "bg-none text-white"}`}
+                            className={`flex w-full text-nowrap justify-center items-center border border-gray70 rounded-[25px] px-5 py-3 manrope-semibold-16 cursor-pointer ${isOpenLoginPopup === SignInPopupModes.SignUp ? "bg-white text-black" : "bg-none text-white"}`}
                         >
                             Create an account
                         </button>
