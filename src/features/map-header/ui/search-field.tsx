@@ -54,11 +54,10 @@ const SearchField = () => {
                 className={`flex flex-col gap-1 bg-dark-gray
                             absolute top-8 left-0 right-0
                             rounded-b-[30px]
-                            ${placePredictions.length ? "p-4" : "p-0"}`}
+                            ${isActiveField && placePredictions.length ? "p-4" : "p-0"}`}
             >
-                {placePredictions.map((item) => (
-                    <PlaceItem item={item} onSelect={onSelectPlacePredicion} />
-                ))}
+                {isActiveField &&
+                    placePredictions.map((item) => <PlaceItem item={item} onSelect={onSelectPlacePredicion} />)}
             </div>
         </div>
     );

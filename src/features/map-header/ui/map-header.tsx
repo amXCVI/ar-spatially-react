@@ -3,6 +3,7 @@ import { routes } from "@/shared/config";
 import Logo from "../assets/logo.svg?react";
 import shortLogo from "/images/landing/header/short-logo.svg";
 
+import { AppsSelect } from "./apps-select";
 import SearchField from "./search-field";
 
 const MapHeader = () => {
@@ -18,8 +19,10 @@ const MapHeader = () => {
                         <img src={shortLogo} className="lg:hidden ml-5 w-12" />
                     </a>
 
-                    <div className="flex items-center w-full justify-end">
+                    <div className="flex items-center w-full justify-end gap-6">
                         <SearchField />
+
+                        <AppsSelect />
                     </div>
                 </div>
             </div>
