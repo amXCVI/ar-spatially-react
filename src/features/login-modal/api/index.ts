@@ -10,7 +10,7 @@ const login = async ({ login, password }: LoginFormInterface) => {
 
     try {
         const response = await apiClient.post(url, {
-            login,
+            email: login,
             password,
         });
 
@@ -27,7 +27,7 @@ const signup = async ({ login, password }: LoginFormInterface) => {
     formData.append("avatarFile", new Blob());
     formData.append(
         "request",
-        new Blob([JSON.stringify({ login: login, password: password })], {
+        new Blob([JSON.stringify({ email: login, password: password })], {
             type: "application/json",
         }),
     );
