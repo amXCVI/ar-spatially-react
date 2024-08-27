@@ -1,6 +1,9 @@
 import { useRef } from "react";
 
+import { ObjectInterface } from "@/shared/types";
+
 import GooglePlaceIcon from "../assets/google-place-icon.svg?react";
+import ObjectIcon from "../assets/object-icon.svg?react";
 import SearchIcon from "../assets/search-icon.svg?react";
 
 import { useSearchFieldHook } from "../domain";
@@ -17,6 +20,7 @@ const SearchField = ({ className }: { className?: string }) => {
         onSelectPlacePredicion,
         selectedPlaceDescription,
         searchFieldRef,
+        findedObjects,
     } = useSearchFieldHook();
 
     return (
@@ -55,10 +59,16 @@ const SearchField = ({ className }: { className?: string }) => {
                 className={`flex flex-col gap-1 bg-dark-gray
                             absolute top-8 left-0 right-0
                             rounded-b-[30px]
-                            ${isActiveField && placePredictions.length ? "p-4" : "p-0"}`}
+                            ${isActiveField && (placePredictions.length || findedObjects.length) ? "p-4" : "p-0"}`}
             >
                 {isActiveField &&
-                    placePredictions.map((item) => <PlaceItem item={item} onSelect={onSelectPlacePredicion} />)}
+                    findedObjects.map((item) => (
+                        <ObjectItem key={item.id} item={item} onSelect={onSelectPlacePredicion} />
+                    ))}
+                {isActiveField &&
+                    placePredictions.map((item) => (
+                        <PlaceItem key={item.place_id} item={item} onSelect={onSelectPlacePredicion} />
+                    ))}
             </div>
         </div>
     );
@@ -76,8 +86,20 @@ const PlaceItem = ({
             onClick={() => onSelect(item)}
             className="flex gap-2.5 items-center px-4 py-3 rounded-[15px] hover:bg-[#6565657f] border border-dark-gray hover:border-[#9c9c9c26] cursor-pointer"
         >
-            <GooglePlaceIcon className="min-h-3.5 min-w-3.5" />
+            <GooglePlaceIcon className="min-h-3.5 min-w-5" />
             {item.description}
+        </div>
+    );
+};
+
+const ObjectItem = ({ item, onSelect }: { item: ObjectInterface; onSelect: (e: ObjectInterface) => void }) => {
+    return (
+        <div
+            onClick={() => onSelect(item)}
+            className="flex gap-2.5 items-center px-4 py-3 rounded-[15px] hover:bg-[#6565657f] border border-dark-gray hover:border-[#9c9c9c26] cursor-pointer"
+        >
+            <ObjectIcon className="min-h-3.5 min-w-5" />
+            {item.title}
         </div>
     );
 };

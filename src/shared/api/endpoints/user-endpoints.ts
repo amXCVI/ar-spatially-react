@@ -1,7 +1,8 @@
 import { AxiosResponse } from "axios";
 
-import apiClient from "@/shared/api";
 import { ApiResponseInterface, UserInterface } from "@/shared/types";
+
+import apiClient from "../api";
 
 const getMe = async () => {
     const url = `/gateway/user/get-me`;
