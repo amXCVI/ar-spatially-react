@@ -4,7 +4,7 @@ import RemoveAppIcon from "../assets/remove-app.svg?react";
 
 import { useAppsSelectHook } from "../domain";
 
-const AppsSelect = () => {
+const AppsSelect = ({ className }: { className?: string }) => {
     const { appsSelectRef, isActive, toggleIsActiveSearchField, handleClickApp, apps } = useAppsSelectHook();
 
     return (
@@ -12,7 +12,7 @@ const AppsSelect = () => {
             ref={appsSelectRef}
             className={`flex flex-col duration-500 ${isActive ? `w-96` : "w-36"}
                         border-2 border-raisin-black rounded-[30px] bg-dark-gray
-                        relative `}
+                        relative ${className}`}
         >
             <div
                 className={`flex gap-3 ${isActive ? "justify-start" : "justify-center"} items-center p-4

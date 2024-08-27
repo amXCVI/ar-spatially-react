@@ -5,7 +5,7 @@ import SearchIcon from "../assets/search-icon.svg?react";
 
 import { useSearchFieldHook } from "../domain";
 
-const SearchField = () => {
+const SearchField = ({ className }: { className?: string }) => {
     const inputRef = useRef(null);
 
     const {
@@ -23,7 +23,7 @@ const SearchField = () => {
         <div
             className={`flex flex-col ${isActiveField || selectedPlaceDescription ? "w-96" : "w-40"} duration-500
                         border-2 border-raisin-black rounded-[30px] bg-dark-gray
-                        relative `}
+                        relative ${className}`}
         >
             <div
                 className={`flex gap-3 ${isActiveField ? "justify-start" : "justify-center"} items-center p-4

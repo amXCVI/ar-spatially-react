@@ -22,14 +22,23 @@ const MapHeader = () => {
                         <img src={shortLogo} className="lg:hidden ml-5 w-12" />
                     </a>
 
-                    <div className="flex items-center w-full justify-end gap-6">
+                    <div
+                        className="flex items-center md:w-full justify-between lg:justify-end gap-6
+                                    fixed md:relative bottom-10 md:bottom-0 left-0 right-0 px-10 md:px-0"
+                    >
                         <SearchField />
 
-                        <AppsSelect />
+                        <AppsSelect className="hidden md:block" />
 
-                        <UserAvatar />
+                        <UserAvatar className="fixed md:relative top-10 md:top-0 right-10 md:right-0 " />
 
-                        <MobileMenu show={false} />
+                        <MobileMenu
+                            show={false}
+                            white
+                            iconClassname="flex justify-center items-center duration-500
+                                           cursor-pointer hover:bg-white50 w-[60px] h-[60px]
+                                           border-2 border-raisin-black bg-dark-gray rounded-full backdrop-blur"
+                        />
                     </div>
                 </div>
             </div>
