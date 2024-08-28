@@ -60,9 +60,9 @@ const useSearchFieldHook = ({
             // Если объект - из наших приложений - открываем его
             const object = placePrediction as ObjectInterface;
 
-            // setSearchParams({
-            //     [SearchParamsConstants.markerIdSearchParamsKey]: object.id,
-            // });
+            setSearchParams({
+                [SearchParamsConstants.markerIdSearchParamsKey]: object.id,
+            });
 
             onChangeMapCenter({ lat: object.location.lat, lng: object.location.lng, zoom: 15 });
         } catch (error) {

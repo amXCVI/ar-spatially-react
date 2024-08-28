@@ -16,6 +16,7 @@ export default {
                 white60: "#ffffff60",
                 gray70: "#575959",
                 gray90: "#2A2A2B",
+                "eerie-black": "#1a1a1a",
                 "gefault-bg": "#e2e2e2",
                 "light-bg": "#EDEDED",
                 "smoky-black-bg": "#0d0d0d",

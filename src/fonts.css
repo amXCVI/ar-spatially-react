@@ -77,6 +77,14 @@
     line-height: 1.813rem;
 }
 
+.sloth-semibold-36 {
+    font-family: "sloth-semibold";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 2.25rem;
+    line-height: 2.688rem;
+}
+
 .manrope-bold-24 {
     font-family: "Manrope";
     font-style: normal;
@@ -145,6 +153,14 @@
     font-family: "Manrope";
     font-style: normal;
     font-weight: 700;
+    font-size: 1.125rem;
+    line-height: 1.688rem;
+}
+
+.manrope-regular-18 {
+    font-family: "Manrope";
+    font-style: normal;
+    font-weight: 400;
     font-size: 1.125rem;
     line-height: 1.688rem;
 }
