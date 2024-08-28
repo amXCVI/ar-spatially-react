@@ -9,7 +9,11 @@ import { AppsSelect } from "./apps-select";
 import SearchField from "./search-field";
 import { UserAvatar } from "./user-avatar";
 
-const MapHeader = () => {
+interface MapHeaderProps {
+    onChangeMapCenter: (e: { lat: number; lng: number; zoom: number }) => void;
+}
+
+const MapHeader = ({ onChangeMapCenter }: MapHeaderProps) => {
     return (
         <header className="fixed z-20 top-0 right-0 left-0">
             <div className="">
@@ -26,7 +30,7 @@ const MapHeader = () => {
                         className="flex items-center md:w-full justify-between lg:justify-end gap-6
                                     fixed md:relative bottom-10 md:bottom-0 left-0 right-0 px-10 md:px-0"
                     >
-                        <SearchField />
+                        <SearchField onChangeMapCenter={onChangeMapCenter} />
 
                         <AppsSelect className="hidden md:block" />
 

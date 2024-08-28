@@ -8,7 +8,12 @@ import SearchIcon from "../assets/search-icon.svg?react";
 
 import { useSearchFieldHook } from "../domain";
 
-const SearchField = ({ className }: { className?: string }) => {
+interface MapHeaderProps {
+    onChangeMapCenter: (e: { lat: number; lng: number; zoom: number }) => void;
+    className?: string;
+}
+
+const SearchField = ({ className, onChangeMapCenter }: MapHeaderProps) => {
     const inputRef = useRef(null);
 
     const {
@@ -21,19 +26,19 @@ const SearchField = ({ className }: { className?: string }) => {
         selectedPlaceDescription,
         searchFieldRef,
         findedObjects,
-    } = useSearchFieldHook();
+    } = useSearchFieldHook({ onChangeMapCenter: onChangeMapCenter });
 
     return (
         <div
             className={`flex flex-col ${isActiveField || selectedPlaceDescription ? "w-96" : "w-40"} duration-500
                         border-2 border-raisin-black rounded-[30px] bg-dark-gray
                         relative ${className}`}
+            ref={searchFieldRef}
         >
             <div
                 className={`flex gap-3 ${isActiveField ? "justify-start" : "justify-center"} items-center p-4
                             cursor-pointer
                            `}
-                ref={searchFieldRef}
                 onClick={() => toggleIsActiveSearchField(true)}
             >
                 <SearchIcon className="z-10 min-w-6" />

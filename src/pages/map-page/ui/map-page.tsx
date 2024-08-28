@@ -6,12 +6,21 @@ import { NftItem } from "@/features/nft-item";
 import useMapHook from "../model";
 
 const MapPage = () => {
-    const { onChangeCoords, bounds, nftList, onClickMarker, googpeMapApiKey, selectedMarker, onCloseViewer } =
-        useMapHook();
+    const {
+        onChangeCoords,
+        bounds,
+        nftList,
+        onClickMarker,
+        googpeMapApiKey,
+        selectedMarker,
+        onCloseViewer,
+        onChangeMapCenter,
+        mapComponentRef,
+    } = useMapHook();
 
     return (
         <div style={{ width: "100vw", height: "100dvh" }}>
-            <MapHeader />
+            <MapHeader onChangeMapCenter={onChangeMapCenter} />
 
             <MapComponent
                 googleMapReact={{
@@ -26,6 +35,7 @@ const MapPage = () => {
                 onChangeCoords={onChangeCoords}
                 onClickMarker={onClickMarker}
                 nftList={nftList}
+                ref={mapComponentRef}
             />
 
             <NftItem selectedMarker={selectedMarker} onCloseViewer={onCloseViewer} />

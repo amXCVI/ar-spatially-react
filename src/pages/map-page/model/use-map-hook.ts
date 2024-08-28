@@ -1,14 +1,16 @@
-import { MarkerInterface as ArMarkerInterface, ChangeEventValue } from "@ar-kit/lib";
-import { useEffect, useState } from "react";
+import { MarkerInterface as ArMarkerInterface, ChangeEventValue, MapRefType } from "@ar-kit/lib";
+import { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
+
+import { SearchParamsConstants } from "@/shared/config/constants";
 
 import { pointsApi } from "../api/queryes";
 
-const markerIdSearchParamsKey = "markerid";
-
 const useMapHook = () => {
+    const mapComponentRef = useRef<MapRefType>(null);
+
     const [searchParams, setSearchParams] = useSearchParams();
-    const selectedMarkerId = searchParams.get(markerIdSearchParamsKey);
+    const selectedMarkerId = searchParams.get(SearchParamsConstants.markerIdSearchParamsKey);
 
     const [coords, setCoords] = useState<{
         lat: number;
@@ -29,12 +31,16 @@ const useMapHook = () => {
     };
 
     const onClickMarker = (markerId: string) => {
-        setSearchParams({ [markerIdSearchParamsKey]: markerId });
+        setSearchParams({ [SearchParamsConstants.markerIdSearchParamsKey]: markerId });
     };
 
     const onCloseViewer = () => {
         setSelectedMarker(null);
         setSearchParams({});
+    };
+
+    const onChangeMapCenter = (e: { lat: number; lng: number; zoom: number }) => {
+        mapComponentRef.current?.setMapCenter({ zoom: e.zoom, center: { lat: e.lat, lng: e.lng } });
     };
 
     useEffect(() => {
@@ -74,7 +80,17 @@ const useMapHook = () => {
         }
     }, [coords?.lat, coords?.lng, coords?.radius]);
 
-    return { onChangeCoords, bounds, nftList, onClickMarker, googpeMapApiKey, selectedMarker, onCloseViewer };
+    return {
+        onChangeCoords,
+        bounds,
+        nftList,
+        onClickMarker,
+        googpeMapApiKey,
+        selectedMarker,
+        onCloseViewer,
+        onChangeMapCenter,
+        mapComponentRef,
+    };
 };
 
 export default useMapHook;

@@ -1,3 +1,5 @@
-import MapComponent from "./ui/map-component";
+import MapComponent, { MapRefType } from "./ui/map-component";
 
 export default MapComponent;
+
+export { type MapRefType };

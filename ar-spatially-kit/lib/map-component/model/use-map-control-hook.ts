@@ -72,6 +72,15 @@ const useMapControlHook = ({
         }
     };
 
+    const setMapCenter = (e: { zoom?: number; center?: { lat: number; lng: number } }) => {
+        if (e.zoom) {
+            setZoom(e.zoom);
+        }
+        if (e.center) {
+            setCenter(e.center);
+        }
+    };
+
     return {
         zoom,
         onChangeMapZoom,
@@ -82,6 +91,7 @@ const useMapControlHook = ({
         center,
         onChange,
         mapRef,
+        setMapCenter,
     };
 };
 

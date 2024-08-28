@@ -1,6 +1,7 @@
 import { MarkerInterface } from "@ar-kit/shared/types/nft-types";
 import GoogleMapReact from "google-map-react";
 import googleMapReact from "google-map-react";
+import { Ref, forwardRef, useImperativeHandle } from "react";
 
 import useMapControlHook from "../model";
 import Map from "./map";
@@ -13,7 +14,17 @@ interface MapComponentProps {
     bounds?: [number, number, number, number] | [number, number, number, number, number, number];
     onClickMarker: (markerId: string) => void;
 }
-const MapComponent = (props: MapComponentProps) => {
+export interface MapRefType {
+    setMapCenter: (e: {
+        zoom?: number;
+        center?: {
+            lat: number;
+            lng: number;
+        };
+    }) => void;
+}
+
+const MapComponent = forwardRef((props: MapComponentProps, ref: Ref<MapRefType>) => {
     const {
         onChangeMapZoom,
         onChangeMapCenter,
@@ -24,11 +35,14 @@ const MapComponent = (props: MapComponentProps) => {
         center,
         onChange,
         mapRef,
+        setMapCenter,
     } = useMapControlHook({
         defaultZoom: props.googleMapReact.zoom ?? props.googleMapReact.defaultZoom,
         defaultCenter: props.googleMapReact.defaultCenter ?? props.googleMapReact.defaultCenter,
         onChangeCoords: props.onChangeCoords,
     });
+
+    useImperativeHandle(ref, () => ({ setMapCenter }));
 
     return (
         <Map
@@ -52,6 +66,6 @@ const MapComponent = (props: MapComponentProps) => {
             onClickMarker={props.onClickMarker}
         />
     );
-};
+});
 
 export default MapComponent;
