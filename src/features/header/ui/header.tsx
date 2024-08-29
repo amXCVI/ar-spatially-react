@@ -181,7 +181,7 @@ const Profile = ({ show }: { show: boolean }) => {
             }}
             className={`flex justify-center items-center z-[1]
                             cursor-pointer hover:bg-white50 w-20 h-20
-                            fixed ${show ? "top-32 right-4 lg:top-6" : "bottom-32 right-4 lg:top-32"}
+                            fixed ${show ? "top-28 right-4 lg:top-6" : "bottom-28 right-4 lg:top-32"}
                             border border-blue-accent bg-white30 rounded-full p-4 backdrop-blur`}
         >
             <PersonIcon />

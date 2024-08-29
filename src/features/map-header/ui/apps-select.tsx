@@ -41,8 +41,10 @@ const AppsSelect = ({ className }: { className?: string }) => {
 
                         return (
                             <div className="flex flex-col items-center gap-3 flex-nowrap w-full relative">
-                                <img src={appItem.iconSrc} />
-                                <span className="roboto-bold-13 text-white">{appItem.label}</span>
+                                <div className="w-20 h-20 border border-white rounded-full flex justify-center items-center">
+                                    {appItem.iconSrc({ style: { width: "4rem", height: "4rem" } })}
+                                </div>
+                                <span className="roboto-bold-13 text-white ">{appItem.label}</span>
                                 <div
                                     onClick={() => handleClickApp(appItem.id)}
                                     className="absolute top-0 -right-0 cursor-pointer"
