@@ -1,6 +1,6 @@
 import { AxiosResponse } from "axios";
 
-import { ApiResponseInterface, ObjectInterface } from "@/shared/types";
+import { ApiResponseInterface, MarkerInterface, ObjectInterface } from "@/shared/types";
 
 import apiClient from "../api";
 
@@ -38,4 +38,22 @@ const findTextLayer = async ({
     }
 };
 
-export const objectApi = { findTextLayer };
+const fintPointsByLocation = async ({ lat, lng, radius }: { lat: number; lng: number; radius: number }) => {
+    return await apiClient
+        .post("/gateway/object/find/location", {
+            lat: lat,
+            lng: lng,
+            // Здесь инвертирую радиус (значение подобрал эмпирически)
+            radius: (1 / radius) * 500000,
+        })
+        .then((res) => {
+            const markers: MarkerInterface[] = res.data.data.objectsList;
+
+            return markers;
+        })
+        .catch((err) => {
+            throw err;
+        });
+};
+
+export const objectApi = { findTextLayer, fintPointsByLocation };

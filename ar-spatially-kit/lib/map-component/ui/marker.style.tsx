@@ -21,7 +21,7 @@ export const MarkerContainer = styled.div`
     cursor: pointer;
     font-size: 15px;
     line-height: 18px;
-    transform: translate(calc(-50% + 6px), calc(-100% - 8px));
+    transform: translate(calc(-50% + 6px), 0);
     z-index: 3;
 `;
 

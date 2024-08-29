@@ -1,8 +1,8 @@
-// import NftViewer from "modules/NftViewer";
 import LoaderComponent from "@ar-kit/lib/loader-component";
 import { MarkerInterface } from "@ar-kit/shared/types/nft-types";
-import googleMapReact from "google-map-react";
-import { FC } from "react";
+import { AdvancedMarker, useAdvancedMarkerRef } from "@vis.gl/react-google-maps";
+import { useCallback } from "react";
+import { PointFeature } from "supercluster";
 
 import iconVectorPath from "@ar-kit/assets/icons/icon-marker-vector.svg";
 
@@ -18,70 +18,37 @@ import {
     PreviewMarkerImg,
 } from "./cluster.style";
 
-type ClusterProps = {
-    cluster: any;
-    clusterLeavs: {
-        description: string;
-        geometry: { type: string; coordinates: [number, number] };
-        id: string;
-        isHide: boolean;
-        properties: MarkerInterface;
-    }[];
-    pointCount: number;
-    lat: number;
-    lng: number;
-    zoom?: number;
-    onChangeMapZoom: (zoom: number) => void;
-    onChangeMapCenter: (e: googleMapReact.Coords) => void;
-    mapRef: any;
-    aimRef: any;
+type TreeClusterMarkerProps = {
+    clusterId: number;
+    onMarkerClick?: (marker: google.maps.marker.AdvancedMarkerElement, clusterId: number) => void;
+    position: google.maps.LatLngLiteral;
+    size: number;
+    sizeAsText: string;
+    leaves: PointFeature<MarkerInterface>[];
 };
 
-const Cluster: FC<ClusterProps> = ({
-    lat,
-    lng,
-    cluster,
-    clusterLeavs,
-    pointCount,
-    // mapRef,
-    // aimRef,
-    zoom,
-    onChangeMapCenter,
-    onChangeMapZoom,
-}: ClusterProps) => {
-    const handleClickCluster = () => {
-        if (zoom) {
-            onChangeMapCenter({ lat, lng });
-            onChangeMapZoom(zoom + 2);
-            // dispatch(NftActions.onSelectClusterOnMap(clusterLeavs));
-            // dispatch(UtilsActions.openModal({ content: <NftViewer /> }));
-            // dispatch(MapActions.onChangeNftAimState(true));
-            // let marker = new google.maps.Marker({
-            //     position: { lat: lat, lng: lng },
-            //     map: mapRef.current,
-            //     title: "",
-            //     icon: "",
-            // });
-            // const overlay = new google.maps.OverlayView();
-            // // eslint-disable-next-line @typescript-eslint/no-empty-function
-            // overlay.draw = function () {};
-            // overlay.setMap(mapRef?.current as any);
-            // const proj = overlay.getProjection();
-            // const pos = marker.getPosition();
-            // const markerPosition = proj.fromLatLngToContainerPixel(pos);
-            // const { x, y } = (aimRef?.current as any).getBoundingClientRect();
-            // (mapRef.current as any).panBy(markerPosition.x - x, markerPosition.y - y);
-            // marker.setMap(null);
-            // marker = null;
-        }
-    };
-
+export const FeaturesClusterMarker = ({ position, size, onMarkerClick, clusterId, leaves }: TreeClusterMarkerProps) => {
+    const [markerRef, marker] = useAdvancedMarkerRef();
+    const handleClick = useCallback(
+        () => onMarkerClick && onMarkerClick(marker!, clusterId),
+        [onMarkerClick, marker, clusterId],
+    );
+    const markerSize = Math.floor(48 + Math.sqrt(size) * 2);
     return (
-        <>
-            <ClusterContainer className="cluster-marker" onClick={handleClickCluster}>
-                {clusterLeavs.map((clusterLeaf, index: number) =>
-                    index < 3 || clusterLeavs.length <= 3 ? (
-                        <ClusterSubContainer key={`cluster-${cluster.id}-crime-${clusterLeaf.properties.id}-${index}`}>
+        <AdvancedMarker
+            ref={markerRef}
+            position={position}
+            zIndex={size}
+            onClick={handleClick}
+            className={"marker cluster"}
+            style={{ width: markerSize, height: markerSize }}
+        >
+            <ClusterContainer className="cluster-marker">
+                {leaves.map((clusterLeaf, index: number) =>
+                    index < 3 || leaves.length <= 3 ? (
+                        <ClusterSubContainer
+                            key={`cluster-${clusterLeaf.id}-crime-${clusterLeaf.properties.id}-${index}`}
+                        >
                             <LoaderComponent
                                 style={{
                                     transform: "scale(0.2)",
@@ -101,21 +68,19 @@ const Cluster: FC<ClusterProps> = ({
                             />
                         </ClusterSubContainer>
                     ) : (
-                        <div key={`${cluster.id}-crime-${clusterLeaf.properties.id}-${index}`} />
+                        <div key={`${clusterLeaf.id}-crime-${clusterLeaf.properties.id}-${index}`} />
                     ),
                 )}
-                {clusterLeavs.length <= 3 ? <></> : <ClusterCounts>+{pointCount - 3}</ClusterCounts>}
+                {leaves.length <= 3 ? <></> : <ClusterCounts>+{size - 3}</ClusterCounts>}
             </ClusterContainer>
-            <MarkerArrow src={iconVectorPath} />
+            <MarkerArrow src={iconVectorPath} bottom="8px" />
             <ClusterCircleThree>
-                <ClusterCircleTwo width={clusterLeavs.length > 8 ? 184 : 120}>
+                <ClusterCircleTwo width={leaves.length > 2 ? 184 : 120}>
                     <ClusterCircleOne>
                         <ClusterPoint />
                     </ClusterCircleOne>
                 </ClusterCircleTwo>
             </ClusterCircleThree>
-        </>
+        </AdvancedMarker>
     );
 };
-
-export default Cluster;

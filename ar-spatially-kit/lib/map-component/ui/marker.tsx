@@ -1,25 +1,14 @@
 import Loading from "@ar-kit/lib/loader-component/Loading";
 import { MarkerInterface } from "@ar-kit/shared/types/nft-types";
-import { FC, useState } from "react";
+import { AdvancedMarker, useAdvancedMarkerRef } from "@vis.gl/react-google-maps";
+import { useState } from "react";
+import { useCallback } from "react";
+import { PointFeature } from "supercluster";
 
 import IconVectorPath from "@ar-kit/assets/icons/icon-marker-vector.svg";
 
 import { MarkerArrow } from "./cluster.style";
-import {
-    // MarkerOwnerAvatarDefaultWrap,
-    // MarkerOwnerAvatarDefault,
-    MarkerContainer,
-    MarkerImg,
-    MarkerName,
-    MarkerOwnerAvatar,
-} from "./marker.style";
-
-type MarkerProps = {
-    lat: number;
-    lng: number;
-    handleClickNft: (nftId: string) => void;
-    cluster: { geometry: { coordinates: [number, number]; type: string }; properties: MarkerInterface };
-};
+import { MarkerContainer, MarkerImg, MarkerName, MarkerOwnerAvatar } from "./marker.style";
 
 const getAvatar = (cluster: MarkerInterface) => {
     if (cluster.ownerAvatarUrl) {
@@ -29,20 +18,29 @@ const getAvatar = (cluster: MarkerInterface) => {
     }
 };
 
-const Marker: FC<MarkerProps> = ({ cluster, handleClickNft = () => {} }: MarkerProps) => {
-    const [loadingImg, setLoadingImg] = useState(true);
+type TreeMarkerProps = {
+    position: google.maps.LatLngLiteral;
+    featureId: string;
+    marker: PointFeature<MarkerInterface>;
+    onMarkerClick?: (marker: google.maps.marker.AdvancedMarkerElement, featureId: string) => void;
+};
 
-    const handleClickMarker = (selectedNftId: string) => {
-        handleClickNft(selectedNftId);
-    };
+export const FeatureMarker = ({ position, marker, featureId, onMarkerClick }: TreeMarkerProps) => {
+    const [loadingImg, setLoadingImg] = useState(true);
 
     const handleImageLoaded = () => {
         setLoadingImg(false);
     };
 
+    const [markerRef, gMarker] = useAdvancedMarkerRef();
+    const handleClick = useCallback(
+        () => onMarkerClick && onMarkerClick(gMarker!, featureId),
+        [onMarkerClick, gMarker, featureId],
+    );
+
     return (
-        <>
-            <MarkerContainer onClick={() => handleClickMarker(cluster.properties.id)}>
+        <AdvancedMarker ref={markerRef} position={position} onClick={handleClick} className={"marker feature"}>
+            <MarkerContainer>
                 {loadingImg && (
                     <Loading
                         style={{
@@ -55,20 +53,18 @@ const Marker: FC<MarkerProps> = ({ cluster, handleClickNft = () => {} }: MarkerP
                     />
                 )}
                 <MarkerImg
-                    src={`${cluster.properties.previewUrl ?? cluster.properties.imageUrl}`}
-                    // isMonochrome={!cluster.publishId}
+                    src={`${marker.properties.previewUrl ?? marker.properties.imageUrl}`}
+                    // isMonochrome={!marker.publishId}
                     onLoad={handleImageLoaded}
                     onError={({ currentTarget }) => {
                         currentTarget.onerror = null; // prevents looping
                         currentTarget.src = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=";
                     }}
                 />
-                {getAvatar(cluster.properties)}
-                {cluster.properties.name ? <MarkerName>{cluster.properties.name}</MarkerName> : <div />}
+                {getAvatar(marker.properties)}
+                {marker.properties.name ? <MarkerName>{marker.properties.name}</MarkerName> : <div />}
             </MarkerContainer>
-            <MarkerArrow src={IconVectorPath} />
-        </>
+            <MarkerArrow src={IconVectorPath} bottom="-8px" />
+        </AdvancedMarker>
     );
 };
-
-export default Marker;

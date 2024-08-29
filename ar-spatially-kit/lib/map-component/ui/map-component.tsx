@@ -1,18 +1,16 @@
 import { MarkerInterface } from "@ar-kit/shared/types/nft-types";
-import GoogleMapReact from "google-map-react";
-import googleMapReact from "google-map-react";
 import { Ref, forwardRef, useImperativeHandle } from "react";
 
 import useMapControlHook from "../model";
 import Map from "./map";
 
 interface MapComponentProps {
-    googleMapReact: GoogleMapReact.Props;
     loadingMap?: boolean;
-    onChangeCoords?: (e: googleMapReact.ChangeEventValue) => void;
+    onChangeCoords?: (e: { center?: google.maps.LatLngLiteral; zoom?: number }) => void;
     nftList?: MarkerInterface[];
-    bounds?: [number, number, number, number] | [number, number, number, number, number, number];
     onClickMarker: (markerId: string) => void;
+    googleApiKey: string;
+    mapId?: string;
 }
 export interface MapRefType {
     setMapCenter: (e: {
@@ -33,12 +31,8 @@ const MapComponent = forwardRef((props: MapComponentProps, ref: Ref<MapRefType>)
         selectedMapTypeId,
         onSelectMapType,
         center,
-        onChange,
-        mapRef,
         setMapCenter,
     } = useMapControlHook({
-        defaultZoom: props.googleMapReact.zoom ?? props.googleMapReact.defaultZoom,
-        defaultCenter: props.googleMapReact.defaultCenter ?? props.googleMapReact.defaultCenter,
         onChangeCoords: props.onChangeCoords,
     });
 
@@ -46,24 +40,34 @@ const MapComponent = forwardRef((props: MapComponentProps, ref: Ref<MapRefType>)
 
     return (
         <Map
-            googleMapReactProps={{
-                ...props.googleMapReact,
-                zoom: props.googleMapReact.zoom ?? zoom,
-                center: props.googleMapReact.center ?? center,
-            }}
-            //
+            center={center}
+            zoom={zoom}
             loadingMap={props.loadingMap}
-            //
             onChangeMapZoom={onChangeMapZoom}
             onChangeMapCenter={onChangeMapCenter}
             mapTypes={mapTypes}
             selectedMapTypeId={selectedMapTypeId}
             onSelectMapType={onSelectMapType}
-            onChange={onChange}
-            nftList={props.nftList}
-            bounds={props.bounds}
-            mapRef={mapRef}
+            markersList={{
+                type: "FeatureCollection",
+                features:
+                    props.nftList?.map((item) => {
+                        return {
+                            type: "Feature",
+                            id: item.id,
+                            geometry: {
+                                type: "Point",
+                                coordinates: [item.lng, item.lat],
+                            },
+                            properties: {
+                                ...item,
+                            },
+                        };
+                    }) ?? [],
+            }}
             onClickMarker={props.onClickMarker}
+            googleApiKey={props.googleApiKey}
+            mapId={props.mapId}
         />
     );
 });

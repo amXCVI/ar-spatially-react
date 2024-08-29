@@ -1,11 +1,19 @@
-import { MarkerInterface as ArMarkerInterface, ChangeEventValue, MapRefType } from "@ar-kit/lib";
+import { MarkerInterface as ArMarkerInterface, MapRefType } from "@ar-kit/lib";
 import { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
+import { ApiEndpoints } from "@/shared/api";
 import { SearchParamsConstants } from "@/shared/config/constants";
 
-import { pointsApi } from "../api/queryes";
-
+const defaultMapPosition = {
+    lat: (
+        JSON.parse(localStorage.getItem("localStorageMapOptionsCenterKey") ?? "0") || { lat: 55.753544, lng: 37.621202 }
+    ).lat,
+    lng: (
+        JSON.parse(localStorage.getItem("localStorageMapOptionsCenterKey") ?? "0") || { lat: 55.753544, lng: 37.621202 }
+    ).lng,
+    radius: JSON.parse(localStorage.getItem("localStorageMapOptionsZoomKey") ?? "10"),
+};
 const useMapHook = () => {
     const mapComponentRef = useRef<MapRefType>(null);
 
@@ -16,18 +24,20 @@ const useMapHook = () => {
         lat: number;
         lng: number;
         radius: number;
-    }>();
-    const [bounds, setBounds] = useState<
-        [number, number, number, number] | [number, number, number, number, number, number] | undefined
-    >(undefined);
+    }>(defaultMapPosition);
+
     const [nftList, setNftList] = useState<ArMarkerInterface[]>([]);
     const [selectedMarker, setSelectedMarker] = useState<ArMarkerInterface | null>(null);
 
     const googpeMapApiKey = import.meta.env.VITE_APP_GOOGLE_MAP_API_KEY;
 
-    const onChangeCoords = (e: ChangeEventValue) => {
-        setCoords({ lat: e.center.lat, lng: e.center.lng, radius: e.zoom });
-        setBounds([e.bounds.nw.lng, e.bounds.se.lat, e.bounds.se.lng, e.bounds.nw.lat]);
+    const onChangeCoords = (e: { center?: { lat: number; lng: number }; zoom?: number }) => {
+        const newCoords = {
+            lat: e.center ? e.center.lat : coords!.lat,
+            lng: e.center ? e.center.lng : coords!.lng,
+            radius: e.zoom ? e.zoom : coords!.radius,
+        };
+        setCoords(newCoords);
     };
 
     const onClickMarker = (markerId: string) => {
@@ -59,7 +69,7 @@ const useMapHook = () => {
 
     useEffect(() => {
         if (coords) {
-            pointsApi.fintPointsByLocation({ ...coords }).then((res) => {
+            ApiEndpoints.object.fintPointsByLocation({ ...coords }).then((res) => {
                 const markers = res.map((item) => {
                     return {
                         description: item.description,
@@ -78,11 +88,10 @@ const useMapHook = () => {
                 setNftList(markers);
             });
         }
-    }, [coords?.lat, coords?.lng, coords?.radius]);
+    }, [coords]);
 
     return {
         onChangeCoords,
-        bounds,
         nftList,
         onClickMarker,
         googpeMapApiKey,

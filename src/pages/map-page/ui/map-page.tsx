@@ -8,7 +8,6 @@ import useMapHook from "../model";
 const MapPage = () => {
     const {
         onChangeCoords,
-        bounds,
         nftList,
         onClickMarker,
         googpeMapApiKey,
@@ -23,19 +22,12 @@ const MapPage = () => {
             <MapHeader onChangeMapCenter={onChangeMapCenter} />
 
             <MapComponent
-                googleMapReact={{
-                    bootstrapURLKeys: { key: googpeMapApiKey, libraries: ["places"] },
-                    defaultCenter: {
-                        lat: 55.753544,
-                        lng: 37.621202,
-                    },
-                    defaultZoom: 10,
-                }}
-                bounds={bounds}
                 onChangeCoords={onChangeCoords}
                 onClickMarker={onClickMarker}
                 nftList={nftList}
                 ref={mapComponentRef}
+                googleApiKey={googpeMapApiKey}
+                mapId={import.meta.env.VITE_APP_GOOGLE_MAP_ID}
             />
 
             <NftItem selectedMarker={selectedMarker} onCloseViewer={onCloseViewer} />

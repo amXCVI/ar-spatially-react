@@ -1,32 +1,29 @@
-import googleMapReact from "google-map-react";
 import { useRef, useState } from "react";
 
 const localStorageMapOptionsZoomKey = "localStorageMapOptionsZoomKey";
 const localStorageMapOptionsCenterKey = "localStorageMapOptionsCenterKey";
+const localStorageMapTypeId = "localStorageMapTypeId";
 
 const useMapControlHook = ({
-    defaultZoom,
     btn_map_change_scheme,
     btn_map_change_satellite,
     btn_map_change_hybrid,
-    defaultCenter,
     onChangeCoords,
 }: {
     defaultZoom?: number;
-    defaultCenter?: googleMapReact.Coords;
+    defaultCenter?: google.maps.LatLngLiteral;
     btn_map_change_scheme?: string;
     btn_map_change_satellite?: string;
     btn_map_change_hybrid?: string;
-    onChangeCoords?: (e: googleMapReact.ChangeEventValue) => void;
+    onChangeCoords?: (e: { center?: google.maps.LatLngLiteral; zoom?: number }) => void;
 }) => {
     const mapRef = useRef(null);
     const [zoom, setZoom] = useState<number>(
-        JSON.parse(localStorage.getItem(localStorageMapOptionsZoomKey) ?? "0") || defaultZoom || 10,
+        JSON.parse(localStorage.getItem(localStorageMapOptionsZoomKey) ?? "0") || 10,
     );
 
-    const [center, setCenter] = useState<googleMapReact.Coords>(
-        JSON.parse(localStorage.getItem(localStorageMapOptionsCenterKey) ?? "0") ||
-            defaultCenter || { lat: 55.753544, lng: 37.621202 },
+    const [center, setCenter] = useState<google.maps.LatLngLiteral>(
+        JSON.parse(localStorage.getItem(localStorageMapOptionsCenterKey) ?? "0") || { lat: 55.753544, lng: 37.621202 },
     );
 
     const mapTypes = [
@@ -44,32 +41,29 @@ const useMapControlHook = ({
         },
     ];
 
-    const [selectedMapTypeId, setSelectedMapTypeId] = useState<string>("roadmap");
+    const [selectedMapTypeId, setSelectedMapTypeId] = useState<string>(
+        localStorage.getItem(localStorageMapTypeId) ?? "roadmap",
+    );
 
     const onChangeMapZoom = (e: number) => {
         setZoom(e);
         localStorage.setItem(localStorageMapOptionsZoomKey, JSON.stringify(e));
+        if (onChangeCoords) {
+            onChangeCoords({ zoom: e });
+        }
     };
 
-    const onChangeMapCenter = (e: googleMapReact.Coords) => {
+    const onChangeMapCenter = (e: google.maps.LatLngLiteral) => {
         setCenter(e);
         localStorage.setItem(localStorageMapOptionsCenterKey, JSON.stringify(e));
+        if (onChangeCoords) {
+            onChangeCoords({ center: e });
+        }
     };
 
     const onSelectMapType = (e: string) => {
         setSelectedMapTypeId(e);
-    };
-
-    const onChange = (e: googleMapReact.ChangeEventValue) => {
-        setCenter(e.center);
-        localStorage.setItem(localStorageMapOptionsCenterKey, JSON.stringify(e.center));
-
-        setZoom(e.zoom);
-        localStorage.setItem(localStorageMapOptionsZoomKey, JSON.stringify(e.zoom));
-
-        if (onChangeCoords) {
-            onChangeCoords(e);
-        }
+        localStorage.setItem(localStorageMapTypeId, e);
     };
 
     const setMapCenter = (e: { zoom?: number; center?: { lat: number; lng: number } }) => {
@@ -89,7 +83,6 @@ const useMapControlHook = ({
         selectedMapTypeId,
         onSelectMapType,
         center,
-        onChange,
         mapRef,
         setMapCenter,
     };

@@ -39,7 +39,7 @@ const NftItem = ({ selectedMarker, onCloseViewer }: NftItemInterface) => {
                                    border-2 border-raisin-black rounded-[30px]
                                    px-6 py-3.5 "
                     >
-                        Upload NFT
+                        Receive NFT
                     </button>
                 </div>
                 <div className="flex flex-col bg-eerie-black rounded-[30px]">

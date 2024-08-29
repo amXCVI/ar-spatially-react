@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { ChangeEventValue, MapComponent } from "./lib";
+import { MapComponent } from "./lib";
 import apiClient from "./shared/api";
 import { MarkerInterface } from "./shared/types/nft-types";
 
@@ -11,14 +11,6 @@ const useMapHook = () => {
         radius: number;
     }>();
     const [nftList, setNftList] = useState<MarkerInterface[]>([]);
-    const [bounds, setBounds] = useState<
-        [number, number, number, number] | [number, number, number, number, number, number] | undefined
-    >(undefined);
-
-    const onChangeCoords = (e: ChangeEventValue) => {
-        setCoords({ lat: e.center.lat, lng: e.center.lng, radius: e.zoom });
-        setBounds([e.bounds.nw.lng, e.bounds.se.lat, e.bounds.se.lng, e.bounds.nw.lat]);
-    };
 
     useEffect(() => {
         apiClient
@@ -47,30 +39,21 @@ const useMapHook = () => {
             });
     }, [coords?.lat, coords?.lng, coords?.radius]);
 
-    return { onChangeCoords, nftList, bounds };
+    return { nftList };
 };
 
 function App() {
-    const { nftList, onChangeCoords, bounds } = useMapHook();
+    const { nftList } = useMapHook();
 
     return (
         <>
             <MapComponent
-                googleMapReact={{
-                    bootstrapURLKeys: { key: "", libraries: ["places"] },
-                    defaultCenter: {
-                        lat: 20.99835602,
-                        lng: 40.01502627,
-                    },
-                    defaultZoom: 10,
-                }}
                 nftList={nftList}
-                bounds={bounds}
                 loadingMap={false}
-                onChangeCoords={onChangeCoords}
                 onClickMarker={(e: string) => {
                     console.log(e);
                 }}
+                googleApiKey={""}
             />
         </>
     );

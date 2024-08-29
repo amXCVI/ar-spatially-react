@@ -9,6 +9,10 @@ type ClusterCircleProps = {
     width?: number;
 };
 
+type MarkerArrowProps = {
+    bottom: string;
+};
+
 export const MapContainer = styled.div`
     width: 100vw;
     height: 100vh;
@@ -27,7 +31,7 @@ export const ClusterContainer = styled.div`
     font-size: 15px;
     line-height: 18px;
     color: ${AppColors.white};
-    transform: translate(calc(-50% + 6px), calc(-100% - 8px));
+    transform: translate(calc(-50% + 6px), 0);
     z-index: 5;
 `;
 
@@ -85,16 +89,16 @@ export const ClusterCircleThree = styled.div`
     border: 1px solid var(--main-color);
     border-radius: 100%;
     position: absolute;
-    transform: translate(calc(-50% + 6px), calc(-50% - 37px));
+    transform: translate(calc(-50% + 6px), calc(-50% + 8px));
     display: flex;
     justify-content: center;
     align-items: center;
 `;
 
-export const MarkerArrow = styled.img`
+export const MarkerArrow = styled.img<MarkerArrowProps>`
     width: 12px;
     height: 8px;
     position: absolute;
-    top: -8px;
+    bottom: ${(props) => props.bottom};
     z-index: 1;
 `;
