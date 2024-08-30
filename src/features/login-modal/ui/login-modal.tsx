@@ -7,35 +7,8 @@ import GoogleIcon from "./../icons/google.svg?react";
 import XIcon from "./../icons/x.svg?react";
 import logo from "/images/login-popup/logo.svg";
 
-import { useLoginHook } from "../model";
+import { useGoogleOauthHook, useLoginHook } from "../model";
 import { SignInPopupModes } from "./auth-provider";
-
-const socials = [
-    {
-        id: "google",
-        text: "Google",
-        icon: <GoogleIcon />,
-        href: "",
-    },
-    {
-        id: "x",
-        text: "",
-        icon: <XIcon />,
-        href: "",
-    },
-    {
-        id: "apple",
-        text: "iCloud",
-        icon: <AppleIcon />,
-        href: "",
-    },
-    {
-        id: "facebook",
-        text: "Facebook",
-        icon: <FacebookIcon />,
-        href: "",
-    },
-];
 
 const LoginModal = () => {
     const {
@@ -48,6 +21,39 @@ const LoginModal = () => {
         handleSubmit,
         errors,
     } = useLoginHook();
+
+    const { handleGoogleLogin } = useGoogleOauthHook();
+
+    const socials = [
+        {
+            id: "google",
+            text: "Google",
+            icon: <GoogleIcon />,
+            href: "",
+            onClick: handleGoogleLogin,
+        },
+        {
+            id: "x",
+            text: "",
+            icon: <XIcon />,
+            href: "",
+            onClick: () => {},
+        },
+        {
+            id: "apple",
+            text: "iCloud",
+            icon: <AppleIcon />,
+            href: "",
+            onClick: () => {},
+        },
+        {
+            id: "facebook",
+            text: "Facebook",
+            icon: <FacebookIcon />,
+            href: "",
+            onClick: () => {},
+        },
+    ];
 
     const modalRef = useOutsideClick(() => {
         closeLoginModal();
@@ -166,9 +172,17 @@ const LoginModal = () => {
                         <span className="manrope-medium-18 text-white">Or join with</span>
                         <div className="flex gap-4">
                             {socials.map((item) => {
-                                return <SocialButton key={item.id} text={item.text} icon={item.icon} />;
+                                return (
+                                    <SocialButton
+                                        key={item.id}
+                                        text={item.text}
+                                        icon={item.icon}
+                                        onClick={item.onClick}
+                                    />
+                                );
                             })}
                         </div>
+                        {/* <div className="g-signin2" data-onsuccess="onSignIn"></div> */}
                     </div>
                 </form>
 
@@ -211,9 +225,12 @@ const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
     },
 );
 
-const SocialButton = ({ icon }: { text?: string; icon: JSX.Element }) => {
+const SocialButton = ({ icon, onClick }: { text?: string; icon: JSX.Element; onClick: () => void }) => {
     return (
-        <div className="rounded-[25px] px-4 py-3 flex items-center gap-2.5 cursor-pointer">
+        <div
+            className="rounded-[25px] px-4 py-3 flex items-center gap-2.5 cursor-pointer g_id_signin"
+            onClick={onClick}
+        >
             {/* <span className="hidden md:block manrope-bold-18 text-white">{text}</span> */}
             {icon}
         </div>
