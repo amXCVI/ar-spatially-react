@@ -1,4 +1,5 @@
 import { useGoogleOauthHook } from "./use-google-oauth-hook";
 import { useLoginHook } from "./use-login-hook";
+import { useXOauthHook } from "./use-x-oauth-hook";
 
-export { useLoginHook, useGoogleOauthHook };
+export { useLoginHook, useGoogleOauthHook, useXOauthHook };

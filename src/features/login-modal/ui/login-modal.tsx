@@ -7,7 +7,7 @@ import GoogleIcon from "./../icons/google.svg?react";
 import XIcon from "./../icons/x.svg?react";
 import logo from "/images/login-popup/logo.svg";
 
-import { useGoogleOauthHook, useLoginHook } from "../model";
+import { useGoogleOauthHook, useLoginHook, useXOauthHook } from "../model";
 import { SignInPopupModes } from "./auth-provider";
 
 const LoginModal = () => {
@@ -24,6 +24,8 @@ const LoginModal = () => {
 
     const { handleGoogleLogin } = useGoogleOauthHook();
 
+    const { handleXAuth } = useXOauthHook();
+
     const socials = [
         {
             id: "google",
@@ -37,7 +39,7 @@ const LoginModal = () => {
             text: "",
             icon: <XIcon />,
             href: "",
-            onClick: () => {},
+            onClick: handleXAuth,
         },
         {
             id: "apple",
