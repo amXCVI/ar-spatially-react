@@ -1,11 +1,7 @@
-import { useContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 import { ApiEndpoints } from "@/shared/api";
-import { routes } from "@/shared/config";
-import { LSConstants } from "@/shared/config/constants";
-
-import { AuthContext } from "../ui";
+import { useAuthorizeHook } from "@/shared/lib/authorize-hook";
 
 export const TWITTER_STATE = "state";
 const TWITTER_CODE_CHALLENGE = "challenge";
@@ -13,7 +9,7 @@ const TWITTER_AUTH_URL = "https://twitter.com/i/oauth2/authorize";
 const TWITTER_SCOPE = ["tweet.read", "offline.access", "users.read"].join(" ");
 const callbackUrl = `https://arspatially.com`;
 
-const getURLWithQueryParams = (baseUrl: string, params: Record<string, any>) => {
+const getURLWithQueryParams = (baseUrl: string, params: Record<string, string>) => {
     const query = Object.entries(params)
         .map(([key, value]) => `${key}=${encodeURIComponent(value)}`)
         .join("&");
@@ -22,9 +18,7 @@ const getURLWithQueryParams = (baseUrl: string, params: Record<string, any>) => 
 };
 
 const useXOauthHook = () => {
-    const navigate = useNavigate();
-
-    const { closeLoginModal, setAuthenticated } = useContext(AuthContext);
+    const { onLogin } = useAuthorizeHook();
 
     const getTwitterOAuthUrl = (redirectUri: string) =>
         getURLWithQueryParams(TWITTER_AUTH_URL, {
@@ -54,15 +48,11 @@ const useXOauthHook = () => {
             ApiEndpoints.user
                 .signupX({ twitterCode: xCode })
                 .then((res) => {
-                    console.log("!!!!!", res);
-                    localStorage.setItem(LSConstants.accessToken, res.token);
-                    setAuthenticated(true);
-                    navigate(routes.lk);
-                    closeLoginModal();
+                    onLogin({ token: res.token });
                 })
                 .catch((err) => console.error(err));
         }
-    }, [closeLoginModal, navigate, setAuthenticated]);
+    }, [onLogin]);
 
     return { handleXAuth };
 };

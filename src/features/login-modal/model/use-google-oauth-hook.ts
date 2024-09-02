@@ -3,7 +3,7 @@ import { useEffect } from "react";
 const useGoogleOauthHook = () => {
     const client = google.accounts.oauth2.initTokenClient({
         client_id: import.meta.env.VITE_APP_GOOGLE_CLIENT_ID,
-        scope: "openid  email  profile",
+        scope: "openid email profile",
         callback: (response) => {
             console.log("RESPONSE: ", response);
         },
@@ -15,7 +15,6 @@ const useGoogleOauthHook = () => {
         // gapi.load("auth2", () => {
         //     gapi.auth2.init();
         // });
-
         // if (auth2.isSignedIn.get()) {
         //     var profile = auth2.currentUser.get().getBasicProfile();
         //     console.log("ID: " + profile.getId());
@@ -25,15 +24,12 @@ const useGoogleOauthHook = () => {
         //     console.log("Image URL: " + profile.getImageUrl());
         //     console.log("Email: " + profile.getEmail());
         // }
-
         // // Google's OAuth 2.0 endpoint for requesting an access token
         // const oauth2Endpoint = "https://accounts.google.com/o/oauth2/v2/auth";
-
         // // Create <form> element to submit parameters to OAuth 2.0 endpoint.
         // const form = document.createElement("form");
         // form.setAttribute("method", "GET"); // Send as a GET request.
         // form.setAttribute("action", oauth2Endpoint);
-
         // // Parameters to pass to OAuth 2.0 endpoint.
         // const params = {
         //     client_id: import.meta.env.VITE_APP_GOOGLE_CLIENT_ID,
@@ -45,7 +41,6 @@ const useGoogleOauthHook = () => {
         //     state: "pass-through value",
         //     prompt: "select_account",
         // };
-
         // // Add form parameters as hidden input values.
         // for (const p in params) {
         //     const input = document.createElement("input");
@@ -54,11 +49,9 @@ const useGoogleOauthHook = () => {
         //     input.setAttribute("value", params[p]);
         //     form.appendChild(input);
         // }
-
         // // Add form to page and submit it to open the OAuth 2.0 endpoint.
         // document.body.appendChild(form);
         // form.submit();
-
         // const str = `https://api.geonftapp.com/oauth2/authorize/google?redirect_uri=https://arspatially.com`;
         // // const callbackUrl = `${window.location.origin}`;
         // const callbackUrl = `https://arspatially.com`;

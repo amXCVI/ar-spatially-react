@@ -1,18 +1,16 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
 
 import { ApiEndpoints } from "@/shared/api";
-import { routes } from "@/shared/config";
-import { LSConstants } from "@/shared/config/constants";
+import { useAuthorizeHook } from "@/shared/lib/authorize-hook";
 
 import { LoginFormInterface } from "../types";
 import { AuthContext, SignInPopupModes } from "../ui";
 
 const useLoginHook = () => {
-    const navigate = useNavigate();
+    const { onLogin } = useAuthorizeHook();
 
-    const { isOpenLoginPopup, closeLoginModal, openLoginModal, setAuthenticated } = useContext(AuthContext);
+    const { isOpenLoginPopup, closeLoginModal, openLoginModal } = useContext(AuthContext);
 
     const {
         register,
@@ -31,10 +29,7 @@ const useLoginHook = () => {
     const handleClickSignIn = (e: LoginFormInterface) => {
         if (isValid) {
             login(e).then((res) => {
-                localStorage.setItem(LSConstants.accessToken, res.token);
-                setAuthenticated(true);
-                navigate(routes.lk);
-                closeLoginModal();
+                onLogin({ token: res.token });
             });
         }
     };
@@ -42,10 +37,7 @@ const useLoginHook = () => {
     const handleClickSignUp = (e: LoginFormInterface) => {
         if (isValid && e.password === e.passwordAgain) {
             signup(e).then((res) => {
-                localStorage.setItem(LSConstants.accessToken, res.token);
-                setAuthenticated(true);
-                navigate(routes.lk);
-                closeLoginModal();
+                onLogin({ token: res.token });
             });
         }
     };
