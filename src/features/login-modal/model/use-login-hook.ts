@@ -2,10 +2,10 @@ import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
+import { ApiEndpoints } from "@/shared/api";
 import { routes } from "@/shared/config";
 import { LSConstants } from "@/shared/config/constants";
 
-import { loginApi } from "../api";
 import { LoginFormInterface } from "../types";
 import { AuthContext, SignInPopupModes } from "../ui";
 
@@ -21,11 +21,11 @@ const useLoginHook = () => {
     } = useForm<LoginFormInterface>();
 
     const login = (e: LoginFormInterface) => {
-        return loginApi.login(e);
+        return ApiEndpoints.user.login(e);
     };
 
     const signup = (e: LoginFormInterface) => {
-        return loginApi.signup(e);
+        return ApiEndpoints.user.signup(e);
     };
 
     const handleClickSignIn = (e: LoginFormInterface) => {

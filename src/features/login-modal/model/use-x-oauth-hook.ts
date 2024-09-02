@@ -52,13 +52,13 @@ const useXOauthHook = () => {
             const xCode = isMatch[1];
 
             ApiEndpoints.user
-                .getAccessTokenFromX({ xCode })
+                .signupX({ twitterCode: xCode })
                 .then((res) => {
                     console.log("!!!!!", res);
-                    // localStorage.setItem(LSConstants.accessToken, res.token);
-                    // setAuthenticated(true);
-                    // navigate(routes.lk);
-                    // closeLoginModal();
+                    localStorage.setItem(LSConstants.accessToken, res.token);
+                    setAuthenticated(true);
+                    navigate(routes.lk);
+                    closeLoginModal();
                 })
                 .catch((err) => console.error(err));
         }

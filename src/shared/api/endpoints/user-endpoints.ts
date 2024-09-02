@@ -5,6 +5,42 @@ import { ApiResponseInterface, UserInterface } from "@/shared/types";
 
 import apiClient from "../api";
 
+const login = async ({ login, password }: { login: string; password: string }) => {
+    const url = `/gateway/user/login`;
+
+    try {
+        const response = await apiClient.post(url, {
+            email: login,
+            password,
+        });
+
+        return response.data.data;
+    } catch (error) {
+        throw new Error(`${url} ErrorRequest: ${error}`);
+    }
+};
+
+const signup = async ({ login, password }: { login: string; password: string }) => {
+    const url = `/gateway/user/signup`;
+
+    const formData = new FormData();
+    formData.append("avatarFile", new Blob());
+    formData.append(
+        "request",
+        new Blob([JSON.stringify({ email: login, password: password })], {
+            type: "application/json",
+        }),
+    );
+
+    try {
+        const response: AxiosResponse<ApiResponseInterface<{ token: string }>> = await apiClient.post(url, formData);
+
+        return response.data.data;
+    } catch (error) {
+        throw new Error(`${url} ErrorRequest: ${error}`);
+    }
+};
+
 const getMe = async () => {
     const url = `/gateway/user/get-me`;
 
@@ -30,16 +66,20 @@ const getAccessTokenFromX = async ({ xCode }: { xCode: string }) => {
     }
 };
 
-const signupX = async ({ accessTwitterToken }: { accessTwitterToken: string }) => {
+const signupX = async ({ twitterCode }: { twitterCode: string }) => {
     const url = `/gateway/user/signup-x`;
+
+    const formData = new FormData();
+    formData.append(
+        "request",
+        new Blob([JSON.stringify({ twitterCode: twitterCode, system: ApiConstants.system })], {
+            type: "application/json",
+        }),
+    );
 
     try {
         const response: AxiosResponse<ApiResponseInterface<{ token: string; user: UserInterface }>> =
-            await apiClient.post(url, {
-                accessTwitterToken: accessTwitterToken,
-                accessTwitterTokenSecret: import.meta.env.VITE_APP_X_APP_SECRET,
-                system: ApiConstants.system,
-            });
+            await apiClient.post(url, formData);
 
         return response.data.data;
     } catch (error) {
@@ -47,4 +87,4 @@ const signupX = async ({ accessTwitterToken }: { accessTwitterToken: string }) =
     }
 };
 
-export const userApi = { getMe, signupX, getAccessTokenFromX };
+export const userApi = { login, signup, getMe, signupX, getAccessTokenFromX };
