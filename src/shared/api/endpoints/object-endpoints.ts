@@ -74,6 +74,22 @@ const fintPointsByUserLocationLayer = async ({ lat, lng, radius }: { lat: number
         });
 };
 
+const findPointsByOwner = async ({ ownerId }: { ownerId: string }) => {
+    const formData = new FormData();
+    formData.append("ownerId", ownerId);
+
+    return await apiClient
+        .post("/gateway/object/find/owner", formData)
+        .then((res) => {
+            const markers: MarkerInterface[] = res.data.data.objectsList;
+
+            return markers;
+        })
+        .catch((err) => {
+            throw err;
+        });
+};
+
 const fintPointsByLocationLayer = async ({
     lat,
     lng,
@@ -108,4 +124,5 @@ export const objectApi = {
     fintPointsByLocation,
     fintPointsByLocationLayer,
     fintPointsByUserLocationLayer,
+    findPointsByOwner,
 };

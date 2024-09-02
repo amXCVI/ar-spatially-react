@@ -1,4 +1,8 @@
-import { useObjectsTogglerHook } from "../domain";
+import { useContext } from "react";
+
+import { AuthContext } from "@/features/login-modal";
+
+import { MapContext } from "@/shared/stores";
 
 const MyObjectsButton = ({ onClick, isActive = false }: { onClick: () => void; isActive: boolean }) => {
     return (
@@ -49,7 +53,13 @@ const AllObjectsButton = ({ onClick, isActive = false }: { onClick: () => void; 
 };
 
 const ObjectsToggler = () => {
-    const { myObjectsOnly, handleMyObjects, handleAllObjects } = useObjectsTogglerHook();
+    const { myObjectsOnly, handleMyObjects, handleAllObjects } = useContext(MapContext);
+
+    const { authenticated } = useContext(AuthContext);
+
+    if (!authenticated) {
+        return <></>;
+    }
 
     return (
         <>

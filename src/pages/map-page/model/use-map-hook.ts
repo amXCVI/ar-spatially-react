@@ -1,9 +1,11 @@
 import { MarkerInterface as ArMarkerInterface, MapRefType } from "@ar-kit/lib";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
 import { ApiEndpoints } from "@/shared/api";
 import { SearchParamsConstants } from "@/shared/config/constants";
+import { MapContext, useUserHook } from "@/shared/stores";
+import { MarkerInterface } from "@/shared/types";
 
 const defaultMapPosition = {
     lat: (
@@ -20,12 +22,17 @@ const useMapHook = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const selectedMarkerId = searchParams.get(SearchParamsConstants.markerIdSearchParamsKey);
 
+    const { myObjectsOnly } = useContext(MapContext);
+
+    const { user } = useUserHook();
+
     const [coords, setCoords] = useState<{
         lat: number;
         lng: number;
         radius: number;
     }>(defaultMapPosition);
 
+    const [allMarkersOnMap, setAllMarkersOnMap] = useState<MarkerInterface[]>([]);
     const [nftList, setNftList] = useState<ArMarkerInterface[]>([]);
     const [selectedMarker, setSelectedMarker] = useState<ArMarkerInterface | null>(null);
 
@@ -68,25 +75,40 @@ const useMapHook = () => {
     }, [nftList, selectedMarkerId]);
 
     useEffect(() => {
-        ApiEndpoints.object.fintPointsByLocation({ ...coords }).then((res) => {
-            const markers = res.map((item) => {
-                return {
-                    description: item.description,
-                    imageUrl: `${import.meta.env.VITE_APP_API_BASE_URL}gateway/file/get?fileId=${item.previewId}`,
-                    previewUrl: `${import.meta.env.VITE_APP_API_BASE_URL}gateway/file/get?fileId=${item.previewId}`,
-                    lat: item.location.lat,
-                    lng: item.location.lng,
-                    name: item.title,
-                    id: item.id,
-
-                    ownerAvatarUrl: undefined,
-                    isHide: false,
-                };
+        if (myObjectsOnly && user) {
+            ApiEndpoints.object.findPointsByOwner({ ownerId: user.userId
+             }).then((res) => {
+                setAllMarkersOnMap(res);
             });
+        }
+    }, [myObjectsOnly, user]);
 
-            setNftList(markers);
+    useEffect(() => {
+        if (!myObjectsOnly) {
+            ApiEndpoints.object.fintPointsByLocation({ ...coords }).then((res) => {
+                setAllMarkersOnMap(res);
+            });
+        }
+    }, [coords, myObjectsOnly]);
+
+    useMemo(() => {
+        const markers = allMarkersOnMap.map((item) => {
+            return {
+                description: item.description,
+                imageUrl: `${import.meta.env.VITE_APP_API_BASE_URL}gateway/file/get?fileId=${item.previewId}`,
+                previewUrl: `${import.meta.env.VITE_APP_API_BASE_URL}gateway/file/get?fileId=${item.previewId}`,
+                lat: item.location.lat,
+                lng: item.location.lng,
+                name: item.title,
+                id: item.id,
+
+                ownerAvatarUrl: undefined,
+                isHide: false,
+            };
         });
-    }, [coords]);
+
+        setNftList(markers);
+    }, [allMarkersOnMap]);
 
     return {
         onChangeCoords,
