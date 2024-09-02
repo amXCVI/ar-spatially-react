@@ -1,8 +1,8 @@
 import { MarkerInterface } from "@ar-kit/lib";
 import { useOutsideClick } from "@ar-kit/shared/hooks";
 
-import EdtIcon from "../assets/edit-icon.svg?react";
-import ViewArIcon from "../assets/view-ar-icon.svg?react";
+// import EdtIcon from "../assets/edit-icon.svg?react";
+// import ViewArIcon from "../assets/view-ar-icon.svg?react";
 
 interface NftItemInterface {
     selectedMarker: MarkerInterface | null;
@@ -39,7 +39,7 @@ const NftItem = ({ selectedMarker, onCloseViewer }: NftItemInterface) => {
                                    border-2 border-raisin-black rounded-[30px]
                                    px-6 py-3.5 "
                     >
-                        Receive NFT
+                        Preview
                     </button>
                 </div>
                 <div className="flex flex-col bg-eerie-black rounded-[30px]">
@@ -48,13 +48,13 @@ const NftItem = ({ selectedMarker, onCloseViewer }: NftItemInterface) => {
                         className="h-full w-full object-contain max-w-screen-3sm"
                     />
                     <div className="flex justify-between items-center gap-6 p-2.5">
-                        <button className="flex items-center gap-2.5 px-4 py-3 onest-regular-18 text-white">
+                        {/* <button className="flex items-center gap-2.5 px-4 py-3 onest-regular-18 text-white">
                             <ViewArIcon />
                             View AR
                         </button>
                         <button className="px-4 py-3">
                             <EdtIcon />
-                        </button>
+                        </button> */}
                     </div>
                 </div>
             </div>

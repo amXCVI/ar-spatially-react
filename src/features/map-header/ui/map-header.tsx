@@ -6,6 +6,7 @@ import Logo from "../assets/logo.svg?react";
 import shortLogo from "/images/landing/header/short-logo.svg";
 
 import { AppsSelect } from "./apps-select";
+import { ObjectsToggler } from "./object-owner-toggler";
 import SearchField from "./search-field";
 import { UserAvatar } from "./user-avatar";
 
@@ -30,6 +31,8 @@ const MapHeader = ({ onChangeMapCenter }: MapHeaderProps) => {
                         className="flex items-center md:w-full justify-between lg:justify-end gap-6
                                     fixed md:relative bottom-10 md:bottom-0 left-0 right-0 px-10 md:px-0"
                     >
+                        <ObjectsToggler />
+
                         <SearchField onChangeMapCenter={onChangeMapCenter} />
 
                         <AppsSelect className="hidden md:block" />

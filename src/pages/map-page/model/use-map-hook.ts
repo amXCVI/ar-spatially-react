@@ -68,26 +68,24 @@ const useMapHook = () => {
     }, [nftList, selectedMarkerId]);
 
     useEffect(() => {
-        if (coords) {
-            ApiEndpoints.object.fintPointsByLocation({ ...coords }).then((res) => {
-                const markers = res.map((item) => {
-                    return {
-                        description: item.description,
-                        imageUrl: `${import.meta.env.VITE_APP_API_BASE_URL}gateway/file/get?fileId=${item.previewId}`,
-                        previewUrl: `${import.meta.env.VITE_APP_API_BASE_URL}gateway/file/get?fileId=${item.previewId}`,
-                        lat: item.location.lat,
-                        lng: item.location.lng,
-                        name: item.title,
-                        id: item.id,
+        ApiEndpoints.object.fintPointsByLocation({ ...coords }).then((res) => {
+            const markers = res.map((item) => {
+                return {
+                    description: item.description,
+                    imageUrl: `${import.meta.env.VITE_APP_API_BASE_URL}gateway/file/get?fileId=${item.previewId}`,
+                    previewUrl: `${import.meta.env.VITE_APP_API_BASE_URL}gateway/file/get?fileId=${item.previewId}`,
+                    lat: item.location.lat,
+                    lng: item.location.lng,
+                    name: item.title,
+                    id: item.id,
 
-                        ownerAvatarUrl: undefined,
-                        isHide: false,
-                    };
-                });
-
-                setNftList(markers);
+                    ownerAvatarUrl: undefined,
+                    isHide: false,
+                };
             });
-        }
+
+            setNftList(markers);
+        });
     }, [coords]);
 
     return {

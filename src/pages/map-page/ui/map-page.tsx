@@ -18,7 +18,7 @@ const MapPage = () => {
     } = useMapHook();
 
     return (
-        <div style={{ width: "100vw", height: "100dvh" }}>
+        <div style={{ width: "100vw", height: "100vh" }}>
             <MapHeader onChangeMapCenter={onChangeMapCenter} />
 
             <MapComponent

@@ -56,6 +56,24 @@ const fintPointsByLocation = async ({ lat, lng, radius }: { lat: number; lng: nu
         });
 };
 
+const fintPointsByUserLocationLayer = async ({ lat, lng, radius }: { lat: number; lng: number; radius: number }) => {
+    return await apiClient
+        .post("/gateway/object/find/user-location-layer", {
+            lat: lat,
+            lng: lng,
+            // Здесь инвертирую радиус (значение подобрал эмпирически)
+            radius: (1 / radius) * 500000,
+        })
+        .then((res) => {
+            const markers: MarkerInterface[] = res.data.data.objectsList;
+
+            return markers;
+        })
+        .catch((err) => {
+            throw err;
+        });
+};
+
 const fintPointsByLocationLayer = async ({
     lat,
     lng,
@@ -85,4 +103,9 @@ const fintPointsByLocationLayer = async ({
         });
 };
 
-export const objectApi = { findTextLayer, fintPointsByLocation, fintPointsByLocationLayer };
+export const objectApi = {
+    findTextLayer,
+    fintPointsByLocation,
+    fintPointsByLocationLayer,
+    fintPointsByUserLocationLayer,
+};
