@@ -10,7 +10,7 @@ import { AuthContext } from "../ui";
 export const TWITTER_STATE = "state";
 const TWITTER_CODE_CHALLENGE = "challenge";
 const TWITTER_AUTH_URL = "https://twitter.com/i/oauth2/authorize";
-const TWITTER_SCOPE = ["tweet.read", "offline.access"].join(" ");
+const TWITTER_SCOPE = ["tweet.read", "offline.access", "users.read"].join(" ");
 const callbackUrl = `https://arspatially.com`;
 
 const getURLWithQueryParams = (baseUrl: string, params: Record<string, any>) => {
@@ -35,7 +35,7 @@ const useXOauthHook = () => {
             state: TWITTER_STATE,
 
             code_challenge: TWITTER_CODE_CHALLENGE,
-            code_challenge_method: "plain",
+            code_challenge_method: "PLAIN",
         });
 
     const handleXAuth = async () => {
