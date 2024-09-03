@@ -47,7 +47,7 @@ const SearchField = ({ className, onChangeMapCenter }: MapHeaderProps) => {
                         ref={inputRef}
                         onChange={onChangeInputValue}
                         autoFocus
-                        className="w-full border-none outline-none z-10 onest-medium-22 text-white"
+                        className="w-full border-none outline-none z-10 bg-dark-gray onest-medium-22 text-white"
                         value={searchInputValue}
                     />
                 ) : (

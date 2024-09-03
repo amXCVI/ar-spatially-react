@@ -41,6 +41,8 @@ const MapHeader = ({ onChangeMapCenter }: MapHeaderProps) => {
                                flex flex-row gap-4 justify-between
                                "
                 >
+                    <AppsSelect className="block lg:hidden" />
+
                     <SearchField onChangeMapCenter={onChangeMapCenter} />
 
                     <MapMobileMenu />

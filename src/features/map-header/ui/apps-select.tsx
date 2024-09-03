@@ -10,7 +10,7 @@ const AppsSelect = ({ className }: { className?: string }) => {
     return (
         <div
             ref={appsSelectRef}
-            className={`flex flex-col duration-500 ${isActive ? `w-96` : ""}
+            className={`flex flex-col duration-500 ${isActive ? `w-32 md:w-96` : ""}
                         border-2 border-raisin-black rounded-[30px] bg-dark-gray
                         relative ${className}`}
         >
@@ -30,9 +30,10 @@ const AppsSelect = ({ className }: { className?: string }) => {
                 </span>
             </div>
             <div
-                className={`flex gap-6 bg-dark-gray
-                            absolute top-8 left-0 right-0
-                            rounded-b-[30px]
+                className={`flex flex-col gap-1 bg-dark-gray
+                            absolute bottom-8 lg:bottom-auto lg:top-8 -left-0.5 -right-0.5 
+                            rounded-t-[30px] lg:rounded-t-none lg:rounded-b-[30px]
+                            border-r-2 border-l-2 border-raisin-black
                             ${isActive ? "p-4" : "p-0"}`}
             >
                 {isActive &&
