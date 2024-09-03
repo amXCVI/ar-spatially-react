@@ -49,7 +49,8 @@ export default {
             },
             backgroundImage: {
                 "map-header-bg": "linear-gradient(180deg,#000000 42.71%,rgba(0,0,0,0) 100%)",
-                "nft-viewer-desc-bg": "linear-gradient(0deg,#000000 -20%,rgba(0,0,0,0) 100%)",
+                "nft-viewer-desc-bg":
+                    "linear-gradient(0deg, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), radial-gradient(181.9% 105.41% at 14.65% 19.7%, #B8D6F6 0%, #76B8FF 36.81%, #6C7D90 100%)",
                 "start-section-text-gradient": "linear-gradient(99.41deg, #0071BD -12.47%, #00BDFF 110.44%)",
                 "our-vision-secton-text-gradient": "linear-gradient(93.8deg, #4946A3 12.46%, #8583C4 87.54%)",
             },

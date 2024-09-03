@@ -1,5 +1,5 @@
 import { MarkerInterface } from "@ar-kit/shared/types/nft-types";
-import { APIProvider, Map as RGCMap } from "@vis.gl/react-google-maps";
+import { Map as RGCMap, useApiIsLoaded } from "@vis.gl/react-google-maps";
 import { FeatureCollection, Point } from "geojson";
 
 import googleMapStyles from "../resources/map_style.json";
@@ -20,7 +20,6 @@ interface MapProps {
     onSelectMapType: (e: string) => void;
     markersList: FeatureCollection<Point, MarkerInterface>;
     onClickMarker?: (markerId: string) => void;
-    googleApiKey: string;
     mapId?: string;
 }
 
@@ -35,11 +34,15 @@ const Map = ({
     onSelectMapType,
     markersList,
     onClickMarker,
-    googleApiKey,
     mapId,
 }: MapProps) => {
+    const apiIsLoaded = useApiIsLoaded();
+
+    if (!apiIsLoaded) {
+        return <div />;
+    }
     return (
-        <APIProvider apiKey={googleApiKey}>
+        <>
             <RGCMap
                 styles={googleMapStyles}
                 mapTypeId={selectedMapTypeId}
@@ -53,7 +56,7 @@ const Map = ({
                 center={center}
                 onCenterChanged={(ev) => onChangeMapCenter(ev.detail.center)}
                 //
-                reuseMaps={false}
+                reuseMaps={true}
                 mapId={mapId}
             >
                 <ClusteredMarkers
@@ -72,7 +75,7 @@ const Map = ({
                 <ZoomButton zoom={zoom} onChangeMapZoom={onChangeMapZoom} />
                 <GeolocationButton setCenter={onChangeMapCenter} loading={loadingMap} />
             </MapOptionsContainer>
-        </APIProvider>
+        </>
     );
 };
 

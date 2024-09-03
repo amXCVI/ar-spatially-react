@@ -1,4 +1,5 @@
 import { MarkerInterface } from "@ar-kit/shared/types/nft-types";
+import { APIProvider } from "@vis.gl/react-google-maps";
 import { Ref, forwardRef, useImperativeHandle } from "react";
 
 import useMapControlHook from "../model";
@@ -39,36 +40,37 @@ const MapComponent = forwardRef((props: MapComponentProps, ref: Ref<MapRefType>)
     useImperativeHandle(ref, () => ({ setMapCenter }));
 
     return (
-        <Map
-            center={center}
-            zoom={zoom}
-            loadingMap={props.loadingMap}
-            onChangeMapZoom={onChangeMapZoom}
-            onChangeMapCenter={onChangeMapCenter}
-            mapTypes={mapTypes}
-            selectedMapTypeId={selectedMapTypeId}
-            onSelectMapType={onSelectMapType}
-            markersList={{
-                type: "FeatureCollection",
-                features:
-                    props.nftList?.map((item) => {
-                        return {
-                            type: "Feature",
-                            id: item.id,
-                            geometry: {
-                                type: "Point",
-                                coordinates: [item.lng, item.lat],
-                            },
-                            properties: {
-                                ...item,
-                            },
-                        };
-                    }) ?? [],
-            }}
-            onClickMarker={props.onClickMarker}
-            googleApiKey={props.googleApiKey}
-            mapId={props.mapId}
-        />
+        <APIProvider apiKey={props.googleApiKey}>
+            <Map
+                center={center}
+                zoom={zoom}
+                loadingMap={props.loadingMap}
+                onChangeMapZoom={onChangeMapZoom}
+                onChangeMapCenter={onChangeMapCenter}
+                mapTypes={mapTypes}
+                selectedMapTypeId={selectedMapTypeId}
+                onSelectMapType={onSelectMapType}
+                markersList={{
+                    type: "FeatureCollection",
+                    features:
+                        props.nftList?.map((item) => {
+                            return {
+                                type: "Feature",
+                                id: item.id,
+                                geometry: {
+                                    type: "Point",
+                                    coordinates: [item.lng, item.lat],
+                                },
+                                properties: {
+                                    ...item,
+                                },
+                            };
+                        }) ?? [],
+                }}
+                onClickMarker={props.onClickMarker}
+                mapId={props.mapId}
+            />
+        </APIProvider>
     );
 });
 

@@ -75,7 +75,7 @@ const signupX = async ({ twitterCode }: { twitterCode: string }) => {
 };
 
 const signupGoogle = async ({ googleToken }: { googleToken: string }) => {
-    const url = `/gateway/user/signup-google`;
+    const url = `/gateway/user/signup-google-access`;
 
     try {
         const response: AxiosResponse<ApiResponseInterface<{ token: string; user: UserInterface }>> =
@@ -90,12 +90,4 @@ const signupGoogle = async ({ googleToken }: { googleToken: string }) => {
     }
 };
 
-const getGoogleUserInfo = async ({ access_token }: { access_token: string }) => {
-    await axios
-        .get("https://www.googleapis.com/oauth2/v3/userinfo", {
-            headers: { Authorization: `Bearer ${access_token}` },
-        })
-        .then((res) => res.data);
-};
-
-export const userApi = { login, signup, getMe, signupX, signupGoogle, getGoogleUserInfo };
+export const userApi = { login, signup, getMe, signupX, signupGoogle };

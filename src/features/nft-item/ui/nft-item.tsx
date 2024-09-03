@@ -42,7 +42,7 @@ const NftItem = ({ selectedMarker, onCloseViewer }: NftItemInterface) => {
                         Preview
                     </button>
                 </div>
-                <div className="flex flex-col bg-eerie-black rounded-[30px]">
+                <div className="flex flex-col bg-nft-viewer-desc-bg rounded-[30px]">
                     <img
                         src={`${selectedMarker?.previewUrl ?? selectedMarker?.imageUrl}`}
                         className="h-full w-full object-contain max-w-screen-3sm"

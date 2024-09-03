@@ -15,10 +15,9 @@ const useGoogleOauthHook = () => {
 
     function handleAccessToken(tokenResponse: { access_token: string }) {
         console.log(tokenResponse);
-        ApiEndpoints.user.getGoogleUserInfo({ access_token: tokenResponse.access_token });
-
-        ApiEndpoints.user.signupGoogle({ googleToken: tokenResponse.access_token });
-        // onLogin({ token: tokenResponse.access_token });
+        ApiEndpoints.user.signupGoogle({ googleToken: tokenResponse.access_token }).then((res) => {
+            onLogin({ token: res.token });
+        });
     }
 
     return { handleGoogleLogin };
