@@ -18,7 +18,7 @@ const MapPage = () => {
     } = useMapHook();
 
     return (
-        <div style={{ width: "100vw", height: "100vh" }}>
+        <div style={{ width: "100vw", height: "100vh" }} className="bg-raisin-black">
             <APIProvider apiKey={googpeMapApiKey}>
                 <MapHeader onChangeMapCenter={onChangeMapCenter} />
 
