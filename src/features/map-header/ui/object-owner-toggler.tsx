@@ -18,10 +18,19 @@ const ObjectsToggler = () => {
             <input type="checkbox" value="" checked={myObjectsOnly} onChange={() => {}} className="peer sr-only" />
             <div
                 onClick={toggleObjectsOwner}
-                className="peer flex items-center gap-6 rounded-full bg-raisin-black px-3 py-5 after:absolute after:left-1 after: after:h-12 after:w-[5.3rem] after:rounded-full after:bg-dark-gray after:transition-all after:content-[''] peer-checked:bg-raisin-black peer-checked:after:translate-x-full peer-focus:outline-none dark:border-raisin-black dark:bg-raisin-black text-sm text-white"
+                className="peer flex items-center rounded-full bg-raisin-black py-5 px-2
+                           after:absolute after:left-1 after:top-1 after:bottom-1 after:w-1/2 after:rounded-full after:bg-dark-gray after:transition-all after:content-[''] peer-checked:bg-raisin-black peer-checked:after:translate-x-[calc(100%-0.5rem)] peer-focus:outline-none dark:border-raisin-black dark:bg-raisin-black"
             >
-                <span className="z-10 select-none">All Object</span>
-                <span className="z-10 select-none">My Object</span>
+                <span
+                    className={`onest-regular-22 z-10 select-none text-nowrap w-40 text-center transition-all ${myObjectsOnly ? "text-quick-silver" : "text-white"}`}
+                >
+                    All Objects
+                </span>
+                <span
+                    className={`onest-regular-22 z-10 select-none text-nowrap w-40 text-center transition-all ${myObjectsOnly ? "text-white" : "text-quick-silver"}`}
+                >
+                    My Objects
+                </span>
             </div>
         </label>
     );
