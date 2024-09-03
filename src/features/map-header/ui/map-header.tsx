@@ -17,40 +17,48 @@ interface MapHeaderProps {
 const MapHeader = ({ onChangeMapCenter }: MapHeaderProps) => {
     return (
         <header className="fixed z-20 top-0 right-0 left-0">
-            <div className="">
+            <div
+                className="container mx-auto pt-10 px-6 
+                           flex flex-row gap-4 md:gap-10 justify-between"
+            >
+                <a href={routes.home} className="flex items-center">
+                    <Logo className="hidden lg:block" style={{ fill: "white" }} />
+                    <img src={shortLogo} className="lg:hidden h-14" />
+                </a>
+
+                <div className="flex items-center lg:w-full justify-between lg:justify-end gap-6">
+                    <ObjectsToggler className="hidden 2sm:block" />
+                    <SearchField onChangeMapCenter={onChangeMapCenter} className="hidden lg:block" />
+                    <AppsSelect className="hidden lg:block" />
+                    <UserAvatar className="" />
+                    <MapMobileMenu className="hidden lg:block" />
+                </div>
+            </div>
+
+            <div className="fixed bottom-10 right-0 left-0 lg:hidden">
                 <div
-                    className="container mx-auto pt-10 px-6 
-                                flex flex-row gap-10 justify-between"
+                    className="container mx-auto pt-10 px-6
+                               flex flex-row gap-4 justify-between
+                               "
                 >
-                    <a href={routes.home} className="flex items-center">
-                        <Logo className="hidden lg:block" style={{ fill: "white" }} />
-                        <img src={shortLogo} className="lg:hidden ml-5 w-12" />
-                    </a>
+                    <SearchField onChangeMapCenter={onChangeMapCenter} />
 
-                    <div
-                        className="flex items-center md:w-full justify-between lg:justify-end gap-6
-                                    fixed md:relative bottom-10 md:bottom-0 left-0 right-0 px-10 md:px-0"
-                    >
-                        <ObjectsToggler />
-
-                        <SearchField onChangeMapCenter={onChangeMapCenter} />
-
-                        <AppsSelect className="hidden md:block" />
-
-                        <UserAvatar className="fixed md:relative top-10 md:top-0 right-10 md:right-0 " />
-
-                        <MobileMenu
-                            show={false}
-                            white
-                            iconClassname="flex justify-center items-center duration-500
-                                           cursor-pointer hover:bg-white50 w-[60px] h-[60px]
-                                           border-2 border-raisin-black bg-dark-gray rounded-full backdrop-blur"
-                        />
-                    </div>
+                    <MapMobileMenu />
                 </div>
             </div>
         </header>
     );
 };
+
+const MapMobileMenu = ({ className }: { className?: string }) => (
+    <MobileMenu
+        className={className}
+        show={false}
+        white
+        iconClassname="flex justify-center items-center duration-500
+                       cursor-pointer hover:bg-white50 w-[60px] h-[60px]
+                       border-2 border-raisin-black bg-dark-gray rounded-full backdrop-blur"
+    />
+);
 
 export default MapHeader;

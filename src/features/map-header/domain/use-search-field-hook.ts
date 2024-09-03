@@ -32,6 +32,8 @@ const useSearchFieldHook = ({
     const searchFieldRef = useOutsideClick(() => {
         if (isActiveField) {
             setSelectedPlaceDescription("");
+            setSearchInputValue("");
+            setFindedObjects([]);
         }
         toggleIsActiveSearchField(false);
     });

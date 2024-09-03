@@ -10,7 +10,7 @@ const AppsSelect = ({ className }: { className?: string }) => {
     return (
         <div
             ref={appsSelectRef}
-            className={`flex flex-col duration-500 ${isActive ? `w-96` : "w-36"}
+            className={`flex flex-col duration-500 ${isActive ? `w-96` : ""}
                         border-2 border-raisin-black rounded-[30px] bg-dark-gray
                         relative ${className}`}
         >
@@ -24,7 +24,7 @@ const AppsSelect = ({ className }: { className?: string }) => {
 
                 <span
                     className={`onest-regular-22 text-quick-silver whitespace-nowrap overflow-hidden text-ellipsis
-                                    z-10`}
+                                hidden xl:block z-10`}
                 >
                     {"Apps"}
                 </span>

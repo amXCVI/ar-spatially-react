@@ -32,7 +32,7 @@ export const ClusteredMarkers = ({ markersList, onClickMarker }: ClusteredMarker
         (marker: google.maps.marker.AdvancedMarkerElement, clusterId: number) => {
             const leaves = getLeaves(clusterId);
 
-            console.log("********", leaves, marker);
+            console.log("on click cluster", clusterId, leaves);
 
             // setInfowindowData({ anchor: marker, features: leaves });
         },

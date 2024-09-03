@@ -58,6 +58,8 @@ const Map = ({
                 //
                 reuseMaps={true}
                 mapId={mapId}
+                minZoom={3}
+                backgroundColor={"black"}
             >
                 <ClusteredMarkers
                     markersList={markersList}

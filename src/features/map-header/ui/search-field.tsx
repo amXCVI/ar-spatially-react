@@ -53,7 +53,7 @@ const SearchField = ({ className, onChangeMapCenter }: MapHeaderProps) => {
                 ) : (
                     <span
                         className={`onest-regular-22 text-quick-silver whitespace-nowrap overflow-hidden text-ellipsis
-                                    z-10 hidden lg:block`}
+                                    z-10 hidden xl:block`}
                     >
                         {selectedPlaceDescription ? selectedPlaceDescription : "Search"}
                     </span>
@@ -62,8 +62,9 @@ const SearchField = ({ className, onChangeMapCenter }: MapHeaderProps) => {
 
             <div
                 className={`flex flex-col gap-1 bg-dark-gray
-                            absolute top-8 left-0 right-0
-                            rounded-b-[30px]
+                            absolute bottom-8 lg:bottom-auto lg:top-8 -left-0.5 -right-0.5 
+                            rounded-t-[30px] lg:rounded-t-none lg:rounded-b-[30px]
+                            border-r-2 border-l-2 border-raisin-black
                             ${isActiveField && (predictionResults.length || findedObjects.length) ? "p-4" : "p-0"}`}
             >
                 {isActiveField &&
