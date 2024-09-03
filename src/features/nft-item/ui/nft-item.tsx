@@ -23,16 +23,10 @@ const NftItem = ({ selectedMarker, onCloseViewer }: NftItemInterface) => {
                 ref={nftViewerRef}
                 className={`bg-dark-gray rounded-[60px] p-11 border-2 border-raisin-black
                             flex-col-reverse lg:flex-row gap-6 ${selectedMarker ? "flex" : "hidden"}
-                            max-h-[calc(100vh-16rem)] overflow-scroll`}
+                            max-h-[calc(100vh-16rem)] min-w-96 overflow-scroll`}
             >
                 <div className="flex flex-col gap-8 mt-auto max-w-screen-3sm">
-                    <div className="flex flex-col gap-5">
-                        <h2 className="sloth-semibold-36 text-white">{selectedMarker?.name}</h2>
-                        <div className="flex flex-col">
-                            <span className="onest-regular-22 text-white">address</span>
-                            <span className="manrope-regular-18 text-quick-silver">{`${selectedMarker?.lat}, ${selectedMarker?.lng}`}</span>
-                        </div>
-                    </div>
+                    <CardHeader className="hidden lg:flex" />
                     <p className="manrope-regular-18 text-quick-silver">{selectedMarker?.description}</p>
                     <button
                         className="onest-regular-18 text-white
@@ -45,7 +39,7 @@ const NftItem = ({ selectedMarker, onCloseViewer }: NftItemInterface) => {
                 <div className="flex flex-col bg-nft-viewer-desc-bg rounded-[30px]">
                     <img
                         src={`${selectedMarker?.previewUrl ?? selectedMarker?.imageUrl}`}
-                        className="h-full w-full object-contain max-w-screen-3sm"
+                        className="max-h-44 lg:h-full w-full object-contain max-w-screen-3sm"
                     />
                     <div className="flex justify-between items-center gap-6 p-2.5">
                         {/* <button className="flex items-center gap-2.5 px-4 py-3 onest-regular-18 text-white">
@@ -57,9 +51,38 @@ const NftItem = ({ selectedMarker, onCloseViewer }: NftItemInterface) => {
                         </button> */}
                     </div>
                 </div>
+                <CardHeader
+                    name={selectedMarker?.name}
+                    lat={selectedMarker?.lat}
+                    lng={selectedMarker?.lng}
+                    className="flex lg:hidden"
+                />
             </div>
         </div>
     );
 };
 
+const CardHeader = ({
+    name,
+    lat,
+    lng,
+    className,
+}: {
+    name?: string;
+    lat?: number;
+    lng?: number;
+    className?: string;
+}) => {
+    return (
+        <div className={`flex flex-col gap-5 ${className}`}>
+            <h2 className="sloth-semibold-36 text-white">{name}</h2>
+            {lat && lng && (
+                <div className="flex flex-col">
+                    <span className="onest-regular-22 text-white">address</span>
+                    <span className="manrope-regular-18 text-quick-silver">{`${lat.toFixed(6)}, ${lng.toFixed(6)}`}</span>
+                </div>
+            )}
+        </div>
+    );
+};
 export { NftItem };
