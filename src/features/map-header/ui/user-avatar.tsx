@@ -12,9 +12,15 @@ const UserAvatar = ({ className }: { className?: string }) => {
     } else {
         return (
             <div
-                className={`border-2 border-raisin-black rounded-full bg-dark-gray h-[60px] w-[60px] flex justify-center items-center ${className}`}
+                className={`border-2 border-raisin-black rounded-full overflow-hidden
+                          bg-dark-gray h-[60px] w-[60px] 
+                            flex justify-center items-center  ${className}`}
             >
-                {user?.avatarId ? <img /> : <DefaultUserAvatar />}
+                {user?.avatarId ? (
+                    <img src={`${import.meta.env.VITE_APP_API_BASE_URL}gateway/file/get?fileId=${user.avatarId}`} />
+                ) : (
+                    <DefaultUserAvatar />
+                )}
             </div>
         );
     }

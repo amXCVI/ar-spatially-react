@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from "axios";
+import { AxiosResponse } from "axios";
 
 import { ApiConstants } from "@/shared/config";
 import { ApiResponseInterface, UserInterface } from "@/shared/types";
