@@ -1,10 +1,10 @@
-import { useOutsideClick } from "@ar-kit/shared/hooks";
-import { useState } from "react";
-import usePlacesService from "react-google-autocomplete/lib/usePlacesAutocompleteService";
+import { useMap, useMapsLibrary } from "@vis.gl/react-google-maps";
+import { useCallback, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
 import { ApiEndpoints } from "@/shared/api";
 import { SearchParamsConstants } from "@/shared/config/constants";
+import { useOutsideClick } from "@/shared/lib/use-outside-click";
 import { ObjectInterface } from "@/shared/types";
 
 const useSearchFieldHook = ({
@@ -20,11 +20,6 @@ const useSearchFieldHook = ({
     const [selectedPlaceDescription, setSelectedPlaceDescription] = useState<string>("");
     const [findedObjects, setFindedObjects] = useState<ObjectInterface[]>([]);
 
-    const { placePredictions, getPlacePredictions } = usePlacesService({
-        apiKey: import.meta.env.VITE_APP_GOOGLE_MAP_API_KEY,
-        debounce: 300,
-    });
-
     const toggleIsActiveSearchField = (value?: boolean) => {
         if (value !== undefined) {
             setIsActiveField(value);
@@ -34,8 +29,54 @@ const useSearchFieldHook = ({
         setIsActiveField((e) => !e);
     };
 
+    const searchFieldRef = useOutsideClick(() => {
+        if (isActiveField) {
+            setSelectedPlaceDescription("");
+        }
+        toggleIsActiveSearchField(false);
+    });
+
+    const map = useMap();
+    const places = useMapsLibrary("places");
+
+    // https://developers.google.com/maps/documentation/javascript/reference/places-autocomplete-service#AutocompleteSessionToken
+    const [sessionToken, setSessionToken] = useState<google.maps.places.AutocompleteSessionToken>();
+
+    // https://developers.google.com/maps/documentation/javascript/reference/places-autocomplete-service
+    const [autocompleteService, setAutocompleteService] = useState<google.maps.places.AutocompleteService | null>(null);
+
+    // https://developers.google.com/maps/documentation/javascript/reference/places-service
+    const [placesService, setPlacesService] = useState<google.maps.places.PlacesService | null>(null);
+
+    const [predictionResults, setPredictionResults] = useState<Array<google.maps.places.AutocompletePrediction>>([]);
+
+    useEffect(() => {
+        if (!places || !map) return;
+
+        setAutocompleteService(new places.AutocompleteService());
+        setPlacesService(new places.PlacesService(map));
+        setSessionToken(new places.AutocompleteSessionToken());
+
+        return () => setAutocompleteService(null);
+    }, [map, places]);
+
+    const fetchPredictions = useCallback(
+        async (inputValue: string) => {
+            if (!autocompleteService || !inputValue) {
+                setPredictionResults([]);
+                return;
+            }
+
+            const request = { input: inputValue, sessionToken };
+            const response = await autocompleteService.getPlacePredictions(request);
+
+            setPredictionResults(response.predictions);
+        },
+        [autocompleteService, sessionToken],
+    );
+
     const onChangeInputValue = (e: React.ChangeEvent<HTMLInputElement>) => {
-        getPlacePredictions({ input: e.target.value });
+        fetchPredictions(e.target.value);
         setSearchInputValue(e.target.value);
 
         if (e.target.value) {
@@ -55,50 +96,60 @@ const useSearchFieldHook = ({
         }
     };
 
-    const onSelectPlacePredicion = (placePrediction: google.maps.places.AutocompletePrediction | ObjectInterface) => {
-        try {
+    const handleSuggestionClick = useCallback(
+        (placeId: string) => {
+            const object = findedObjects.find((item) => item.id === placeId);
             // Если объект - из наших приложений - открываем его
-            const object = placePrediction as ObjectInterface;
+            if (object) {
+                setSearchParams({
+                    [SearchParamsConstants.markerIdSearchParamsKey]: object.id,
+                });
 
-            setSearchParams({
-                [SearchParamsConstants.markerIdSearchParamsKey]: object.id,
-            });
+                setSelectedPlaceDescription(object.description);
 
-            onChangeMapCenter({ lat: object.location.lat, lng: object.location.lng, zoom: 15 });
-        } catch (error) {
-            // Если объект - из поиска по карте - открываем эту локацию
-            const object = placePrediction as google.maps.places.AutocompletePrediction;
+                onChangeMapCenter({ lat: object.location.lat, lng: object.location.lng, zoom: 15 });
+            } else {
+                if (!places) return;
 
-            setSearchParams({
-                [SearchParamsConstants.markerIdSearchParamsKey]: object.place_id,
-            });
+                const detailRequestOptions = {
+                    placeId,
+                    fields: ["geometry", "name", "formatted_address"],
+                    sessionToken,
+                };
 
-            const geocoder = new google.maps.Geocoder();
-            geocoder.geocode({ placeId: object.place_id }).then((res) => {
-                console.log(res);
-            });
-        }
+                setSearchParams({
+                    [SearchParamsConstants.markerIdSearchParamsKey]: detailRequestOptions.placeId,
+                });
 
-        setSearchInputValue("");
-        getPlacePredictions({ input: "" });
-        setFindedObjects([]);
-        setSelectedPlaceDescription(placePrediction.description);
-    };
+                const detailsRequestCallback = (placeDetails: google.maps.places.PlaceResult | null) => {
+                    setPredictionResults([]);
+                    setSelectedPlaceDescription(placeDetails?.formatted_address ?? "");
+                    setSessionToken(new places.AutocompleteSessionToken());
 
-    const searchFieldRef = useOutsideClick(() => {
-        if (isActiveField) {
-            setSelectedPlaceDescription("");
-        }
-        toggleIsActiveSearchField(false);
-    });
+                    const lat = placeDetails?.geometry?.location?.lat();
+                    const lng = placeDetails?.geometry?.location?.lng();
+
+                    if (lat && lng) {
+                        onChangeMapCenter({ lat: lat, lng: lng, zoom: 15 });
+                    }
+                };
+
+                placesService?.getDetails(detailRequestOptions, detailsRequestCallback);
+            }
+
+            setSearchInputValue("");
+            setFindedObjects([]);
+        },
+        [findedObjects, onChangeMapCenter, places, placesService, sessionToken, setSearchParams],
+    );
 
     return {
         isActiveField,
         toggleIsActiveSearchField,
-        placePredictions,
+        predictionResults,
         searchInputValue,
         onChangeInputValue,
-        onSelectPlacePredicion,
+        handleSuggestionClick,
         selectedPlaceDescription,
         searchFieldRef,
         findedObjects,

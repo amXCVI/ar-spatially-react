@@ -19,10 +19,10 @@ const SearchField = ({ className, onChangeMapCenter }: MapHeaderProps) => {
     const {
         isActiveField,
         toggleIsActiveSearchField,
-        placePredictions,
+        predictionResults,
         searchInputValue,
         onChangeInputValue,
-        onSelectPlacePredicion,
+        handleSuggestionClick,
         selectedPlaceDescription,
         searchFieldRef,
         findedObjects,
@@ -30,7 +30,7 @@ const SearchField = ({ className, onChangeMapCenter }: MapHeaderProps) => {
 
     return (
         <div
-            className={`flex flex-col ${isActiveField || selectedPlaceDescription ? "w-96" : "w-40"} duration-500
+            className={`flex flex-col ${isActiveField || selectedPlaceDescription ? "w-96" : ""} duration-500
                         border-2 border-raisin-black rounded-[30px] bg-dark-gray
                         relative ${className}`}
             ref={searchFieldRef}
@@ -53,7 +53,7 @@ const SearchField = ({ className, onChangeMapCenter }: MapHeaderProps) => {
                 ) : (
                     <span
                         className={`onest-regular-22 text-quick-silver whitespace-nowrap overflow-hidden text-ellipsis
-                                    z-10`}
+                                    z-10 hidden lg:block`}
                     >
                         {selectedPlaceDescription ? selectedPlaceDescription : "Search"}
                     </span>
@@ -64,15 +64,15 @@ const SearchField = ({ className, onChangeMapCenter }: MapHeaderProps) => {
                 className={`flex flex-col gap-1 bg-dark-gray
                             absolute top-8 left-0 right-0
                             rounded-b-[30px]
-                            ${isActiveField && (placePredictions.length || findedObjects.length) ? "p-4" : "p-0"}`}
+                            ${isActiveField && (predictionResults.length || findedObjects.length) ? "p-4" : "p-0"}`}
             >
                 {isActiveField &&
                     findedObjects.map((item) => (
-                        <ObjectItem key={item.id} item={item} onSelect={onSelectPlacePredicion} />
+                        <ObjectItem key={item.id} item={item} onSelect={handleSuggestionClick} />
                     ))}
                 {isActiveField &&
-                    placePredictions.map((item) => (
-                        <PlaceItem key={item.place_id} item={item} onSelect={onSelectPlacePredicion} />
+                    predictionResults.map((item) => (
+                        <PlaceItem key={item.place_id} item={item} onSelect={handleSuggestionClick} />
                     ))}
             </div>
         </div>
@@ -84,11 +84,11 @@ const PlaceItem = ({
     onSelect,
 }: {
     item: google.maps.places.AutocompletePrediction;
-    onSelect: (e: google.maps.places.AutocompletePrediction) => void;
+    onSelect: (e: string) => void;
 }) => {
     return (
         <div
-            onClick={() => onSelect(item)}
+            onClick={() => onSelect(item.place_id)}
             className="flex gap-2.5 items-center px-4 py-3 rounded-[15px] hover:bg-[#6565657f] border border-dark-gray hover:border-[#9c9c9c26] cursor-pointer"
         >
             <GooglePlaceIcon className="min-h-3.5 min-w-5" />
@@ -97,10 +97,10 @@ const PlaceItem = ({
     );
 };
 
-const ObjectItem = ({ item, onSelect }: { item: ObjectInterface; onSelect: (e: ObjectInterface) => void }) => {
+const ObjectItem = ({ item, onSelect }: { item: ObjectInterface; onSelect: (e: string) => void }) => {
     return (
         <div
-            onClick={() => onSelect(item)}
+            onClick={() => onSelect(item.id)}
             className="flex gap-2.5 items-center px-4 py-3 rounded-[15px] hover:bg-[#6565657f] border border-dark-gray hover:border-[#9c9c9c26] cursor-pointer"
         >
             <ObjectIcon className="min-h-3.5 min-w-5" />
