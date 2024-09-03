@@ -4,56 +4,8 @@ import { AuthContext } from "@/features/login-modal";
 
 import { MapContext } from "@/shared/stores";
 
-const MyObjectsButton = ({ onClick, isActive = false }: { onClick: () => void; isActive: boolean }) => {
-    return (
-        <div
-            className={`flex flex-col duration-500
-                border-2 border-raisin-black rounded-[30px] ${isActive ? "bg-white" : "bg-dark-gray"}
-               `}
-            onClick={onClick}
-        >
-            <div
-                className={`flex gap-3 items-center p-4
-                    cursor-pointer
-                   `}
-            >
-                <span
-                    className={`onest-regular-22 text-quick-silver whitespace-nowrap overflow-hidden text-ellipsis
-                            z-10`}
-                >
-                    {"My Object"}
-                </span>
-            </div>
-        </div>
-    );
-};
-
-const AllObjectsButton = ({ onClick, isActive = false }: { onClick: () => void; isActive: boolean }) => {
-    return (
-        <div
-            className={`flex flex-col duration-500
-                border-2 border-raisin-black rounded-[30px] ${isActive ? "bg-white" : "bg-dark-gray"}
-               `}
-            onClick={onClick}
-        >
-            <div
-                className={`flex gap-3 items-center p-4
-                    cursor-pointer
-                   `}
-            >
-                <span
-                    className={`onest-regular-22 text-quick-silver whitespace-nowrap overflow-hidden text-ellipsis
-                            z-10`}
-                >
-                    {"All Object"}
-                </span>
-            </div>
-        </div>
-    );
-};
-
 const ObjectsToggler = () => {
-    const { myObjectsOnly, handleMyObjects, handleAllObjects } = useContext(MapContext);
+    const { myObjectsOnly, toggleObjectsOwner } = useContext(MapContext);
 
     const { authenticated } = useContext(AuthContext);
 
@@ -62,10 +14,19 @@ const ObjectsToggler = () => {
     }
 
     return (
-        <>
-            <MyObjectsButton isActive={myObjectsOnly} onClick={handleMyObjects} />
-            <AllObjectsButton isActive={!myObjectsOnly} onClick={handleAllObjects} />
-        </>
+        <label
+            className="relative inline-flex cursor-pointer items-center
+                          border-2 border-raisin-black rounded-[30px] bg-raisin-black"
+        >
+            <input type="checkbox" value="" checked={myObjectsOnly} className="peer sr-only" />
+            <div
+                onClick={toggleObjectsOwner}
+                className="peer flex items-center gap-6 rounded-full bg-raisin-black px-3 py-4 after:absolute after:left-1 after: after:h-11 after:w-[5.3rem] after:rounded-full after:bg-dark-gray after:transition-all after:content-[''] peer-checked:bg-raisin-black peer-checked:after:translate-x-full peer-focus:outline-none dark:border-raisin-black dark:bg-raisin-black text-sm text-white"
+            >
+                <span className="z-10 select-none">All Object</span>
+                <span className="z-10 select-none">My Object</span>
+            </div>
+        </label>
     );
 };
 

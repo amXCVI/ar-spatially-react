@@ -10,8 +10,7 @@ type Props = {
 
 type MapContextInterface = {
     myObjectsOnly: boolean;
-    handleMyObjects: () => void;
-    handleAllObjects: () => void;
+    toggleObjectsOwner: () => void;
 
     apps: AppLayerInterface[];
     handleClickApp: (e: string) => void;
@@ -19,8 +18,7 @@ type MapContextInterface = {
 
 const initialValue = {
     myObjectsOnly: false,
-    handleMyObjects: () => {},
-    handleAllObjects: () => {},
+    toggleObjectsOwner: () => {},
     apps: [],
     handleClickApp: () => {},
 };
@@ -31,7 +29,7 @@ const MapContextProvider = ({ children }: Props) => {
     //Initializing an auth state with false value (unauthenticated)
 
     // Кнопки вверху карты, My Objects и All Objects
-    const { myObjectsOnly, handleMyObjects, handleAllObjects } = useObjectsTogglerHook();
+    const { myObjectsOnly, toggleObjectsOwner } = useObjectsTogglerHook();
 
     // Список слоев на карте, выбранные пользователем слои
     const { apps, handleClickApp } = useSelectedAppsHook();
@@ -40,8 +38,7 @@ const MapContextProvider = ({ children }: Props) => {
         <MapContext.Provider
             value={{
                 myObjectsOnly,
-                handleMyObjects,
-                handleAllObjects,
+                toggleObjectsOwner,
                 apps,
                 handleClickApp,
             }}

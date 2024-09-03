@@ -11,7 +11,11 @@ const useObjectsTogglerHook = () => {
         setMyObjectsOnly(false);
     };
 
-    return { myObjectsOnly, handleMyObjects, handleAllObjects };
+    const toggleObjectsOwner = () => {
+        setMyObjectsOnly((e) => !e);
+    };
+
+    return { myObjectsOnly, handleMyObjects, handleAllObjects, toggleObjectsOwner };
 };
 
 export { useObjectsTogglerHook };
