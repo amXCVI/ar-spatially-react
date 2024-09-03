@@ -65,6 +65,7 @@ const SearchField = ({ className, onChangeMapCenter }: MapHeaderProps) => {
                             absolute bottom-8 lg:bottom-auto lg:top-8 -left-0.5 -right-0.5 
                             rounded-t-[30px] lg:rounded-t-none lg:rounded-b-[30px]
                             border-r-2 border-l-2 border-raisin-black
+                            max-h-[80vh] overflow-scroll
                             ${isActiveField && (predictionResults.length || findedObjects.length) ? "p-4" : "p-0"}`}
             >
                 {isActiveField &&
@@ -93,7 +94,7 @@ const PlaceItem = ({
             className="flex gap-2.5 items-center px-4 py-3 rounded-[15px] hover:bg-[#6565657f] border border-dark-gray hover:border-[#9c9c9c26] cursor-pointer"
         >
             <GooglePlaceIcon className="min-h-3.5 min-w-5" />
-            {item.description}
+            <span className="overflow-hidden text-ellipsis max-w-full">{item.description}</span>
         </div>
     );
 };
@@ -105,7 +106,7 @@ const ObjectItem = ({ item, onSelect }: { item: ObjectInterface; onSelect: (e: s
             className="flex gap-2.5 items-center px-4 py-3 rounded-[15px] hover:bg-[#6565657f] border border-dark-gray hover:border-[#9c9c9c26] cursor-pointer"
         >
             <ObjectIcon className="min-h-3.5 min-w-5" />
-            {item.title}
+            <span className="overflow-hidden text-ellipsis max-w-full">{item.title}</span>
         </div>
     );
 };
