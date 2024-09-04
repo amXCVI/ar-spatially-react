@@ -6,6 +6,7 @@ import ArIconSrc from "./assets/ar-spatially.svg?react";
 import DgesIconSrc from "./assets/dges.svg?react";
 import NftstIconSrc from "./assets/nftst.svg?react";
 
+import { useUserLayersHook } from "../user-layers/use-user-layers-hook";
 import { AppLayerInterface } from "./types";
 
 const selectedApp = (appId: string) => {
@@ -13,6 +14,8 @@ const selectedApp = (appId: string) => {
 };
 
 const useSelectedAppsHook = () => {
+    const { layersList } = useUserLayersHook();
+
     const [apps, setApps] = useState<AppLayerInterface[]>([
         {
             iconSrc: NftstIconSrc,

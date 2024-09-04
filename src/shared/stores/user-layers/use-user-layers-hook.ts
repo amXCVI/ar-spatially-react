@@ -7,12 +7,10 @@ const useUserLayersHook = () => {
     const [layersList, setLayersList] = useState<LayerInterface[]>([]);
 
     useEffect(() => {
-        if (layersList.length === 0) {
-            ApiEndpoints.layer.findLayer().then((res) => {
-                setLayersList(res.layersList);
-            });
-        }
-    }, [layersList.length]);
+        ApiEndpoints.layer.findAllLayers().then((res) => {
+            setLayersList(res.layersList);
+        });
+    }, []);
 
     return { layersList };
 };

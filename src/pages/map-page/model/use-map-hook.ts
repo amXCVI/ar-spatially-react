@@ -34,7 +34,7 @@ const useMapHook = () => {
 
     const [allMarkersOnMap, setAllMarkersOnMap] = useState<MarkerInterface[]>([]);
     const [nftList, setNftList] = useState<ArMarkerInterface[]>([]);
-    const [selectedMarker, setSelectedMarker] = useState<ArMarkerInterface | null>(null);
+    const [selectedMarker, setSelectedMarker] = useState<MarkerInterface | null>(null);
 
     const googpeMapApiKey = import.meta.env.VITE_APP_GOOGLE_MAP_API_KEY;
 
@@ -62,7 +62,7 @@ const useMapHook = () => {
 
     useEffect(() => {
         if (selectedMarkerId) {
-            const markerItem = nftList.find((item) => item.id === selectedMarkerId);
+            const markerItem = allMarkersOnMap.find((item) => item.id === selectedMarkerId);
 
             if (markerItem) {
                 setSelectedMarker(markerItem);
@@ -72,12 +72,11 @@ const useMapHook = () => {
         return () => {
             setSelectedMarker(null);
         };
-    }, [nftList, selectedMarkerId]);
+    }, [allMarkersOnMap, selectedMarkerId]);
 
     useEffect(() => {
         if (myObjectsOnly && user) {
-            ApiEndpoints.object.findPointsByOwner({ ownerId: user.userId
-             }).then((res) => {
+            ApiEndpoints.object.findPointsByOwner({ ownerId: user.userId }).then((res) => {
                 setAllMarkersOnMap(res);
             });
         }

@@ -27,6 +27,6 @@
             "@ar-kit/*": ["./ar-spatially-kit/*"]
         }
     },
-    "include": ["src", "ar-spatially-kit"],
+    "include": ["src", "ar-spatially-kit", "src/react.d.ts"],
     "references": [{ "path": "./tsconfig.node.json" }]
 }

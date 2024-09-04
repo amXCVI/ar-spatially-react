@@ -1,5 +1,8 @@
-import { MarkerInterface } from "@ar-kit/lib";
 import { useOutsideClick } from "@ar-kit/shared/hooks";
+
+import { MarkerInterface } from "@/shared/types";
+
+import { useNftItemHook } from "../domain";
 
 // import EdtIcon from "../assets/edit-icon.svg?react";
 // import ViewArIcon from "../assets/view-ar-icon.svg?react";
@@ -13,6 +16,8 @@ const NftItem = ({ selectedMarker, onCloseViewer }: NftItemInterface) => {
     const nftViewerRef = useOutsideClick(() => {
         onCloseViewer();
     });
+
+    useNftItemHook({ modelId: selectedMarker?.modelId });
 
     return (
         <div
@@ -37,24 +42,42 @@ const NftItem = ({ selectedMarker, onCloseViewer }: NftItemInterface) => {
                     </button>
                 </div>
                 <div className="flex flex-col bg-nft-viewer-desc-bg rounded-[30px]">
-                    <img
-                        src={`${selectedMarker?.previewUrl ?? selectedMarker?.imageUrl}`}
-                        className="max-h-44 lg:h-full w-full object-contain max-w-screen-3sm"
+                    <model-viewer
+                        src={`${import.meta.env.VITE_APP_API_BASE_URL}gateway/file/get?fileId=${selectedMarker?.modelId}`}
+                        id={selectedMarker?.modelId}
+                        loading="lazy"
+                        shadow-intensity="1"
+                        camera-controls
+                        touch-action="pan-y"
+                        auto-rotate
+                        auto-rotate-delay="0"
+                        rotation-per-second="30deg"
+                        orbit-sensitivity="0.6"
+                        data-ar
+                        ar-status="not-presenting"
+                        ar-modes="webxr scene-viewer quick-look"
+                        poster={`${import.meta.env.VITE_APP_API_BASE_URL}gateway/file/get?fileId=${selectedMarker?.previewId}`}
+                        className="max-h-44 w-full lg:h-full object-contain max-w-screen-3sm"
+                        onLoad={(e) => console.log("loading", e)}
                     />
-                    <div className="flex justify-between items-center gap-6 p-2.5">
-                        {/* <button className="flex items-center gap-2.5 px-4 py-3 onest-regular-18 text-white">
+                    {/* <img
+                        src={`${import.meta.env.VITE_APP_API_BASE_URL}gateway/file/get?fileId=${selectedMarker?.previewId}`}
+                        className="max-h-44 lg:h-full w-full object-contain max-w-screen-3sm"
+                    /> */}
+                    {/* <div className="flex justify-between items-center gap-6 p-2.5">
+                        <button className="flex items-center gap-2.5 px-4 py-3 onest-regular-18 text-white">
                             <ViewArIcon />
                             View AR
                         </button>
                         <button className="px-4 py-3">
                             <EdtIcon />
-                        </button> */}
-                    </div>
+                        </button>
+                    </div> */}
                 </div>
                 <CardHeader
-                    name={selectedMarker?.name}
-                    lat={selectedMarker?.lat}
-                    lng={selectedMarker?.lng}
+                    name={selectedMarker?.title}
+                    lat={selectedMarker?.location.lat}
+                    lng={selectedMarker?.location.lng}
                     className="flex lg:hidden"
                 />
             </div>

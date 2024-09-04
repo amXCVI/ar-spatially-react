@@ -11,6 +11,7 @@
         "preview": "vite preview --port 8080"
     },
     "dependencies": {
+        "@google/model-viewer": "^3.5.0",
         "@splinetool/react-spline": "^4.0.0",
         "@splinetool/runtime": "^1.9.3",
         "@vis.gl/react-google-maps": "^1.1.0",

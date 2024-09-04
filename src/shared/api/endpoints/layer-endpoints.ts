@@ -4,8 +4,8 @@ import { ApiResponseInterface, LayerInterface } from "@/shared/types";
 
 import apiClient from "../api";
 
-const findLayer = async () => {
-    const url = `/gateway/layer/find`;
+const findAllLayers = async () => {
+    const url = `/gateway/layer/find/all`;
 
     try {
         const response: AxiosResponse<ApiResponseInterface<{ layersList: LayerInterface[] }>> =
@@ -17,4 +17,4 @@ const findLayer = async () => {
     }
 };
 
-export const layerApi = { findLayer };
+export const layerApi = { findAllLayers };
