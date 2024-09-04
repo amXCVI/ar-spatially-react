@@ -30,7 +30,7 @@ const AppsSelect = ({ className }: { className?: string }) => {
                 </span>
             </div>
             <div
-                className={`flex flex-col gap-1 bg-dark-gray
+                className={`flex flex-col lg:flex-row gap-1 bg-dark-gray
                             absolute bottom-8 lg:bottom-auto lg:top-8 -left-0.5 -right-0.5 
                             rounded-t-[30px] lg:rounded-t-none lg:rounded-b-[30px]
                             border-r-2 border-l-2 border-raisin-black
