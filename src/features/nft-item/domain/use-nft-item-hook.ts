@@ -1,16 +1,17 @@
-import { useEffect } from "react";
+import { useState } from "react";
 
-import { ApiEndpoints } from "@/shared/api";
+const useNftItemHook = () => {
+    const [previewMode, setPreviewMode] = useState<boolean>(false);
 
-const useNftItemHook = ({ modelId }: { modelId?: string }) => {
-    
-    useEffect(() => {
-        if (modelId) {
-            ApiEndpoints.file.getFile({ fileId: modelId });
-        }
-    }, [modelId]);
+    const handlePreview = () => {
+        setPreviewMode(true);
+    };
 
-    return {};
+    const handleClosePreview = () => {
+        setPreviewMode(false);
+    };
+
+    return { previewMode, handlePreview, handleClosePreview };
 };
 
 export { useNftItemHook };
