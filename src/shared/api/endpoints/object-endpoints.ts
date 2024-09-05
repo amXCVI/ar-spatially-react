@@ -74,6 +74,36 @@ const fintPointsByUserLocationLayer = async ({ lat, lng, radius }: { lat: number
         });
 };
 
+const findPointsLocationLayer = async ({
+    lat,
+    lng,
+    radius,
+    layerIds,
+}: {
+    lat: number;
+    lng: number;
+    radius: number;
+    layerIds: string[];
+}) => {
+    return await apiClient
+        .post("/gateway/object/find/location-layer", {
+            lat: lat,
+            lng: lng,
+            // ! Здесь нужно переделать, пока что берется только первый id из всего списка слоев
+            layerId: layerIds.length ? layerIds[0] : "",
+            // Здесь инвертирую радиус (значение подобрал эмпирически)
+            radius: (1 / radius) * 500000,
+        })
+        .then((res) => {
+            const markers: MarkerInterface[] = res.data.data.objectsList;
+
+            return markers;
+        })
+        .catch((err) => {
+            throw err;
+        });
+};
+
 const findPointsByOwner = async ({ ownerId }: { ownerId: string }) => {
     const formData = new FormData();
     formData.append("ownerId", ownerId);
@@ -125,4 +155,5 @@ export const objectApi = {
     fintPointsByLocationLayer,
     fintPointsByUserLocationLayer,
     findPointsByOwner,
+    findPointsLocationLayer,
 };

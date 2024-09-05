@@ -22,7 +22,7 @@ const useMapHook = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const selectedMarkerId = searchParams.get(SearchParamsConstants.markerIdSearchParamsKey);
 
-    const { myObjectsOnly } = useContext(MapContext);
+    const { myObjectsOnly, apps } = useContext(MapContext);
 
     const { user } = useUserHook();
 
@@ -84,11 +84,16 @@ const useMapHook = () => {
 
     useEffect(() => {
         if (!myObjectsOnly) {
-            ApiEndpoints.object.fintPointsByLocation({ ...coords }).then((res) => {
-                setAllMarkersOnMap(res);
-            });
+            ApiEndpoints.object
+                .findPointsLocationLayer({
+                    ...coords,
+                    layerIds: apps.filter((item) => item.isSelected).map((item) => item.layer.id),
+                })
+                .then((res) => {
+                    setAllMarkersOnMap(res);
+                });
         }
-    }, [coords, myObjectsOnly]);
+    }, [apps, coords, myObjectsOnly]);
 
     useMemo(() => {
         const markers = allMarkersOnMap.map((item) => {

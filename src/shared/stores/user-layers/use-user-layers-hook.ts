@@ -8,7 +8,7 @@ const useUserLayersHook = () => {
 
     useEffect(() => {
         ApiEndpoints.layer.findAllLayers().then((res) => {
-            setLayersList(res.layersList);
+            setLayersList(res);
         });
     }, []);
 

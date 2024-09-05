@@ -1,10 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { LSConstants } from "@/shared/config/constants";
-
-import ArIconSrc from "./assets/ar-spatially.svg?react";
-import DgesIconSrc from "./assets/dges.svg?react";
-import NftstIconSrc from "./assets/nftst.svg?react";
 
 import { useUserLayersHook } from "../user-layers/use-user-layers-hook";
 import { AppLayerInterface } from "./types";
@@ -16,26 +12,21 @@ const selectedApp = (appId: string) => {
 const useSelectedAppsHook = () => {
     const { layersList } = useUserLayersHook();
 
-    const [apps, setApps] = useState<AppLayerInterface[]>([
-        {
-            iconSrc: NftstIconSrc,
-            label: "NFTStreet",
-            id: "NFTStreet",
-            isSelected: selectedApp("NFTStreet"),
-        },
-        {
-            iconSrc: ArIconSrc,
-            label: "AR Spatially",
-            id: "ARSpatially",
-            isSelected: selectedApp("ARSpatially"),
-        },
-        {
-            iconSrc: DgesIconSrc,
-            label: "DGES",
-            id: "DGES",
-            isSelected: selectedApp("DGES"),
-        },
-    ]);
+    const [apps, setApps] = useState<AppLayerInterface[]>([]);
+
+    useEffect(() => {
+        setApps(
+            layersList.map((item) => {
+                return {
+                    iconSrc: item.iconId
+                        ? `${import.meta.env.VITE_APP_API_BASE_URL}gateway/file/get?fileId=${item.iconId}`
+                        : undefined,
+                    layer: item,
+                    isSelected: selectedApp(item.id),
+                };
+            }),
+        );
+    }, [layersList]);
 
     const handleClickApp = (appId: string) => {
         const isSelectedApp = selectedApp(appId);
@@ -46,7 +37,7 @@ const useSelectedAppsHook = () => {
             localStorage.setItem(LSConstants.selectedApp + appId, "true");
         }
 
-        setApps((e) => e.map((item) => (item.id === appId ? { ...item, isSelected: !item.isSelected } : item)));
+        setApps((e) => e.map((item) => (item.layer.id === appId ? { ...item, isSelected: !item.isSelected } : item)));
     };
 
     return { apps, handleClickApp };

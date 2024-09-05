@@ -1,10 +1,7 @@
+import { LayerInterface } from "@/shared/types";
+
 export interface AppLayerInterface {
-    iconSrc: React.FunctionComponent<
-        React.SVGProps<SVGSVGElement> & {
-            title?: string;
-        }
-    >;
-    label: string;
-    id: string;
+    iconSrc?: string;
     isSelected: boolean;
+    layer: LayerInterface;
 }

@@ -10,7 +10,7 @@ const AppsSelect = ({ className }: { className?: string }) => {
     return (
         <div
             ref={appsSelectRef}
-            className={`flex flex-col duration-500 ${isActive ? `w-32 md:w-96` : ""}
+            className={`flex flex-col duration-500 ${isActive ? `w-32 md:w-[${apps.length * 100}px]` : ""}
                         border-2 border-raisin-black rounded-[30px] bg-dark-gray
                         relative ${className}`}
         >
@@ -34,20 +34,27 @@ const AppsSelect = ({ className }: { className?: string }) => {
                             absolute bottom-8 lg:bottom-auto lg:top-8 -left-0.5 -right-0.5 
                             rounded-t-[30px] lg:rounded-t-none lg:rounded-b-[30px]
                             border-r-2 border-l-2 border-raisin-black
-                            ${isActive ? "p-4" : "p-0"}`}
+                            ${isActive ? "p-4" : "p-0"} duration-500`}
             >
                 {isActive &&
                     apps.map((appItem) => {
                         const isSelectedApp = appItem.isSelected;
 
                         return (
-                            <div className="flex flex-col items-center gap-3 flex-nowrap w-full relative">
+                            <div
+                                className="flex flex-col items-center gap-3 flex-nowrap w-full relative"
+                                key={appItem.layer.id}
+                            >
                                 <div className="w-20 h-20 border border-white rounded-full flex justify-center items-center">
-                                    {appItem.iconSrc({ style: { width: "4rem", height: "4rem" } })}
+                                    {appItem.iconSrc ? (
+                                        <img src={appItem.iconSrc} className="w-16 h-16" />
+                                    ) : (
+                                        <span className="text-6xl font-bold uppercase">{appItem.layer.title[0]}</span>
+                                    )}
                                 </div>
-                                <span className="roboto-bold-13 text-white ">{appItem.label}</span>
+                                <span className="roboto-bold-13 text-white ">{appItem.layer.title}</span>
                                 <div
-                                    onClick={() => handleClickApp(appItem.id)}
+                                    onClick={() => handleClickApp(appItem.layer.id)}
                                     className="absolute top-0 -right-0 cursor-pointer"
                                 >
                                     {isSelectedApp ? <RemoveAppIcon /> : <AddAppIcon />}

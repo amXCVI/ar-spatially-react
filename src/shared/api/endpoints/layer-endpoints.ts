@@ -8,8 +8,7 @@ const findAllLayers = async () => {
     const url = `/gateway/layer/find/all`;
 
     try {
-        const response: AxiosResponse<ApiResponseInterface<{ layersList: LayerInterface[] }>> =
-            await apiClient.get(url);
+        const response: AxiosResponse<ApiResponseInterface<LayerInterface[]>> = await apiClient.get(url);
 
         return response.data.data;
     } catch (error) {
