@@ -45,6 +45,7 @@ const MobileSearchField = ({ onChangeMapCenter }: MapHeaderProps) => {
                             bg-davy-grey/50 backdrop-blur-[2.5px]
                             border border-white/40 rounded-[30px] 
                             p-4 gap-1
+                            max-h-[70dvh] overflow-hidden
                             `}
                 ref={searchFieldRef}
             >

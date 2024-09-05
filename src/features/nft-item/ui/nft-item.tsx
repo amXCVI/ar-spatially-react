@@ -23,14 +23,14 @@ const NftItem = ({ selectedMarker, onCloseViewer }: NftItemInterface) => {
     return (
         <div
             className={`fixed ${selectedMarker ? "top-0" : ""} right-0 bottom-0 left-0 
-                         flex justify-center items-center`}
+                         flex justify-center items-center z-20`}
         >
             <div
                 ref={nftViewerRef}
                 className={`bg-dark-gray rounded-[60px] ${previewMode ? "" : "p-11"} border-2 border-raisin-black
                             flex-col-reverse lg:flex-row gap-6 ${selectedMarker ? "flex" : "hidden"}
-                            max-h-[calc(100vh-16rem)] md:min-w-96 overflow-scroll
-                            ${previewMode ? "container max-h-[70vh] aspect-video" : ""}`}
+                            max-h-[calc(100vh-14rem)] min-w-[90vw] md:min-w-96 overflow-scroll
+                            ${previewMode ? "container max-h-[70vh] aspect-video" : ""} `}
             >
                 {previewMode ? (
                     <ModelViewer modelId={selectedMarker?.modelId} previewId={selectedMarker?.previewId} />
