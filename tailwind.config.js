@@ -23,6 +23,7 @@ export default {
                 "smoky-black-bg20": "#0d0d0d20",
                 "raisin-black": "#262626",
                 "dark-gray": "#111111",
+                "davy-grey": "#555555",
                 "dark-bg": "#0F1010",
                 dark30: "#0000004D",
                 dark70: "#191919",

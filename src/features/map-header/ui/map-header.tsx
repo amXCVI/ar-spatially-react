@@ -3,9 +3,9 @@ import { MobileMenu } from "@/features/header";
 import { routes } from "@/shared/config";
 
 import Logo from "../assets/logo.svg?react";
-import shortLogo from "/images/landing/header/short-logo.svg";
 
 import { AppsSelect } from "./apps-select";
+import { MobileSearchField } from "./mobile-search-field";
 import { ObjectsToggler } from "./object-owner-toggler";
 import SearchField from "./search-field";
 import { UserAvatar } from "./user-avatar";
@@ -23,11 +23,11 @@ const MapHeader = ({ onChangeMapCenter }: MapHeaderProps) => {
             >
                 <a href={routes.home} className="flex items-center">
                     <Logo className="hidden lg:block" style={{ fill: "white" }} />
-                    <img src={shortLogo} className="lg:hidden h-14" />
+                    <MapMobileMenu className="lg:hidden h-14" />
                 </a>
 
                 <div className="flex items-center lg:w-full justify-between lg:justify-end gap-6">
-                    <ObjectsToggler className="hidden 2sm:block" />
+                    <ObjectsToggler />
                     <SearchField onChangeMapCenter={onChangeMapCenter} className="hidden lg:block" />
                     <AppsSelect className="hidden lg:block" />
                     <UserAvatar className="" />
@@ -35,17 +35,13 @@ const MapHeader = ({ onChangeMapCenter }: MapHeaderProps) => {
                 </div>
             </div>
 
-            <div className="fixed bottom-10 right-0 left-0 lg:hidden">
+            <div className="fixed bottom-28 right-0 left-0 lg:hidden">
                 <div
                     className="container mx-auto pt-10 px-6
                                flex flex-row gap-4 justify-between
                                "
                 >
-                    <AppsSelect className="block lg:hidden" />
-
-                    <SearchField onChangeMapCenter={onChangeMapCenter} />
-
-                    <MapMobileMenu />
+                    <MobileSearchField onChangeMapCenter={onChangeMapCenter} className="block lg:hidden" />
                 </div>
             </div>
         </header>

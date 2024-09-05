@@ -4,7 +4,6 @@ import { useSearchParams } from "react-router-dom";
 
 import { ApiEndpoints } from "@/shared/api";
 import { SearchParamsConstants } from "@/shared/config/constants";
-import { useOutsideClick } from "@/shared/lib/use-outside-click";
 import { ObjectInterface } from "@/shared/types";
 
 const useSearchFieldHook = ({
@@ -29,14 +28,12 @@ const useSearchFieldHook = ({
         setIsActiveField((e) => !e);
     };
 
-    const searchFieldRef = useOutsideClick(() => {
-        if (isActiveField) {
-            setSelectedPlaceDescription("");
-            setSearchInputValue("");
-            setFindedObjects([]);
-        }
-        toggleIsActiveSearchField(false);
-    });
+    const resetSearch = () => {
+        setSelectedPlaceDescription("");
+        setSearchInputValue("");
+        setFindedObjects([]);
+        setPredictionResults([]);
+    };
 
     const map = useMap();
     const places = useMapsLibrary("places");
@@ -124,7 +121,6 @@ const useSearchFieldHook = ({
                 });
 
                 const detailsRequestCallback = (placeDetails: google.maps.places.PlaceResult | null) => {
-                    setPredictionResults([]);
                     setSelectedPlaceDescription(placeDetails?.formatted_address ?? "");
                     setSessionToken(new places.AutocompleteSessionToken());
 
@@ -141,6 +137,7 @@ const useSearchFieldHook = ({
 
             setSearchInputValue("");
             setFindedObjects([]);
+            setPredictionResults([]);
         },
         [findedObjects, onChangeMapCenter, places, placesService, sessionToken, setSearchParams],
     );
@@ -153,8 +150,8 @@ const useSearchFieldHook = ({
         onChangeInputValue,
         handleSuggestionClick,
         selectedPlaceDescription,
-        searchFieldRef,
         findedObjects,
+        resetSearch,
     };
 };
 

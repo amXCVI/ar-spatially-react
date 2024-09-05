@@ -1,5 +1,6 @@
 import { useRef } from "react";
 
+import { useOutsideClick } from "@/shared/lib/use-outside-click";
 import { ObjectInterface } from "@/shared/types";
 
 import GooglePlaceIcon from "../assets/google-place-icon.svg?react";
@@ -24,9 +25,13 @@ const SearchField = ({ className, onChangeMapCenter }: MapHeaderProps) => {
         onChangeInputValue,
         handleSuggestionClick,
         selectedPlaceDescription,
-        searchFieldRef,
         findedObjects,
+        resetSearch,
     } = useSearchFieldHook({ onChangeMapCenter: onChangeMapCenter });
+
+    const searchFieldRef = useOutsideClick(() => {
+        resetSearch();
+    });
 
     return (
         <div
@@ -81,7 +86,7 @@ const SearchField = ({ className, onChangeMapCenter }: MapHeaderProps) => {
     );
 };
 
-const PlaceItem = ({
+export const PlaceItem = ({
     item,
     onSelect,
 }: {
@@ -91,7 +96,7 @@ const PlaceItem = ({
     return (
         <div
             onClick={() => onSelect(item.place_id)}
-            className="flex gap-2.5 items-center px-4 py-3 rounded-[15px] hover:bg-[#6565657f] border border-dark-gray hover:border-[#9c9c9c26] cursor-pointer"
+            className="flex gap-2.5 items-center lg:px-4 py-3 rounded-[15px] hover:bg-[#6565657f] lg:border lg:border-dark-gray hover:border-[#9c9c9c26] cursor-pointer"
         >
             <GooglePlaceIcon className="min-h-3.5 min-w-5" />
             <span className="overflow-hidden text-ellipsis max-w-full">{item.description}</span>
@@ -99,11 +104,11 @@ const PlaceItem = ({
     );
 };
 
-const ObjectItem = ({ item, onSelect }: { item: ObjectInterface; onSelect: (e: string) => void }) => {
+export const ObjectItem = ({ item, onSelect }: { item: ObjectInterface; onSelect: (e: string) => void }) => {
     return (
         <div
             onClick={() => onSelect(item.id)}
-            className="flex gap-2.5 items-center px-4 py-3 rounded-[15px] hover:bg-[#6565657f] border border-dark-gray hover:border-[#9c9c9c26] cursor-pointer"
+            className="flex gap-2.5 items-center lg:px-4 py-3 rounded-[15px] hover:bg-[#6565657f] lg:border lg:border-dark-gray hover:border-[#9c9c9c26] cursor-pointer"
         >
             <ObjectIcon className="min-h-3.5 min-w-5" />
             <span className="overflow-hidden text-ellipsis max-w-full">{item.title}</span>

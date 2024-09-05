@@ -1,3 +1,5 @@
+import { AppLayerInterface } from "@/shared/stores/map-context/types";
+
 import AddAppIcon from "../assets/add-app.svg?react";
 import AppsIcon from "../assets/apps-icon.svg?react";
 import RemoveAppIcon from "../assets/remove-app.svg?react";
@@ -41,25 +43,12 @@ const AppsSelect = ({ className }: { className?: string }) => {
                         const isSelectedApp = appItem.isSelected;
 
                         return (
-                            <div
-                                className="flex flex-col items-center gap-3 flex-nowrap w-full relative"
+                            <AppItem
                                 key={appItem.layer.id}
-                            >
-                                <div className="w-20 h-20 border border-white rounded-full flex justify-center items-center">
-                                    {appItem.iconSrc ? (
-                                        <img src={appItem.iconSrc} className="w-16 h-16" />
-                                    ) : (
-                                        <span className="text-6xl font-bold uppercase">{appItem.layer.title[0]}</span>
-                                    )}
-                                </div>
-                                <span className="roboto-bold-13 text-white ">{appItem.layer.title}</span>
-                                <div
-                                    onClick={() => handleClickApp(appItem.layer.id)}
-                                    className="absolute top-0 -right-0 cursor-pointer"
-                                >
-                                    {isSelectedApp ? <RemoveAppIcon /> : <AddAppIcon />}
-                                </div>
-                            </div>
+                                appItem={appItem}
+                                handleClickApp={handleClickApp}
+                                isSelectedApp={isSelectedApp}
+                            />
                         );
                     })}
             </div>
@@ -67,4 +56,34 @@ const AppsSelect = ({ className }: { className?: string }) => {
     );
 };
 
-export { AppsSelect };
+const AppItem = ({
+    appItem,
+    handleClickApp,
+    isSelectedApp,
+}: {
+    appItem: AppLayerInterface;
+    handleClickApp: (e: string) => void;
+    isSelectedApp: boolean;
+}) => {
+    return (
+        <div
+            className="flex flex-col items-center gap-3 relative w-min cursor-pointer"
+            key={appItem.layer.id}
+            onClick={() => handleClickApp(appItem.layer.id)}
+        >
+            <div className="w-20 h-20 border border-white rounded-full flex justify-center items-center">
+                {appItem.iconSrc ? (
+                    <img src={appItem.iconSrc} className="w-16 h-16" />
+                ) : (
+                    <span className="text-6xl font-bold uppercase">{appItem.layer.title[0]}</span>
+                )}
+            </div>
+            <span className="roboto-bold-13 text-white ">{appItem.layer.title}</span>
+            <div className="absolute top-0 -right-1 cursor-pointer">
+                {isSelectedApp ? <RemoveAppIcon /> : <AddAppIcon />}
+            </div>
+        </div>
+    );
+};
+
+export { AppsSelect, AppItem };
