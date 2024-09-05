@@ -53,7 +53,7 @@ const NftItem = ({ selectedMarker, onCloseViewer }: NftItemInterface) => {
                                 Preview
                             </button>
                         </div>
-                        <div className="flex flex-col bg-nft-viewer-desc-bg rounded-[30px] w-full lg:w-96">
+                        <div className="flex flex-col bg-nft-viewer-desc-bg rounded-[30px] w-full lg:w-96 h-60 min-h-40">
                             <ModelViewer modelId={selectedMarker?.modelId} previewId={selectedMarker?.previewId} />
                             {/* <img
                         src={`${import.meta.env.VITE_APP_API_BASE_URL}gateway/file/get?fileId=${selectedMarker?.previewId}`}
@@ -124,7 +124,6 @@ const ModelViewer = ({ modelId, previewId }: { modelId?: string; previewId?: str
             ar-status="not-presenting"
             ar-modes="webxr scene-viewer quick-look"
             poster={`${import.meta.env.VITE_APP_API_BASE_URL}gateway/file/get?fileId=${previewId}`}
-            className="max-h-44 w-full lg:h-full object-contain max-w-screen-3sm"
             style={{ width: "100%", height: "100%" }}
         />
     );
