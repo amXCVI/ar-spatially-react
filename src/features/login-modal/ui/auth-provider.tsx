@@ -26,7 +26,7 @@ type IAuthContext = {
     authenticated: boolean;
     setAuthenticated: (newState: boolean) => void;
     isOpenLoginPopup: SignInPopupModes;
-    openLoginModal: (e: SignInPopupModes) => void;
+    openLoginModal: (e: SignInPopupModes, authCallback?: () => void) => void;
     closeLoginModal: () => void;
 };
 
@@ -45,13 +45,22 @@ const AuthProvider = ({ children }: Props) => {
     //Initializing an auth state with false value (unauthenticated)
     const [authenticated, setAuthenticated] = useState(initialValue.authenticated);
     const [isOpenLoginPopup, setIsOpenLoginPopup] = useState<SignInPopupModes>(initialValue.isOpenLoginPopup);
+    const [successAuthCallback, setSuccessAuthCallback] = useState<VoidFunction | null>(null);
 
-    const openLoginModal = (e: SignInPopupModes) => {
+    const openLoginModal = (e: SignInPopupModes, authCallback?: () => void) => {
         setIsOpenLoginPopup(e);
+
+        if (authCallback) {
+            setSuccessAuthCallback(authCallback);
+        }
     };
 
     const closeLoginModal = () => {
         setIsOpenLoginPopup(SignInPopupModes.Closed);
+
+        if (successAuthCallback) {
+            successAuthCallback();
+        }
     };
 
     return (

@@ -1,17 +1,9 @@
 import { useContext } from "react";
 
-import { AuthContext } from "@/features/login-modal";
-
 import { MapContext } from "@/shared/stores";
 
 const ObjectsToggler = ({ className }: { className?: string }) => {
     const { myObjectsOnly, toggleObjectsOwner } = useContext(MapContext);
-
-    const { authenticated } = useContext(AuthContext);
-
-    if (!authenticated) {
-        return <></>;
-    }
 
     return (
         <label className={`relative inline-flex cursor-pointer items-center ${className}`}>

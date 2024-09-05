@@ -1,15 +1,21 @@
 import { useContext } from "react";
 
-import { AuthContext } from "@/features/login-modal";
+import { AuthContext, SignInPopupModes } from "@/features/login-modal";
 
 import { useUserHook } from "@/shared/stores";
 
 const useUserAvatarHook = () => {
-    const { authenticated } = useContext(AuthContext);
+    const { authenticated, openLoginModal } = useContext(AuthContext);
 
     const { user } = useUserHook();
 
-    return { authenticated, user };
+    const handleClickOnAvatar = () => {
+        if (!authenticated) {
+            openLoginModal(SignInPopupModes.SignIn);
+        }
+    };
+
+    return { authenticated, user, handleClickOnAvatar };
 };
 
 export { useUserAvatarHook };
