@@ -27,7 +27,7 @@ type IAuthContext = {
     setAuthenticated: (newState: boolean) => void;
     isOpenLoginPopup: SignInPopupModes;
     openLoginModal: (e: SignInPopupModes, authCallback?: () => void) => void;
-    closeLoginModal: () => void;
+    closeLoginModal: (success?: boolean) => void;
 };
 
 const initialValue = {
@@ -45,21 +45,23 @@ const AuthProvider = ({ children }: Props) => {
     //Initializing an auth state with false value (unauthenticated)
     const [authenticated, setAuthenticated] = useState(initialValue.authenticated);
     const [isOpenLoginPopup, setIsOpenLoginPopup] = useState<SignInPopupModes>(initialValue.isOpenLoginPopup);
-    const [successAuthCallback, setSuccessAuthCallback] = useState<VoidFunction | null>(null);
+    const [successAuthCallback, setSuccessAuthCallback] = useState<{ callback: VoidFunction } | null>(null);
 
     const openLoginModal = (e: SignInPopupModes, authCallback?: () => void) => {
         setIsOpenLoginPopup(e);
 
         if (authCallback) {
-            setSuccessAuthCallback(authCallback);
+            setSuccessAuthCallback({ callback: authCallback });
         }
     };
 
-    const closeLoginModal = () => {
+    const closeLoginModal = (success?: boolean) => {
         setIsOpenLoginPopup(SignInPopupModes.Closed);
 
-        if (successAuthCallback) {
-            successAuthCallback();
+        setSuccessAuthCallback(null);
+
+        if (successAuthCallback && success) {
+            successAuthCallback.callback();
         }
     };
 

@@ -12,7 +12,7 @@ const useAuthorizeHook = () => {
         localStorage.setItem(LSConstants.accessToken, token);
         setAuthenticated(true);
 
-        closeLoginModal();
+        closeLoginModal(true);
 
         if (navigate && to) {
             navigate(to);
