@@ -28,6 +28,7 @@ type IAuthContext = {
     isOpenLoginPopup: SignInPopupModes;
     openLoginModal: (e: SignInPopupModes, authCallback?: () => void) => void;
     closeLoginModal: (success?: boolean) => void;
+    logout: (logoutCallback?: () => void) => void;
 };
 
 const initialValue = {
@@ -37,6 +38,8 @@ const initialValue = {
     setAuthenticated: () => {},
     openLoginModal: () => {},
     closeLoginModal: () => {},
+
+    logout: () => {},
 };
 
 const AuthContext = createContext<IAuthContext>(initialValue);
@@ -65,6 +68,15 @@ const AuthProvider = ({ children }: Props) => {
         }
     };
 
+    const logout = (logoutCallback?: () => void) => {
+        localStorage.removeItem(LSConstants.accessToken);
+        setAuthenticated(false);
+
+        if (logoutCallback) {
+            logoutCallback();
+        }
+    };
+
     return (
         <AuthContext.Provider
             value={{
@@ -73,6 +85,7 @@ const AuthProvider = ({ children }: Props) => {
                 isOpenLoginPopup,
                 openLoginModal,
                 closeLoginModal,
+                logout,
             }}
         >
             {children}

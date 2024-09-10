@@ -61,6 +61,15 @@
     text-transform: uppercase;
 }
 
+.onest-extra-bold {
+    font-family: "onest-bold";
+    font-style: normal;
+    font-weight: 800;
+    font-size: 3rem;
+    line-height: 3.813rem;
+    text-transform: capitalize;
+}
+
 .h2-34-700 {
     font-family: "sloth-regular";
     font-style: normal;
@@ -91,6 +100,14 @@
     font-weight: 700;
     font-size: 1.5rem;
     line-height: 2.063rem;
+}
+
+.onest-bold-24 {
+    font-family: "onest-bold";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: 1.938rem;
 }
 
 .manrope-regular-26 {
@@ -173,6 +190,14 @@
     line-height: 1.688rem;
 }
 
+.onest-semibold-18 {
+    font-family: "onest-bold";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 23px;
+}
+
 .manrope-regular-16 {
     font-family: "Manrope";
     font-style: normal;
@@ -211,6 +236,14 @@
     font-weight: 400;
     font-size: 1rem;
     line-height: 1.5rem;
+}
+
+.roboto-medium-15 {
+    font-family: "onest-medium";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.938rem;
+    line-height: 1.125rem;
 }
 
 .medium-14 {

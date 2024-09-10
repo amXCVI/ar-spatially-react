@@ -1,5 +1,6 @@
 import { useOutsideClick } from "@ar-kit/shared/hooks";
 import { Fragment, useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { AuthContext, SignInPopupModes } from "@/features/login-modal";
 
@@ -172,13 +173,21 @@ export const MobileMenu = ({ white = false, show, className, iconClassname }: Mo
 };
 
 const Profile = ({ show }: { show: boolean }) => {
-    const { openLoginModal } = useContext(AuthContext);
+    const navigation = useNavigate();
+
+    const { openLoginModal, authenticated } = useContext(AuthContext);
+
+    const handleClickProfile = () => {
+        if (authenticated) {
+            navigation(routes.lk);
+        } else {
+            openLoginModal(SignInPopupModes.SignUp);
+        }
+    };
 
     return (
         <div
-            onClick={() => {
-                openLoginModal(SignInPopupModes.SignUp);
-            }}
+            onClick={handleClickProfile}
             className={`flex justify-center items-center z-[1]
                             cursor-pointer hover:bg-white50 w-20 h-20
                             fixed ${show ? "top-28 right-4 lg:top-6" : "bottom-28 right-4 lg:top-32"}
