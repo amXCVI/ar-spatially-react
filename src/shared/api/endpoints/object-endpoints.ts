@@ -149,6 +149,61 @@ const fintPointsByLocationLayer = async ({
         });
 };
 
+const uploadObject = async ({
+    modelFile,
+    previewFile,
+    title,
+    description,
+    width,
+    height,
+    lat,
+    lng,
+    alt,
+}: {
+    modelFile: File;
+    previewFile?: File;
+    title: string;
+    description: string;
+    width: number;
+    height: number;
+    lat: number;
+    lng: number;
+    alt: number;
+}) => {
+    const url = `/gateway/object/upload`;
+
+    const formData = new FormData();
+    formData.append("modelFile", modelFile);
+    formData.append("previewFile", previewFile ?? new Blob());
+    formData.append(
+        "request",
+        new Blob(
+            [
+                JSON.stringify({
+                    title: title,
+                    description: description,
+                    width: width,
+                    height: height,
+                    lat: lat,
+                    lng: lng,
+                    alt: alt,
+                }),
+            ],
+            {
+                type: "application/json",
+            },
+        ),
+    );
+
+    try {
+        const response: AxiosResponse<ApiResponseInterface<{ token: string }>> = await apiClient.post(url, formData);
+
+        return response.data.data;
+    } catch (error) {
+        throw new Error(`${url} ErrorRequest: ${error}`);
+    }
+};
+
 export const objectApi = {
     findTextLayer,
     fintPointsByLocation,
@@ -156,4 +211,5 @@ export const objectApi = {
     fintPointsByUserLocationLayer,
     findPointsByOwner,
     findPointsLocationLayer,
+    uploadObject,
 };

@@ -1,6 +1,7 @@
 import { LogoutButton } from "@/entities/logout-button";
 import { ProfileInfo } from "@/entities/profile-info";
 
+import { ArObjectUploader } from "@/features/ar-objects-uploader";
 import Header from "@/features/header";
 
 import { routes } from "@/shared/config";
@@ -8,7 +9,6 @@ import { DarkLayout } from "@/shared/ui/layouts";
 
 import AccountIcon from "../assets/account-icon.svg?react";
 import MetamaskWalletIcon from "../assets/metamask-icon.svg?react";
-import UploadObjectIcon from "../assets/upload-object-icon.svg?react";
 
 const LkPage = () => {
     return (
@@ -64,22 +64,10 @@ const RightPanel = ({ className }: { className?: string }) => {
                         <span className="roboto-medium-15 text-white">Account settings</span>
                     </div>
                 </a>
+
                 <LogoutButton />
-            </div>
-            <div className="flex flex-col gap-4 w-full">
-                <h4 className="onest-semibold-18 text-white">Load AR Object</h4>
-                <div
-                    className="flex flex-col justify-center items-center aspect-square
-                    border-2 border-dashed border-silver-sand hover:border-spanish-gray duration-300 cursor-pointer rounded-[25px]"
-                >
-                    <div className="p-5">
-                        <UploadObjectIcon />
-                    </div>
-                    <span className="roboto-medium-15 text-spanish-gray text-center">
-                        Select or drag files <br />
-                        (.glb)
-                    </span>
-                </div>
+
+                <ArObjectUploader />
             </div>
         </div>
     );
