@@ -2,12 +2,12 @@ import { useContext } from "react";
 
 import { AuthContext, SignInPopupModes } from "@/features/login-modal";
 
-import { useUserHook } from "@/shared/stores";
+import { UserContext } from "@/shared/stores";
 
 const useUserAvatarHook = () => {
     const { authenticated, openLoginModal } = useContext(AuthContext);
 
-    const { user } = useUserHook();
+    const { user } = useContext(UserContext);
 
     const handleClickOnAvatar = () => {
         if (!authenticated) {

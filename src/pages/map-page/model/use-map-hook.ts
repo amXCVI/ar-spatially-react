@@ -4,7 +4,7 @@ import { useSearchParams } from "react-router-dom";
 
 import { ApiEndpoints } from "@/shared/api";
 import { SearchParamsConstants } from "@/shared/config/constants";
-import { MapContext, useUserHook } from "@/shared/stores";
+import { MapContext, UserContext } from "@/shared/stores";
 import { MarkerInterface } from "@/shared/types";
 
 const defaultMapPosition = {
@@ -24,7 +24,7 @@ const useMapHook = () => {
 
     const { myObjectsOnly, apps } = useContext(MapContext);
 
-    const { user } = useUserHook();
+    const { user } = useContext(UserContext);
 
     const [coords, setCoords] = useState<{
         lat: number;
