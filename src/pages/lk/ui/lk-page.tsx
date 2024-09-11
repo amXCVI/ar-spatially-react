@@ -1,4 +1,5 @@
 import { LogoutButton } from "@/entities/logout-button";
+import { MyArObjectsList } from "@/entities/my-ar-objects-list";
 import { ProfileInfo } from "@/entities/profile-info";
 
 import { ArObjectUploader } from "@/features/ar-objects-uploader";
@@ -24,6 +25,8 @@ const LkPage = () => {
                         <h1 className="onest-extra-bold text-white">Profile</h1>
                         <ProfileInfo />
                     </div>
+
+                    <MyArObjectsList />
                 </div>
 
                 <RightPanel className="col-span-4 lg:col-span-1" />
