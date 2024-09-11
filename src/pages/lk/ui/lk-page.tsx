@@ -26,7 +26,7 @@ const LkPage = () => {
                     </div>
                 </div>
 
-                <RightPanel className="lg:col-span-1" />
+                <RightPanel className="col-span-4 lg:col-span-1" />
             </div>
         </DarkLayout>
     );
