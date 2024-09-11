@@ -22,7 +22,7 @@ const useUserHook = () => {
         getData();
     };
 
-    const setData = (e: { user: UserInterface }) => {
+    const setData = (e: { user: UserInterface | null }) => {
         setUser(e.user);
     };
 

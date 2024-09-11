@@ -1,7 +1,9 @@
-import { useUserHook } from "@/shared/stores";
+import { useContext } from "react";
+
+import { UserContext } from "@/shared/stores";
 
 const useProfileHook = () => {
-    const { user } = useUserHook();
+    const { user } = useContext(UserContext);
 
     return { user };
 };

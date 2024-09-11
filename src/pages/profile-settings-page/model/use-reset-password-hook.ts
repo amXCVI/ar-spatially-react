@@ -1,13 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 
 import { ApiEndpoints } from "@/shared/api";
-import { useUserHook } from "@/shared/stores";
+import { UserContext } from "@/shared/stores";
 
 const useResetPasswordHook = () => {
     const [fieldsMode, setFieldsMode] = useState<"password" | "text">("password");
 
-    const { user } = useUserHook();
+    const { user, setData } = useContext(UserContext);
 
     const {
         register,
@@ -16,7 +16,11 @@ const useResetPasswordHook = () => {
     } = useForm<{ password: string; newPassword: string; pushToken: string }>();
 
     const handleEditPassword = (e: { password: string; newPassword: string; pushToken: string }) => {
-        ApiEndpoints.user.updateUserPassword({ newPassword: e.newPassword, password: e.password, pushToken: "" });
+        ApiEndpoints.user
+            .updateUserPassword({ newPassword: e.newPassword, password: e.password, pushToken: "" })
+            .then((res) => {
+                setData({ user: res });
+            });
     };
 
     const toggleFieldsMode = () => {

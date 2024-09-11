@@ -189,7 +189,7 @@ const LoginModal = () => {
                 </form>
 
                 <div
-                    onClick={closeLoginModal}
+                    onClick={() => closeLoginModal()}
                     className="mx-auto manrope-medium-22 text-white underline cursor-pointer"
                 >
                     Skip for now

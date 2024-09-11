@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import { ApiEndpoints } from "@/shared/api";
-import { useUserHook } from "@/shared/stores";
+import { UserContext } from "@/shared/stores";
 import { MarkerInterface } from "@/shared/types";
 
 const useMyArObjectsHook = () => {
-    const { user } = useUserHook();
+    const { user } = useContext(UserContext);
     const [objectsList, setObjectsList] = useState<MarkerInterface[]>([]);
 
     useEffect(() => {
