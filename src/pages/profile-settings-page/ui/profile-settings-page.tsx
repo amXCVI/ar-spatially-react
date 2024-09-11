@@ -46,7 +46,7 @@ const ProfileSettingsPage = () => {
 };
 
 const PersonalInfoBlock = () => {
-    const { register, handleSubmit, handleEditPersonalInfo } = useProfileSettingsGroupHook();
+    const { register, handleSubmit, handleEditPersonalInfo, userProvider } = useProfileSettingsGroupHook();
 
     return (
         <ProfileSettingsGroup title="Personal info">
@@ -69,8 +69,7 @@ const PersonalInfoBlock = () => {
                         required: "Required field",
                     })}
                     type="email"
-                    disabled
-                    icon={<div />}
+                    disabled={userProvider === UserProviders.EMAIL}
                 />
                 <button className="ml-auto px-4 py-2 border border-white rounded-[20px]" role="submit">
                     Edit info
@@ -84,7 +83,7 @@ const ResetPasswordBlock = () => {
     const { register, handleSubmit, handleEditPassword, toggleFieldsMode, fieldsMode, userProvider } =
         useResetPasswordHook();
 
-    if (userProvider === UserProviders.LOCAL)
+    if (userProvider === UserProviders.EMAIL)
         return (
             <ProfileSettingsGroup title="Password">
                 <form onSubmit={handleSubmit(handleEditPassword)} className="flex flex-col gap-6 w-full">

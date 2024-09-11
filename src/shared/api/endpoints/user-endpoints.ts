@@ -97,6 +97,7 @@ const updateUser = async ({
     status,
     language,
     pushToken,
+    email,
 }: {
     userId: string;
     name?: string;
@@ -105,6 +106,7 @@ const updateUser = async ({
     status?: UserStatus;
     language?: string;
     pushToken?: string;
+    email?: string;
 }) => {
     const url = `/gateway/user/update`;
 
@@ -122,6 +124,7 @@ const updateUser = async ({
                     status: status,
                     language: language,
                     pushToken: pushToken,
+                    email: email,
                 }),
             ],
             {

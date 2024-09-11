@@ -42,6 +42,9 @@ export enum UserCondition {
 }
 
 export enum UserProviders {
+    EMAIL = "EMAIL",
     GOOGLE = "GOOGLE",
-    LOCAL = "LOCAL",
+    FACEBOOK = "FACEBOOK",
+    TWITTER = "TWITTER",
+    APPLE = "APPLE",
 }

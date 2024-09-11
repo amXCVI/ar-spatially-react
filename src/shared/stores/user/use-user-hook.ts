@@ -13,8 +13,10 @@ const useUserHook = () => {
     };
 
     useEffect(() => {
-        getData();
-    }, []);
+        if (!user) {
+            getData();
+        }
+    }, [user]);
 
     const forceGetUser = () => {
         getData();
