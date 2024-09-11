@@ -1,9 +1,13 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+
+import { AuthContext } from "@/features/login-modal";
 
 import { ApiEndpoints } from "@/shared/api";
 import { UserInterface } from "@/shared/types";
 
 const useUserHook = () => {
+    const { authenticated } = useContext(AuthContext);
+
     const [user, setUser] = useState<UserInterface | null>(null);
 
     const getData = () => {
@@ -13,10 +17,16 @@ const useUserHook = () => {
     };
 
     useEffect(() => {
-        if (!user) {
+        if (!user && authenticated) {
             getData();
         }
-    }, [user]);
+    }, [authenticated, user]);
+
+    useEffect(() => {
+        if (!authenticated) {
+            setUser(null);
+        }
+    }, [authenticated]);
 
     const forceGetUser = () => {
         getData();
