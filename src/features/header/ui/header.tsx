@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext, SignInPopupModes } from "@/features/login-modal";
 
 import { menuLinks, routes } from "@/shared/config";
+import { UserContext } from "@/shared/stores";
 import { DefaultButton } from "@/shared/ui/buttons";
 import { Socials } from "@/shared/ui/socials";
 
@@ -177,6 +178,8 @@ const Profile = ({ show }: { show: boolean }) => {
 
     const { openLoginModal, authenticated } = useContext(AuthContext);
 
+    const { user } = useContext(UserContext);
+
     const handleClickProfile = () => {
         if (authenticated) {
             navigation(routes.lk);
@@ -189,11 +192,19 @@ const Profile = ({ show }: { show: boolean }) => {
         <div
             onClick={handleClickProfile}
             className={`flex justify-center items-center z-[1]
-                            cursor-pointer hover:bg-white50 w-20 h-20
-                            fixed ${show ? "top-28 right-4 lg:top-6" : "bottom-28 right-4 lg:top-32"}
-                            border border-blue-accent bg-white30 rounded-full p-4 backdrop-blur`}
+                        cursor-pointer hover:bg-white50 w-20 h-20
+                        fixed ${show ? "top-28 right-4 lg:top-6" : "bottom-28 right-4 lg:top-32"}
+                        border border-blue-accent bg-white30 rounded-full p-4 backdrop-blur
+                        overflow-hidden`}
         >
-            <PersonIcon />
+            {user?.avatarId ? (
+                <img
+                    src={`${import.meta.env.VITE_APP_API_BASE_URL}gateway/file/get?fileId=${user.avatarId}`}
+                    className="-m-4 max-w-max"
+                />
+            ) : (
+                <PersonIcon />
+            )}
         </div>
     );
 };

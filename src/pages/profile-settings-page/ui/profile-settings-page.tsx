@@ -36,7 +36,7 @@ const ProfileSettingsPage = () => {
                     </div>
                 </div>
 
-                <RightPanel className="hidden lf:flex" />
+                <RightPanel className="hidden lg:flex" />
             </div>
         </DarkLayout>
     );
