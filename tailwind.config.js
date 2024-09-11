@@ -14,6 +14,7 @@ export default {
                 white30: "#ffffff30",
                 white50: "#ffffff50",
                 white60: "#ffffff60",
+                gray20: "#c4c4c4",
                 gray70: "#575959",
                 gray90: "#2A2A2B",
                 "eerie-black": "#1a1a1a",

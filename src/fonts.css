@@ -94,6 +94,14 @@
     line-height: 2.688rem;
 }
 
+.onest-extra-bold-34 {
+    font-family: "onest-bold";
+    font-style: normal;
+    font-weight: 800;
+    font-size: 2.125rem;
+    line-height: 2.688rem;
+}
+
 .manrope-bold-24 {
     font-family: "Manrope";
     font-style: normal;
@@ -266,6 +274,14 @@
     font-family: "Roboto";
     font-style: normal;
     font-weight: 700;
+    font-size: 0.813rem;
+    line-height: 0.938rem;
+}
+
+.roboto-regular-13 {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 400;
     font-size: 0.813rem;
     line-height: 0.938rem;
 }

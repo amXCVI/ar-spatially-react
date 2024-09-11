@@ -3,7 +3,7 @@ export interface UserInterface {
     email: string;
     language: string;
     name?: string;
-    nickname?: string;
+    nickname: string;
     phone?: string;
     publicAddress?: string;
     role: UserRole;
@@ -11,6 +11,8 @@ export interface UserInterface {
     status: UserStatus;
     system: SystemName;
     userId: string;
+    condition: UserCondition;
+    provider: string;
 }
 
 export enum UserRole {
@@ -21,9 +23,9 @@ export enum UserRole {
 }
 
 export enum UserStatus {
-    ACTIVE = "ACTIVE",
-    NOT_VERIFIED = "NOT_VERIFIED",
-    NOT_ACTIV = "NOT_ACTIVE",
+    USER = "USER",
+    DEVELOPER = "DEVELOPER",
+    ARTIST = "ARTIST",
 }
 
 export enum SystemName {
@@ -33,4 +35,13 @@ export enum SystemName {
     HUAWEI = "HUAWEI",
     AMAZON = "AMAZON",
     UNKNOW = "UNKNOWN",
+}
+
+export enum UserCondition {
+    ACTIVE = "ACTIVE",
+}
+
+export enum UserProviders {
+    GOOGLE = "GOOGLE",
+    LOCAL = "LOCAL",
 }

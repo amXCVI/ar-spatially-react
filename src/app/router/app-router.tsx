@@ -8,6 +8,7 @@ import { BaseLayout } from "@/shared/ui/layouts";
 import PrivateRoute from "./private-route";
 
 const LkPage = React.lazy(() => import("@/pages/lk"));
+const ProfileSettingsPage = React.lazy(() => import("@/pages/profile-settings-page"));
 
 const BlockchainPage = React.lazy(() => import("@/pages/blockchain-page"));
 const ErrorPage = React.lazy(() => import("@/pages/error-page"));
@@ -32,7 +33,14 @@ const AppRouter = () => {
 
                 { path: routes.playground, element: <BlockchainPage /> },
 
-                { path: routes.lk, element: <PrivateRoute />, children: [{ index: true, element: <LkPage /> }] },
+                {
+                    path: routes.lk,
+                    element: <PrivateRoute />,
+                    children: [
+                        { index: true, element: <LkPage /> },
+                        { path: routes.profileSettings, element: <ProfileSettingsPage /> },
+                    ],
+                },
 
                 { path: routes.undefined, element: <ErrorPage /> },
             ],

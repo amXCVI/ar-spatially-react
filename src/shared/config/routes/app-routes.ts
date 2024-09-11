@@ -6,6 +6,7 @@ const routes = {
     event: "/event",
     playground: "/playground",
     lk: "/personal_page",
+    profileSettings: "profile_settings",
 
     undefined: "*",
 };

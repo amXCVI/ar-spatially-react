@@ -6,15 +6,25 @@ import { UserInterface } from "@/shared/types";
 const useUserHook = () => {
     const [user, setUser] = useState<UserInterface | null>(null);
 
-    useEffect(() => {
-        if (!user) {
-            ApiEndpoints.user.getMe().then((res) => {
-                setUser(res);
-            });
-        }
-    }, [user]);
+    const getData = () => {
+        ApiEndpoints.user.getMe().then((res) => {
+            setUser(res);
+        });
+    };
 
-    return { user };
+    useEffect(() => {
+        getData();
+    }, []);
+
+    const forceGetUser = () => {
+        getData();
+    };
+
+    const setData = (e: { user: UserInterface }) => {
+        setUser(e.user);
+    };
+
+    return { user, forceGetUser, setData };
 };
 
 export { useUserHook };
