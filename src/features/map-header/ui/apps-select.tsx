@@ -12,9 +12,9 @@ const AppsSelect = ({ className }: { className?: string }) => {
     return (
         <div
             ref={appsSelectRef}
-            className={`flex flex-col duration-500 ${isActive ? `w-32 md:w-[${apps.length * 100}px]` : ""}
+            className={`flex flex-col duration-500 
                         border-2 border-raisin-black rounded-[30px] bg-dark-gray
-                        relative ${className}`}
+                        relative  ${className}`}
         >
             <div
                 className={`flex gap-3 ${isActive ? "justify-start" : "justify-center"} items-center p-4
@@ -71,7 +71,9 @@ const AppItem = ({
             key={appItem.layer.id}
             onClick={() => handleClickApp(appItem.layer.id)}
         >
-            <div className="w-20 h-20 border border-white rounded-full flex justify-center items-center">
+            <div
+                className={`w-16 lg:w-20 h-16 lg:h-20 border ${isSelectedApp ? "border-blue-accent" : "border-white"} rounded-full flex justify-center items-center`}
+            >
                 {appItem.iconSrc ? (
                     <img src={appItem.iconSrc} className="w-16 h-16" />
                 ) : (
@@ -79,7 +81,7 @@ const AppItem = ({
                 )}
             </div>
             <span className="roboto-bold-13 text-white ">{appItem.layer.title}</span>
-            <div className="absolute top-0 -right-1 cursor-pointer">
+            <div className="absolute top-0 -right-2 cursor-pointer">
                 {isSelectedApp ? <RemoveAppIcon /> : <AddAppIcon />}
             </div>
         </div>

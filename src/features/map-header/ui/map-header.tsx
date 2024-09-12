@@ -29,7 +29,7 @@ const MapHeader = ({ onChangeMapCenter }: MapHeaderProps) => {
                 <div className="flex items-center lg:w-full justify-between lg:justify-end gap-6">
                     <ObjectsToggler />
                     <SearchField onChangeMapCenter={onChangeMapCenter} className="hidden lg:block" />
-                    <AppsSelect className="hidden lg:block" />
+                    <AppsSelect className="hidden lg:flex" />
                     <UserAvatar className="" />
                     <MapMobileMenu className="hidden lg:block" />
                 </div>

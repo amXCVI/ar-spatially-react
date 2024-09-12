@@ -75,23 +75,50 @@ const SearchField = ({ className, onChangeMapCenter }: MapHeaderProps) => {
             >
                 {isActiveField &&
                     findedObjects.map((item) => (
-                        <ObjectItem key={item.id} item={item} onSelect={handleSuggestionClick} />
+                        <ObjectItem
+                            key={item.id}
+                            item={item}
+                            searchStr={searchInputValue}
+                            onSelect={handleSuggestionClick}
+                        />
                     ))}
                 {isActiveField &&
                     predictionResults.map((item) => (
-                        <PlaceItem key={item.place_id} item={item} onSelect={handleSuggestionClick} />
+                        <PlaceItem
+                            key={item.place_id}
+                            item={item}
+                            searchStr={searchInputValue}
+                            onSelect={handleSuggestionClick}
+                        />
                     ))}
             </div>
         </div>
     );
 };
 
+const getHighlightedText = (text: string, highlight: string) => {
+    // Split on highlight term and include term into parts, ignore case
+    const parts = text.split(new RegExp(`(${highlight})`, "gi"));
+    return (
+        <span>
+            {" "}
+            {parts.map((part, i) => (
+                <span key={i} style={part.toLowerCase() === highlight.toLowerCase() ? { color: "white" } : {}}>
+                    {part}
+                </span>
+            ))}{" "}
+        </span>
+    );
+};
+
 export const PlaceItem = ({
     item,
     onSelect,
+    searchStr,
 }: {
     item: google.maps.places.AutocompletePrediction;
     onSelect: (e: string) => void;
+    searchStr: string;
 }) => {
     return (
         <div
@@ -99,19 +126,31 @@ export const PlaceItem = ({
             className="flex gap-2.5 items-center lg:px-4 py-3 rounded-[15px] hover:bg-[#6565657f] lg:border lg:border-dark-gray hover:border-[#9c9c9c26] cursor-pointer"
         >
             <GooglePlaceIcon className="min-h-3.5 min-w-5" />
-            <span className="overflow-hidden text-ellipsis max-w-full">{item.description}</span>
+            <span className="overflow-hidden text-ellipsis max-w-full regular-16 text-white/35">
+                {getHighlightedText(item.description, searchStr)}
+            </span>
         </div>
     );
 };
 
-export const ObjectItem = ({ item, onSelect }: { item: ObjectInterface; onSelect: (e: string) => void }) => {
+export const ObjectItem = ({
+    item,
+    onSelect,
+    searchStr,
+}: {
+    item: ObjectInterface;
+    onSelect: (e: string) => void;
+    searchStr: string;
+}) => {
     return (
         <div
             onClick={() => onSelect(item.id)}
             className="flex gap-2.5 items-center lg:px-4 py-3 rounded-[15px] hover:bg-[#6565657f] lg:border lg:border-dark-gray hover:border-[#9c9c9c26] cursor-pointer"
         >
             <ObjectIcon className="min-h-3.5 min-w-5" />
-            <span className="overflow-hidden text-ellipsis max-w-full">{item.title}</span>
+            <span className="overflow-hidden text-ellipsis max-w-full regular-16 text-white/35">
+                {getHighlightedText(item.title, searchStr)}
+            </span>
         </div>
     );
 };

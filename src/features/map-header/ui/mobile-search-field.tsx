@@ -42,8 +42,8 @@ const MobileSearchField = ({ onChangeMapCenter }: MapHeaderProps) => {
         <div className="container mx-auto">
             <div
                 className={`flex flex-col-reverse duration-500
-                            bg-davy-grey/50 backdrop-blur-[2.5px]
-                            border border-white/40 rounded-[30px] 
+                            bg-dark-gray
+                            border-2 border-raisin-black rounded-[30px] 
                             p-4 gap-1
                             max-h-[70dvh] overflow-hidden
                             `}
@@ -80,25 +80,38 @@ const MobileSearchField = ({ onChangeMapCenter }: MapHeaderProps) => {
                 </div>
 
                 {findedObjects.map((item) => (
-                    <ObjectItem key={item.id} item={item} onSelect={handleSuggestionClick} />
+                    <ObjectItem
+                        key={item.id}
+                        item={item}
+                        searchStr={searchInputValue}
+                        onSelect={handleSuggestionClick}
+                    />
                 ))}
                 {predictionResults.map((item) => (
-                    <PlaceItem key={item.place_id} item={item} onSelect={handleSuggestionClick} />
+                    <PlaceItem
+                        key={item.place_id}
+                        item={item}
+                        searchStr={searchInputValue}
+                        onSelect={handleSuggestionClick}
+                    />
                 ))}
 
-                {fieldMode === FieldModes.APPS &&
-                    apps.map((appItem) => {
-                        const isSelectedApp = appItem.isSelected;
+                {fieldMode === FieldModes.APPS && (
+                    <div className="flex justify-between gap-6 flex-wrap mb-8">
+                        {apps.map((appItem) => {
+                            const isSelectedApp = appItem.isSelected;
 
-                        return (
-                            <AppItem
-                                key={appItem.layer.id}
-                                appItem={appItem}
-                                handleClickApp={handleClickApp}
-                                isSelectedApp={isSelectedApp}
-                            />
-                        );
-                    })}
+                            return (
+                                <AppItem
+                                    key={appItem.layer.id}
+                                    appItem={appItem}
+                                    handleClickApp={handleClickApp}
+                                    isSelectedApp={isSelectedApp}
+                                />
+                            );
+                        })}
+                    </div>
+                )}
             </div>
         </div>
     );
