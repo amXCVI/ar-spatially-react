@@ -1,46 +1,46 @@
-import { useEffect, useState } from "react";
-
-import { LSConstants } from "@/shared/config/constants";
+import { ApiEndpoints } from "@/shared/api";
+import { LayerStatus } from "@/shared/types";
 
 import { useUserLayersHook } from "../user-layers/use-user-layers-hook";
-import { AppLayerInterface } from "./types";
 
-const selectedApp = (appId: string) => {
-    return localStorage.getItem(LSConstants.selectedApp + appId) === "true";
-};
+// import { AppLayerInterface } from "./types";
 
 const useSelectedAppsHook = () => {
-    const { layersList } = useUserLayersHook();
+    const { layersList, setLayersList } = useUserLayersHook();
 
-    const [apps, setApps] = useState<AppLayerInterface[]>([]);
+    // const [apps, setApps] = useState<AppLayerInterface[]>([]);
 
-    useEffect(() => {
-        setApps(
-            layersList.map((item) => {
-                return {
-                    iconSrc: item.iconId
-                        ? `${import.meta.env.VITE_APP_API_BASE_URL}gateway/file/get?fileId=${item.iconId}`
-                        : undefined,
-                    layer: item,
-                    isSelected: selectedApp(item.id),
-                };
-            }),
-        );
-    }, [layersList]);
+    // useEffect(() => {
+    //     setApps(
+    //         layersList.map((item) => {
+    //             return {
+    //                 iconSrc: item.iconId
+    //                     ? `${import.meta.env.VITE_APP_API_BASE_URL}gateway/file/get?fileId=${item.iconId}`
+    //                     : undefined,
+    //                 layer: item,
+    //                 isSelected: item.status ?? LayerStatus.NOT_ACTIVE,
+    //             };
+    //         }),
+    //     );
+    // }, [layersList]);
 
     const handleClickApp = (appId: string) => {
-        const isSelectedApp = selectedApp(appId);
+        const layer = layersList.find((item) => item.id === appId);
 
-        if (isSelectedApp) {
-            localStorage.setItem(LSConstants.selectedApp + appId, "false");
-        } else {
-            localStorage.setItem(LSConstants.selectedApp + appId, "true");
+        if (layer) {
+            const status = layer.status === LayerStatus.ACTIVE ? LayerStatus.NOT_ACTIVE : LayerStatus.ACTIVE;
+            ApiEndpoints.layer
+                .updateLayersStatus({
+                    layerId: appId,
+                    status: status,
+                })
+                .then((res) => {
+                    setLayersList((e) => e.map((item) => (item.id === appId ? { ...item, status: res.status } : item)));
+                });
         }
-
-        setApps((e) => e.map((item) => (item.layer.id === appId ? { ...item, isSelected: !item.isSelected } : item)));
     };
 
-    return { apps, handleClickApp };
+    return { layersList, handleClickApp };
 };
 
 export { useSelectedAppsHook };

@@ -1,4 +1,4 @@
-import { AppLayerInterface } from "@/shared/stores/map-context/types";
+import { LayerInterface, LayerStatus } from "@/shared/types";
 
 import AddAppIcon from "../assets/add-app.svg?react";
 import AppsIcon from "../assets/apps-icon.svg?react";
@@ -7,14 +7,14 @@ import RemoveAppIcon from "../assets/remove-app.svg?react";
 import { useAppsSelectHook } from "../domain";
 
 const AppsSelect = ({ className }: { className?: string }) => {
-    const { appsSelectRef, isActive, toggleIsActiveSearchField, handleClickApp, apps } = useAppsSelectHook();
+    const { appsSelectRef, isActive, toggleIsActiveSearchField, handleClickApp, layersList } = useAppsSelectHook();
 
     return (
         <div
             ref={appsSelectRef}
             className={`flex flex-col duration-500 
                         border-2 border-raisin-black rounded-[30px] bg-dark-gray
-                        relative  ${className}`}
+                        relative ${className}`}
         >
             <div
                 className={`flex gap-3 ${isActive ? "justify-start" : "justify-center"} items-center p-4
@@ -32,19 +32,19 @@ const AppsSelect = ({ className }: { className?: string }) => {
                 </span>
             </div>
             <div
-                className={`flex flex-col lg:flex-row gap-1 bg-dark-gray
-                            absolute bottom-8 lg:bottom-auto lg:top-8 -left-0.5 -right-0.5 
-                            rounded-t-[30px] lg:rounded-t-none lg:rounded-b-[30px]
-                            border-r-2 border-l-2 border-raisin-black
-                            ${isActive ? "p-4" : "p-0"} duration-500`}
+                className={`flex flex-row gap-6 justify-between flex-wrap
+                            absolute top-0 left-0 w-56 ${isActive ? "max-w-80" : "max-w-0"}
+                            bg-dark-gray rounded-[30px]
+                            border-2 border-raisin-black
+                            ${isActive ? "p-4 pt-14" : "p-0"} duration-500`}
             >
                 {isActive &&
-                    apps.map((appItem) => {
-                        const isSelectedApp = appItem.isSelected;
+                    layersList.map((appItem) => {
+                        const isSelectedApp = appItem.status === LayerStatus.ACTIVE;
 
                         return (
                             <AppItem
-                                key={appItem.layer.id}
+                                key={appItem.id}
                                 appItem={appItem}
                                 handleClickApp={handleClickApp}
                                 isSelectedApp={isSelectedApp}
@@ -61,26 +61,30 @@ const AppItem = ({
     handleClickApp,
     isSelectedApp,
 }: {
-    appItem: AppLayerInterface;
+    appItem: LayerInterface;
     handleClickApp: (e: string) => void;
     isSelectedApp: boolean;
 }) => {
     return (
         <div
             className="flex flex-col items-center gap-3 relative w-min cursor-pointer"
-            key={appItem.layer.id}
-            onClick={() => handleClickApp(appItem.layer.id)}
+            key={appItem.id}
+            onClick={() => handleClickApp(appItem.id)}
         >
             <div
-                className={`w-16 lg:w-20 h-16 lg:h-20 border ${isSelectedApp ? "border-blue-accent" : "border-white"} rounded-full flex justify-center items-center`}
+                className={`w-16 lg:w-20 h-16 lg:h-20 border ${isSelectedApp ? "border-blue-accent" : "border-white"} 
+                            rounded-full flex justify-center items-center overflow-hidden`}
             >
-                {appItem.iconSrc ? (
-                    <img src={appItem.iconSrc} className="w-16 h-16" />
+                {appItem.iconId ? (
+                    <img
+                        src={`${import.meta.env.VITE_APP_API_BASE_URL}gateway/file/get?fileId=${appItem.iconId}`}
+                        className="w-16 h-16"
+                    />
                 ) : (
-                    <span className="text-6xl font-bold uppercase">{appItem.layer.title[0]}</span>
+                    <span className="text-6xl font-bold uppercase">{appItem.title[0]}</span>
                 )}
             </div>
-            <span className="roboto-bold-13 text-white ">{appItem.layer.title}</span>
+            <span className="roboto-bold-13 text-white ">{appItem.title}</span>
             <div className="absolute top-0 -right-2 cursor-pointer">
                 {isSelectedApp ? <RemoveAppIcon /> : <AddAppIcon />}
             </div>

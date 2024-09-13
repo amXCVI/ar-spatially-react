@@ -1,6 +1,7 @@
 import { ReactNode, createContext } from "react";
 
-import { AppLayerInterface } from "./types";
+import { LayerInterface } from "@/shared/types";
+
 import { useObjectsTogglerHook } from "./use-objects-toggler-hook";
 import { useSelectedAppsHook } from "./use-selected-apps-hook";
 
@@ -12,14 +13,14 @@ type MapContextInterface = {
     myObjectsOnly: boolean;
     toggleObjectsOwner: () => void;
 
-    apps: AppLayerInterface[];
+    layersList: LayerInterface[];
     handleClickApp: (e: string) => void;
 };
 
 const initialValue = {
     myObjectsOnly: false,
     toggleObjectsOwner: () => {},
-    apps: [],
+    layersList: [],
     handleClickApp: () => {},
 };
 
@@ -32,14 +33,14 @@ const MapContextProvider = ({ children }: Props) => {
     const { myObjectsOnly, toggleObjectsOwner } = useObjectsTogglerHook();
 
     // Список слоев на карте, выбранные пользователем слои
-    const { apps, handleClickApp } = useSelectedAppsHook();
+    const { layersList, handleClickApp } = useSelectedAppsHook();
 
     return (
         <MapContext.Provider
             value={{
                 myObjectsOnly,
                 toggleObjectsOwner,
-                apps,
+                layersList,
                 handleClickApp,
             }}
         >

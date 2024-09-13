@@ -39,6 +39,8 @@ export enum SystemName {
 
 export enum UserCondition {
     ACTIVE = "ACTIVE",
+    NOT_VERIFIED = "NOT_VERIFIED",
+    NOT_ACTIVE = "NOT_ACTIVE",
 }
 
 export enum UserProviders {

@@ -23,7 +23,7 @@ const useMapControlHook = ({
     );
 
     const [center, setCenter] = useState<google.maps.LatLngLiteral>(
-        JSON.parse(localStorage.getItem(localStorageMapOptionsCenterKey) ?? "0") || { lat: 55.753544, lng: 37.621202 },
+        JSON.parse(localStorage.getItem(localStorageMapOptionsCenterKey) ?? "0") || { lat: 25.124342, lng: 55.154669 },
     );
 
     const mapTypes = [

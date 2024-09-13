@@ -56,6 +56,10 @@ body {
     width: 100vw;
 }
 
+.gm-style iframe + div {
+    border: none !important;
+}
+
 @keyframes ticker {
     0% {
         transform: translate(0, 0);

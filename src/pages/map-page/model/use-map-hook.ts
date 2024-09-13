@@ -9,10 +9,10 @@ import { MarkerInterface } from "@/shared/types";
 
 const defaultMapPosition = {
     lat: (
-        JSON.parse(localStorage.getItem("localStorageMapOptionsCenterKey") ?? "0") || { lat: 55.753544, lng: 37.621202 }
+        JSON.parse(localStorage.getItem("localStorageMapOptionsCenterKey") ?? "0") || { lat: 25.124342, lng: 55.154669 }
     ).lat,
     lng: (
-        JSON.parse(localStorage.getItem("localStorageMapOptionsCenterKey") ?? "0") || { lat: 55.753544, lng: 37.621202 }
+        JSON.parse(localStorage.getItem("localStorageMapOptionsCenterKey") ?? "0") || { lat: 25.124342, lng: 55.154669 }
     ).lng,
     radius: JSON.parse(localStorage.getItem("localStorageMapOptionsZoomKey") ?? "10"),
 };
@@ -22,7 +22,7 @@ const useMapHook = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const selectedMarkerId = searchParams.get(SearchParamsConstants.markerIdSearchParamsKey);
 
-    const { myObjectsOnly, apps } = useContext(MapContext);
+    const { myObjectsOnly } = useContext(MapContext);
 
     const { user } = useContext(UserContext);
 
@@ -85,15 +85,14 @@ const useMapHook = () => {
     useEffect(() => {
         if (!myObjectsOnly) {
             ApiEndpoints.object
-                .findPointsLocationLayer({
+                .fintPointsByLocation({
                     ...coords,
-                    layerIds: apps.filter((item) => item.isSelected).map((item) => item.layer.id),
                 })
                 .then((res) => {
                     setAllMarkersOnMap(res);
                 });
         }
-    }, [apps, coords, myObjectsOnly]);
+    }, [coords, myObjectsOnly]);
 
     useMemo(() => {
         const markers = allMarkersOnMap.map((item) => {

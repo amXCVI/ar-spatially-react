@@ -6,7 +6,7 @@ import { MapContext } from "@/shared/stores";
 const useAppsSelectHook = () => {
     const [isActive, setIsActive] = useState<boolean>(false);
 
-    const { apps, handleClickApp } = useContext(MapContext);
+    const { layersList, handleClickApp } = useContext(MapContext);
 
     const toggleIsActiveSearchField = () => {
         setIsActive((e) => !e);
@@ -16,7 +16,7 @@ const useAppsSelectHook = () => {
         setIsActive(false);
     });
 
-    return { appsSelectRef, isActive, toggleIsActiveSearchField, handleClickApp, apps };
+    return { appsSelectRef, isActive, toggleIsActiveSearchField, handleClickApp, layersList };
 };
 
 export { useAppsSelectHook };
