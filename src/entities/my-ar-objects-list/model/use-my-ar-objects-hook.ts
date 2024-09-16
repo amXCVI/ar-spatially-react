@@ -10,7 +10,7 @@ const useMyArObjectsHook = () => {
 
     useEffect(() => {
         if (user) {
-            ApiEndpoints.object.findPointsByOwner({ ownerId: user.userId }).then((res) => {
+            ApiEndpoints.object.findMe().then((res) => {
                 setObjectsList(res);
             });
         }

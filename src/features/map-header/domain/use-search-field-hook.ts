@@ -80,10 +80,8 @@ const useSearchFieldHook = ({
 
         if (e.target.value) {
             ApiEndpoints.object
-                .findTextLayer({
+                .findText({
                     searchText: e.target.value,
-                    // ! Придумать, как подставлять правильный id слоя
-                    layerId: "e922cff0-3f23-483c-addc-d0fec11f7c08",
                     pageNum: 1,
                     pageSize: 10,
                 })

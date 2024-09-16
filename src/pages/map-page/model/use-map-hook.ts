@@ -4,7 +4,7 @@ import { useSearchParams } from "react-router-dom";
 
 import { ApiEndpoints } from "@/shared/api";
 import { SearchParamsConstants } from "@/shared/config/constants";
-import { MapContext, UserContext } from "@/shared/stores";
+import { MapContext } from "@/shared/stores";
 import { MarkerInterface } from "@/shared/types";
 
 const defaultMapPosition = {
@@ -23,8 +23,6 @@ const useMapHook = () => {
     const selectedMarkerId = searchParams.get(SearchParamsConstants.markerIdSearchParamsKey);
 
     const { myObjectsOnly } = useContext(MapContext);
-
-    const { user } = useContext(UserContext);
 
     const [coords, setCoords] = useState<{
         lat: number;
@@ -75,12 +73,12 @@ const useMapHook = () => {
     }, [allMarkersOnMap, selectedMarkerId]);
 
     useEffect(() => {
-        if (myObjectsOnly && user) {
-            ApiEndpoints.object.findPointsByOwner({ ownerId: user.userId }).then((res) => {
+        if (myObjectsOnly) {
+            ApiEndpoints.object.findMe().then((res) => {
                 setAllMarkersOnMap(res);
             });
         }
-    }, [myObjectsOnly, user]);
+    }, [myObjectsOnly]);
 
     useEffect(() => {
         if (!myObjectsOnly) {

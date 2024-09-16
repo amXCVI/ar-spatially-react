@@ -38,6 +38,37 @@ const findTextLayer = async ({
     }
 };
 
+const findText = async ({
+    searchText,
+    pageNum,
+    pageSize,
+}: {
+    searchText: string;
+    pageNum: number;
+    pageSize: number;
+}) => {
+    const url = `/gateway/object/find/text`;
+
+    try {
+        const response: AxiosResponse<
+            ApiResponseInterface<{
+                objects: ObjectInterface[];
+                pageNum: number;
+                pageSize: number;
+                totalPages: number;
+            }>
+        > = await apiClient.post(url, {
+            searchText,
+            pageNum,
+            pageSize,
+        });
+
+        return response.data.data;
+    } catch (error) {
+        throw new Error(`${url} ErrorRequest: ${error}`);
+    }
+};
+
 const fintPointsByLocation = async ({ lat, lng, radius }: { lat: number; lng: number; radius: number }) => {
     return await apiClient
         .post("/gateway/object/find/location", {
@@ -110,6 +141,19 @@ const findPointsByOwner = async ({ ownerId }: { ownerId: string }) => {
 
     return await apiClient
         .post("/gateway/object/find/owner", formData)
+        .then((res) => {
+            const markers: MarkerInterface[] = res.data.data.objectsList;
+
+            return markers;
+        })
+        .catch((err) => {
+            throw err;
+        });
+};
+
+const findMe = async () => {
+    return await apiClient
+        .post("/gateway/object/find/me")
         .then((res) => {
             const markers: MarkerInterface[] = res.data.data.objectsList;
 
@@ -212,4 +256,6 @@ export const objectApi = {
     findPointsByOwner,
     findPointsLocationLayer,
     uploadObject,
+    findText,
+    findMe,
 };
