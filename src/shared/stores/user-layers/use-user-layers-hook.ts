@@ -22,7 +22,7 @@ const useUserLayersHook = () => {
         }
     }, [user]);
 
-    return { layersList, setLayersList };
+    return { layersList, setLayersList, user };
 };
 
 export { useUserLayersHook };
