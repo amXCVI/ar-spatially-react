@@ -19,7 +19,7 @@ const MapPage = () => {
 
     return (
         <div style={{ width: "100vw", height: "100vh" }} className="bg-raisin-black">
-            <APIProvider apiKey={googpeMapApiKey}>
+            <APIProvider apiKey={googpeMapApiKey} region="EN" language="en">
                 <MapHeader onChangeMapCenter={onChangeMapCenter} />
 
                 <MapComponent
