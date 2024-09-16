@@ -34,8 +34,8 @@ const useSelectedAppsHook = () => {
                     layerId: appId,
                     status: status,
                 })
-                .then((res) => {
-                    setLayersList((e) => e.map((item) => (item.id === appId ? { ...item, status: res.status } : item)));
+                .then(() => {
+                    setLayersList((e) => e.map((item) => (item.id === appId ? { ...item, status: status } : item)));
                 });
         }
     };
