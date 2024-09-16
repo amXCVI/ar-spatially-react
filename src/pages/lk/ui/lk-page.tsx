@@ -1,9 +1,9 @@
 import { LogoutButton } from "@/entities/logout-button";
-import { MyArObjectsList } from "@/entities/my-ar-objects-list";
 import { ProfileInfo } from "@/entities/profile-info";
 
 import { ArObjectUploader } from "@/features/ar-objects-uploader";
 import Header from "@/features/header";
+import { MyArObjectsList } from "@/features/my-ar-objects-list";
 
 import { routes } from "@/shared/config";
 import { DarkLayout } from "@/shared/ui/layouts";
@@ -38,8 +38,8 @@ const LkPage = () => {
 const RightPanel = ({ className }: { className?: string }) => {
     return (
         <div
-            className={`flex flex-col gap-9 pl-9 h-full
-            border-l-2 border-silver-sand
+            className={`flex flex-col gap-9 lg:pl-9 h-full
+            lg:border-l-2 border-silver-sand
             min-h-[calc(100vh-160px)] ${className}`}
         >
             <div className="flex flex-col gap-4 w-full">

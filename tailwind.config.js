@@ -37,6 +37,7 @@ export default {
                 "american-silver20": "#d1d1d120",
                 "blue-accent": "#4BB2F2",
                 "blue-link": "#366EF9",
+                "black-olive": "#3c3c3c",
             },
             animation: {
                 "spin-slow": "spin 15s linear infinite",
@@ -58,6 +59,7 @@ export default {
                 "start-section-text-gradient": "linear-gradient(99.41deg, #0071BD -12.47%, #00BDFF 110.44%)",
                 "our-vision-secton-text-gradient": "linear-gradient(93.8deg, #4946A3 12.46%, #8583C4 87.54%)",
                 "text-shadow": "linear-gradient(90deg, rgba(17, 17, 17, 0) 0%, #111111 100%)",
+                "object-item-title-bg": "linear-gradient(90deg, #1A1A1A 0%, #1A1A1A 50%, #1A1A1A 100%)",
             },
             lineHeight: {
                 12: "3rem",

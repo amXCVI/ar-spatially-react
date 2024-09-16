@@ -27,5 +27,9 @@ export enum AnchotTypeEnum {
 }
 
 export enum MarkerStatusEnum {
+    NEW = "NEW",
+    ON_MODERATION = "ON_MODERATION",
+    MODERATOR_REJECTED = "MODERATOR_REJECTED",
     NOT_PUBLISHED = "NOT_PUBLISHED",
+    PUBLISHED = "PUBLISHED",
 }
