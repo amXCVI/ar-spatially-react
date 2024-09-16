@@ -8,5 +8,15 @@
                 "3C:EE:3C:C4:25:5D:DE:F7:86:8F:BA:8E:61:94:3A:20:B3:B9:49:EF:21:34:80:F0:13:F4:EB:64:79:94:8E:7A"
             ]
         }
+    },
+    {
+        "relation": ["delegate_permission/common.handle_all_urls"],
+        "target": {
+            "namespace": "android_app",
+            "package_name": "ar.spatially.android",
+            "sha256_cert_fingerprints": [
+                "C8:23:60:D0:A1:BF:87:A3:59:B1:42:1F:D2:AF:4E:E8:D2:61:EE:6C:39:25:8D:B9:69:7E:EF:31:E1:A6:F2:DF"
+            ]
+        }
     }
 ]
