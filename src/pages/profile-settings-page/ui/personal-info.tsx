@@ -1,4 +1,5 @@
 import { UserProviders } from "@/shared/types";
+
 import { useProfileSettingsGroupHook } from "../model";
 import { ProfileSettingsGroup, TextField } from "./components";
 
@@ -8,6 +9,14 @@ export const PersonalInfoBlock = () => {
     return (
         <ProfileSettingsGroup title="Personal info">
             <form onSubmit={handleSubmit(handleEditPersonalInfo)} className="flex flex-col gap-6 w-full">
+                <div className="flex gap-5 items-start w-full">
+                    <h2 className="onest-extra-bold-34 text-white">{"Personal info"}</h2>
+
+                    <button className="ml-auto px-2 py-1 rounded-[8px] bg-dark-charcoal" role="submit">
+                        Save
+                    </button>
+                </div>
+
                 <TextField
                     label="Your name"
                     {...register("name", {
@@ -28,9 +37,6 @@ export const PersonalInfoBlock = () => {
                     type="email"
                     disabled={userProvider === UserProviders.EMAIL}
                 />
-                <button className="ml-auto px-4 py-2 border border-white rounded-[20px]" role="submit">
-                    Edit info
-                </button>
             </form>
         </ProfileSettingsGroup>
     );

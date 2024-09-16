@@ -13,6 +13,14 @@ export const ResetPasswordBlock = () => {
         return (
             <ProfileSettingsGroup title="Password">
                 <form onSubmit={handleSubmit(handleEditPassword)} className="flex flex-col gap-6 w-full">
+                    <div className="flex gap-5 items-start w-full">
+                        <h2 className="onest-extra-bold-34 text-white">{"Password"}</h2>
+
+                        <button className="ml-auto px-2 py-1 rounded-[8px] bg-dark-charcoal" role="submit">
+                            Save
+                        </button>
+                    </div>
+
                     <TextField
                         label="Old password"
                         {...register("password", {

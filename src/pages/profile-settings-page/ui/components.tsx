@@ -30,11 +30,6 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
     },
 );
 
-export const ProfileSettingsGroup = ({ children, title }: { children: ReactNode; title: string }) => {
-    return (
-        <div className="flex flex-col gap-6 p-6 bg-silver-sand rounded-[42px] w-full h-min">
-            <h2 className="onest-extra-bold-34 text-white">{title}</h2>
-            {children}
-        </div>
-    );
+export const ProfileSettingsGroup = ({ children }: { children: ReactNode; title: string }) => {
+    return <div className="flex flex-col gap-6 p-6 bg-silver-sand rounded-[42px] w-full h-min">{children}</div>;
 };
