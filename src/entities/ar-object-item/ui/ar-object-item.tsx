@@ -23,24 +23,30 @@ const ArObjectItem = ({ object }: ArObjectItemProps) => {
 };
 
 const Status = ({ status }: { status: MarkerStatusEnum }) => {
+    // ! Разобраться, какой цвет какому статусу соответствует
     const getColorByStatus = ({ e }: { e: MarkerStatusEnum }) => {
         switch (e) {
+            case MarkerStatusEnum.NEW:
+                return "#00BDFF";
+
+            case MarkerStatusEnum.ON_MODERATION:
+                return "#e3ff11";
+
+            case MarkerStatusEnum.MODERATOR_REJECTED:
+                return "#FF6011";
+
             case MarkerStatusEnum.PUBLISHED:
                 return "#2EFF9B";
 
             case MarkerStatusEnum.NOT_PUBLISHED:
-                return "#00BDFF";
+                return "#6b6b6b";
 
-            case MarkerStatusEnum.ON_MODERATION:
-                return "#FF6011";
             default:
-                return "#ffffff";
+                return "#6b6b6b";
         }
     };
 
     const color = getColorByStatus({ e: status });
-
-    console.log(color);
 
     return <div className={`absolute top-4 right-4 w-2.5 h-2.5 rounded-full`} style={{ background: color }}></div>;
 };
