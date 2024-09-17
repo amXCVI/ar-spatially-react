@@ -10,6 +10,7 @@ const useProfileSettingsGroupHook = () => {
         register,
         handleSubmit,
         setValue,
+        setError,
         formState: { errors, isValid },
     } = useForm<{ name: string; nickname: string; email: string }>();
 
@@ -34,6 +35,12 @@ const useProfileSettingsGroupHook = () => {
                 })
                 .then((res) => {
                     setData({ user: res });
+                })
+                .catch((err) => {
+                    // Если ошибка - в поле nickname
+                    if (err.status === 409) {
+                        setError("nickname", { message: "Nickname already exists" });
+                    }
                 });
         }
     };

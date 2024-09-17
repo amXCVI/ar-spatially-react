@@ -133,13 +133,14 @@ const updateUser = async ({
         ),
     );
 
-    try {
-        const response: AxiosResponse<ApiResponseInterface<UserInterface>> = await apiClient.post(url, formData);
-
-        return response.data.data;
-    } catch (error) {
-        throw new Error(`${url} ErrorRequest: ${error}`);
-    }
+    return apiClient
+        .post(url, formData)
+        .then((res: AxiosResponse<ApiResponseInterface<UserInterface>>) => {
+            return res.data.data;
+        })
+        .catch((err: ApiResponseInterface<string>) => {
+            throw err;
+        });
 };
 
 const updateUserPassword = async ({

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { ReactNode } from "react";
 
 import EditIcon from "../assets/edit-icon.svg?react";
@@ -10,7 +10,7 @@ interface TextFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
 }
 
 export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
-    ({ id, label, icon, ...props }: TextFieldProps, ref) => {
+    ({ id, label, errorMessage, icon, ...props }: TextFieldProps, ref) => {
         return (
             <div className="flex flex-col gap-2 w-full">
                 <label className="roboto-regular-13 text-gray20" htmlFor={id}>
@@ -25,6 +25,7 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
                         ref={ref}
                     />
                 </div>
+                {errorMessage ? <div className="regular-16 text-error px-4">{errorMessage}</div> : <Fragment />}
             </div>
         );
     },

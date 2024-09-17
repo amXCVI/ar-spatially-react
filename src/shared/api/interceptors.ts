@@ -3,6 +3,7 @@ import Cookies from "universal-cookie";
 
 import { routes } from "../config";
 import { CookiesConstants, LSConstants } from "../config/constants";
+import { ApiResponseInterface } from "../types";
 import { ApiEndpoints } from "./endpoints";
 
 const onRequest = (config: InternalAxiosRequestConfig): InternalAxiosRequestConfig => {
@@ -43,7 +44,7 @@ const onResponse = (response: AxiosResponse): AxiosResponse => {
     return response;
 };
 
-const onResponseError = (error: AxiosError): Promise<AxiosError> => {
+const onResponseError = (error: AxiosError<ApiResponseInterface<string>>): Promise<AxiosError> => {
     switch (error.response?.status) {
         case 401:
             localStorage.removeItem(LSConstants.accessToken);
@@ -51,8 +52,9 @@ const onResponseError = (error: AxiosError): Promise<AxiosError> => {
             break;
 
         default:
-            break;
+            throw error.response?.data;
     }
+
     return Promise.reject(JSON.stringify(error));
 };
 

@@ -4,7 +4,7 @@ import { useProfileSettingsGroupHook } from "../model";
 import { ProfileSettingsGroup, TextField } from "./components";
 
 export const PersonalInfoBlock = () => {
-    const { register, handleSubmit, handleEditPersonalInfo, userProvider } = useProfileSettingsGroupHook();
+    const { register, handleSubmit, handleEditPersonalInfo, userProvider, errors } = useProfileSettingsGroupHook();
 
     return (
         <ProfileSettingsGroup title="Personal info">
@@ -17,24 +17,19 @@ export const PersonalInfoBlock = () => {
                     </button>
                 </div>
 
-                <TextField
-                    label="Your name"
-                    {...register("name", {
-                        required: "Required field",
-                    })}
-                />
+                <TextField label="Your name" {...register("name")} errorMessage={errors.name?.message} />
                 <TextField
                     label="Your nickname"
                     {...register("nickname", {
                         required: "Required field",
                     })}
+                    errorMessage={errors.nickname?.message}
                 />
                 <TextField
                     label="Your email"
-                    {...register("email", {
-                        required: "Required field",
-                    })}
+                    {...register("email")}
                     type="email"
+                    errorMessage={errors.email?.message}
                     disabled={userProvider === UserProviders.EMAIL}
                 />
             </form>
