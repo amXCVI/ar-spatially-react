@@ -1,7 +1,9 @@
 import { AxiosError, AxiosInstance, AxiosResponse, InternalAxiosRequestConfig } from "axios";
+import Cookies from "universal-cookie";
 
 import { routes } from "../config";
-import { LSConstants } from "../config/constants";
+import { CookiesConstants, LSConstants } from "../config/constants";
+import { ApiEndpoints } from "./endpoints";
 
 const onRequest = (config: InternalAxiosRequestConfig): InternalAxiosRequestConfig => {
     const accessToken = localStorage.getItem(LSConstants.accessToken);
@@ -19,6 +21,25 @@ const onRequestError = (error: AxiosError): Promise<AxiosError> => {
 };
 
 const onResponse = (response: AxiosResponse): AxiosResponse => {
+    // Здесь после каждого запроса проверяю, если время жизни токена истекло - запрашиваю новый
+    // Время жизни в VITE_APP_ACCESS_TOKEN_LIFE_TIME_DAYS должно быть меньше реального времени жизни
+    const cookies = new Cookies(null, { path: "/" });
+
+    const cookieExists = cookies.get(CookiesConstants.accessTokenLifeTime);
+
+    if (!cookieExists) {
+        ApiEndpoints.user.touch().then((res) => {
+            localStorage.setItem(LSConstants.accessToken, res);
+
+            cookies.set(CookiesConstants.accessTokenLifeTime, "true", {
+                path: "/",
+                expires: new Date(
+                    Date.now() + Number(import.meta.env.VITE_APP_ACCESS_TOKEN_LIFE_TIME_DAYS) * 24 * 60 * 60 * 1000,
+                ),
+            });
+        });
+    }
+
     return response;
 };
 

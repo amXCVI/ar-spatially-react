@@ -23,7 +23,6 @@ const ArObjectItem = ({ object }: ArObjectItemProps) => {
 };
 
 const Status = ({ status }: { status: MarkerStatusEnum }) => {
-    // ! Разобраться, какой цвет какому статусу соответствует
     const getColorByStatus = ({ e }: { e: MarkerStatusEnum }) => {
         switch (e) {
             case MarkerStatusEnum.NEW:
