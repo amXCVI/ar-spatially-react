@@ -1,6 +1,6 @@
 import { AuthProvider } from "@/features/login-modal";
 
-import { UserContextProvider } from "@/shared/stores";
+import { UserContextProvider, WalletProvider } from "@/shared/stores";
 
 import AppRouter from "./router/app-router";
 
@@ -8,7 +8,9 @@ function App() {
     return (
         <AuthProvider>
             <UserContextProvider>
-                <AppRouter />
+                <WalletProvider>
+                    <AppRouter />
+                </WalletProvider>
             </UserContextProvider>
         </AuthProvider>
     );

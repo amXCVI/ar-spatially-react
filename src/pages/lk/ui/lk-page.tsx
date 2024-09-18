@@ -1,5 +1,6 @@
 import { LogoutButton } from "@/entities/logout-button";
 import { ProfileInfo } from "@/entities/profile-info";
+import { WalletConnectButton } from "@/entities/wallet-connect-button";
 
 import { ArObjectUploader } from "@/features/ar-objects-uploader";
 import Header from "@/features/header";
@@ -9,7 +10,6 @@ import { routes } from "@/shared/config";
 import { DarkLayout } from "@/shared/ui/layouts";
 
 import AccountIcon from "../assets/account-icon.svg?react";
-import MetamaskWalletIcon from "../assets/metamask-icon.svg?react";
 
 const LkPage = () => {
     return (
@@ -42,18 +42,7 @@ const RightPanel = ({ className }: { className?: string }) => {
             lg:border-l-2 border-silver-sand
             min-h-[calc(100vh-160px)] ${className}`}
         >
-            <div className="flex flex-col gap-4 w-full">
-                <h4 className="onest-semibold-18 text-white">Your wallet</h4>
-                <div
-                    className="flex items-center
-                    border-2 border-silver-sand hover:border-spanish-gray duration-300 cursor-pointer rounded-[25px]"
-                >
-                    <div className="p-5">
-                        <MetamaskWalletIcon />
-                    </div>
-                    <span className="roboto-medium-15 text-white">Connect digital wallet</span>
-                </div>
-            </div>
+            <WalletConnectButton />
             <div className="flex flex-col gap-4 w-full">
                 <h4 className="onest-semibold-18 text-white">Account settings</h4>
                 <a href={`${routes.lk}/${routes.profileSettings}`}>
