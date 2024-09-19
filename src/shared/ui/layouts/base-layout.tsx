@@ -1,7 +1,8 @@
+import React from "react";
 import { Outlet } from "react-router-dom";
 
-import { LoginModal } from "@/features/login-modal";
-import { WalletConnectModal } from "@/features/wallets-connect-modal";
+const WalletConnectModal = React.lazy(() => import("@/features/wallets-connect-modal"));
+const LoginModal = React.lazy(() => import("@/features/login-modal"));
 
 const BaseLayout = () => {
     return (

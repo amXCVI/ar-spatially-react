@@ -1,3 +1,3 @@
 import { WalletConnectModal } from "./ui";
 
-export { WalletConnectModal };
+export default WalletConnectModal;
