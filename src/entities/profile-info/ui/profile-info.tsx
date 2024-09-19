@@ -27,7 +27,7 @@ const ProfileInfo = ({ className }: { className?: string }) => {
             </div>
             {!!user && (
                 <div className="flex flex-col gap-3">
-                    <h3 className="onest-bold-24 text-white">{user.name}</h3>
+                    <h3 className="onest-bold-24 text-white">{user.name ?? user.nickname}</h3>
                     <div className="flex gap-3 items-center flex-wrap">
                         <div
                             className="flex gap-2.5 items-center px-2 py-1

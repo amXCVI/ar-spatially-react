@@ -11,15 +11,16 @@ const useProfileSettingsGroupHook = () => {
         handleSubmit,
         setValue,
         setError,
+        control,
         formState: { errors, isValid },
-    } = useForm<{ name: string; nickname: string; email: string }>();
+    } = useForm<{ name: string; nickname: string; email: string }>({ mode: "onBlur" });
 
     const { user, setData } = useUserContext();
 
     useEffect(() => {
         if (user) {
-            setValue("name", user.name ?? "");
-            setValue("nickname", user.nickname);
+            setValue("name", user.name ?? user.nickname);
+            setValue("nickname", `@${user.nickname}`);
             setValue("email", user.email);
         }
     }, [setValue, user]);
@@ -30,7 +31,7 @@ const useProfileSettingsGroupHook = () => {
                 .updateUser({
                     userId: user.userId,
                     name: e.name,
-                    nickname: e.nickname,
+                    nickname: e.nickname.replace("@", ""),
                     email: user.provider === UserProviders.EMAIL ? "" : e.email,
                 })
                 .then((res) => {
@@ -45,7 +46,7 @@ const useProfileSettingsGroupHook = () => {
         }
     };
 
-    return { register, handleSubmit, errors, handleEditPersonalInfo, userProvider: user?.provider };
+    return { register, handleSubmit, errors, handleEditPersonalInfo, control, userProvider: user?.provider };
 };
 
 export { useProfileSettingsGroupHook };

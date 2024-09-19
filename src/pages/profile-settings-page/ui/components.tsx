@@ -7,10 +7,11 @@ interface TextFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
     label: string;
     errorMessage?: string;
     icon?: ReactNode;
+    children?: ReactNode;
 }
 
 export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
-    ({ id, label, errorMessage, icon, ...props }: TextFieldProps, ref) => {
+    ({ id, label, errorMessage, icon, children, ...props }: TextFieldProps, ref) => {
         return (
             <div className="flex flex-col gap-2 w-full">
                 <label className="roboto-regular-13 text-gray20" htmlFor={id}>
@@ -24,6 +25,7 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
                         id={id}
                         ref={ref}
                     />
+                    {children ?? <Fragment />}
                 </div>
                 {errorMessage ? <div className="regular-16 text-error px-4">{errorMessage}</div> : <Fragment />}
             </div>

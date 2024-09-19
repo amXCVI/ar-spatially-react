@@ -1,10 +1,13 @@
+import { Controller } from "react-hook-form";
+
 import { UserProviders } from "@/shared/types";
 
 import { useProfileSettingsGroupHook } from "../model";
 import { ProfileSettingsGroup, TextField } from "./components";
 
 export const PersonalInfoBlock = () => {
-    const { register, handleSubmit, handleEditPersonalInfo, userProvider, errors } = useProfileSettingsGroupHook();
+    const { register, handleSubmit, handleEditPersonalInfo, control, userProvider, errors } =
+        useProfileSettingsGroupHook();
 
     return (
         <ProfileSettingsGroup title="Personal info">
@@ -18,13 +21,32 @@ export const PersonalInfoBlock = () => {
                 </div>
 
                 <TextField label="Your name" {...register("name")} errorMessage={errors.name?.message} />
-                <TextField
-                    label="Your nickname"
-                    {...register("nickname", {
+                <Controller
+                    control={control}
+                    name="nickname"
+                    rules={{
                         required: "Required field",
-                    })}
-                    errorMessage={errors.nickname?.message}
+                        pattern: {
+                            value: /^@[a-zA-Z0-9]*$/,
+                            message: "Invalid nickname",
+                        },
+                        // maxLength: { value: 10, message: `Максимум ${10} знаков` },
+                        minLength: { value: 2, message: `Nickname cannot be empty` },
+                    }}
+                    render={({ field }) => (
+                        <TextField
+                            label="Your nickname"
+                            {...field}
+                            onChange={(e) => {
+                                if (e.target.value) {
+                                    field.onChange(e);
+                                }
+                            }}
+                            errorMessage={errors.nickname?.message}
+                        />
+                    )}
                 />
+
                 <TextField
                     label="Your email"
                     {...register("email")}
