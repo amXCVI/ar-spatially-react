@@ -9,7 +9,7 @@ import { ApiEndpoints } from "./endpoints";
 const onRequest = (config: InternalAxiosRequestConfig): InternalAxiosRequestConfig => {
     const accessToken = localStorage.getItem(LSConstants.accessToken);
 
-    config.headers.set("x-api-key", "Key CxgSuxAVKjs8fRkcVLwZo3M9wn1t6tpr");
+    config.headers.set("x-api-key", `Key ${import.meta.env.VITE_APPX_API_KEY}`);
     if (accessToken) {
         config.headers.set("Authorization", `Bearer ${accessToken}`);
     }
@@ -47,6 +47,9 @@ const onResponse = (response: AxiosResponse): AxiosResponse => {
 const onResponseError = (error: AxiosError<ApiResponseInterface<string>>): Promise<AxiosError> => {
     switch (error.response?.status) {
         case 401:
+            if (error.config?.url?.includes("/gateway/user/touch")) {
+                break;
+            }
             localStorage.removeItem(LSConstants.accessToken);
             window.location.pathname = routes.home;
             break;
