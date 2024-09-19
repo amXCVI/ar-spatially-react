@@ -68,7 +68,7 @@ const ArNftPage = () => {
                     <TextP className="text-spanish-gray text-start">
                         This is our Web AR demo experience. You can try it now and explore our solution in practice.
                     </TextP>
-                    <a className="mx-auto mt-5 xl:mt-auto" href={`${routes.home}#contact`}>
+                    <a className="mx-auto mt-5 xl:mt-auto" href={`${routes.root}#contact`}>
                         <DefaultButton className="">
                             <span className="text-white">Try AR Now</span>
                         </DefaultButton>

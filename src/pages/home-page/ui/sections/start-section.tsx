@@ -68,7 +68,7 @@ const StartSection = () => {
 
                     <div className="flex justify-between lg:justify-center w-full">
                         <img src={footerStars} className="-ml-2 lg:hidden" />
-                        <a href={`${routes.home}#contact`}>
+                        <a href={`${routes.root}#contact`}>
                             <DefaultButton className="backdrop-blur bg-none text-gray90">Try AR</DefaultButton>
                         </a>
                         <div />

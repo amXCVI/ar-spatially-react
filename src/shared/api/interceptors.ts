@@ -51,7 +51,7 @@ const onResponseError = (error: AxiosError<ApiResponseInterface<string>>): Promi
                 break;
             }
             localStorage.removeItem(LSConstants.accessToken);
-            window.location.pathname = routes.home;
+            window.location.pathname = routes.root;
             break;
 
         default:

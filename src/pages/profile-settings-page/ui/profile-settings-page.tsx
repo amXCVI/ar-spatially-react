@@ -1,5 +1,6 @@
 import { LogoutButton } from "@/entities/logout-button";
 import { ProfileInfo } from "@/entities/profile-info";
+import { NavLink } from "react-router-dom";
 
 import Header from "@/features/header";
 
@@ -50,7 +51,7 @@ const RightPanel = ({ className }: { className?: string }) => {
             min-h-[calc(100vh-160px)] ${className}`}
         >
             <div className="flex flex-col gap-4 w-full">
-                <a href={`${routes.lk}`}>
+                <NavLink to={`/${routes.lk}`}>
                     <div
                         className="flex items-center
                     border-2 border-silver-sand hover:border-spanish-gray duration-300 cursor-pointer rounded-[25px]"
@@ -60,7 +61,8 @@ const RightPanel = ({ className }: { className?: string }) => {
                         </div>
                         <span className="roboto-medium-15 text-white">Back</span>
                     </div>
-                </a>
+                </NavLink>
+
                 <LogoutButton />
             </div>
         </div>

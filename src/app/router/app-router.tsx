@@ -19,10 +19,10 @@ const LkPage = React.lazy(() => import("@/pages/lk"));
 const AppRouter = () => {
     const routers = createBrowserRouter([
         {
-            path: "/",
+            path: routes.root,
             element: <BaseLayout />,
             children: [
-                { path: routes.home, element: <HomePage /> },
+                { index: true, element: <HomePage /> },
 
                 { path: routes.map, element: <MapPage /> },
 

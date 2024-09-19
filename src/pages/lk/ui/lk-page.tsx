@@ -1,6 +1,7 @@
 import { LogoutButton } from "@/entities/logout-button";
 import { ProfileInfo } from "@/entities/profile-info";
 import { WalletConnectButton } from "@/entities/wallet-connect-button";
+import { Link } from "react-router-dom";
 
 import { ArObjectUploader } from "@/features/ar-objects-uploader";
 import Header from "@/features/header";
@@ -45,7 +46,7 @@ const RightPanel = ({ className }: { className?: string }) => {
             <WalletConnectButton />
             <div className="flex flex-col gap-4 w-full">
                 <h4 className="onest-semibold-18 text-white">Account settings</h4>
-                <a href={`${routes.lk}/${routes.profileSettings}`}>
+                <Link to={routes.profileSettings}>
                     <div
                         className="flex items-center
                     border-2 border-silver-sand hover:border-spanish-gray duration-300 cursor-pointer rounded-[25px]"
@@ -55,7 +56,7 @@ const RightPanel = ({ className }: { className?: string }) => {
                         </div>
                         <span className="roboto-medium-15 text-white">Account settings</span>
                     </div>
-                </a>
+                </Link>
 
                 <LogoutButton />
 

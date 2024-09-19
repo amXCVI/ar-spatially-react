@@ -26,21 +26,15 @@
         />
 
         <!-- Images preload -->
-        <link
-            rel="preload"
-            fetchpriority="high"
-            as="image"
-            href="/images/landing/start-section/bg-image.svg"
-            type="image/svg"
-        />
+        <link rel="prefetch" fetchpriority="high" as="image" href="/images/landing/start-section/bg-image.svg" />
 
         <!-- Video on product -->
-        <link rel="preload" as="video" href="/video/cat1_web.webm" type="video/webm" />
-        <link rel="preload" as="video" href="/video/cat_web.webm" type="video/webm" />
-        <link rel="preload" as="video" href="/video/tuning.webm" type="video/webm" />
+        <link rel="prefetch" as="video" href="/video/cat1_web.webm" type="video/webm" />
+        <link rel="prefetch" as="video" href="/video/cat_web.webm" type="video/webm" />
+        <link rel="prefetch" as="video" href="/video/tuning.webm" type="video/webm" />
 
         <!-- Google auth -->
-        <script src="https://accounts.google.com/gsi/client" onload="console.log('TODO: add onload function')"></script>
+        <script src="https://accounts.google.com/gsi/client"></script>
 
         <!-- @google/model-viewer -->
         <script

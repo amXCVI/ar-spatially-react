@@ -1,6 +1,6 @@
 import { useOutsideClick } from "@ar-kit/shared/hooks";
 import { Fragment, useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { AuthContext, SignInPopupModes } from "@/features/login-modal";
 
@@ -51,7 +51,7 @@ const Header = ({ white }: HeaderInterface) => {
                             lg:px-12 xl:px-0\
                             flex justify-between`}
             >
-                <a href={routes.home} className="block">
+                <a href={routes.root} className="block">
                     <Logo style={{ fill: white ? "white" : "#1F2020", maxWidth: "65vw" }} />
                 </a>
 
@@ -62,7 +62,7 @@ const Header = ({ white }: HeaderInterface) => {
                                 className={`${item.desctopOnly ? "hidden" : "flex"} lg:flex items-center p-4 bg-white30 rounded-full lg:bg-[#ffffff00]`}
                                 key={item.id + "header-menu-item"}
                             >
-                                <a href={item.href} className={`font-medium font-manrope text-[14px]`}>
+                                <Link to={`/${item.href}`} className={`font-medium font-manrope text-[14px]`}>
                                     <b
                                         className={
                                             white
@@ -72,7 +72,7 @@ const Header = ({ white }: HeaderInterface) => {
                                     >
                                         {item.title}
                                     </b>
-                                </a>
+                                </Link>
                             </div>
                         );
                     })}
@@ -143,10 +143,10 @@ export const MobileMenu = ({ white = false, show, className, iconClassname }: Mo
                     <div className={`flex gap-6 flex-wrap justify-center my-10`}>
                         {menuLinks.map((item) => {
                             return item.desctopOnly ? (
-                                <a key={item.id} className="flex flex-col items-center w-1/4" href={item.href}>
+                                <Link key={item.id} className="flex flex-col items-center w-1/4" to={`/${item.href}`}>
                                     <div className="flex justify-center items-center w-10 h-12">{item.icon}</div>
                                     <label className="medium-14 text-white">{item.title}</label>
-                                </a>
+                                </Link>
                             ) : (
                                 <Fragment key={item.id} />
                             );
@@ -154,16 +154,16 @@ export const MobileMenu = ({ white = false, show, className, iconClassname }: Mo
                     </div>
 
                     <div className="flex gap-2 md:gap-5">
-                        <a href={import.meta.env.VITE_APP_NFTST_APPSTORE_URL}>
+                        <Link to={import.meta.env.VITE_APP_NFTST_APPSTORE_URL}>
                             <DefaultButton className="bg-none text-white !py-3 border-none">
                                 <AppStoreButton style={{ fill: "#7a7a7a" }} />
                             </DefaultButton>
-                        </a>
-                        <a href={import.meta.env.VITE_APP_NFTST_PLAYMARKET_URL}>
+                        </Link>
+                        <Link to={import.meta.env.VITE_APP_NFTST_PLAYMARKET_URL}>
                             <DefaultButton className="bg-none text-white !py-3 border-none">
                                 <PlayMarketButton style={{ fill: "#7a7a7a" }} />
                             </DefaultButton>
-                        </a>
+                        </Link>
                     </div>
 
                     <Socials className="my-10 gap-5 2sm:gap-10" itemClassName="fill-white" />
@@ -182,7 +182,7 @@ const Profile = ({ show }: { show: boolean }) => {
 
     const handleClickProfile = () => {
         if (authenticated) {
-            navigation(routes.lk);
+            navigation(`/${routes.lk}`);
         } else {
             openLoginModal(SignInPopupModes.SignUp);
         }

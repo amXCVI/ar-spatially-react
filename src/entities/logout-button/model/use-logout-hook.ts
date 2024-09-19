@@ -12,7 +12,7 @@ const useLogoutHook = () => {
 
     const handleLogout = () => {
         logout(() => {
-            navigate(routes.home);
+            navigate(routes.root);
         });
     };
     return { handleLogout };

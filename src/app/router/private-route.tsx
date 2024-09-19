@@ -11,7 +11,7 @@ const PrivateRoute = () => {
     switch (authenticated) {
         // неавторизован
         case false:
-            return <Navigate to={routes.home} replace />;
+            return <Navigate to={routes.root} replace />;
 
         // авторизован
         case true:

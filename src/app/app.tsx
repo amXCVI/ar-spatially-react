@@ -4,7 +4,7 @@ import { UserContextProvider, WalletProvider } from "@/shared/stores";
 
 import AppRouter from "./router/app-router";
 
-function App() {
+const App = () => {
     return (
         <AuthProvider>
             <UserContextProvider>
@@ -14,6 +14,6 @@ function App() {
             </UserContextProvider>
         </AuthProvider>
     );
-}
+};
 
 export default App;
