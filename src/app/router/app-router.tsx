@@ -7,15 +7,14 @@ import { BaseLayout } from "@/shared/ui/layouts";
 
 import PrivateRoute from "./private-route";
 
-const LkPage = React.lazy(() => import("@/pages/lk"));
 const ProfileSettingsPage = React.lazy(() => import("@/pages/profile-settings-page"));
-
 const BlockchainPage = React.lazy(() => import("@/pages/blockchain-page"));
+const ProductPage = React.lazy(() => import("@/pages/product-page"));
+const ArNftPage = React.lazy(() => import("@/pages/ar-nft-page"));
 const ErrorPage = React.lazy(() => import("@/pages/error-page"));
 const HomePage = React.lazy(() => import("@/pages/home-page"));
 const MapPage = React.lazy(() => import("@/pages/map-page"));
-const ProductPage = React.lazy(() => import("@/pages/product-page"));
-const ArNftPage = React.lazy(() => import("@/pages/ar-nft-page"));
+const LkPage = React.lazy(() => import("@/pages/lk"));
 
 const AppRouter = () => {
     const routers = createBrowserRouter([
@@ -48,7 +47,7 @@ const AppRouter = () => {
     ]);
 
     return (
-        <Suspense>
+        <Suspense fallback={<div />}>
             <RouterProvider router={routers} fallbackElement={<div />} />
         </Suspense>
     );

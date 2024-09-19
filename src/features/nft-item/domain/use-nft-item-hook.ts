@@ -1,13 +1,13 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
-import { UserContext } from "@/shared/stores";
+import { useUserContext } from "@/shared/stores";
 
 const useNftItemHook = ({ ownerId }: { ownerId: string }) => {
     const [previewMode, setPreviewMode] = useState<boolean>(false);
     const [fullDescription, setFullDescription] = useState<boolean>(false);
     const [isMyObject, setIsMyObject] = useState<boolean>(false);
 
-    const { user } = useContext(UserContext);
+    const { user } = useUserContext();
 
     useEffect(() => {
         if (user && user.userId === ownerId) {

@@ -1,11 +1,11 @@
 import { MapContext, MapContextProvider } from "./map-context";
 import { useUserLayersHook } from "./user-layers/use-user-layers-hook";
-import { UserContext, UserContextProvider } from "./user/user-context-provider";
+import { UserContextProvider, useUserContext } from "./user/user-context-provider";
 import { WalletProvider, useWalletContext } from "./wallets-context";
 
 export { useUserLayersHook };
 
-export { UserContextProvider, UserContext };
+export { UserContextProvider, useUserContext };
 
 export { MapContext, MapContextProvider };
 

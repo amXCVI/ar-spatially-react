@@ -1,4 +1,4 @@
-import { ReactNode, createContext } from "react";
+import { ReactNode, createContext, useContext } from "react";
 
 import { UserInterface } from "@/shared/types";
 
@@ -10,26 +10,23 @@ type Props = {
 
 type IUserContext = {
     user: UserInterface | null;
-    forceGetUser: () => void;
     setData: (e: { user: UserInterface | null }) => void;
 };
 
 const initialValue = {
     user: null,
     setData: () => {},
-    forceGetUser: () => {},
 };
 
 const UserContext = createContext<IUserContext>(initialValue);
 
 const UserContextProvider = ({ children }: Props) => {
-    const { user, forceGetUser, setData } = useUserHook();
+    const { user, setData } = useUserHook();
 
     return (
         <UserContext.Provider
             value={{
                 user,
-                forceGetUser,
                 setData,
             }}
         >
@@ -38,4 +35,14 @@ const UserContextProvider = ({ children }: Props) => {
     );
 };
 
-export { UserContext, UserContextProvider };
+const useUserContext = (): IUserContext => {
+    const context = useContext(UserContext);
+
+    if (!context) {
+        throw new Error("useWalletContext must be used within an WalletProvider");
+    }
+
+    return context;
+};
+
+export { UserContextProvider, useUserContext };

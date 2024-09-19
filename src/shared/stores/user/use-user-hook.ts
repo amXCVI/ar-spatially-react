@@ -1,42 +1,46 @@
-import { useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 
 import { AuthContext } from "@/features/login-modal";
 
 import { ApiEndpoints } from "@/shared/api";
+import { LSConstants } from "@/shared/config/constants";
 import { UserInterface } from "@/shared/types";
 
 const useUserHook = () => {
     const { authenticated } = useContext(AuthContext);
 
-    const [user, setUser] = useState<UserInterface | null>(null);
+    const [user, setUser] = useState<UserInterface | null>(
+        JSON.parse(localStorage.getItem(LSConstants.userData) || "null"),
+    );
 
-    const getData = () => {
-        ApiEndpoints.user.getMe().then((res) => {
-            setUser(res);
-        });
+    const setUserData = (e: UserInterface | null) => {
+        setUser(e);
+        localStorage.setItem(LSConstants.userData, JSON.stringify(e));
     };
+
+    const getData = useCallback(() => {
+        ApiEndpoints.user.getMe().then((res) => {
+            setUserData(res);
+        });
+    }, []);
 
     useEffect(() => {
         if (!user && authenticated) {
             getData();
         }
-    }, [authenticated, user]);
+    }, [authenticated, getData, user]);
 
     useEffect(() => {
         if (!authenticated) {
-            setUser(null);
+            setUserData(null);
         }
     }, [authenticated]);
 
-    const forceGetUser = () => {
-        getData();
-    };
-
     const setData = (e: { user: UserInterface | null }) => {
-        setUser(e.user);
+        setUserData(e.user);
     };
 
-    return { user, forceGetUser, setData };
+    return { user, setData };
 };
 
 export { useUserHook };

@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext, SignInPopupModes } from "@/features/login-modal";
 
 import { menuLinks, routes } from "@/shared/config";
-import { UserContext } from "@/shared/stores";
+import { useUserContext } from "@/shared/stores";
 import { DefaultButton } from "@/shared/ui/buttons";
 import { Socials } from "@/shared/ui/socials";
 
@@ -178,7 +178,7 @@ const Profile = ({ show }: { show: boolean }) => {
 
     const { openLoginModal, authenticated } = useContext(AuthContext);
 
-    const { user } = useContext(UserContext);
+    const { user } = useUserContext();
 
     const handleClickProfile = () => {
         if (authenticated) {

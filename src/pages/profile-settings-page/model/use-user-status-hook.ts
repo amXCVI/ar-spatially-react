@@ -1,11 +1,9 @@
-import { useContext } from "react";
-
 import { ApiEndpoints } from "@/shared/api";
-import { UserContext } from "@/shared/stores";
+import { useUserContext } from "@/shared/stores";
 import { UserStatus } from "@/shared/types";
 
 const useUserStatusHook = () => {
-    const { user, setData } = useContext(UserContext);
+    const { user, setData } = useUserContext();
 
     const handleChaangeStatus = (e: UserStatus) => {
         if (user) {

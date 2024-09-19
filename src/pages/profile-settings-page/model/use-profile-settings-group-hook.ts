@@ -1,8 +1,8 @@
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 
 import { ApiEndpoints } from "@/shared/api";
-import { UserContext } from "@/shared/stores";
+import { useUserContext } from "@/shared/stores";
 import { UserProviders } from "@/shared/types";
 
 const useProfileSettingsGroupHook = () => {
@@ -14,7 +14,7 @@ const useProfileSettingsGroupHook = () => {
         formState: { errors, isValid },
     } = useForm<{ name: string; nickname: string; email: string }>();
 
-    const { user, setData } = useContext(UserContext);
+    const { user, setData } = useUserContext();
 
     useEffect(() => {
         if (user) {
