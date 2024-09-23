@@ -16,11 +16,7 @@ import nftStPhone from "/images/ar-nft/phone_35.webp";
 
 const ArNftPage = () => {
     return (
-        <DarkLayout
-            className="flex flex-col justify-between 
-                       bg-[url(/images/product/bg.svg)] bg-cover bg-no-repeat bg-center
-                      "
-        >
+        <DarkLayout className="flex flex-col justify-between">
             <Header white />
             <div
                 className="container mx-auto px-6
