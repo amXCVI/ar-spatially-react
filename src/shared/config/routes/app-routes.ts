@@ -8,6 +8,7 @@ const routes = {
     playground: "playground",
     lk: "personal_page",
     profileSettings: "profile_settings",
+    docs: "https://ar-spatially.gitbook.io/ar-spatially-documentation/platform-architecture/ar-nft",
 
     undefined: "*",
 };

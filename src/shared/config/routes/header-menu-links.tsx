@@ -60,11 +60,12 @@ export const menuLinks = [
         icon: <BlockchainIcon />,
     },
     { id: "8", title: "Event", href: routes.event, desctopOnly: true, icon: <EventIcon /> },
-    {
-        id: "9",
-        title: "Docs",
-        href: "",
-        desctopOnly: true,
-        icon: <DocsIcon />,
-    },
 ];
+
+export const docsMenuLink = {
+    id: "9",
+    title: "Docs",
+    href: routes.docs,
+    desctopOnly: true,
+    icon: <DocsIcon />,
+};

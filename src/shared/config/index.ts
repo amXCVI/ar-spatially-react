@@ -1,4 +1,4 @@
 import { ApiConstants } from "./constants";
-import routes, { menuLinks } from "./routes";
+import routes, { docsMenuLink, menuLinks } from "./routes";
 
-export { routes, menuLinks, ApiConstants };
+export { routes, menuLinks, docsMenuLink, ApiConstants };

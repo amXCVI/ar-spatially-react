@@ -17,7 +17,7 @@ const useUserAvatarHook = () => {
         if (!authenticated) {
             openLoginModal(SignInPopupModes.SignIn);
         } else {
-            navigation(routes.lk);
+            navigation(`/${routes.lk}`);
         }
     };
 

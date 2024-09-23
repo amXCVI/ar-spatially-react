@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 import { AuthContext, SignInPopupModes } from "@/features/login-modal";
 
-import { menuLinks, routes } from "@/shared/config";
+import { docsMenuLink, menuLinks, routes } from "@/shared/config";
 import { useUserContext } from "@/shared/stores";
 import { DefaultButton } from "@/shared/ui/buttons";
 import { Socials } from "@/shared/ui/socials";
@@ -76,6 +76,19 @@ const Header = ({ white }: HeaderInterface) => {
                             </div>
                         );
                     })}
+                    <div className={`hidden lg:flex items-center p-4 bg-white30 rounded-full lg:bg-[#ffffff00]`}>
+                        <Link to={docsMenuLink.href} className={`font-medium font-manrope text-[14px]`}>
+                            <b
+                                className={
+                                    white
+                                        ? "text-white hover:text-blue-accent duration-200"
+                                        : "text-gray90 hover:text-blue-accent duration-200"
+                                }
+                            >
+                                {docsMenuLink.title}
+                            </b>
+                        </Link>
+                    </div>
                 </div>
 
                 <MobileMenu show={show} />
@@ -151,6 +164,10 @@ export const MobileMenu = ({ white = false, show, className, iconClassname }: Mo
                                 <Fragment key={item.id} />
                             );
                         })}
+                        <Link className="flex flex-col items-center w-1/4" to={docsMenuLink.href}>
+                            <div className="flex justify-center items-center w-10 h-12">{docsMenuLink.icon}</div>
+                            <label className="medium-14 text-white">{docsMenuLink.title}</label>
+                        </Link>
                     </div>
 
                     <div className="flex gap-2 md:gap-5">
