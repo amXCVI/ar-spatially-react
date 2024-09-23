@@ -11,11 +11,12 @@ import { routes } from "@/shared/config";
 import { DarkLayout } from "@/shared/ui/layouts";
 
 import AccountIcon from "../assets/account-icon.svg?react";
+import PlusIcon from "../assets/plus-icon.svg?react";
 
 const LkPage = () => {
     return (
         <DarkLayout className="flex flex-col">
-            <Header white />
+            <Header white actionButton={<HeaderActionButton />} />
 
             <div
                 className="grid grid-cols-4
@@ -60,8 +61,21 @@ const RightPanel = ({ className }: { className?: string }) => {
 
                 <LogoutButton />
 
-                <ArObjectUploader />
+                <ArObjectUploader className="hidden lg:flex" />
             </div>
+        </div>
+    );
+};
+
+const HeaderActionButton = () => {
+    return (
+        <div
+            className={`flex justify-center items-center z-[1]
+                cursor-pointer hover:bg-white50 w-20 h-20
+                border border-blue-accent bg-white30 rounded-full p-4 backdrop-blur
+                overflow-hidden`}
+        >
+            <PlusIcon />
         </div>
     );
 };

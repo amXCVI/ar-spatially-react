@@ -1,5 +1,5 @@
 import { useOutsideClick } from "@ar-kit/shared/hooks";
-import { Fragment, useContext, useEffect, useState } from "react";
+import { Fragment, ReactNode, useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import { AuthContext, SignInPopupModes } from "@/features/login-modal";
@@ -22,9 +22,10 @@ import PersonIcon from "../assets/person-icon.svg?react";
 
 interface HeaderInterface {
     white?: boolean;
+    actionButton?: ReactNode;
 }
 
-const Header = ({ white }: HeaderInterface) => {
+const Header = ({ white, actionButton }: HeaderInterface) => {
     const [show, setShow] = useState(true);
 
     useEffect(() => {
@@ -93,7 +94,9 @@ const Header = ({ white }: HeaderInterface) => {
 
                 <MobileMenu show={show} />
 
-                <Profile show={show} />
+                <div className={`fixed ${show ? "top-28 right-4 lg:top-6" : "bottom-28 right-4 lg:top-32"}`}>
+                    {actionButton ?? <Profile />}
+                </div>
             </div>
         </header>
     );
@@ -190,7 +193,7 @@ export const MobileMenu = ({ white = false, show, className, iconClassname }: Mo
     );
 };
 
-const Profile = ({ show }: { show: boolean }) => {
+const Profile = () => {
     const navigation = useNavigate();
 
     const { openLoginModal, authenticated } = useContext(AuthContext);
@@ -210,7 +213,6 @@ const Profile = ({ show }: { show: boolean }) => {
             onClick={handleClickProfile}
             className={`flex justify-center items-center z-[1]
                         cursor-pointer hover:bg-white50 w-20 h-20
-                        fixed ${show ? "top-28 right-4 lg:top-6" : "bottom-28 right-4 lg:top-32"}
                         border border-blue-accent bg-white30 rounded-full p-4 backdrop-blur
                         overflow-hidden`}
         >

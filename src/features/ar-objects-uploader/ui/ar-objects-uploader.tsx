@@ -2,11 +2,11 @@ import UploadObjectIcon from "../assets/upload-object-icon.svg?react";
 
 import { useArObjectsUploader } from "../model";
 
-const ArObjectUploader = () => {
+const ArObjectUploader = ({ className }: { className?: string }) => {
     const { getRootProps, getInputProps, isDragActive } = useArObjectsUploader();
 
     return (
-        <div className="flex flex-col gap-4 w-full">
+        <div className={`flex flex-col gap-4 w-full ${className}`}>
             <h4 className="onest-semibold-18 text-white">Load AR Object</h4>
             <div
                 className={`flex flex-col justify-center items-center aspect-square

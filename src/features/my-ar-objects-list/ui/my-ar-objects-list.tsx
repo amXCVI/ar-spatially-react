@@ -13,6 +13,7 @@ const MyArObjectsList = () => {
                     return <ArObjectItem key={objectItem.id} object={objectItem} />;
                 })}
             </div>
+            {!objectsList.length && <span className="onest-medium-22 text-white">No Objects </span>}
         </div>
     );
 };
