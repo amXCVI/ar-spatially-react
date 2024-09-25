@@ -94,7 +94,7 @@ const Header = ({ white, actionButton }: HeaderInterface) => {
 
                 <MobileMenu show={show} />
 
-                <div className={`fixed ${show ? "top-28 right-4 lg:top-6" : "bottom-28 right-4 lg:top-32"}`}>
+                <div className={`fixed ${show ? "top-20 right-4 lg:top-6" : "bottom-20 right-4 lg:top-[5.5rem]"}`}>
                     {actionButton ?? <Profile />}
                 </div>
             </div>
@@ -126,7 +126,7 @@ export const MobileMenu = ({ white = false, show, className, iconClassname }: Mo
                     iconClassname
                         ? iconClassname
                         : `flex flex-col justify-center items-center gap-2 duration-500
-                            cursor-pointer hover:bg-white50 w-20 h-20
+                            cursor-pointer hover:bg-white50 w-14 h-14
                             fixed ${show ? "top-4 right-4 lg:top-6" : "bottom-4 right-4 lg:top-6"}
                             border border-blue-accent bg-white30 rounded-full p-4 backdrop-blur`
                 }
@@ -212,7 +212,7 @@ const Profile = () => {
         <div
             onClick={handleClickProfile}
             className={`flex justify-center items-center z-[1]
-                        cursor-pointer hover:bg-white50 w-20 h-20
+                        cursor-pointer hover:bg-white50 w-14 h-14
                         border border-blue-accent bg-white30 rounded-full p-4 backdrop-blur
                         overflow-hidden`}
         >

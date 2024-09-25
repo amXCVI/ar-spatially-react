@@ -79,7 +79,7 @@ const LoginModal = () => {
         <div
             className={`fixed top-0 right-0 bottom-0 left-0 
                         flex justify-center items-center 
-                        backdrop-blur-sm z-[100] p-0 sm:p-5 pt-40 sm:pt-5 bg-white5 overflow-y-scroll`}
+                        backdrop-blur-sm z-[101] p-0 sm:p-5 pt-40 sm:pt-5 bg-white5 overflow-y-scroll`}
         >
             <div
                 ref={modalRef}

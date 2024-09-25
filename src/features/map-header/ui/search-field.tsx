@@ -41,7 +41,7 @@ const SearchField = ({ className, onChangeMapCenter }: MapHeaderProps) => {
             ref={searchFieldRef}
         >
             <div
-                className={`flex gap-3 ${isActiveField ? "justify-start" : "justify-center"} items-center p-4
+                className={`flex gap-3 ${isActiveField ? "justify-start" : "justify-center"} items-center px-4 h-12
                             cursor-pointer
                            `}
                 onClick={() => toggleIsActiveSearchField(true)}

@@ -9,7 +9,13 @@ interface MapBottomSheetProps {
 
 const MapBottomSheet = ({ closeBottomSheet, isOpen, children }: MapBottomSheetProps) => {
     return (
-        <Sheet isOpen={isOpen} onClose={closeBottomSheet} detent="content-height" className="xl:hidden">
+        <Sheet
+            isOpen={isOpen}
+            onClose={closeBottomSheet}
+            detent="content-height"
+            className="xl:hidden"
+            style={{ zIndex: "100" }}
+        >
             <Sheet.Container style={{ backgroundColor: "#00000080" }}>
                 <Sheet.Header />
                 <Sheet.Content>{children}</Sheet.Content>
