@@ -5,7 +5,7 @@ import { routes } from "@/shared/config";
 import Logo from "../assets/logo.svg?react";
 
 import { AppsSelect } from "./apps-select";
-import { MobileSearchField } from "./mobile-search-field";
+import { MobileSearch } from "./mobile-search";
 import { ObjectsToggler } from "./object-owner-toggler";
 import SearchField from "./search-field";
 import { UserAvatar } from "./user-avatar";
@@ -16,26 +16,27 @@ interface MapHeaderProps {
 
 const MapHeader = ({ onChangeMapCenter }: MapHeaderProps) => {
     return (
-        <header className="fixed z-20 top-0 right-0 left-0">
+        <header className="fixed z-20 bottom-0 xl:bottom-auto xl:top-0 right-0 left-0">
             <div
-                className="container mx-auto pt-10 px-6 
-                           flex flex-row gap-4 md:gap-10 justify-between"
+                className="container mx-auto pb-7 lg:pb-10 xl:pb-0 xl:pt-10 px-6 
+                           flex flex-row gap-2 3sm:gap-4 md:gap-10 justify-between"
             >
-                <a href={routes.root} className="flex items-center">
-                    <Logo className="hidden lg:block" style={{ fill: "white" }} />
-                    <MapMobileMenu className="lg:hidden h-14" />
+                <a href={routes.root} className="items-center hidden xl:flex">
+                    <Logo style={{ fill: "white" }} />
                 </a>
 
-                <div className="flex items-center lg:w-full justify-between lg:justify-end gap-6">
-                    <ObjectsToggler />
-                    <SearchField onChangeMapCenter={onChangeMapCenter} className="hidden lg:block" />
-                    <AppsSelect className="hidden lg:flex" />
-                    <UserAvatar className="" />
-                    <MapMobileMenu className="hidden lg:block" />
-                </div>
+                <MapMobileMenu className="lg:hidden" />
+
+                <MobileSearch onChangeMapCenter={onChangeMapCenter} className="xl:hidden" />
+
+                <ObjectsToggler />
+                <SearchField onChangeMapCenter={onChangeMapCenter} className="hidden xl:block" />
+                <AppsSelect />
+                <UserAvatar className="fixed top-6 right-6 lg:static" />
+                <MapMobileMenu className="hidden lg:block" />
             </div>
 
-            <div className="fixed bottom-28 right-0 left-0 lg:hidden">
+            {/* <div className="fixed bottom-28 right-0 left-0 lg:hidden">
                 <div
                     className="container mx-auto pt-10 px-6
                                flex flex-row gap-4 justify-between
@@ -43,7 +44,7 @@ const MapHeader = ({ onChangeMapCenter }: MapHeaderProps) => {
                 >
                     <MobileSearchField onChangeMapCenter={onChangeMapCenter} className="block lg:hidden" />
                 </div>
-            </div>
+            </div> */}
         </header>
     );
 };
@@ -54,8 +55,8 @@ const MapMobileMenu = ({ className }: { className?: string }) => (
         show={false}
         white
         iconClassname="flex justify-center items-center duration-500
-                       cursor-pointer hover:bg-white50 w-[60px] h-[60px]
-                       border-2 border-raisin-black bg-dark-gray rounded-full backdrop-blur"
+                       cursor-pointer hover:bg-white50 w-10 h-10 lg:w-14 lg:h-14 p-2
+                       border border-white bg-dark-gray rounded-full backdrop-blur"
     />
 );
 

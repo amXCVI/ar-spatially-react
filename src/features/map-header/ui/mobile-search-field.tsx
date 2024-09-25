@@ -1,6 +1,7 @@
 import { useRef } from "react";
 
 import { useOutsideClick } from "@/shared/lib/use-outside-click";
+import { LayerStatus } from "@/shared/types";
 
 import AppsIcon from "../assets/apps-icon.svg?react";
 import CloseIcon from "../assets/close.svg?react";
@@ -31,7 +32,7 @@ const MobileSearchField = ({ onChangeMapCenter }: MapHeaderProps) => {
         resetSearch: resetSearch,
     });
 
-    const { handleClickApp, apps } = useAppsSelectHook();
+    const { handleClickApp, layersList } = useAppsSelectHook();
 
     const searchFieldRef = useOutsideClick(() => {
         resetSearch();
@@ -98,12 +99,12 @@ const MobileSearchField = ({ onChangeMapCenter }: MapHeaderProps) => {
 
                 {fieldMode === FieldModes.APPS && (
                     <div className="flex justify-between gap-6 flex-wrap mb-8">
-                        {apps.map((appItem) => {
-                            const isSelectedApp = appItem.isSelected;
+                        {layersList.map((appItem) => {
+                            const isSelectedApp = appItem.status === LayerStatus.ACTIVE;
 
                             return (
                                 <AppItem
-                                    key={appItem.layer.id}
+                                    key={appItem.id}
                                     appItem={appItem}
                                     handleClickApp={handleClickApp}
                                     isSelectedApp={isSelectedApp}

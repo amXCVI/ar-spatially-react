@@ -101,12 +101,11 @@ const getHighlightedText = (text: string, highlight: string) => {
     const parts = text.split(new RegExp(`(${highlight})`, "gi"));
     return (
         <span>
-            {" "}
             {parts.map((part, i) => (
                 <span key={i} style={part.toLowerCase() === highlight.toLowerCase() ? { color: "white" } : {}}>
                     {part}
                 </span>
-            ))}{" "}
+            ))}
         </span>
     );
 };
@@ -115,15 +114,17 @@ export const PlaceItem = ({
     item,
     onSelect,
     searchStr,
+    className,
 }: {
     item: google.maps.places.AutocompletePrediction;
     onSelect: (e: string) => void;
     searchStr: string;
+    className?: string;
 }) => {
     return (
         <div
             onClick={() => onSelect(item.place_id)}
-            className="flex gap-2.5 items-center lg:px-4 py-3 rounded-[15px] hover:bg-[#6565657f] lg:border lg:border-dark-gray hover:border-[#9c9c9c26] cursor-pointer"
+            className={`flex gap-2.5 items-center lg:px-4 py-3 rounded-[15px] hover:bg-[#6565657f] lg:border lg:border-dark-gray hover:border-[#9c9c9c26] cursor-pointer ${className}`}
         >
             <GooglePlaceIcon className="min-h-3.5 min-w-5" />
             <span className="overflow-hidden text-ellipsis max-w-full regular-16 text-white/35">
@@ -137,15 +138,17 @@ export const ObjectItem = ({
     item,
     onSelect,
     searchStr,
+    className,
 }: {
     item: ObjectInterface;
     onSelect: (e: string) => void;
     searchStr: string;
+    className?: string;
 }) => {
     return (
         <div
             onClick={() => onSelect(item.id)}
-            className="flex gap-2.5 items-center lg:px-4 py-3 rounded-[15px] hover:bg-[#6565657f] lg:border lg:border-dark-gray hover:border-[#9c9c9c26] cursor-pointer"
+            className={`flex gap-2.5 items-center lg:px-4 py-3 rounded-[15px] hover:bg-[#6565657f] lg:border lg:border-dark-gray hover:border-[#9c9c9c26] cursor-pointer ${className}`}
         >
             <ObjectIcon className="min-h-3.5 min-w-5" />
             <span className="overflow-hidden text-ellipsis max-w-full regular-16 text-white/35">

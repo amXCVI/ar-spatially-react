@@ -1,3 +1,5 @@
+import { MapBottomSheet, useMapBottomSheetHook } from "@/entities/map-bottom-sheet";
+
 import { LayerInterface, LayerStatus } from "@/shared/types";
 
 import AddAppIcon from "../assets/add-app.svg?react";
@@ -9,34 +11,39 @@ import { useAppsSelectHook } from "../domain";
 const AppsSelect = ({ className }: { className?: string }) => {
     const { appsSelectRef, isActive, toggleIsActiveSearchField, handleClickApp, layersList } = useAppsSelectHook();
 
+    const { openBottomSheet, closeBottomSheet, isOpen } = useMapBottomSheetHook();
+
     return (
         <div
-            ref={appsSelectRef}
             className={`flex flex-col duration-500 
-                        border-2 border-raisin-black rounded-[30px] bg-dark-gray
-                        relative ${className}`}
+                        border border-white rounded-[30px] bg-dark-gray
+                        relative w-10 h-10 lg:w-auto lg:h-14 aspect-square ${className}`}
         >
             <div
-                className={`flex gap-3 ${isActive ? "justify-start" : "justify-center"} items-center p-4
+                className={`flex gap-3 ${isActive ? "justify-start" : "justify-center"} items-center p-2 lg:px-4 m-auto
                             cursor-pointer
                            `}
-                onClick={() => toggleIsActiveSearchField()}
+                onClick={() => {
+                    toggleIsActiveSearchField();
+                    openBottomSheet();
+                }}
             >
-                <AppsIcon className="z-10 min-w-6" />
+                <AppsIcon className="z-10 lg:w-6 lg:h-6" />
 
                 <span
                     className={`onest-regular-22 text-quick-silver whitespace-nowrap overflow-hidden text-ellipsis
-                                hidden xl:block z-10`}
+                                hidden lg:block z-10`}
                 >
                     {"Apps"}
                 </span>
             </div>
             <div
-                className={`flex flex-row gap-6 justify-between flex-wrap
-                            absolute top-0 left-0 w-56 ${isActive ? "max-w-80" : "max-w-0"}
+                ref={appsSelectRef}
+                className={`hidden xl:flex flex-row gap-6 justify-between flex-wrap
+                            absolute xl:-top-1 xl:-left-1 w-56 ${isActive ? "max-w-80" : "max-w-0"}
                             bg-dark-gray rounded-[30px]
                             border-2 border-raisin-black
-                            ${isActive ? "p-4 pt-14" : "p-0"} duration-500`}
+                            ${isActive ? "p-4 pb-14 xl:pb-0 xl:pt-14" : "p-0"} duration-500`}
             >
                 {isActive &&
                     layersList.map((appItem) => {
@@ -52,6 +59,27 @@ const AppsSelect = ({ className }: { className?: string }) => {
                         );
                     })}
             </div>
+
+            <MapBottomSheet isOpen={isOpen} closeBottomSheet={closeBottomSheet}>
+                <div
+                    ref={appsSelectRef}
+                    className={`flex flex-row gap-6 justify-between flex-wrap
+                                p-4 pb-24 lg:pb-32`}
+                >
+                    {layersList.map((appItem) => {
+                        const isSelectedApp = appItem.status === LayerStatus.ACTIVE;
+
+                        return (
+                            <AppItem
+                                key={appItem.id}
+                                appItem={appItem}
+                                handleClickApp={handleClickApp}
+                                isSelectedApp={isSelectedApp}
+                            />
+                        );
+                    })}
+                </div>
+            </MapBottomSheet>
         </div>
     );
 };
@@ -84,7 +112,7 @@ const AppItem = ({
                     <span className="text-6xl font-bold uppercase">{appItem.title[0]}</span>
                 )}
             </div>
-            <span className="roboto-bold-13 text-white ">{appItem.title}</span>
+            <span className="roboto-bold-13 text-white text-nowrap">{appItem.title}</span>
             <div className="absolute top-0 -right-2 cursor-pointer">
                 {isSelectedApp ? <RemoveAppIcon /> : <AddAppIcon />}
             </div>

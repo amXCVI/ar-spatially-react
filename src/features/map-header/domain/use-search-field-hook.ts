@@ -136,6 +136,7 @@ const useSearchFieldHook = ({
             setSearchInputValue("");
             setFindedObjects([]);
             setPredictionResults([]);
+            resetSearch();
         },
         [findedObjects, onChangeMapCenter, places, placesService, sessionToken, setSearchParams],
     );
