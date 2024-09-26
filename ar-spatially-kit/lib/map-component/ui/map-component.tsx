@@ -11,6 +11,7 @@ interface MapComponentProps {
     onClickMarker: (markerId: string) => void;
     googleApiKey: string;
     mapId?: string;
+    onChangeMapCenter?: (e: { lat: number; lng: number; zoom: number }) => void;
 }
 export interface MapRefType {
     setMapCenter: (e: {
@@ -25,7 +26,7 @@ export interface MapRefType {
 const MapComponent = forwardRef((props: MapComponentProps, ref: Ref<MapRefType>) => {
     const {
         onChangeMapZoom,
-        onChangeMapCenter,
+        changeMapCenter,
         zoom,
         mapTypes,
         selectedMapTypeId,
@@ -33,7 +34,7 @@ const MapComponent = forwardRef((props: MapComponentProps, ref: Ref<MapRefType>)
         center,
         setMapCenter,
     } = useMapControlHook({
-        onChangeCoords: props.onChangeCoords,
+        onChangeMapCenter: props.onChangeMapCenter,
     });
 
     useImperativeHandle(ref, () => ({ setMapCenter }));
@@ -44,7 +45,7 @@ const MapComponent = forwardRef((props: MapComponentProps, ref: Ref<MapRefType>)
             zoom={zoom}
             loadingMap={props.loadingMap}
             onChangeMapZoom={onChangeMapZoom}
-            onChangeMapCenter={onChangeMapCenter}
+            onChangeMapCenter={changeMapCenter}
             mapTypes={mapTypes}
             selectedMapTypeId={selectedMapTypeId}
             onSelectMapType={onSelectMapType}

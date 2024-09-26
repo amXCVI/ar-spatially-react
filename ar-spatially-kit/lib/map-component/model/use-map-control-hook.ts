@@ -8,14 +8,14 @@ const useMapControlHook = ({
     btn_map_change_scheme,
     btn_map_change_satellite,
     btn_map_change_hybrid,
-    onChangeCoords,
+    onChangeMapCenter,
 }: {
     defaultZoom?: number;
     defaultCenter?: google.maps.LatLngLiteral;
     btn_map_change_scheme?: string;
     btn_map_change_satellite?: string;
     btn_map_change_hybrid?: string;
-    onChangeCoords?: (e: { center?: google.maps.LatLngLiteral; zoom?: number }) => void;
+    onChangeMapCenter?: (e: { lat: number; lng: number; zoom: number }) => void;
 }) => {
     const mapRef = useRef(null);
     const [zoom, setZoom] = useState<number>(
@@ -48,16 +48,16 @@ const useMapControlHook = ({
     const onChangeMapZoom = (e: number) => {
         setZoom(e);
         localStorage.setItem(localStorageMapOptionsZoomKey, JSON.stringify(e));
-        if (onChangeCoords) {
-            onChangeCoords({ zoom: e });
+        if (onChangeMapCenter) {
+            onChangeMapCenter({ zoom: e, ...center  });
         }
     };
 
-    const onChangeMapCenter = (e: google.maps.LatLngLiteral) => {
+    const changeMapCenter = (e: google.maps.LatLngLiteral) => {
         setCenter(e);
         localStorage.setItem(localStorageMapOptionsCenterKey, JSON.stringify(e));
-        if (onChangeCoords) {
-            onChangeCoords({ center: e });
+        if (onChangeMapCenter) {
+            onChangeMapCenter({  ...e, zoom: zoom });
         }
     };
 
@@ -78,7 +78,7 @@ const useMapControlHook = ({
     return {
         zoom,
         onChangeMapZoom,
-        onChangeMapCenter,
+        changeMapCenter,
         mapTypes,
         selectedMapTypeId,
         onSelectMapType,
