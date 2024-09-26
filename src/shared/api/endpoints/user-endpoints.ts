@@ -33,7 +33,7 @@ const signup = async ({ login, password }: { login: string; password: string }) 
     );
 
     try {
-        const response: AxiosResponse<ApiResponseInterface<{ token: string; newUser: boolean; user: UserInterface }>> =
+        const response: AxiosResponse<ApiResponseInterface<{ token: string; user: UserInterface }>> =
             await apiClient.post(url, formData);
 
         return response.data.data;
@@ -79,10 +79,11 @@ const signupGoogle = async ({ googleToken }: { googleToken: string }) => {
     const url = `/gateway/user/signup-google-access`;
 
     try {
-        const response: AxiosResponse<ApiResponseInterface<UserInterface>> = await apiClient.post(url, {
-            system: ApiConstants.system,
-            token: googleToken,
-        });
+        const response: AxiosResponse<ApiResponseInterface<{ token: string; user: UserInterface; newUser: boolean }>> =
+            await apiClient.post(url, {
+                system: ApiConstants.system,
+                token: googleToken,
+            });
 
         return response.data.data;
     } catch (error) {

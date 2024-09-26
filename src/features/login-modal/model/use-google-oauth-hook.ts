@@ -1,4 +1,5 @@
 import { ApiEndpoints } from "@/shared/api";
+import { LSConstants } from "@/shared/config/constants";
 import { useAuthorizeHook } from "@/shared/lib/authorize-hook";
 
 const useGoogleOauthHook = () => {
@@ -17,6 +18,7 @@ const useGoogleOauthHook = () => {
         console.log(tokenResponse);
         ApiEndpoints.user.signupGoogle({ googleToken: tokenResponse.access_token }).then((res) => {
             onLogin({ token: res.token });
+            localStorage.setItem(LSConstants.userData, JSON.stringify(res.user));
         });
     }
 

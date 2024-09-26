@@ -70,6 +70,7 @@ const AuthProvider = ({ children }: Props) => {
 
     const logout = (logoutCallback?: () => void) => {
         localStorage.removeItem(LSConstants.accessToken);
+        localStorage.removeItem(LSConstants.userData);
         setAuthenticated(false);
 
         if (logoutCallback) {
