@@ -193,6 +193,27 @@ const fintPointsByLocationLayer = async ({
         });
 };
 
+const getObject = async ({ objectId }: { objectId: string }) => {
+    const url = "/gateway/object/get";
+
+    const formData = new FormData();
+    formData.append("objectId", objectId);
+
+    try {
+        const response: AxiosResponse<
+            ApiResponseInterface<{
+                arObject: ObjectInterface;
+                likes: number;
+                userLike: boolean;
+            }>
+        > = await apiClient.post(url, formData);
+
+        return response.data.data;
+    } catch (error) {
+        throw new Error(`${url} ErrorRequest: ${error}`);
+    }
+};
+
 const uploadObject = async ({
     modelFile,
     previewFile,
@@ -256,6 +277,7 @@ export const objectApi = {
     findPointsByOwner,
     findPointsLocationLayer,
     uploadObject,
+    getObject,
     findText,
     findMe,
 };

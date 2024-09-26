@@ -100,7 +100,7 @@ const useSearchFieldHook = ({
             // Если объект - из наших приложений - открываем его
             if (object) {
                 setSearchParams({
-                    [SearchParamsConstants.markerIdSearchParamsKey]: object.id,
+                    [SearchParamsConstants.objectIdSearchParamsKey]: object.id,
                 });
 
                 setSelectedPlaceDescription(object.description);
@@ -116,7 +116,7 @@ const useSearchFieldHook = ({
                 };
 
                 setSearchParams({
-                    [SearchParamsConstants.markerIdSearchParamsKey]: detailRequestOptions.placeId,
+                    [SearchParamsConstants.objectIdSearchParamsKey]: detailRequestOptions.placeId,
                 });
 
                 const detailsRequestCallback = (placeDetails: google.maps.places.PlaceResult | null) => {

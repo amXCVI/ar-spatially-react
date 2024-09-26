@@ -1,5 +1,5 @@
 const SearchParamsConstants = {
-    markerIdSearchParamsKey: "markerid",
+    objectIdSearchParamsKey: "objectId",
 };
 
 export { SearchParamsConstants };

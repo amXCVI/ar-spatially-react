@@ -20,7 +20,7 @@ const useMapHook = () => {
     const mapComponentRef = useRef<MapRefType>(null);
 
     const [searchParams, setSearchParams] = useSearchParams();
-    const selectedMarkerId = searchParams.get(SearchParamsConstants.markerIdSearchParamsKey);
+    const selectedMarkerId = searchParams.get(SearchParamsConstants.objectIdSearchParamsKey);
 
     const { myObjectsOnly } = useContext(MapContext);
 
@@ -46,7 +46,7 @@ const useMapHook = () => {
     };
 
     const onClickMarker = (markerId: string) => {
-        setSearchParams({ [SearchParamsConstants.markerIdSearchParamsKey]: markerId });
+        setSearchParams({ [SearchParamsConstants.objectIdSearchParamsKey]: markerId });
     };
 
     const onCloseViewer = () => {
@@ -64,6 +64,10 @@ const useMapHook = () => {
 
             if (markerItem) {
                 setSelectedMarker(markerItem);
+            } else {
+                ApiEndpoints.object.getObject({ objectId: selectedMarkerId }).then((res) => {
+                    setSelectedMarker(res.arObject);
+                });
             }
         }
 
