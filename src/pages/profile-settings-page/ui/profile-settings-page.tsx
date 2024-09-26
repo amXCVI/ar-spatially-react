@@ -54,7 +54,7 @@ const RightPanel = ({ className }: { className?: string }) => {
                 <NavLink to={`/${routes.lk}`}>
                     <div
                         className="flex items-center
-                    border-2 border-silver-sand hover:border-spanish-gray duration-300 cursor-pointer rounded-[25px]"
+                    border-2 border-silver-sand hover:border-spanish-gray duration-300 cursor-pointer rounded-[90px]"
                     >
                         <div className="p-5 min-w-16 flex justify-center">
                             <BackIcon />

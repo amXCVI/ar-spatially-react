@@ -33,7 +33,8 @@ const signup = async ({ login, password }: { login: string; password: string }) 
     );
 
     try {
-        const response: AxiosResponse<ApiResponseInterface<{ token: string }>> = await apiClient.post(url, formData);
+        const response: AxiosResponse<ApiResponseInterface<{ token: string; newUser: boolean; user: UserInterface }>> =
+            await apiClient.post(url, formData);
 
         return response.data.data;
     } catch (error) {

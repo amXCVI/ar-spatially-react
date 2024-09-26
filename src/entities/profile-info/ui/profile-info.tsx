@@ -9,7 +9,7 @@ const ProfileInfo = ({ className }: { className?: string }) => {
     return (
         <div
             className={`flex gap-6 lg:gap-9 items-center p-6
-                border-2 border-silver-sand rounded-[30px] lg:rounded-[55px] ${className}`}
+                border-2 border-silver-sand rounded-[70px] lg:rounded-[90px] ${className}`}
         >
             <div
                 className={`border-2 border-raisin-black rounded-full overflow-hidden
