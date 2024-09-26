@@ -27,7 +27,8 @@ const NftItem = ({ selectedMarker, onCloseViewer }: NftItemInterface) => {
         toggleFullDescriptionText,
         isMyObject,
         share,
-    } = useNftItemHook({ ownerId: selectedMarker?.ownerId ?? "" });
+        distanceStr,
+    } = useNftItemHook({ selectedMarker });
 
     const nftViewerRef = useOutsideClick(() => {
         if (window.innerWidth > 1024) {
@@ -155,7 +156,7 @@ const NftItem = ({ selectedMarker, onCloseViewer }: NftItemInterface) => {
                         <h1 className="roboto-regular-24 text-white">{selectedMarker?.title}</h1>
                         <div className="flex gap-2.5">
                             <LocationPathIcon />
-                            <span className="roboto-medium-13 text-white">36.6 km</span>
+                            <span className="roboto-medium-13 text-white">{distanceStr}</span>
                         </div>
                     </div>
 

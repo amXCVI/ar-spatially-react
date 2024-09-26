@@ -1,21 +1,36 @@
 import { useEffect, useState } from "react";
 
+import { useDistanceCalculatorHook } from "@/shared/lib/use-distance-calculator-hook";
 import { useUserContext } from "@/shared/stores";
+import { MarkerInterface } from "@/shared/types";
 
-const useNftItemHook = ({ ownerId }: { ownerId: string }) => {
+const useNftItemHook = ({ selectedMarker }: { selectedMarker: MarkerInterface | null }) => {
     const [previewMode, setPreviewMode] = useState<boolean>(false);
     const [fullDescription, setFullDescription] = useState<boolean>(false);
     const [isMyObject, setIsMyObject] = useState<boolean>(false);
+    const [distanceStr, setDistanceStr] = useState<string>("");
 
     const { user } = useUserContext();
 
+    const { haversineDistanceByMyLocation } = useDistanceCalculatorHook();
+
     useEffect(() => {
-        if (user && user.userId === ownerId) {
+        if (user && user.userId === selectedMarker?.ownerId) {
             setIsMyObject(true);
         } else {
             false;
         }
-    }, [ownerId, user]);
+    }, [selectedMarker?.ownerId, user]);
+
+    useEffect(() => {
+        if (selectedMarker) {
+            haversineDistanceByMyLocation({ lat: selectedMarker.location.lat, lng: selectedMarker.location.lng }).then(
+                (res) => {
+                    setDistanceStr(res);
+                },
+            );
+        }
+    }, [haversineDistanceByMyLocation, selectedMarker]);
 
     const handlePreview = () => {
         setPreviewMode(true);
@@ -51,6 +66,7 @@ const useNftItemHook = ({ ownerId }: { ownerId: string }) => {
         toggleFullDescriptionText,
         isMyObject,
         share,
+        distanceStr,
     };
 };
 

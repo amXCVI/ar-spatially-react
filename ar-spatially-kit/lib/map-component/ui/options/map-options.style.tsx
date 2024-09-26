@@ -29,6 +29,10 @@ export const ButtonsContainer = styled.div`
             background-color: var(--main-color);
         }
     }
+
+    @media (min-width: ${AppMedia.md}) {
+        border: ${AppBorders.strokeWhite};
+    }
 `;
 
 export const ZoomButton = styled.div`
