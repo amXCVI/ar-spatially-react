@@ -57,6 +57,7 @@ const MobileSearch = ({ onChangeMapCenter, className }: MapHeaderProps) => {
                             value={searchInputValue}
                             placeholder="Search"
                             autoFocus
+                            type="search"
                         />
                     </div>
 
