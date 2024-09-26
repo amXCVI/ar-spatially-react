@@ -1,10 +1,14 @@
+import { MapBottomSheet, useMapBottomSheetHook } from "@/entities/map-bottom-sheet";
 import { useOutsideClick } from "@ar-kit/shared/hooks";
+import { useEffect } from "react";
 import { Fragment } from "react/jsx-runtime";
 
 import { MarkerInterface } from "@/shared/types";
 
 import CloseViewerIcon from "../assets/close-viewer-icon.svg?react";
 import EdtIcon from "../assets/edit-icon.svg?react";
+import LocationPathIcon from "../assets/location-path-icon.svg?react";
+import ShareIcon from "../assets/share-icon.svg?react";
 import ViewArIcon from "../assets/view-ar-icon.svg?react";
 
 import { useNftItemHook } from "../domain";
@@ -19,9 +23,22 @@ const NftItem = ({ selectedMarker, onCloseViewer }: NftItemInterface) => {
         useNftItemHook({ ownerId: selectedMarker?.ownerId ?? "" });
 
     const nftViewerRef = useOutsideClick(() => {
-        onCloseViewer();
-        handleClosePreview();
+        if (window.innerWidth > 1024) {
+            onCloseViewer();
+            handleClosePreview();
+        }
     });
+
+    const { openBottomSheet, closeBottomSheet, isOpen } = useMapBottomSheetHook();
+
+    useEffect(() => {
+        if (selectedMarker) {
+            openBottomSheet();
+        }
+        return () => {
+            closeBottomSheet();
+        };
+    }, [closeBottomSheet, openBottomSheet, selectedMarker]);
 
     return (
         <div
@@ -30,8 +47,9 @@ const NftItem = ({ selectedMarker, onCloseViewer }: NftItemInterface) => {
         >
             <div
                 ref={nftViewerRef}
-                className={`bg-dark-gray rounded-[30px] lg:rounded-[60px] ${previewMode ? "" : "p-6 lg:p-11"} border-2 border-raisin-black
-                            flex-col-reverse lg:flex-row gap-6 ${selectedMarker ? "flex" : "hidden"}
+                className={`hidden lg:${selectedMarker ? "flex" : "hidden"}
+                          bg-dark-gray rounded-[30px] lg:rounded-[60px] ${previewMode ? "" : "p-6 lg:p-11"} border-2 border-raisin-black
+                            flex-col-reverse lg:flex-row gap-6
                             max-h-[calc(100vh-14rem)] min-w-[90vw] md:min-w-96
                             ${previewMode ? "container max-h-[70vh] aspect-video" : ""} relative mb-28 lg:mb-0`}
             >
@@ -115,6 +133,60 @@ const NftItem = ({ selectedMarker, onCloseViewer }: NftItemInterface) => {
                     </>
                 )}
             </div>
+
+            <MapBottomSheet
+                isOpen={isOpen}
+                closeBottomSheet={closeBottomSheet}
+                onCloseStart={() => {
+                    onCloseViewer();
+                    handleClosePreview();
+                }}
+                className="lg:hidden"
+            >
+                <div className="flex flex-col gap-4 px-4 h-[90vh] overflow-y-auto">
+                    <div className="flex flex-col gap-1">
+                        <h1 className="roboto-regular-24 text-white">{selectedMarker?.title}</h1>
+                        <div className="flex gap-2.5">
+                            <LocationPathIcon />
+                            <span className="roboto-medium-13 text-white">36.6 km</span>
+                        </div>
+                    </div>
+
+                    <div className="flex flex-col bg-nft-viewer-desc-bg rounded-[30px] w-full lg:w-96 h-60 min-h-40 relative">
+                        <ModelViewer modelId={selectedMarker?.modelId} previewId={selectedMarker?.previewId} />
+                    </div>
+
+                    <div className="flex gap-7 px-2.5">
+                        <div>
+                            <ShareIcon />
+                        </div>
+                        <div>
+                            <EdtIcon />
+                        </div>
+                        <div>
+                            <ViewArIcon />
+                        </div>
+                    </div>
+
+                    <div className="flex flex-col">
+                        <p
+                            className={`manrope-regular-13 text-quick-silver relative 
+                                ${fullDescription ? "" : "line-clamp-2"} duration-500
+                                `}
+                        >
+                            {selectedMarker?.description}
+                        </p>
+                        <span
+                            className={`roboto-medium-13 ${fullDescription ? "text-blue-accent" : "text-white"} cursor-pointer mt-2.5`}
+                            onClick={toggleFullDescriptionText}
+                        >
+                            {fullDescription ? "Read less" : "Read more"}
+                        </span>
+                    </div>
+
+                    <div className="min-h-5"></div>
+                </div>
+            </MapBottomSheet>
         </div>
     );
 };

@@ -60,7 +60,7 @@ const AppsSelect = ({ className }: { className?: string }) => {
                     })}
             </div>
 
-            <MapBottomSheet isOpen={isOpen} closeBottomSheet={closeBottomSheet}>
+            <MapBottomSheet isOpen={isOpen} closeBottomSheet={closeBottomSheet} className="xl:hidden">
                 <div
                     ref={appsSelectRef}
                     className={`flex flex-row gap-6 justify-between flex-wrap

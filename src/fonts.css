@@ -126,6 +126,14 @@
     line-height: 2.25rem;
 }
 
+.roboto-regular-24 {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.5rem;
+    line-height: 2.063rem;
+}
+
 .manrope-medium-22 {
     font-family: "Manrope";
     font-style: normal;
@@ -282,6 +290,14 @@
     font-family: "Roboto";
     font-style: normal;
     font-weight: 700;
+    font-size: 0.813rem;
+    line-height: 0.938rem;
+}
+
+.roboto-medium-13 {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 500;
     font-size: 0.813rem;
     line-height: 0.938rem;
 }
