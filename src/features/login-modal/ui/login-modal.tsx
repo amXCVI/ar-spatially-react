@@ -79,12 +79,12 @@ const LoginModal = () => {
         <div
             className={`fixed top-0 right-0 bottom-0 left-0 
                         flex justify-center items-center 
-                        backdrop-blur-sm z-[101] p-0 sm:p-5 pt-40 sm:pt-5 bg-white5 overflow-y-scroll`}
+                        backdrop-blur-sm z-[101] p-0 sm:px-5 bg-white5`}
         >
             <div
                 ref={modalRef}
                 className="bg-dark-bg shadow-popup-shadow sm:rounded-[60px] p-14 flex flex-col gap-10
-                            w-full max-w-2xl"
+                            w-full max-w-2xl max-h-dvh overflow-y-scroll"
             >
                 <div className="flex flex-col items-center gap-4">
                     <img src={logo} />
