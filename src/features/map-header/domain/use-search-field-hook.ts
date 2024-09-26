@@ -33,6 +33,7 @@ const useSearchFieldHook = ({
         setSearchInputValue("");
         setFindedObjects([]);
         setPredictionResults([]);
+        setIsActiveField(false);
     };
 
     const map = useMap();

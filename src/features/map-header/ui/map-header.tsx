@@ -21,7 +21,7 @@ const MapHeader = ({ onChangeMapCenter }: MapHeaderProps) => {
                 className="container mx-auto pb-7 lg:pb-10 xl:pb-0 xl:pt-10 px-6 
                            flex flex-row gap-2 3sm:gap-4 md:gap-10 justify-between"
             >
-                <a href={routes.root} className="items-center hidden xl:flex h-14">
+                <a href={routes.root} className="items-center hidden xl:flex h-14 mr-auto">
                     <Logo style={{ fill: "white" }} />
                 </a>
 
