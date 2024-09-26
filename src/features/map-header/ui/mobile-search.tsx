@@ -64,6 +64,11 @@ const MobileSearch = ({ onChangeMapCenter, className }: MapHeaderProps) => {
                             placeholder="Search"
                             autoFocus
                             type="search"
+                            onSubmit={() => alert("!!! DONE !!!")}
+                            onBlur={() => {
+                                resetSearch();
+                                handleSetInactive();
+                            }}
                         />
                     </form>
 
