@@ -30,7 +30,28 @@ const useNftItemHook = ({ ownerId }: { ownerId: string }) => {
         setFullDescription((e) => !e);
     };
 
-    return { previewMode, handlePreview, handleClosePreview, fullDescription, toggleFullDescriptionText, isMyObject };
+    const share = ({ title, text, url }: { title: string; text: string; url: string }) => {
+        if (navigator.share) {
+            navigator
+                .share({
+                    title: title,
+                    text: text,
+                    url: url,
+                })
+                .then(() => console.log("Удалось поделиться"))
+                .catch((error) => console.log("Не удалось поделиться", error));
+        }
+    };
+
+    return {
+        previewMode,
+        handlePreview,
+        handleClosePreview,
+        fullDescription,
+        toggleFullDescriptionText,
+        isMyObject,
+        share,
+    };
 };
 
 export { useNftItemHook };

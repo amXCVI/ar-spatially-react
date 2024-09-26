@@ -19,8 +19,15 @@ interface NftItemInterface {
 }
 
 const NftItem = ({ selectedMarker, onCloseViewer }: NftItemInterface) => {
-    const { previewMode, handlePreview, handleClosePreview, fullDescription, toggleFullDescriptionText, isMyObject } =
-        useNftItemHook({ ownerId: selectedMarker?.ownerId ?? "" });
+    const {
+        previewMode,
+        handlePreview,
+        handleClosePreview,
+        fullDescription,
+        toggleFullDescriptionText,
+        isMyObject,
+        share,
+    } = useNftItemHook({ ownerId: selectedMarker?.ownerId ?? "" });
 
     const nftViewerRef = useOutsideClick(() => {
         if (window.innerWidth > 1024) {
@@ -157,12 +164,22 @@ const NftItem = ({ selectedMarker, onCloseViewer }: NftItemInterface) => {
                     </div>
 
                     <div className="flex gap-7 px-2.5">
-                        <div>
+                        <div
+                            onClick={() => {
+                                share({
+                                    title: selectedMarker?.title ?? "Marker",
+                                    text: selectedMarker?.description ?? "",
+                                    url: window.location.href,
+                                });
+                            }}
+                        >
                             <ShareIcon />
                         </div>
-                        <div>
-                            <EdtIcon />
-                        </div>
+                        {isMyObject && (
+                            <div>
+                                <EdtIcon />
+                            </div>
+                        )}
                         <div>
                             <ViewArIcon />
                         </div>
