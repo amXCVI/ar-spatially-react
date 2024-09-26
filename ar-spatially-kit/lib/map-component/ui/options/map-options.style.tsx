@@ -8,6 +8,7 @@ type MapTypeButtonProps = {
 export const MapOptionsContainer = styled.div`
     display: flex;
     flex-direction: column;
+    gap: 20px;
     position: absolute;
     right: 28px;
     top: calc(50vh - 90px);
@@ -21,9 +22,8 @@ export const ButtonsContainer = styled.div`
     display: flex;
     flex-direction: column;
     background: ${AppColors.darkGrey};
-    border: ${AppBorders.strokeWhite};
+    /* border: ${AppBorders.strokeWhite}; */
     border-radius: 30px;
-    margin: 2px 0;
     button {
         :active {
             background-color: var(--main-color);
@@ -34,7 +34,7 @@ export const ButtonsContainer = styled.div`
 export const ZoomButton = styled.div`
     cursor: pointer;
     height: 50px;
-    width: 40px;
+    width: 45px;
     background: none;
     border: none;
     display: flex;
@@ -53,8 +53,8 @@ export const ZoomButtonMinus = styled(ZoomButton)`
 
 export const GeoButton = styled.div`
     cursor: pointer;
-    height: 40px;
-    width: 40px;
+    height: 45px;
+    width: 45px;
     background: none;
     border: none;
     background-repeat: no-repeat;
@@ -71,8 +71,8 @@ export const MapTypeButton = styled.button<MapTypeButtonProps>`
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    height: 40px;
-    width: 40px;
+    height: 45px;
+    width: 45px;
     background: none;
     background: ${(props) => (props.isActiveButton ? "var(--main-color)" : AppColors.darkGrey)};
     border: none;

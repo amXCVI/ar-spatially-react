@@ -35,13 +35,13 @@ const SearchField = ({ className, onChangeMapCenter }: MapHeaderProps) => {
 
     return (
         <div
-            className={`flex flex-col ${isActiveField || selectedPlaceDescription ? "w-96" : ""} duration-500
-                        border-2 border-raisin-black rounded-[30px] bg-dark-gray
+            className={`flex flex-col justify-center ${isActiveField || selectedPlaceDescription ? "w-96" : ""} duration-500
+                        border border-white rounded-[30px] bg-dark-gray
                         relative ${className}`}
             ref={searchFieldRef}
         >
             <div
-                className={`flex gap-3 ${isActiveField ? "justify-start" : "justify-center"} items-center px-4 h-12
+                className={`flex gap-3 ${isActiveField ? "justify-start" : "justify-center mt-1"} items-center px-4 h-12
                             cursor-pointer
                            `}
                 onClick={() => toggleIsActiveSearchField(true)}

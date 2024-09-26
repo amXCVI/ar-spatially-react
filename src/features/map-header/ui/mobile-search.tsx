@@ -49,7 +49,13 @@ const MobileSearch = ({ onChangeMapCenter, className }: MapHeaderProps) => {
                     ref={searchFieldRef}
                     className="fixed bottom-7 lg:bottom-10 left-0 right-0 flex flex-col-reverse gap-2 z-[1000]"
                 >
-                    <div className="container mx-auto bg-black/80 rounded-[30px] p-2 lg:p-4 border border-white backdrop-blur-sm">
+                    <form
+                        className="container mx-auto bg-black/80 rounded-[30px] p-2 lg:p-4 border border-white backdrop-blur-sm"
+                        onSubmit={() => {
+                            resetSearch();
+                            handleSetInactive();
+                        }}
+                    >
                         <input
                             ref={inputRef}
                             onChange={onChangeInputValue}
@@ -59,7 +65,7 @@ const MobileSearch = ({ onChangeMapCenter, className }: MapHeaderProps) => {
                             autoFocus
                             type="search"
                         />
-                    </div>
+                    </form>
 
                     <div
                         className={`container mx-auto flex flex-col gap-1 rounded-[30px] bg-black duration-200

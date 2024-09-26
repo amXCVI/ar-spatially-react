@@ -71,9 +71,9 @@ const HeaderActionButton = () => {
     return (
         <div
             className={`flex justify-center items-center z-[1]
-                cursor-pointer hover:bg-white50 w-20 h-20
+                cursor-pointer hover:bg-white50 w-14 h-14
                 border border-blue-accent bg-white30 rounded-full p-4 backdrop-blur
-                overflow-hidden`}
+                overflow-hidden lg:hidden`}
         >
             <PlusIcon />
         </div>
