@@ -14,7 +14,7 @@ const ArObjectUploader = ({ className }: { className?: string }) => {
                             duration-300 cursor-pointer rounded-[25px]`}
                 {...getRootProps()}
             >
-                <input {...getInputProps()} />
+                <input {...getInputProps()} accept=".glb" />
                 <div className="p-5">
                     <UploadObjectIcon />
                 </div>
