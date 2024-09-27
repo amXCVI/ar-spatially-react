@@ -19,7 +19,7 @@ const MapHeader = ({ onChangeMapCenter }: MapHeaderProps) => {
         <header className="fixed z-20 bottom-0 xl:bottom-auto xl:top-0 right-0 left-0">
             <div
                 className="container mx-auto pb-7 lg:pb-10 xl:pb-0 xl:pt-10 px-6 
-                           flex flex-row gap-2 3sm:gap-4 md:gap-10 justify-between"
+                           flex flex-row gap-1 3sm:gap-2 md:gap-10 justify-between"
             >
                 <a href={routes.root} className="items-center hidden xl:flex h-14 mr-auto">
                     <Logo style={{ fill: "white" }} />

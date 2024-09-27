@@ -7,7 +7,7 @@ const ObjectsToggler = () => {
 
     return (
         <Fragment>
-            <div
+            <span
                 className={`xl:h-14 px-5 content-center border rounded-[22px] lg:rounded-[30px] cursor-pointer roboto-regular-13 lg:text-xl
                             ${myObjectsOnly ? "border-blue-accent text-blue-accent" : "border-white text-white"}
                             duration-300 text-nowrap
@@ -15,8 +15,8 @@ const ObjectsToggler = () => {
                 onClick={toggleObjectsOwner}
             >
                 {myObjectsOnly ? "My Objects" : "My"}
-            </div>
-            <div
+            </span>
+            <span
                 className={`xl:h-14 px-5 content-center border rounded-[22px] lg:rounded-[30px] cursor-pointer roboto-regular-13 lg:text-xl
                             ${myObjectsOnly ? "border-white text-white" : "border-blue-accent text-blue-accent"}
                             duration-300 text-nowrap
@@ -24,7 +24,7 @@ const ObjectsToggler = () => {
                 onClick={toggleObjectsOwner}
             >
                 {myObjectsOnly ? "All" : "All Objects"}
-            </div>
+            </span>
         </Fragment>
         // <div className="flex justify-center">
         //     <label className={`relative inline-flex cursor-pointer items-center`}>

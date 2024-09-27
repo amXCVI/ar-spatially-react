@@ -95,7 +95,7 @@ const AppItem = ({
 }) => {
     return (
         <div
-            className="flex flex-col items-center gap-3 relative w-min cursor-pointer"
+            className="flex flex-col items-center gap-3 relative cursor-pointer"
             key={appItem.id}
             onClick={() => handleClickApp(appItem.id)}
         >
