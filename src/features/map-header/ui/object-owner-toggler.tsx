@@ -10,7 +10,7 @@ const ObjectsToggler = () => {
             <span
                 className={`xl:h-14 px-5 content-center border rounded-[22px] lg:rounded-[30px] cursor-pointer roboto-regular-13 lg:text-xl
                             ${myObjectsOnly ? "border-blue-accent text-blue-accent" : "border-white text-white"}
-                            duration-300 text-nowrap
+                            duration-300 text-nowrap flex justify-center items-center
                             bg-black/30 backdrop-blur-sm`}
                 onClick={toggleObjectsOwner}
             >
@@ -19,7 +19,7 @@ const ObjectsToggler = () => {
             <span
                 className={`xl:h-14 px-5 content-center border rounded-[22px] lg:rounded-[30px] cursor-pointer roboto-regular-13 lg:text-xl
                             ${myObjectsOnly ? "border-white text-white" : "border-blue-accent text-blue-accent"}
-                            duration-300 text-nowrap
+                            duration-300 text-nowrap flex justify-center items-center
                             bg-black/30 backdrop-blur-sm`}
                 onClick={toggleObjectsOwner}
             >
