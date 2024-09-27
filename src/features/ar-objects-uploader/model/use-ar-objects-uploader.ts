@@ -8,7 +8,7 @@ const useArObjectsUploader = () => {
 
     const { getRootProps, getInputProps, isDragActive } = useDropzone({
         onDrop,
-        accept: { "image/*": [".jpeg", ".jpg", ".png", ".webp"] },
+        accept: { "model/gltf-binary": [".glb"] },
     });
 
     return { getRootProps, getInputProps, isDragActive };
