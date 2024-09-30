@@ -213,13 +213,13 @@ const Profile = () => {
             onClick={handleClickProfile}
             className={`flex justify-center items-center z-[1]
                         cursor-pointer hover:bg-white50 w-14 h-14
-                        border border-blue-accent bg-white30 rounded-full p-4 backdrop-blur
+                        border border-blue-accent bg-white30 rounded-full backdrop-blur
                         overflow-hidden`}
         >
             {user?.avatarId ? (
                 <img
                     src={`${import.meta.env.VITE_APP_API_BASE_URL}gateway/file/get?fileId=${user.avatarId}`}
-                    className="-m-4 max-w-max"
+                    className=""
                 />
             ) : (
                 <PersonIcon />
