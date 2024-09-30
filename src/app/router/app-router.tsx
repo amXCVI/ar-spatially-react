@@ -5,6 +5,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { routes } from "@/shared/config";
 import { BaseLayout } from "@/shared/ui/layouts";
 
+import { ErrorBoundary } from "./error-boundary";
 import PrivateRoute from "./private-route";
 
 const ProfileSettingsPage = React.lazy(() => import("@/pages/profile-settings-page"));
@@ -50,9 +51,11 @@ const AppRouter = () => {
     ]);
 
     return (
-        <Suspense fallback={<div />}>
-            <RouterProvider router={routers} fallbackElement={<div />} />
-        </Suspense>
+        <ErrorBoundary>
+            <Suspense fallback={<div />}>
+                <RouterProvider router={routers} fallbackElement={<div />} />
+            </Suspense>
+        </ErrorBoundary>
     );
 };
 
