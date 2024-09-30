@@ -1,11 +1,45 @@
-import { MouseEvent, useRef, useState } from "react";
+import { MouseEvent, TouchEvent, useEffect, useRef, useState } from "react";
+
 import { SECTORS_COUNT } from "./data";
 
 const useSpheresHook = () => {
     const spheresImageRef = useRef<HTMLDivElement | null>(null);
     const [selectedSector, setSelectedSector] = useState<number>(0);
 
+    const [rotation, setRotation] = useState(0);
+    const [startX, setStartX] = useState(0);
+    const speedFactor = 0.1; // коэффициент для замедления вращения
+
+    const handleTouchStart = (e: TouchEvent) => {
+        e.preventDefault();
+        console.log("handleTouchStart");
+        setStartX(e.touches[0].clientX);
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+        e.preventDefault();
+        console.log("handleTouchMove");
+        const moveX = e.touches[0].clientX - startX;
+        const angle = moveX * speedFactor; // уменьшить скорость вращения
+        setRotation((prevRotation) => prevRotation + angle);
+    };
+
+    const handleTouchEnd = () => {
+        console.log("handleTouchEnd");
+        const sectorAngle = 360 / SECTORS_COUNT;
+
+        // Округлить текущий угол до ближайшего сектора
+        const closestSector = Math.round(rotation / sectorAngle) * sectorAngle;
+
+        // Установить новую позицию с "прилипанием" к сектору
+        setRotation(closestSector);
+
+        // console.log(closestSector, closestSector / sectorAngle);
+        // setSelectedSector((e) => e + closestSector / sectorAngle - 3);
+    };
+
     const handleRotate = (event: MouseEvent<HTMLDivElement>) => {
+        console.log("handleRotate");
         if (spheresImageRef.current) {
             // Получаем координаты элемента
             const rect = spheresImageRef.current.getBoundingClientRect();
@@ -21,11 +55,34 @@ const useSpheresHook = () => {
             const normalizedAngle = (angle + Math.PI) / (2 * Math.PI); // приведение угла к диапазону [0, 1]
             const sector = Math.floor(normalizedAngle * SECTORS_COUNT); // делим круг на секторы
 
-            setSelectedSector((e) => e + sector - 3); // 3 подобрано эмпирически. Сдвиг от оси Х до нужной точки активности
+            console.log(sector * (360 / SECTORS_COUNT));
+            // Установить новую позицию с "прилипанием" к сектору
+            setRotation((e) => e - (sector - 3) * (360 / SECTORS_COUNT));
+
+            // setSelectedSector((e) => e + sector - 3); // 3 подобрано эмпирически. Сдвиг от оси Х до нужной точки активности
         }
     };
 
-    return { spheresImageRef, selectedSector, SECTORS_COUNT, handleRotate };
+    useEffect(() => {
+        const sectorAngle = 360 / SECTORS_COUNT;
+
+        const sector = -rotation / sectorAngle;
+
+        console.log(sector);
+
+        setSelectedSector(sector);
+    }, [rotation]);
+
+    return {
+        spheresImageRef,
+        selectedSector,
+        rotation,
+        SECTORS_COUNT,
+        handleRotate,
+        handleTouchMove,
+        handleTouchStart,
+        handleTouchEnd,
+    };
 };
 
 export { useSpheresHook };

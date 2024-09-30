@@ -8,7 +8,15 @@ import { useSpheresHook } from "../model";
 import { WorldInfo } from "./world-info";
 
 const EventPage = () => {
-    const { spheresImageRef, handleRotate, selectedSector, SECTORS_COUNT } = useSpheresHook();
+    const {
+        spheresImageRef,
+        handleRotate,
+        selectedSector,
+        rotation,
+        handleTouchStart,
+        handleTouchMove,
+        handleTouchEnd,
+    } = useSpheresHook();
 
     return (
         <DarkLayout className="flex flex-col justify-between">
@@ -22,6 +30,9 @@ const EventPage = () => {
                 <div
                     ref={spheresImageRef}
                     onClick={handleRotate}
+                    onTouchStart={handleTouchStart}
+                    onTouchMove={handleTouchMove}
+                    onTouchEnd={handleTouchEnd}
                     className={`absolute aspect-square
                                 h-[150vh] md:h-[125vh]
                                 left-1/2 -bottom-1/3 md:-bottom-1/4
@@ -37,7 +48,8 @@ const EventPage = () => {
                     <div
                         style={{
                             backgroundImage: `url(${spheres})`,
-                            transform: `rotate(${(360 / SECTORS_COUNT) * -selectedSector}deg)`,
+                            // transform: `rotate(${(360 / SECTORS_COUNT) * -selectedSector}deg)`,
+                            transform: `rotate(${rotation}deg)`,
                         }}
                         className="h-full w-full bg-no-repeat bg-cover duration-700"
                     />
