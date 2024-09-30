@@ -4,6 +4,7 @@ import Header from "@/features/header";
 import { DarkLayout } from "@/shared/ui/layouts";
 
 import Arrow from "../assets/arrow.svg?react";
+import HomeIcon from "../assets/home-icon.svg?react";
 
 import spheres from "../assets/spheres.webp";
 import { useSpheresHook } from "../model";
@@ -15,6 +16,8 @@ const EventPage = () => {
         handleRotate,
         selectedSector,
         rotation,
+        centerVisible,
+        handleCenter,
         handleTouchStart,
         handleTouchMove,
         handleTouchEnd,
@@ -38,10 +41,11 @@ const EventPage = () => {
                     onTouchEnd={handleTouchEnd}
                     className={`absolute aspect-square
                                 h-[120vh] md:h-[125vh]
-                                left-1/2 -bottom-1/3 md:-bottom-1/4
+                                left-1/2 ${centerVisible ? "bottom-[20vh]" : "-bottom-1/3 md:-bottom-1/4"}
                                 transform -translate-x-1/2 translate-y-1/2 
                                 lg:-translate-x-[80%] lg:translate-y-1/3
                                 xl:-translate-x-3/4
+                                duration-500
                                `}
                     // style={{
                     //     background:
@@ -57,22 +61,24 @@ const EventPage = () => {
                     />
                 </div>
 
-                <WorldInfo
-                    selectedSector={selectedSector}
-                    delta={window.innerWidth > 1024 ? 3 : 2}
-                    className="absolute container px-6
+                {!centerVisible && (
+                    <WorldInfo
+                        selectedSector={selectedSector}
+                        delta={window.innerWidth > 1024 ? 3 : 2}
+                        className="absolute container px-6
                                top-6 right-0 left-0
                                lg:left-1/2 lg:transform xl:translate-x-[10vh] 
                                lg:max-w-screen-3sm xl:max-w-md
                                lg:top-[10vh] xl:top-[14vh]"
-                />
+                    />
+                )}
 
                 <div
                     className="absolute lg:hidden p-2 cursor-pointer
-                                   top-1/2 transform -translate-y-1/2
-                                   left-2 2sm:left-10
-                                   animate-pulse
-                                   "
+                               top-1/2 transform -translate-y-1/2
+                               left-2 2sm:left-10
+                               animate-pulse
+                              "
                     onClick={() => handleRotateToSector(1)}
                 >
                     <Arrow />
@@ -80,13 +86,20 @@ const EventPage = () => {
 
                 <div
                     className="absolute lg:hidden p-2 cursor-pointer
-                                   top-1/2 transform -translate-y-1/2
-                                   right-2 2sm:right-10
-                                   animate-pulse
-                                   "
+                               top-1/2 transform -translate-y-1/2
+                               right-2 2sm:right-10
+                               animate-pulse
+                              "
                     onClick={() => handleRotateToSector(-1)}
                 >
                     <Arrow className="transform rotate-180" />
+                </div>
+
+                <div
+                    className="lg:hidden absolute cursor-pointer left-1/2 transform -translate-x-1/2 bottom-0 animate-pulse"
+                    onClick={handleCenter}
+                >
+                    <HomeIcon />
                 </div>
             </div>
 
