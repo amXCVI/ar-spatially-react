@@ -10,7 +10,7 @@ const useSpheresHook = () => {
 
     const [rotation, setRotation] = useState(0);
     const [startX, setStartX] = useState(0);
-    const speedFactor = 0.01; // коэффициент для замедления вращения
+    const speedFactor = 0.05; // коэффициент для замедления вращения
 
     const handleTouchStart = (e: TouchEvent) => {
         e.preventDefault();
