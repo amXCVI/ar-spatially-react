@@ -16,7 +16,7 @@ const WorldInfo = ({ selectedSector, delta, className }: WrldInfoProps) => {
             <div className="flex flex-col gap-4 ml-auto relative">
                 <h1 className="onest-bold-24 text-white uppercase">{world?.worldName}</h1>
                 <PointerLine className="hidden lg:block absolute -left-20 top-8" />
-                <div className="line-clamp-3 manrope-regular-12 text-quick-silver">
+                <div className="line-clamp-3 manrope-regular-12 text-quick-silver overflow-hidden text-ellipsis">
                     {world?.description.map((descriptionItem, index) => {
                         return (
                             <p className="" key={index + "world_description"}>
