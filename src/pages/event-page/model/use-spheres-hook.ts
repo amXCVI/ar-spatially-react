@@ -33,9 +33,6 @@ const useSpheresHook = () => {
 
         // Установить новую позицию с "прилипанием" к сектору
         setRotation(closestSector);
-
-        // console.log(closestSector, closestSector / sectorAngle);
-        // setSelectedSector((e) => e + closestSector / sectorAngle - 3);
     };
 
     const handleRotate = (event: MouseEvent<HTMLDivElement>) => {
@@ -58,9 +55,13 @@ const useSpheresHook = () => {
             console.log(sector * (360 / SECTORS_COUNT));
             // Установить новую позицию с "прилипанием" к сектору
             setRotation((e) => e - (sector - 3) * (360 / SECTORS_COUNT));
-
-            // setSelectedSector((e) => e + sector - 3); // 3 подобрано эмпирически. Сдвиг от оси Х до нужной точки активности
         }
+    };
+
+    const handleRotateToSector = (event: number) => {
+        const sectorAngle = 360 / SECTORS_COUNT;
+
+        setRotation((e) => e + sectorAngle * event);
     };
 
     useEffect(() => {
@@ -82,6 +83,7 @@ const useSpheresHook = () => {
         handleTouchMove,
         handleTouchStart,
         handleTouchEnd,
+        handleRotateToSector,
     };
 };
 

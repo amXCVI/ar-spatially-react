@@ -3,6 +3,8 @@ import Header from "@/features/header";
 
 import { DarkLayout } from "@/shared/ui/layouts";
 
+import Arrow from "../assets/arrow.svg?react";
+
 import spheres from "../assets/spheres.webp";
 import { useSpheresHook } from "../model";
 import { WorldInfo } from "./world-info";
@@ -16,6 +18,7 @@ const EventPage = () => {
         handleTouchStart,
         handleTouchMove,
         handleTouchEnd,
+        handleRotateToSector,
     } = useSpheresHook();
 
     return (
@@ -62,6 +65,28 @@ const EventPage = () => {
                                   lg:max-w-screen-3sm xl:max-w-md
                                   -top-[15vh] md:-top-[22vh] lg:top-[10vh]"
                     />
+                </div>
+
+                <div
+                    className="absolute lg:hidden p-2 cursor-pointer
+                                   top-1/2 transform -translate-y-1/2
+                                   left-2 2sm:left-10
+                                   animate-pulse
+                                   "
+                    onClick={() => handleRotateToSector(1)}
+                >
+                    <Arrow />
+                </div>
+
+                <div
+                    className="absolute lg:hidden p-2 cursor-pointer
+                                   top-1/2 transform -translate-y-1/2
+                                   right-2 2sm:right-10
+                                   animate-pulse
+                                   "
+                    onClick={() => handleRotateToSector(-1)}
+                >
+                    <Arrow className="transform rotate-180" />
                 </div>
             </div>
 
