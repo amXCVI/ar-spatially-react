@@ -1,6 +1,56 @@
-import { WorldSphereInterface } from "../types";
+import { ButterflyInterface, WorldSphereInterface } from "../types";
 
 export const SECTORS_COUNT = 10; // Количество миров в сферах
+
+// LUXURY
+const silkButterfly: ButterflyInterface = {
+    id: "4_0",
+    name: "silk",
+    description: [""],
+    imageSrc:
+        "/event-page/butterflyes/luxury/klll_3d_high_poly_textured_model_of_a_butterfly_body_wings_are__8d71a3e2-8992-4f8a-9802-694f41f645ab 1.webp",
+};
+
+const roseMarbleButterfly: ButterflyInterface = {
+    id: "4_2",
+    name: "rose marble",
+    description: [""],
+    imageSrc:
+        "/event-page/butterflyes/luxury/klll_3d_high_poly_textured_model_of_a_butterfly_body_wings_are__f0826930-d444-4f4a-b1a5-16a21a659443 1.webp",
+};
+
+const blackMarbleButterfly: ButterflyInterface = {
+    id: "4_3",
+    name: "black marble",
+    description: [""],
+    imageSrc:
+        "/event-page/butterflyes/luxury/klll_httpss.mj.runAhG4-Wf3lrA_3d_high_poly_textured_model_of__22b46c4e-bd39-48ee-b53d-aad216aaa8d5_2 1.webp",
+};
+
+// JUNGLE
+const neonFloralButterfly: ButterflyInterface = {
+    id: "7_1",
+    name: "neon floral",
+    description: [""],
+    imageSrc:
+        "/event-page/butterflyes/jungle/klll_httpss.mj.run5ECzpa-0dKE_3d_high_poly_textured_model_of__201540d4-5a00-4a9f-a33f-d3c543948045_1 1 (1).webp",
+};
+
+const frogflyButterfly: ButterflyInterface = {
+    id: "7_2",
+    name: "frogfly",
+    description: [""],
+    imageSrc:
+        "/event-page/butterflyes/jungle/klll_httpss.mj.runad7ynTYxoEY_3d_high_poly_textured_model_of_an_84863699-7cd4-45ac-a546-bcf461166849 1 (1).webp",
+};
+
+const forestMoldButterfly: ButterflyInterface = {
+    id: "7_3",
+    name: "forest mold",
+    description: [""],
+    imageSrc:
+        "/event-page/butterflyes/jungle/klll_httpss.mj.runCnfy8kBZhrs_3d_high_poly_textured_model_of__defa5473-879f-4d04-a224-55f9e91aa91a_1 (1) 1.webp",
+};
 
 export const worlds: WorldSphereInterface[] = [
     {
@@ -46,7 +96,7 @@ export const worlds: WorldSphereInterface[] = [
             "Мир Роскоши — это завораживающая вселенная, где повсюду сверкают драгоценные камни и благородные металлы. Этот мир, созданный природой и древними алхимиками, представляет собой кладезь ослепительного богатства. Его жители адаптировались к яркому блеску окружающей их среды, развив защитные механизмы для глаз, чтобы справляться с ослепительным светом драгоценных камней. Изначально этот мир был похож на другие, но стремление к богатству привело алхимиков к экспериментам по превращению обычных металлов в золото, что вызвало магический хаос, превративший мир в лабиринт из драгоценностей. Это преобразование привело к экономическому краху, когда настоящую ценность приобрели редкие, не затронутые магией материалы, скрытые глубоко под землёй. Со временем жители научились использовать своё окружение, создавая уникальные и изысканные предметы, превращая свой мир в живое произведение искусства, где каждый элемент наполнен роскошью и утончённостью.",
         ],
         imageSrc: "",
-        butterflyes: [],
+        butterflyes: [silkButterfly, roseMarbleButterfly, blackMarbleButterfly],
     },
     {
         id: "5",
@@ -75,7 +125,7 @@ export const worlds: WorldSphereInterface[] = [
             "Для учёных даже попытка каталогизировать всё биологическое богатство этого мира почти невозможна, так как сложность природы выходит за пределы человеческого понимания. В Мире Джунглей природа правит безраздельно, неподвластная цивилизации, и единственный закон, который здесь действует, — это беспощадный закон джунглей, где выживают сильнейшие, а жизнь постоянно ведёт борьбу за существование.",
         ],
         imageSrc: "",
-        butterflyes: [],
+        butterflyes: [neonFloralButterfly, frogflyButterfly, forestMoldButterfly],
     },
     {
         id: "8",

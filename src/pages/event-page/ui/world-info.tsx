@@ -25,6 +25,18 @@ const WorldInfo = ({ selectedSector, delta, className }: WrldInfoProps) => {
                         );
                     })}
                 </div>
+                <div className="flex gap-3">
+                    {world?.butterflyes.map((butterfly) => {
+                        return (
+                            <div
+                                key={butterfly.id + "_butterfly"}
+                                className="w-20 aspect-square border-2 border-raisin-black rounded-[15px] overflow-hidden cursor-pointer"
+                            >
+                                <img src={butterfly.imageSrc} />
+                            </div>
+                        );
+                    })}
+                </div>
             </div>
         </div>
     );

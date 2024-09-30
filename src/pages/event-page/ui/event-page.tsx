@@ -37,11 +37,11 @@ const EventPage = () => {
                     onTouchMove={handleTouchMove}
                     onTouchEnd={handleTouchEnd}
                     className={`absolute aspect-square
-                                h-[150vh] md:h-[125vh]
+                                h-[120vh] md:h-[125vh]
                                 left-1/2 -bottom-1/3 md:-bottom-1/4
                                 transform -translate-x-1/2 translate-y-1/2 
-                                    lg:-translate-x-[80%] lg:translate-y-1/3
-                                    xl:-translate-x-3/4
+                                lg:-translate-x-[80%] lg:translate-y-1/3
+                                xl:-translate-x-3/4
                                `}
                     // style={{
                     //     background:
@@ -51,21 +51,21 @@ const EventPage = () => {
                     <div
                         style={{
                             backgroundImage: `url(${spheres})`,
-                            // transform: `rotate(${(360 / SECTORS_COUNT) * -selectedSector}deg)`,
                             transform: `rotate(${rotation}deg)`,
                         }}
                         className="h-full w-full bg-no-repeat bg-cover duration-700"
                     />
-
-                    <WorldInfo
-                        selectedSector={selectedSector}
-                        delta={window.innerWidth > 1024 ? 3 : 2}
-                        className="absolute container px-6
-                                  left-1/2 transform -translate-x-1/2 lg:translate-x-[38vh] xl:translate-x-[40vh] 
-                                  lg:max-w-screen-3sm xl:max-w-md
-                                  -top-[15vh] md:-top-[22vh] lg:top-[10vh]"
-                    />
                 </div>
+
+                <WorldInfo
+                    selectedSector={selectedSector}
+                    delta={window.innerWidth > 1024 ? 3 : 2}
+                    className="absolute container px-6
+                               top-6 right-0 left-0
+                               lg:left-1/2 lg:transform xl:translate-x-[10vh] 
+                               lg:max-w-screen-3sm xl:max-w-md
+                               lg:top-[10vh] xl:top-[14vh]"
+                />
 
                 <div
                     className="absolute lg:hidden p-2 cursor-pointer
