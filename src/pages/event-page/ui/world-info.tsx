@@ -25,7 +25,7 @@ const WorldInfo = ({ selectedSector, delta, className }: WrldInfoProps) => {
                         );
                     })}
                 </div>
-                <div className="flex gap-3">
+                {/* <div className="flex gap-3">
                     {world?.butterflyes.map((butterfly) => {
                         return (
                             <div
@@ -36,7 +36,7 @@ const WorldInfo = ({ selectedSector, delta, className }: WrldInfoProps) => {
                             </div>
                         );
                     })}
-                </div>
+                </div> */}
             </div>
         </div>
     );
