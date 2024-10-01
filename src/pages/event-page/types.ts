@@ -1,3 +1,5 @@
+import { CSSProperties } from "react";
+
 export interface ButterflyInterface {
     id: string;
     name: string;
@@ -11,4 +13,5 @@ export interface WorldSphereInterface {
     description: string[];
     imageSrc: string;
     butterflyes: ButterflyInterface[];
+    imagePosition?: CSSProperties;
 }

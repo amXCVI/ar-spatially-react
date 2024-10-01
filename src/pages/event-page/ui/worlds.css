@@ -1,0 +1,19 @@
+.circle-container {
+    position: relative;
+    width: 300px; /* Ширина контейнера */
+    height: 300px; /* Высота контейнера */
+    border-radius: 50%; /* Округлая форма */
+    margin: auto; /* Центрирование */
+}
+
+.circle-image {
+    position: absolute;
+    background-size: cover; /* Масштабирование изображения */
+    border-radius: 50%; /* Округлая форма для доступа по окружности */
+
+    /* Позиционирование по окружности */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(calc(var(--i) * 36deg + 13deg)) translate(45vh)
+        rotate(calc(var(--i) * -36deg - 13deg)); /* 36deg = 360deg / 10 */
+}
