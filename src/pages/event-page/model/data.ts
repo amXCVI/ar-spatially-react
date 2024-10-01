@@ -338,9 +338,9 @@ export const worlds: WorldSphereInterface[] = [
         imageSrc: "/event-page/worlds/alien.webp",
         butterflyes: [fractalMatterButterfly, darkMatterButterfly, bioMatterButterfly],
         imagePosition: {
-            scale: "1.3",
+            scale: "1.6",
             transform:
-                "translate(-50%, -50%) rotate(calc(var(--i) * 36deg + 14deg)) translate(38vh) rotate(calc(var(--i) * -36deg - 14deg))",
+                "translate(-50%, -50%) rotate(calc(var(--i) * 36deg + 15deg)) translate(32vh) rotate(calc(var(--i) * -36deg - 15deg))",
         },
     },
     {
