@@ -8,7 +8,6 @@ import HomeIcon from "../assets/home-icon.svg?react";
 
 import "./worlds.css";
 
-import spheres from "../assets/spheres.webp";
 import { useSpheresHook } from "../model";
 import { worlds } from "../model/data";
 import { WorldInfo } from "./world-info";
@@ -57,7 +56,7 @@ const EventPage = () => {
                 >
                     <div
                         style={{
-                            backgroundImage: `url(${spheres})`,
+                            backgroundImage: `url(/event-page/all-spheres-base.webp)`,
                             transform: `rotate(${rotation}deg)`,
                         }}
                         className="h-full w-full bg-no-repeat bg-cover duration-700"
