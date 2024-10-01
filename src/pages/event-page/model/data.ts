@@ -268,9 +268,9 @@ export const worlds: WorldSphereInterface[] = [
         imageSrc: "/event-page/worlds/streer.webp",
         butterflyes: [glitchButterfly, calligraphyButterfly, doodleButterfly],
         imagePosition: {
-            scale: "1.5",
+            scale: "1.7",
             transform:
-                "translate(-50%, -50%) rotate(calc(var(--i) * 36deg + 18deg)) translate(29.5vh) rotate(calc(var(--i) * -36deg - 18deg))",
+                "translate(-50%, -50%) rotate(calc(var(--i) * 36deg + 14deg)) translate(23.5vh) rotate(calc(var(--i) * -36deg - 14deg))",
         },
     },
     {
