@@ -13,7 +13,7 @@ const ProfileInfo = ({ className }: { className?: string }) => {
         >
             <div
                 className={`border-2 border-raisin-black rounded-full overflow-hidden
-                  bg-dark-gray min-w-24 lg:min-w-32 aspect-square
+                  bg-dark-gray min-w-24 lg:min-w-32 max-w-24 lg:max-w-32 aspect-square
                     flex justify-center items-center cursor-pointer`}
             >
                 {user?.avatarId ? (

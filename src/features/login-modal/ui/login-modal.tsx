@@ -217,7 +217,7 @@ const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
 
                 <input
                     id={id}
-                    className={`border ${errorMessage ? "border-gray70" : "border-gray70"} text-white onest-regular-18 px-6 py-3 rounded-[25px]`}
+                    className={`border ${errorMessage ? "border-gray70" : "border-gray70"} bg-dark-bg text-white onest-regular-18 px-6 py-3 rounded-[25px]`}
                     ref={ref}
                     {...props}
                 />
