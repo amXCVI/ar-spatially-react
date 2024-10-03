@@ -7,8 +7,8 @@ const UserAvatar = ({ className }: { className?: string }) => {
 
     return (
         <div
-            className={`border-2 border-raisin-black rounded-full overflow-hidden
-                      bg-dark-gray h-14 w-14 aspect-square
+            className={`border border-white/25 bg-granite-gray/35 backdrop-blur-sm rounded-full overflow-hidden
+                       h-14 w-14 aspect-square
                         flex justify-center items-center cursor-pointer ${className}`}
             onClick={handleClickOnAvatar}
         >

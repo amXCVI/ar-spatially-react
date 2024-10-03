@@ -15,8 +15,8 @@ const AppsSelect = ({ className }: { className?: string }) => {
 
     return (
         <div
-            className={`flex flex-col duration-500 
-                        border border-white rounded-[30px] bg-dark-gray
+            className={`flex flex-col duration-500 rounded-[30px]
+                        ${!isActive && "border border-white/25 bg-granite-gray/35 backdrop-blur-sm"}
                         relative w-10 h-10 lg:w-auto lg:h-14 aspect-square ${className}`}
         >
             <div
@@ -41,8 +41,7 @@ const AppsSelect = ({ className }: { className?: string }) => {
                 ref={appsSelectRef}
                 className={`hidden xl:flex flex-row gap-6 justify-between flex-wrap
                             absolute xl:-top-1 xl:-left-1 w-56 ${isActive ? "max-w-80" : "max-w-0"}
-                            bg-dark-gray rounded-[30px]
-                            border-2 border-raisin-black
+                            border-white/25 rounded-[30px] bg-granite-gray/35 backdrop-blur-sm
                             ${isActive ? "p-4 pb-14 xl:pb-0 xl:pt-14" : "p-0"} duration-500`}
             >
                 {isActive &&

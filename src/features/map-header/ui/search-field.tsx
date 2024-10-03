@@ -36,7 +36,7 @@ const SearchField = ({ className, onChangeMapCenter }: MapHeaderProps) => {
     return (
         <div
             className={`flex flex-col justify-center ${isActiveField || selectedPlaceDescription ? "w-96" : ""} duration-500
-                        border border-white rounded-[30px] bg-dark-gray
+                        border border-white/25 rounded-[30px] bg-granite-gray/35 backdrop-blur-sm
                         relative ${className}`}
             ref={searchFieldRef}
         >
@@ -52,7 +52,7 @@ const SearchField = ({ className, onChangeMapCenter }: MapHeaderProps) => {
                         ref={inputRef}
                         onChange={onChangeInputValue}
                         autoFocus
-                        className="w-full border-none outline-none z-10 bg-dark-gray onest-medium-22 text-white"
+                        className="w-full border-none outline-none z-10 bg-transparent onest-medium-22 text-quick-silver"
                         value={searchInputValue}
                         type="search"
                     />
@@ -67,10 +67,10 @@ const SearchField = ({ className, onChangeMapCenter }: MapHeaderProps) => {
             </div>
 
             <div
-                className={`flex flex-col gap-1 bg-dark-gray
-                            absolute bottom-8 lg:bottom-auto lg:top-8 -left-0.5 -right-0.5 
+                className={`flex flex-col gap-1
+                             bottom-8 lg:bottom-auto lg:top-8 -left-0.5 -right-0.5 
                             rounded-t-[30px] lg:rounded-t-none lg:rounded-b-[30px]
-                            border-r-2 border-l-2 border-raisin-black
+                            
                             max-h-[80vh] overflow-scroll
                             ${isActiveField && (predictionResults.length || findedObjects.length) ? "p-4" : "p-0"}`}
             >
@@ -125,7 +125,7 @@ export const PlaceItem = ({
     return (
         <div
             onClick={() => onSelect(item.place_id)}
-            className={`flex gap-2.5 items-center lg:px-4 py-3 rounded-[15px] hover:bg-[#6565657f] lg:border lg:border-dark-gray hover:border-[#9c9c9c26] cursor-pointer ${className}`}
+            className={`flex gap-2.5 items-center lg:px-4 py-3 rounded-[15px] hover:bg-[#6565657f] lg:border lg:border-white/25 hover:border-[#9c9c9c26] cursor-pointer ${className}`}
         >
             <GooglePlaceIcon className="min-h-3.5 min-w-5" />
             <span className="overflow-hidden text-ellipsis max-w-full regular-16 text-white/35">
@@ -149,7 +149,7 @@ export const ObjectItem = ({
     return (
         <div
             onClick={() => onSelect(item.id)}
-            className={`flex gap-2.5 items-center lg:px-4 py-3 rounded-[15px] hover:bg-[#6565657f] lg:border lg:border-dark-gray hover:border-[#9c9c9c26] cursor-pointer ${className}`}
+            className={`flex gap-2.5 items-center lg:px-4 py-3 rounded-[15px] hover:bg-[#6565657f] lg:border lg:border-white/25 hover:border-[#9c9c9c26] cursor-pointer ${className}`}
         >
             <ObjectIcon className="min-h-3.5 min-w-5" />
             <span className="overflow-hidden text-ellipsis max-w-full regular-16 text-white/35">

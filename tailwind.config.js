@@ -38,6 +38,7 @@ export default {
                 "blue-accent": "#4BB2F2",
                 "blue-link": "#366EF9",
                 "black-olive": "#3c3c3c",
+                "granite-gray": "#646464",
                 error: "#FF4747",
             },
             animation: {
