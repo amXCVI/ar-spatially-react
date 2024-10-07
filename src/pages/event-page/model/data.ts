@@ -268,9 +268,9 @@ export const worlds: WorldSphereInterface[] = [
         imageSrc: "/event-page/worlds/streer.webp",
         butterflyes: [glitchButterfly, calligraphyButterfly, doodleButterfly],
         imagePosition: {
-            scale: "1.7",
+            scale: "1.5",
             transform:
-                "translate(-50%, -50%) rotate(calc(var(--i) * 36deg + 14deg)) translate(23.5vh) rotate(calc(var(--i) * -36deg - 14deg))",
+                "translate(-50%, -50%) rotate(calc(var(--i) * 36deg + 14deg)) translate(28.5vh) rotate(calc(var(--i) * -36deg - 14deg))",
         },
     },
     {
@@ -296,9 +296,9 @@ export const worlds: WorldSphereInterface[] = [
         imageSrc: "/event-page/worlds/chrome.webp",
         butterflyes: [liquidChromeButterfly, liquidBronzeButterfly, liquidFerrumButterfly],
         imagePosition: {
-            scale: "1.2",
+            scale: "1.3",
             transform:
-                "translate(-50%, -50%) rotate(calc(var(--i) * 36deg + 18deg)) translate(38vh) rotate(calc(var(--i) * -36deg - 18deg))",
+                "translate(-50%, -50%) rotate(calc(var(--i) * 36deg + 19deg)) translate(35vh) rotate(calc(var(--i) * -36deg - 19deg))",
         },
     },
     {
@@ -310,9 +310,9 @@ export const worlds: WorldSphereInterface[] = [
         imageSrc: "/event-page/worlds/water.webp",
         butterflyes: [deepWaterButterfly, sailButterfly, coralButterfly],
         imagePosition: {
-            scale: "1.3",
+            scale: "1.4",
             transform:
-                "translate(-50%, -50%) rotate(calc(var(--i) * 36deg + 20deg)) translate(32.5vh) rotate(calc(var(--i) * -36deg - 20deg))",
+                "translate(-50%, -50%) rotate(calc(var(--i) * 36deg + 22deg)) translate(29.5vh) rotate(calc(var(--i) * -36deg - 22deg))",
         },
     },
     {
@@ -338,9 +338,9 @@ export const worlds: WorldSphereInterface[] = [
         imageSrc: "/event-page/worlds/alien.webp",
         butterflyes: [fractalMatterButterfly, darkMatterButterfly, bioMatterButterfly],
         imagePosition: {
-            scale: "1.6",
+            scale: "1.4",
             transform:
-                "translate(-50%, -50%) rotate(calc(var(--i) * 36deg + 15deg)) translate(32vh) rotate(calc(var(--i) * -36deg - 15deg))",
+                "translate(-50%, -50%) rotate(calc(var(--i) * 36deg + 14deg)) translate(37vh) rotate(calc(var(--i) * -36deg - 14deg))",
         },
     },
     {
@@ -353,9 +353,9 @@ export const worlds: WorldSphereInterface[] = [
         imageSrc: "/event-page/worlds/ice.webp",
         butterflyes: [northernSeaButterfly, polarShineButterfly, flowericeButterfly],
         imagePosition: {
-            scale: "1.3",
+            scale: "1.4",
             transform:
-                "translate(-50%, -50%) rotate(calc(var(--i) * 36deg + 16deg)) translate(39vh) rotate(calc(var(--i) * -36deg - 16deg))",
+                "translate(-50%, -50%) rotate(calc(var(--i) * 36deg + 15deg)) translate(38vh) rotate(calc(var(--i) * -36deg - 15deg))",
         },
     },
     {
