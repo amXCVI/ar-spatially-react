@@ -1,4 +1,3 @@
-import { useOutsideClick } from "@ar-kit/shared/hooks";
 import { useContext, useState } from "react";
 
 import { MapContext } from "@/shared/stores";
@@ -12,11 +11,9 @@ const useAppsSelectHook = () => {
         setIsActive((e) => !e);
     };
 
-    const appsSelectRef = useOutsideClick(() => {
-        setIsActive(false);
-    });
+    
 
-    return { appsSelectRef, isActive, toggleIsActiveSearchField, handleClickApp, layersList };
+    return { isActive, toggleIsActiveSearchField, handleClickApp, layersList };
 };
 
 export { useAppsSelectHook };
