@@ -270,7 +270,7 @@ export const worlds: WorldSphereInterface[] = [
         imagePosition: {
             scale: "1.5",
             transform:
-                "translate(-50%, -50%) rotate(calc(var(--i) * 36deg + 14deg)) translate(28.5vh) rotate(calc(var(--i) * -36deg - 14deg))",
+                "translate(-50%, -50%) rotate(calc(var(--i) * 36deg + 17deg)) translate(28.5vh) rotate(calc(var(--i) * -36deg - 17deg))",
         },
     },
     {
@@ -284,7 +284,7 @@ export const worlds: WorldSphereInterface[] = [
         imagePosition: {
             scale: "1.1",
             transform:
-                "translate(-50%, -50%) rotate(calc(var(--i) * 36deg + 19deg)) translate(43vh) rotate(calc(var(--i) * -36deg - 19deg))",
+                "translate(-50%, -50%) rotate(calc(var(--i) * 36deg + 19.5deg)) translate(42vh) rotate(calc(var(--i) * -36deg - 19.5deg))",
         },
     },
     {
@@ -298,7 +298,7 @@ export const worlds: WorldSphereInterface[] = [
         imagePosition: {
             scale: "1.3",
             transform:
-                "translate(-50%, -50%) rotate(calc(var(--i) * 36deg + 19deg)) translate(35vh) rotate(calc(var(--i) * -36deg - 19deg))",
+                "translate(-50%, -50%) rotate(calc(var(--i) * 36deg + 20deg)) translate(33vh) rotate(calc(var(--i) * -36deg - 20deg))",
         },
     },
     {
@@ -312,7 +312,7 @@ export const worlds: WorldSphereInterface[] = [
         imagePosition: {
             scale: "1.4",
             transform:
-                "translate(-50%, -50%) rotate(calc(var(--i) * 36deg + 22deg)) translate(29.5vh) rotate(calc(var(--i) * -36deg - 22deg))",
+                "translate(-50%, -50%) rotate(calc(var(--i) * 36deg + 20deg)) translate(29.5vh) rotate(calc(var(--i) * -36deg - 20deg))",
         },
     },
     {
@@ -326,7 +326,7 @@ export const worlds: WorldSphereInterface[] = [
         imagePosition: {
             scale: "1.3",
             transform:
-                "translate(-50%, -50%) rotate(calc(var(--i) * 36deg + 18deg)) translate(37vh) rotate(calc(var(--i) * -36deg - 18deg))",
+                "translate(-50%, -50%) rotate(calc(var(--i) * 36deg + 18deg)) translate(35vh) rotate(calc(var(--i) * -36deg - 18deg))",
         },
     },
     {
@@ -340,7 +340,7 @@ export const worlds: WorldSphereInterface[] = [
         imagePosition: {
             scale: "1.4",
             transform:
-                "translate(-50%, -50%) rotate(calc(var(--i) * 36deg + 14deg)) translate(37vh) rotate(calc(var(--i) * -36deg - 14deg))",
+                "translate(-50%, -50%) rotate(calc(var(--i) * 36deg + 14deg)) translate(35vh) rotate(calc(var(--i) * -36deg - 14deg))",
         },
     },
     {
@@ -355,7 +355,7 @@ export const worlds: WorldSphereInterface[] = [
         imagePosition: {
             scale: "1.4",
             transform:
-                "translate(-50%, -50%) rotate(calc(var(--i) * 36deg + 15deg)) translate(38vh) rotate(calc(var(--i) * -36deg - 15deg))",
+                "translate(-50%, -50%) rotate(calc(var(--i) * 36deg + 16deg)) translate(36vh) rotate(calc(var(--i) * -36deg - 16deg))",
         },
     },
     {
@@ -370,7 +370,7 @@ export const worlds: WorldSphereInterface[] = [
         imagePosition: {
             scale: "1.3",
             transform:
-                "translate(-50%, -50%) rotate(calc(var(--i) * 36deg + 16deg)) translate(40vh) rotate(calc(var(--i) * -36deg - 16deg))",
+                "translate(-50%, -50%) rotate(calc(var(--i) * 36deg + 17deg)) translate(40vh) rotate(calc(var(--i) * -36deg - 17deg))",
         },
     },
     {
@@ -384,7 +384,7 @@ export const worlds: WorldSphereInterface[] = [
         imagePosition: {
             scale: "1.3",
             transform:
-                "translate(-50%, -50%) rotate(calc(var(--i) * 36deg + 20deg)) translate(40vh) rotate(calc(var(--i) * -36deg - 20deg))",
+                "translate(-50%, -50%) rotate(calc(var(--i) * 36deg + 20deg)) translate(39vh) rotate(calc(var(--i) * -36deg - 20deg))",
         },
     },
     {
@@ -398,7 +398,7 @@ export const worlds: WorldSphereInterface[] = [
         imagePosition: {
             scale: "1.2",
             transform:
-                "translate(-50%, -50%) rotate(calc(var(--i) * 36deg + 19deg)) translate(41vh) rotate(calc(var(--i) * -36deg - 19deg))",
+                "translate(-50%, -50%) rotate(calc(var(--i) * 36deg + 20deg)) translate(40vh) rotate(calc(var(--i) * -36deg - 20deg))",
         },
     },
 ];
