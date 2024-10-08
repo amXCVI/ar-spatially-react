@@ -23,7 +23,7 @@ const MapPage = () => {
                 <MapHeader onChangeMapCenter={onChangeMapCenter} />
 
                 <MapComponent
-                onChangeMapCenter={onChangeMapCenter}
+                    onChangeMapCenter={onChangeMapCenter}
                     onChangeCoords={onChangeCoords}
                     onClickMarker={onClickMarker}
                     nftList={nftList}

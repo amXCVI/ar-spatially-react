@@ -60,6 +60,7 @@ const Map = ({
                 mapId={mapId}
                 minZoom={3}
                 backgroundColor={"black"}
+                gestureHandling={"greedy"}
             >
                 <ClusteredMarkers
                     markersList={markersList}

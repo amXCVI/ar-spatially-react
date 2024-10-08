@@ -59,7 +59,7 @@ const MobileSearch = ({ onChangeMapCenter, className }: MapHeaderProps) => {
                         <input
                             ref={inputRef}
                             onChange={onChangeInputValue}
-                            className="w-full border-none outline-none onest-medium-22 text-white pl-2 bg-transparent"
+                            className="w-full border-none outline-none manrope-medium-18 text-white pl-2 bg-transparent"
                             value={searchInputValue}
                             placeholder="Search"
                             autoFocus
