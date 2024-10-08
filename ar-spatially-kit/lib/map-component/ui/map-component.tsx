@@ -21,6 +21,10 @@ export interface MapRefType {
             lng: number;
         };
     }) => void;
+    getMapCenter: () => {
+        zoom: number;
+        center: google.maps.LatLngLiteral;
+    };
 }
 
 const MapComponent = forwardRef((props: MapComponentProps, ref: Ref<MapRefType>) => {
@@ -33,11 +37,12 @@ const MapComponent = forwardRef((props: MapComponentProps, ref: Ref<MapRefType>)
         onSelectMapType,
         center,
         setMapCenter,
+        getMapCenter,
     } = useMapControlHook({
         onChangeMapCenter: props.onChangeMapCenter,
     });
 
-    useImperativeHandle(ref, () => ({ setMapCenter }));
+    useImperativeHandle(ref, () => ({ setMapCenter, getMapCenter }));
 
     return (
         <Map

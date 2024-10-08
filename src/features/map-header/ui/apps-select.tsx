@@ -25,6 +25,7 @@ const AppsSelect = ({ className }: { className?: string }) => {
                             cursor-pointer
                             rounded-[30px] border border-white/25 bg-granite-gray/35 backdrop-blur-sm
                             h-10 lg:h-14
+                            aspect-square lg:aspect-auto
                            `}
                 onClick={() => {
                     toggleIsActiveSearchField();

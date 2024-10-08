@@ -34,6 +34,8 @@ const useMapHook = () => {
     const [nftList, setNftList] = useState<ArMarkerInterface[]>([]);
     const [selectedMarker, setSelectedMarker] = useState<MarkerInterface | null>(null);
 
+    const timerRef = useRef<NodeJS.Timeout | null>(null);
+
     const googpeMapApiKey = import.meta.env.VITE_APP_GOOGLE_MAP_API_KEY;
 
     const onChangeCoords = (e: { center?: { lat: number; lng: number }; zoom?: number }) => {
@@ -42,6 +44,7 @@ const useMapHook = () => {
             lng: e.center ? e.center.lng : coords!.lng,
             radius: e.zoom ? e.zoom : coords!.radius,
         };
+
         setCoords(newCoords);
     };
 
@@ -56,7 +59,34 @@ const useMapHook = () => {
 
     const onChangeMapCenter = (e: { lat: number; lng: number; zoom: number }) => {
         mapComponentRef.current?.setMapCenter({ zoom: e.zoom, center: { lat: e.lat, lng: e.lng } });
+
+        // Очищаем предыдущий таймер
+        if (timerRef.current) {
+            clearTimeout(timerRef.current);
+        }
+
+        // Устанавливаем новый таймер
+        timerRef.current = setTimeout(() => {
+            ApiEndpoints.object
+                .fintPointsByLocation({
+                    lat: e.lat,
+                    lng: e.lng,
+                    radius: e.zoom,
+                })
+                .then((res) => {
+                    setAllMarkersOnMap(res);
+                });
+        }, 500); // 500 мс, можете настроить по необходимости
     };
+
+    useEffect(() => {
+        return () => {
+            // Очищаем таймер при размонтировании компонента
+            if (timerRef.current) {
+                clearTimeout(timerRef.current);
+            }
+        };
+    }, []);
 
     useEffect(() => {
         if (selectedMarkerId) {

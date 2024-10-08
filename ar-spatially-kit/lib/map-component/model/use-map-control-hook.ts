@@ -49,7 +49,7 @@ const useMapControlHook = ({
         setZoom(e);
         localStorage.setItem(localStorageMapOptionsZoomKey, JSON.stringify(e));
         if (onChangeMapCenter) {
-            onChangeMapCenter({ zoom: e, ...center  });
+            onChangeMapCenter({ zoom: e, ...center });
         }
     };
 
@@ -57,7 +57,7 @@ const useMapControlHook = ({
         setCenter(e);
         localStorage.setItem(localStorageMapOptionsCenterKey, JSON.stringify(e));
         if (onChangeMapCenter) {
-            onChangeMapCenter({  ...e, zoom: zoom });
+            onChangeMapCenter({ ...e, zoom: zoom });
         }
     };
 
@@ -75,6 +75,10 @@ const useMapControlHook = ({
         }
     };
 
+    const getMapCenter = () => {
+        return { zoom: zoom, center: center };
+    };
+
     return {
         zoom,
         onChangeMapZoom,
@@ -85,6 +89,7 @@ const useMapControlHook = ({
         center,
         mapRef,
         setMapCenter,
+        getMapCenter,
     };
 };
 

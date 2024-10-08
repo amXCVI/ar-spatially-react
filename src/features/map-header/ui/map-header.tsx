@@ -55,7 +55,7 @@ const MapMobileMenu = ({ className }: { className?: string }) => (
         show={false}
         white
         iconClassname="flex justify-center items-center duration-500
-                       cursor-pointer hover:bg-white50 w-10 h-10 lg:w-14 lg:h-14 p-2
+                       cursor-pointer hover:bg-white50 w-10 h-10 lg:w-14 lg:h-14 p-2 lg:p-3
                        border border-white/25 bg-granite-gray/35 backdrop-blur-sm rounded-full"
     />
 );
