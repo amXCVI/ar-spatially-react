@@ -6,12 +6,19 @@ import { Fragment } from "react/jsx-runtime";
 import { MarkerInterface } from "@/shared/types";
 
 import CloseViewerIcon from "../assets/close-viewer-icon.svg?react";
-import EdtIcon from "../assets/edit-icon.svg?react";
 import LocationPathIcon from "../assets/location-path-icon.svg?react";
-import ShareIcon from "../assets/share-icon.svg?react";
-import ViewArIcon from "../assets/view-ar-icon.svg?react";
 
 import { useNftItemHook } from "../domain";
+import {
+    DesctopEditButton,
+    DesctopReceiveButton,
+    DesctopShareButton,
+    DesctopViewArButton,
+    EditButton,
+    ReceiveButton,
+    ShareButton,
+    ViewArButton,
+} from "./action-buttons";
 
 interface NftItemInterface {
     selectedMarker: MarkerInterface | null;
@@ -49,7 +56,7 @@ const NftItem = ({ selectedMarker, onCloseViewer }: NftItemInterface) => {
         };
     }, [closeBottomSheet, openBottomSheet, selectedMarker]);
 
-    return (
+    return window.innerWidth > 1024 ? (
         <div
             className={`fixed ${selectedMarker ? "top-0" : ""} right-0 bottom-0 left-0 
                          flex justify-center items-end lg:items-center z-20`}
@@ -112,34 +119,19 @@ const NftItem = ({ selectedMarker, onCloseViewer }: NftItemInterface) => {
                                     </Fragment>
                                 )}
                             </p>
-                            {/* <button
-                                className="onest-regular-18 text-white
-                                   border-2 border-raisin-black rounded-[30px]
-                                   px-6 py-3.5 "
-                                onClick={handlePreview}
-                            >
-                                Preview
-                            </button> */}
+                            <DesctopReceiveButton isMyObject={isMyObject} />
                         </div>
                         <div className="flex flex-col bg-nft-viewer-desc-bg rounded-[30px] w-full lg:w-96 h-60 min-h-40 relative">
                             <ModelViewer modelId={selectedMarker?.modelId} previewId={selectedMarker?.previewId} />
-                            {/* <img
-                                src={`${import.meta.env.VITE_APP_API_BASE_URL}gateway/file/get?fileId=${selectedMarker?.previewId}`}
-                                className="max-h-44 lg:h-full w-full object-contain max-w-screen-3sm"
-                            /> */}
-                            <div className="flex justify-between items-center gap-6 px-2.5 absolute bottom-0 left-0 right-0 bg-eerie-black/35">
-                                <button
-                                    className="flex items-center gap-2.5 px-4 py-3 onest-regular-18 text-white"
-                                    onClick={handlePreview}
-                                >
-                                    <ViewArIcon />
-                                    View AR
-                                </button>
-                                {isMyObject && (
-                                    <button className="px-4 py-3">
-                                        <EdtIcon />
-                                    </button>
-                                )}
+
+                            <div className="flex justify-between items-center gap-3 px-2.5 absolute bottom-0 left-0 right-0 bg-eerie-black/35">
+                                <DesctopViewArButton onClick={handlePreview} />
+                                <DesctopShareButton
+                                    title={selectedMarker?.title}
+                                    description={selectedMarker?.description}
+                                    share={share}
+                                />
+                                <DesctopEditButton isMyObject={isMyObject} />
                             </div>
                         </div>
                         <CardHeader
@@ -151,63 +143,63 @@ const NftItem = ({ selectedMarker, onCloseViewer }: NftItemInterface) => {
                     </>
                 )}
             </div>
-
-            <MapBottomSheet
-                isOpen={isOpen}
-                closeBottomSheet={closeBottomSheet}
-                onCloseStart={() => {
-                    onCloseViewer();
-                    handleClosePreview();
-                }}
-                className="lg:hidden"
-            >
-                <div className="flex flex-col gap-4 px-4 max-h-[90vh] overflow-y-auto">
-                    <div className="flex flex-col gap-1">
-                        <h1 className="roboto-regular-24 text-white">{selectedMarker?.title}</h1>
-                        <div className="flex gap-2.5">
-                            <LocationPathIcon />
-                            <span className="roboto-medium-13 text-white">{distanceStr}</span>
-                        </div>
-                    </div>
-
-                    <div className="flex flex-col gap-2">
-                        <div className="flex flex-col bg-nft-viewer-desc-bg rounded-[30px] w-full lg:w-96 h-60 min-h-40 relative">
-                            <ModelViewer modelId={selectedMarker?.modelId} previewId={selectedMarker?.previewId} />
-                        </div>
-
-                        <div className="flex gap-2 px-2.5">
-                            <ShareButton
-                                title={selectedMarker?.title}
-                                description={selectedMarker?.description}
-                                share={share}
-                                isMyObject={isMyObject}
-                            />
-                            <EditButton isMyObject={isMyObject} />
-                            <ViewArButton isMyObject={isMyObject} />
-                            <ReceiveButton isMyObject={isMyObject} />
-                        </div>
-                    </div>
-
-                    <div className="flex flex-col">
-                        <p
-                            className={`manrope-regular-13 text-quick-silver relative 
-                                ${fullDescription ? "" : "line-clamp-2"} duration-500
-                                `}
-                        >
-                            {selectedMarker?.description}
-                        </p>
-                        <span
-                            className={`roboto-medium-13 ${fullDescription ? "text-blue-accent" : "text-white"} cursor-pointer mt-2.5`}
-                            onClick={toggleFullDescriptionText}
-                        >
-                            {fullDescription ? "Read less" : "Read more"}
-                        </span>
-                    </div>
-
-                    <div className="min-h-5"></div>
-                </div>
-            </MapBottomSheet>
         </div>
+    ) : (
+        <MapBottomSheet
+            isOpen={isOpen}
+            closeBottomSheet={closeBottomSheet}
+            onCloseStart={() => {
+                onCloseViewer();
+                handleClosePreview();
+            }}
+            className="lg:hidden"
+        >
+            <div className="flex flex-col gap-4 px-4 max-h-[90vh] overflow-y-auto">
+                <div className="flex flex-col gap-1">
+                    <h1 className="roboto-regular-24 text-white">{selectedMarker?.title}</h1>
+                    <div className="flex gap-2.5">
+                        <LocationPathIcon />
+                        <span className="roboto-medium-13 text-white">{distanceStr}</span>
+                    </div>
+                </div>
+
+                <div className="flex flex-col gap-2">
+                    <div className="flex flex-col bg-nft-viewer-desc-bg rounded-[30px] w-full lg:w-96 h-60 min-h-40 relative">
+                        <ModelViewer modelId={selectedMarker?.modelId} previewId={selectedMarker?.previewId} />
+                    </div>
+
+                    <div className="flex gap-2 px-2.5 w-full">
+                        <ShareButton
+                            title={selectedMarker?.title}
+                            description={selectedMarker?.description}
+                            share={share}
+                            isMyObject={isMyObject}
+                        />
+                        <EditButton isMyObject={isMyObject} />
+                        <ViewArButton isMyObject={isMyObject} onClick={handlePreview} />
+                        <ReceiveButton isMyObject={isMyObject} />
+                    </div>
+                </div>
+
+                <div className="flex flex-col">
+                    <p
+                        className={`manrope-regular-13 text-quick-silver relative 
+                    ${fullDescription ? "" : "line-clamp-2"} duration-500
+                    `}
+                    >
+                        {selectedMarker?.description}
+                    </p>
+                    <span
+                        className={`roboto-medium-13 ${fullDescription ? "text-blue-accent" : "text-white"} cursor-pointer mt-2.5`}
+                        onClick={toggleFullDescriptionText}
+                    >
+                        {fullDescription ? "Read less" : "Read more"}
+                    </span>
+                </div>
+
+                <div className="min-h-5"></div>
+            </div>
+        </MapBottomSheet>
     );
 };
 
@@ -255,88 +247,6 @@ const ModelViewer = ({ modelId, previewId }: { modelId?: string; previewId?: str
             poster={`${import.meta.env.VITE_APP_API_BASE_URL}gateway/file/get?fileId=${previewId}`}
             style={{ width: "100%", height: "100%" }}
         />
-    );
-};
-
-const ShareButton = ({
-    share,
-    title,
-    description,
-    isMyObject,
-}: {
-    share: ({ title, text, url }: { title: string; text: string; url: string }) => void;
-    title?: string;
-    description?: string;
-    isMyObject: boolean;
-}) => {
-    return (
-        <div
-            onClick={() => {
-                share({
-                    title: title ?? "Marker",
-                    text: description ?? "",
-                    url: window.location.href,
-                });
-            }}
-            className={`flex gap-3 justify-center items-center p-2
-                        cursor-pointer h-10 aspect-square
-                        rounded-[30px] border border-white/25 bg-granite-gray/35 backdrop-blur-sm
-                        ${!isMyObject && "roboto-regular-13 text-white text-nowrap w-full"}
-                      `}
-        >
-            <ShareIcon />
-            {!isMyObject && "Share NFT"}
-        </div>
-    );
-};
-
-const EditButton = ({ isMyObject }: { isMyObject: boolean }) => {
-    if (!isMyObject) {
-        return <Fragment />;
-    }
-
-    return (
-        <div
-            className="flex gap-3 ${isActive ? justify-center items-center p-2
-                       cursor-pointer h-10 aspect-square
-                       rounded-[30px] border border-white/25 bg-granite-gray/35 backdrop-blur-sm
-                      "
-        >
-            <EdtIcon />
-        </div>
-    );
-};
-
-const ViewArButton = ({ isMyObject }: { isMyObject: boolean }) => {
-    return (
-        <div
-            className={`flex gap-3 justify-center items-center p-2
-                        cursor-pointer h-10 aspect-square
-                        rounded-[30px] border border-white/25 bg-granite-gray/35 backdrop-blur-sm
-                        ${!isMyObject && "roboto-regular-13 text-white text-nowrap w-full"}
-                       `}
-        >
-            <ViewArIcon />
-            {!isMyObject && "View AR"}
-        </div>
-    );
-};
-
-const ReceiveButton = ({ isMyObject }: { isMyObject: boolean }) => {
-    if (!isMyObject) {
-        return <Fragment />;
-    }
-
-    return (
-        <div
-            className={`flex gap-3 justify-center items-center p-2
-                        cursor-pointer h-10 aspect-square
-                        rounded-[30px] border border-white/25 bg-granite-gray/35 backdrop-blur-sm
-                        ${!isMyObject && "roboto-regular-13 text-white text-nowrap w-full"}
-                      `}
-        >
-            Recieve NFT
-        </div>
     );
 };
 
