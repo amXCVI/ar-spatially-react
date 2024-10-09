@@ -90,14 +90,23 @@ const NftItem = ({ selectedMarker, onCloseViewer }: NftItemInterface) => {
                                 `}
                             >
                                 {selectedMarker?.description}
-                                {!fullDescription && (
+                                {fullDescription ? (
+                                    <Fragment>
+                                        <span
+                                            className="ml-2 text-blue-accent cursor-pointer"
+                                            onClick={toggleFullDescriptionText}
+                                        >
+                                            {"Read less"}
+                                        </span>
+                                    </Fragment>
+                                ) : (
                                     <Fragment>
                                         <span className="absolute top-14 left-0 bg-text-shadow bg-blend-darken w-[calc(100%-4rem)] h-6" />
                                         <span
                                             className="absolute top-14 right-0 bg-dark-gray text-white/80 cursor-pointer"
                                             onClick={toggleFullDescriptionText}
                                         >
-                                            Read more
+                                            {"Read more"}
                                         </span>
                                     </Fragment>
                                 )}
