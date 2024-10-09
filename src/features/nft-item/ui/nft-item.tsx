@@ -170,29 +170,21 @@ const NftItem = ({ selectedMarker, onCloseViewer }: NftItemInterface) => {
                         </div>
                     </div>
 
-                    <div className="flex flex-col bg-nft-viewer-desc-bg rounded-[30px] w-full lg:w-96 h-60 min-h-40 relative">
-                        <ModelViewer modelId={selectedMarker?.modelId} previewId={selectedMarker?.previewId} />
-                    </div>
-
-                    <div className="flex gap-7 px-2.5">
-                        <div
-                            onClick={() => {
-                                share({
-                                    title: selectedMarker?.title ?? "Marker",
-                                    text: selectedMarker?.description ?? "",
-                                    url: window.location.href,
-                                });
-                            }}
-                        >
-                            <ShareIcon />
+                    <div className="flex flex-col gap-2">
+                        <div className="flex flex-col bg-nft-viewer-desc-bg rounded-[30px] w-full lg:w-96 h-60 min-h-40 relative">
+                            <ModelViewer modelId={selectedMarker?.modelId} previewId={selectedMarker?.previewId} />
                         </div>
-                        {isMyObject && (
-                            <div>
-                                <EdtIcon />
-                            </div>
-                        )}
-                        <div>
-                            <ViewArIcon />
+
+                        <div className="flex gap-2 px-2.5">
+                            <ShareButton
+                                title={selectedMarker?.title}
+                                description={selectedMarker?.description}
+                                share={share}
+                                isMyObject={isMyObject}
+                            />
+                            <EditButton isMyObject={isMyObject} />
+                            <ViewArButton isMyObject={isMyObject} />
+                            <ReceiveButton isMyObject={isMyObject} />
                         </div>
                     </div>
 
@@ -263,6 +255,88 @@ const ModelViewer = ({ modelId, previewId }: { modelId?: string; previewId?: str
             poster={`${import.meta.env.VITE_APP_API_BASE_URL}gateway/file/get?fileId=${previewId}`}
             style={{ width: "100%", height: "100%" }}
         />
+    );
+};
+
+const ShareButton = ({
+    share,
+    title,
+    description,
+    isMyObject,
+}: {
+    share: ({ title, text, url }: { title: string; text: string; url: string }) => void;
+    title?: string;
+    description?: string;
+    isMyObject: boolean;
+}) => {
+    return (
+        <div
+            onClick={() => {
+                share({
+                    title: title ?? "Marker",
+                    text: description ?? "",
+                    url: window.location.href,
+                });
+            }}
+            className={`flex gap-3 justify-center items-center p-2
+                        cursor-pointer h-10 aspect-square
+                        rounded-[30px] border border-white/25 bg-granite-gray/35 backdrop-blur-sm
+                        ${!isMyObject && "roboto-regular-13 text-white text-nowrap w-full"}
+                      `}
+        >
+            <ShareIcon />
+            {!isMyObject && "Share NFT"}
+        </div>
+    );
+};
+
+const EditButton = ({ isMyObject }: { isMyObject: boolean }) => {
+    if (!isMyObject) {
+        return <Fragment />;
+    }
+
+    return (
+        <div
+            className="flex gap-3 ${isActive ? justify-center items-center p-2
+                       cursor-pointer h-10 aspect-square
+                       rounded-[30px] border border-white/25 bg-granite-gray/35 backdrop-blur-sm
+                      "
+        >
+            <EdtIcon />
+        </div>
+    );
+};
+
+const ViewArButton = ({ isMyObject }: { isMyObject: boolean }) => {
+    return (
+        <div
+            className={`flex gap-3 justify-center items-center p-2
+                        cursor-pointer h-10 aspect-square
+                        rounded-[30px] border border-white/25 bg-granite-gray/35 backdrop-blur-sm
+                        ${!isMyObject && "roboto-regular-13 text-white text-nowrap w-full"}
+                       `}
+        >
+            <ViewArIcon />
+            {!isMyObject && "View AR"}
+        </div>
+    );
+};
+
+const ReceiveButton = ({ isMyObject }: { isMyObject: boolean }) => {
+    if (!isMyObject) {
+        return <Fragment />;
+    }
+
+    return (
+        <div
+            className={`flex gap-3 justify-center items-center p-2
+                        cursor-pointer h-10 aspect-square
+                        rounded-[30px] border border-white/25 bg-granite-gray/35 backdrop-blur-sm
+                        ${!isMyObject && "roboto-regular-13 text-white text-nowrap w-full"}
+                      `}
+        >
+            Recieve NFT
+        </div>
     );
 };
 
