@@ -38,7 +38,13 @@ export const ShareButton = ({
     );
 };
 
-export const EditButton = ({ isMyObject }: { isMyObject: boolean }) => {
+export const EditButton = ({
+    isMyObject,
+    onClick,
+}: {
+    isMyObject: boolean;
+    onClick: (e: MouseEvent<HTMLDivElement>) => void;
+}) => {
     if (!isMyObject) {
         return <Fragment />;
     }
@@ -49,6 +55,7 @@ export const EditButton = ({ isMyObject }: { isMyObject: boolean }) => {
                        cursor-pointer h-10 aspect-square
                        rounded-[30px] border border-white/25 bg-granite-gray/35 backdrop-blur-sm
                       "
+            onClick={onClick}
         >
             <EdtIcon />
         </div>

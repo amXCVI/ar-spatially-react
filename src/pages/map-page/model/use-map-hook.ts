@@ -145,6 +145,21 @@ const useMapHook = () => {
         setNftList(markers);
     }, [allMarkersOnMap]);
 
+    const updatedMarkerCallback = ({ updatedMarker }: { updatedMarker: MarkerInterface }) => {
+        // Если объект был изменен - меняю его и на карте и в памяти
+        if (selectedMarker?.id === updatedMarker.id) {
+            setSelectedMarker(updatedMarker);
+        }
+
+        setNftList((e) =>
+            e.map((item) =>
+                item.id === updatedMarker.id
+                    ? { ...item, name: updatedMarker.title, description: updatedMarker.description }
+                    : item,
+            ),
+        );
+    };
+
     return {
         onChangeCoords,
         nftList,
@@ -154,6 +169,7 @@ const useMapHook = () => {
         onCloseViewer,
         onChangeMapCenter,
         mapComponentRef,
+        updatedMarkerCallback,
     };
 };
 

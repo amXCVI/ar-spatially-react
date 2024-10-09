@@ -2,8 +2,10 @@ import { Controller } from "react-hook-form";
 
 import { UserProviders } from "@/shared/types";
 
+import EditIcon from "../assets/edit-icon.svg?react";
+
 import { useProfileSettingsGroupHook } from "../model";
-import { ProfileSettingsGroup, TextField } from "./components";
+import { ProfileSettingsGroup, BlackTextField } from "./components";
 
 export const PersonalInfoBlock = () => {
     const { register, handleSubmit, handleEditPersonalInfo, control, userProvider, errors } =
@@ -20,7 +22,12 @@ export const PersonalInfoBlock = () => {
                     </button>
                 </div>
 
-                <TextField label="Your name" {...register("name")} errorMessage={errors.name?.message} />
+                <BlackTextField
+                    label="Your name"
+                    {...register("name")}
+                    errorMessage={errors.name?.message}
+                    icon={<EditIcon className="absolute w-6 h-6 -translate-y-1/2 top-1/2 right-4 z-[0]" />}
+                />
                 <Controller
                     control={control}
                     name="nickname"
@@ -34,7 +41,7 @@ export const PersonalInfoBlock = () => {
                         minLength: { value: 2, message: `Nickname cannot be empty` },
                     }}
                     render={({ field }) => (
-                        <TextField
+                        <BlackTextField
                             label="Your nickname"
                             {...field}
                             onChange={(e) => {
@@ -43,16 +50,18 @@ export const PersonalInfoBlock = () => {
                                 }
                             }}
                             errorMessage={errors.nickname?.message}
+                            icon={<EditIcon className="absolute w-6 h-6 -translate-y-1/2 top-1/2 right-4 z-[0]" />}
                         />
                     )}
                 />
 
-                <TextField
+                <BlackTextField
                     label="Your email"
                     {...register("email")}
                     type="email"
                     errorMessage={errors.email?.message}
                     disabled={userProvider === UserProviders.EMAIL}
+                    icon={<EditIcon className="absolute w-6 h-6 -translate-y-1/2 top-1/2 right-4 z-[0]" />}
                 />
             </form>
         </ProfileSettingsGroup>

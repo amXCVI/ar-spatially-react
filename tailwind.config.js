@@ -32,6 +32,7 @@ export default {
                 dark70: "#191919",
                 "spanish-gray": "#9E9C9C",
                 "quick-silver": "#a4a4a4",
+                "dark-silver": "#717171",
                 "charleston-green": "#2a2a2b",
                 "american-silver": "#d1d1d1",
                 "american-silver20": "#d1d1d120",

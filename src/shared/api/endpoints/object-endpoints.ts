@@ -214,6 +214,22 @@ const getObject = async ({ objectId }: { objectId: string }) => {
     }
 };
 
+const updateObject = async ({ title, description, id }: { title: string; description: string; id: string }) => {
+    const url = `/gateway/object/update`;
+
+    try {
+        const response: AxiosResponse<ApiResponseInterface<{ token: string }>> = await apiClient.post(url, {
+            id: id,
+            title: title,
+            description: description,
+        });
+
+        return response.data.data;
+    } catch (error) {
+        throw new Error(`${url} ErrorRequest: ${error}`);
+    }
+};
+
 const uploadObject = async ({
     modelFile,
     previewFile,
@@ -280,4 +296,5 @@ export const objectApi = {
     getObject,
     findText,
     findMe,
+    updateObject,
 };

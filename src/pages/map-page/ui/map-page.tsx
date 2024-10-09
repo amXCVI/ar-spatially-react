@@ -15,6 +15,7 @@ const MapPage = () => {
         onCloseViewer,
         onChangeMapCenter,
         mapComponentRef,
+        updatedMarkerCallback,
     } = useMapHook();
 
     return (
@@ -32,7 +33,11 @@ const MapPage = () => {
                     mapId={import.meta.env.VITE_APP_GOOGLE_MAP_ID}
                 />
 
-                <NftItem selectedMarker={selectedMarker} onCloseViewer={onCloseViewer} />
+                <NftItem
+                    selectedMarker={selectedMarker}
+                    onCloseViewer={onCloseViewer}
+                    updatedMarkerCallback={updatedMarkerCallback}
+                />
             </APIProvider>
         </div>
     );

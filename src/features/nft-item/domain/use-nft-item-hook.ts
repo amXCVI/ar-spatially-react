@@ -4,8 +4,14 @@ import { useDistanceCalculatorHook } from "@/shared/lib/use-distance-calculator-
 import { useUserContext } from "@/shared/stores";
 import { MarkerInterface } from "@/shared/types";
 
+export enum ViewerModes {
+    VIEW_INFO = "VIEW_INFO",
+    PREVIEW = "PREVIEW",
+    EDIT = "EDIT",
+}
+
 const useNftItemHook = ({ selectedMarker }: { selectedMarker: MarkerInterface | null }) => {
-    const [previewMode, setPreviewMode] = useState<boolean>(false);
+    const [previewMode, setPreviewMode] = useState<ViewerModes>(ViewerModes.VIEW_INFO);
     const [fullDescription, setFullDescription] = useState<boolean>(false);
     const [isMyObject, setIsMyObject] = useState<boolean>(false);
     const [distanceStr, setDistanceStr] = useState<string>("");
@@ -33,11 +39,15 @@ const useNftItemHook = ({ selectedMarker }: { selectedMarker: MarkerInterface | 
     }, [haversineDistanceByMyLocation, selectedMarker]);
 
     const handlePreview = () => {
-        setPreviewMode(true);
+        setPreviewMode(ViewerModes.PREVIEW);
+    };
+
+    const handleEdit = () => {
+        setPreviewMode(ViewerModes.EDIT);
     };
 
     const handleClosePreview = () => {
-        setPreviewMode(false);
+        setPreviewMode(ViewerModes.VIEW_INFO);
         setFullDescription(false);
     };
 
@@ -61,6 +71,7 @@ const useNftItemHook = ({ selectedMarker }: { selectedMarker: MarkerInterface | 
     return {
         previewMode,
         handlePreview,
+        handleEdit,
         handleClosePreview,
         fullDescription,
         toggleFullDescriptionText,

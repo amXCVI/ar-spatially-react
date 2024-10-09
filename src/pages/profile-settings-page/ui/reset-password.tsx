@@ -3,7 +3,7 @@ import { UserProviders } from "@/shared/types";
 import ViewPassswordIcon from "../assets/view-password-icon.svg?react";
 
 import { useResetPasswordHook } from "../model";
-import { ProfileSettingsGroup, TextField } from "./components";
+import { BlackTextField, ProfileSettingsGroup } from "./components";
 
 export const ResetPasswordBlock = () => {
     const { register, handleSubmit, handleEditPassword, toggleFieldsMode, fieldsMode, userProvider } =
@@ -21,7 +21,7 @@ export const ResetPasswordBlock = () => {
                         </button>
                     </div>
 
-                    <TextField
+                    <BlackTextField
                         label="Old password"
                         {...register("password", {
                             required: "Required field",
@@ -35,7 +35,7 @@ export const ResetPasswordBlock = () => {
                             />
                         }
                     />
-                    <TextField
+                    <BlackTextField
                         label="New password"
                         {...register("newPassword", {
                             required: "Required field",
