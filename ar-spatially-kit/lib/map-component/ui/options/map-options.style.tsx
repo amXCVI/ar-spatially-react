@@ -1,4 +1,4 @@
-import { AppBorders, AppColors, AppMedia } from "@ar-kit/shared/styles/global-styles";
+import { AppBorders, AppMedia } from "@ar-kit/shared/styles/global-styles";
 import styled from "styled-components";
 
 type MapTypeButtonProps = {
@@ -21,8 +21,9 @@ export const MapOptionsContainer = styled.div`
 export const ButtonsContainer = styled.div`
     display: flex;
     flex-direction: column;
-    background: ${AppColors.darkGrey};
-    /* border: ${AppBorders.strokeWhite}; */
+    background: rgba(100, 100, 100, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(9px);
     border-radius: 30px;
     button {
         :active {
@@ -30,9 +31,9 @@ export const ButtonsContainer = styled.div`
         }
     }
 
-    @media (min-width: ${AppMedia.md}) {
+    /* @media (min-width: ${AppMedia.md}) {
         border: ${AppBorders.strokeWhite};
-    }
+    } */
 `;
 
 export const ZoomButton = styled.div`
@@ -77,8 +78,5 @@ export const MapTypeButton = styled.button<MapTypeButtonProps>`
     cursor: pointer;
     height: 45px;
     width: 45px;
-    background: none;
-    background: ${(props) => (props.isActiveButton ? "var(--main-color)" : AppColors.darkGrey)};
-    border: none;
     border-radius: 25px;
 `;

@@ -16,13 +16,13 @@ export const Container = styled.div`
     position: absolute;
     right: 56px;
     top: -8px;
-    @media (max-width: ${AppMedia.sm}) {
+    /* @media (max-width: ${AppMedia.sm}) {
         position: fixed;
         width: calc(100vw - 20px);
         top: 100px;
         right: 10px;
         left: 10px;
-    }
+    } */
 `;
 
 export const IconVector = styled.img<IconVectorProps>`
