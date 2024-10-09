@@ -125,7 +125,7 @@ export const PlaceItem = ({
     return (
         <div
             onClick={() => onSelect(item.place_id)}
-            className={`flex gap-2.5 items-center lg:px-4 py-3 rounded-[15px] hover:bg-[#6565657f] lg:border lg:border-white/25 hover:border-[#9c9c9c26] cursor-pointer ${className}`}
+            className={`flex gap-2.5 items-center lg:px-4 py-3 rounded-[15px] hover:bg-[#6565657f] hover:border-[#9c9c9c26] cursor-pointer ${className}`}
         >
             <GooglePlaceIcon className="min-h-3.5 min-w-5" />
             <span className="overflow-hidden text-ellipsis max-w-full regular-16 text-white/35">
@@ -149,7 +149,7 @@ export const ObjectItem = ({
     return (
         <div
             onClick={() => onSelect(item.id)}
-            className={`flex gap-2.5 items-center lg:px-4 py-3 rounded-[15px] hover:bg-[#6565657f] lg:border lg:border-white/25 hover:border-[#9c9c9c26] cursor-pointer ${className}`}
+            className={`flex gap-2.5 items-center lg:px-4 py-3 rounded-[15px] hover:bg-[#6565657f] hover:border-[#9c9c9c26] cursor-pointer ${className}`}
         >
             <ObjectIcon className="min-h-3.5 min-w-5" />
             <span className="overflow-hidden text-ellipsis max-w-full regular-16 text-white/35">

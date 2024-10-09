@@ -50,7 +50,7 @@ const MobileSearch = ({ onChangeMapCenter, className }: MapHeaderProps) => {
                     className="fixed bottom-7 lg:bottom-10 left-0 right-0 flex flex-col-reverse gap-2 z-[1000]"
                 >
                     <form
-                        className="container mx-auto bg-granite-gray/35 rounded-[30px] p-2 lg:p-4 border border-white/25 backdrop-blur-sm"
+                        className="container mx-auto bg-granite-gray/35 rounded-[30px] p-2 lg:p-4 border border-white/25 backdrop-blur-2xl"
                         onSubmit={() => {
                             resetSearch();
                             handleSetInactive();
@@ -66,23 +66,26 @@ const MobileSearch = ({ onChangeMapCenter, className }: MapHeaderProps) => {
                             type="search"
                             onSubmit={() => alert("!!! DONE !!!")}
                             onBlur={() => {
-                                resetSearch();
-                                handleSetInactive();
+                                setTimeout(() => {
+                                    resetSearch();
+                                    handleSetInactive();
+                                }, 500);
                             }}
                         />
                     </form>
 
                     <div
-                        className={`container mx-auto flex flex-col gap-1 rounded-[30px] bg-black duration-200
-                                    ${findedObjects.length || predictionResults.length ? "p-1 border border-white" : ""}`}
+                        className={`container mx-auto flex flex-col gap-1 rounded-[30px] bg-dark-charcoal/75 backdrop-blur-sm
+                                    ${findedObjects.length || predictionResults.length ? "p-1 border border-white/25" : ""}
+                                    duration-200`}
                     >
                         {findedObjects.map((item) => (
                             <ObjectItem
                                 key={item.id}
                                 item={item}
                                 searchStr={searchInputValue}
-                                onSelect={() => {
-                                    handleSuggestionClick(item.id);
+                                onSelect={(e) => {
+                                    handleSuggestionClick(e);
                                     resetSearch();
                                     handleSetInactive();
                                 }}
@@ -94,8 +97,8 @@ const MobileSearch = ({ onChangeMapCenter, className }: MapHeaderProps) => {
                                 key={item.place_id}
                                 item={item}
                                 searchStr={searchInputValue}
-                                onSelect={() => {
-                                    handleSuggestionClick(item.place_id);
+                                onSelect={(e) => {
+                                    handleSuggestionClick(e);
                                     resetSearch();
                                     handleSetInactive();
                                 }}
