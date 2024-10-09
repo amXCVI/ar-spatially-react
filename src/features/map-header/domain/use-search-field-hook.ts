@@ -96,7 +96,6 @@ const useSearchFieldHook = ({
 
     const handleSuggestionClick = useCallback(
         (placeId: string) => {
-            console.log("@@@@@@@", placeId);
             const object = findedObjects.find((item) => item.id === placeId);
             // Если объект - из наших приложений - открываем его
             if (object) {
