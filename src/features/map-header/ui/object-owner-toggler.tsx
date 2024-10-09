@@ -9,18 +9,18 @@ const ObjectsToggler = () => {
         <Fragment>
             <span
                 className={`xl:h-14 px-5 content-center border rounded-[22px] lg:rounded-[30px] cursor-pointer roboto-regular-13 lg:text-xl
-                            ${myObjectsOnly ? "border-blue-accent text-blue-accent" : "border-white/25 text-quick-silver"}
+                            ${myObjectsOnly ? "border-blue-accent text-blue-accent bg-blue-accent/35 xl:bg-granite-gray/35" : "border-white/25 text-quick-silver bg-granite-gray/35"}
                             duration-300 text-nowrap flex justify-center items-center
-                            bg-granite-gray/35 backdrop-blur-sm`}
+                            backdrop-blur-sm`}
                 onClick={toggleObjectsOwner}
             >
                 {myObjectsOnly ? "My Objects" : "My"}
             </span>
             <span
                 className={`xl:h-14 px-5 content-center border rounded-[22px] lg:rounded-[30px] cursor-pointer roboto-regular-13 lg:text-xl
-                            ${myObjectsOnly ? "border-white/25 text-quick-silver" : "border-blue-accent text-blue-accent"}
+                            ${myObjectsOnly ? "border-white/25 text-quick-silver bg-granite-gray/35" : "border-blue-accent text-blue-accent bg-blue-accent/35 xl:bg-granite-gray/35"}
                             duration-300 text-nowrap flex justify-center items-center
-                            bg-granite-gray/35 backdrop-blur-sm`}
+                            backdrop-blur-sm`}
                 onClick={toggleObjectsOwner}
             >
                 {myObjectsOnly ? "All" : "All Objects"}
