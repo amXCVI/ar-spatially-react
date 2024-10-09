@@ -1,6 +1,8 @@
 import { ReactNode } from "react";
 import { Sheet } from "react-modal-sheet";
 
+import { useOutsideClick } from "@/shared/lib/use-outside-click";
+
 interface MapBottomSheetProps {
     closeBottomSheet: () => void;
     isOpen: boolean;
@@ -10,6 +12,10 @@ interface MapBottomSheetProps {
 }
 
 const MapBottomSheet = ({ closeBottomSheet, isOpen, children, onCloseStart, className }: MapBottomSheetProps) => {
+    const bottomSheetRef = useOutsideClick(() => {
+        closeBottomSheet();
+    });
+
     return (
         <Sheet
             isOpen={isOpen}
@@ -19,7 +25,7 @@ const MapBottomSheet = ({ closeBottomSheet, isOpen, children, onCloseStart, clas
             style={{ zIndex: "100" }}
             onCloseStart={onCloseStart}
         >
-            <Sheet.Container style={{ backgroundColor: "#00000080" }}>
+            <Sheet.Container style={{ backgroundColor: "#00000080" }} ref={bottomSheetRef}>
                 <Sheet.Header className="backdrop-blur-sm" />
                 <Sheet.Content className="backdrop-blur-sm">{children}</Sheet.Content>
             </Sheet.Container>

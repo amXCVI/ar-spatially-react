@@ -43,6 +43,7 @@ const NftItem = ({ selectedMarker, onCloseViewer }: NftItemInterface) => {
         if (selectedMarker) {
             openBottomSheet();
         }
+
         return () => {
             closeBottomSheet();
         };
@@ -160,7 +161,7 @@ const NftItem = ({ selectedMarker, onCloseViewer }: NftItemInterface) => {
                 }}
                 className="lg:hidden"
             >
-                <div className="flex flex-col gap-4 px-4 h-[90vh] overflow-y-auto">
+                <div className="flex flex-col gap-4 px-4 max-h-[90vh] overflow-y-auto">
                     <div className="flex flex-col gap-1">
                         <h1 className="roboto-regular-24 text-white">{selectedMarker?.title}</h1>
                         <div className="flex gap-2.5">

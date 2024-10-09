@@ -65,7 +65,7 @@ const AppsSelect = ({ className }: { className?: string }) => {
 
             <MapBottomSheet isOpen={isOpen} closeBottomSheet={closeBottomSheet} className="xl:hidden">
                 <div
-                    className={`flex flex-row gap-6 justify-between flex-wrap
+                    className={`flex flex-row gap-6 justify-center flex-wrap
                                 p-4 pb-24 lg:pb-32`}
                 >
                     {layersList.map((appItem) => {
