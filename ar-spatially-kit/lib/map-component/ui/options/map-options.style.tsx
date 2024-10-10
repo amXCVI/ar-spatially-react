@@ -39,14 +39,22 @@ export const ButtonsContainer = styled.div`
 
 export const ZoomButton = styled.div`
     cursor: pointer;
-    height: 50px;
-    width: 45px;
     background: none;
     border: none;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 0;
+    height: 3.5rem;
+    width: 3.5rem;
+    @media (max-width: 1024px) {
+        height: 3rem;
+        width: 3rem;
+    }
+    @media (max-width: 480px) {
+        height: 2.5rem;
+        width: 2.5rem;
+    }
 `;
 
 export const ZoomButtonPlus = styled(ZoomButton)`
@@ -59,8 +67,6 @@ export const ZoomButtonMinus = styled(ZoomButton)`
 
 export const GeoButton = styled.div`
     cursor: pointer;
-    height: 45px;
-    width: 45px;
     background: none;
     border: none;
     background-repeat: no-repeat;
@@ -69,6 +75,16 @@ export const GeoButton = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 3.5rem;
+    width: 3.5rem;
+    @media (max-width: 1024px) {
+        height: 3rem;
+        width: 3rem;
+    }
+    @media (max-width: 480px) {
+        height: 2.5rem;
+        width: 2.5rem;
+    }
 `;
 
 export const MapTypeButton = styled.button<MapTypeButtonProps>`
@@ -77,7 +93,15 @@ export const MapTypeButton = styled.button<MapTypeButtonProps>`
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    height: 45px;
-    width: 45px;
     border-radius: 25px;
+    height: 3.5rem;
+    width: 3.5rem;
+    @media (max-width: 1024px) {
+        height: 3rem;
+        width: 3rem;
+    }
+    @media (max-width: 480px) {
+        height: 2.5rem;
+        width: 2.5rem;
+    }
 `;
