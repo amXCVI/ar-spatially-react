@@ -21,7 +21,7 @@ const AppsSelect = ({ className }: { className?: string }) => {
                         relative h-10 lg:h-14 ${className}`}
         >
             <div
-                className={`flex gap-3 ${isActive ? "justify-start" : "justify-center"} items-center p-2 lg:px-4 m-auto
+                className={`flex gap-3 justify-center items-center p-2 lg:px-4 m-auto
                             cursor-pointer
                             rounded-[30px] border border-white/25 bg-granite-gray/35 backdrop-blur-sm
                             h-10 lg:h-14

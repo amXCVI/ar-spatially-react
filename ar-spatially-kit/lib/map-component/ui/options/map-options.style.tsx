@@ -11,7 +11,8 @@ export const MapOptionsContainer = styled.div`
     gap: 20px;
     position: absolute;
     right: 28px;
-    top: calc(50vh - 90px);
+    top: 50%;
+    transform: translate(0, -50%);
     margin: auto 0;
     @media (max-width: ${AppMedia.sm}) {
         right: 1.5rem;
