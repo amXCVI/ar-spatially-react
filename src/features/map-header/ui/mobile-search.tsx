@@ -38,7 +38,7 @@ const MobileSearch = ({ onChangeMapCenter, className }: MapHeaderProps) => {
             <div
                 className={`flex justify-center items-center duration-500 
                             border border-white/25 rounded-[30px] bg-granite-gray/35 backdrop-blur-sm
-                            relative w-10 h-10 lg:w-auto lg:h-14 aspect-square ${className}`}
+                            relative w-10 h-10 2sm:w-12 2sm:h-12 lg:w-auto lg:h-14 aspect-square ${className}`}
                 onClick={handleSearch}
             >
                 <SearchIcon className="lg:w-6 lg:h-6 m-auto" />
@@ -50,7 +50,7 @@ const MobileSearch = ({ onChangeMapCenter, className }: MapHeaderProps) => {
                     className="fixed bottom-7 lg:bottom-10 left-0 right-0 flex flex-col-reverse gap-2 z-[1000]"
                 >
                     <form
-                        className="container mx-auto bg-granite-gray/35 rounded-[30px] p-2 lg:p-4 border border-white/25 backdrop-blur-2xl"
+                        className="container mx-auto bg-granite-gray/35 rounded-[30px] p-2 2sm:p-3 lg:p-4 border border-white/25 backdrop-blur-2xl"
                         onSubmit={() => {
                             resetSearch();
                             handleSetInactive();

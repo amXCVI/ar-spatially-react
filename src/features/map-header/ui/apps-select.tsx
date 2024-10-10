@@ -5,6 +5,7 @@ import { LayerInterface, LayerStatus } from "@/shared/types";
 
 import AddAppIcon from "../assets/add-app.svg?react";
 import AppsIcon from "../assets/apps-icon.svg?react";
+import CloseMenuIcon from "../assets/close-menu-icon.svg?react";
 import RemoveAppIcon from "../assets/remove-app.svg?react";
 
 import { useAppsSelectHook } from "../domain";
@@ -18,13 +19,13 @@ const AppsSelect = ({ className }: { className?: string }) => {
         <div
             className={`flex flex-col rounded-[30px]
                        
-                        relative h-10 lg:h-14 ${className}`}
+                        relative ${className}`}
         >
             <div
                 className={`flex gap-3 justify-center items-center p-2 lg:px-4 m-auto
                             cursor-pointer
                             rounded-[30px] border border-white/25 bg-granite-gray/35 backdrop-blur-sm
-                            h-10 lg:h-14
+                            h-10 2sm:h-12 lg:h-14
                             aspect-square lg:aspect-auto
                            `}
                 onClick={() => {
@@ -129,8 +130,10 @@ export const AppsPopup = ({
                 }}
                 ref={appsSelectRef}
             >
-                <div className="flex justify-center w-full cursor-pointer">
+                <div className="flex justify-between w-full cursor-pointer" onClick={toggleIsActiveSearchField}>
+                    <div className="w-4" />
                     <b className="text-white roboto-regular-24">Apps</b>
+                    <CloseMenuIcon />
                 </div>
                 <div className={`flex gap-1 flex-wrap justify-center my-5`}>
                     {layersList.map((item) => {
