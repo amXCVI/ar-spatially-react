@@ -19,7 +19,7 @@ const MapHeader = ({ onChangeMapCenter }: MapHeaderProps) => {
         <header className="fixed z-20 bottom-0 xl:bottom-auto xl:top-0 right-0 left-0">
             <div
                 className="container mx-auto pb-7 lg:pb-10 xl:pb-0 xl:pt-10 px-6 
-                           flex flex-row gap-1 3sm:gap-2 md:gap-10 justify-between"
+                           flex flex-row gap-1 3sm:gap-2 md:gap-10 justify-between md:justify-center xl:justify-between"
             >
                 <a href={routes.root} className="items-center hidden xl:flex h-14 mr-auto">
                     <Logo style={{ fill: "white" }} />
@@ -55,7 +55,7 @@ const MapMobileMenu = ({ className }: { className?: string }) => (
         show={false}
         white
         iconClassname="flex justify-center items-center duration-500
-                       cursor-pointer hover:bg-white50 w-10 h-10 lg:w-14 lg:h-14 p-2 lg:p-3
+                       cursor-pointer hover:bg-white50 w-10 h-10 2sm:w-12 2sm:h-12 lg:w-14 lg:h-14 p-2 lg:p-3
                        border border-white/25 bg-granite-gray/35 backdrop-blur-sm rounded-full"
     />
 );
