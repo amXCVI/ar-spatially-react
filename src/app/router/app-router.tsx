@@ -12,6 +12,7 @@ const ProfileSettingsPage = React.lazy(() => import("@/pages/profile-settings-pa
 const BlockchainPage = React.lazy(() => import("@/pages/blockchain-page"));
 const ProductPage = React.lazy(() => import("@/pages/product-page"));
 const ArNftPage = React.lazy(() => import("@/pages/ar-nft-page"));
+const FeedsPage = React.lazy(() => import("@/pages/feeds-page"));
 const EventPage = React.lazy(() => import("@/pages/event-page"));
 const ErrorPage = React.lazy(() => import("@/pages/error-page"));
 const HomePage = React.lazy(() => import("@/pages/home-page"));
@@ -40,6 +41,16 @@ const AppRouter = () => {
                     children: [
                         { index: true, element: <LkPage /> },
                         { path: routes.profileSettings, element: <ProfileSettingsPage /> },
+                    ],
+                },
+
+                {
+                    path: routes.feeds,
+                    element: <PrivateRoute />,
+                    children: [
+                        { index: true, element: <FeedsPage /> },
+                        { path: routes.allFeels, element: <div>all feeds</div> },
+                        { path: routes.userFeeds, element: <div>user feeds</div> },
                     ],
                 },
 

@@ -1,6 +1,7 @@
 import { filesApi } from "./file-endpoints";
 import { layerApi } from "./layer-endpoints";
 import { objectApi } from "./object-endpoints";
+import { postApi } from "./post-endpoints";
 import { userApi } from "./user-endpoints";
 
 export class ApiEndpoints {
@@ -8,4 +9,5 @@ export class ApiEndpoints {
     static object = objectApi;
     static layer = layerApi;
     static file = filesApi;
+    static post = postApi;
 }

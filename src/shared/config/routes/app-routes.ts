@@ -8,6 +8,9 @@ const routes = {
     playground: "playground",
     lk: "personal_page",
     profileSettings: "profile_settings",
+    feeds: "feeds",
+    allFeels: "all",
+    userFeeds: "user",
     docs: "https://ar-spatially.gitbook.io/ar-spatially-documentation/platform-architecture/ar-nft",
 
     undefined: "*",
