@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 
 const FeedsLayout = ({ children }: { children: ReactNode }) => {
-    return <>{children}</>;
+    return <div className="flex h-dvh bg-black">{children}</div>;
 };
 
 export { FeedsLayout };

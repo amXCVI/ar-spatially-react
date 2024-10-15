@@ -5,24 +5,24 @@ export interface PostInterface {
         userId: string;
         name: string;
         nickname: string;
-        avatarId: string;
+        avatarId?: string;
     };
-    quote: string;
-    quoteTags: QuoteTagInterface[];
+    quote?: string;
+    quoteTags?: QuoteTagInterface[];
     arPostInfo: {
         id: string;
         author: {
             userId: string;
             name: string;
             nickname: string;
-            avatarId: string;
+            avatarId?: string;
         };
         content: string;
-        postTags: PostTagInterface[];
-        previewId: string;
+        postTags?: PostTagInterface[];
+        previewId?: string;
         lat: number;
         lng: number;
-        location: string;
+        location?: string;
         createdAt: number;
         updatedAt: number;
     };
@@ -47,6 +47,37 @@ export interface PostTagInterface {
     nickname: string;
 }
 
+export interface PostImageInterface {
+    id: string;
+    postInfoId: string;
+    imageType: PostImageTypes;
+    fileId: string;
+}
+
+export interface PostVideoInterface {
+    id: string;
+    postInfoId: string;
+    videoType: PostVideoTypes;
+    fileId: string;
+}
+
+export enum PostImageTypes {
+    JPG = "JPG",
+}
+
+export enum PostVideoTypes {
+    MP4 = "MP4",
+}
+
 export enum PostTypes {
     POST = "POST",
+    QUOTE = "QUOTE",
+    REPOST = "REPOST",
+}
+
+export enum FeedsPageModes {
+    ALL_FEED = "All Feed",
+    MY_FEED = "My Feed",
+    // MY_DRAFTS = "My Drafts",
+    // SAVED = "Saved",
 }

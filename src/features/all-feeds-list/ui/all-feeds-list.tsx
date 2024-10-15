@@ -6,9 +6,9 @@ const AllFeedsList = () => {
     const { feedsList, handleScroll, containerRef } = useAllFeedsHook();
 
     return (
-        <div className="flex flex-col overflow-scroll" ref={containerRef} onScroll={handleScroll}>
-            {feedsList.map((feedItem) => {
-                return <FeedItem key={feedItem.id} feed={feedItem} />;
+        <div className="flex flex-col gap-5 overflow-scroll" ref={containerRef} onScroll={handleScroll}>
+            {feedsList.map((feedItem, index) => {
+                return <FeedItem key={feedItem.id + index} feed={feedItem} />;
             })}
         </div>
     );
