@@ -24,7 +24,7 @@ const Footer = () => {
             </div>
 
             <div className="flex gap-6 md:gap-10 xl:gap-20 flex-wrap">
-                <div className="flex flex-col gap-2 lg:mx-auto w-min">
+                {/* <div className="flex flex-col gap-2 lg:mx-auto w-min">
                     <span className="light-12 text-spanish-gray">Download</span>
                     <div className="flex gap-2 justify-around items-center">
                         <a href={import.meta.env.VITE_APP_NFTST_PLAYMARKET_URL}>
@@ -61,7 +61,7 @@ const Footer = () => {
                             </svg>
                         </a>
                     </div>
-                </div>
+                </div> */}
 
                 <div className="flex flex-col gap-2">
                     <span className="light-12 text-spanish-gray">Follow us</span>
