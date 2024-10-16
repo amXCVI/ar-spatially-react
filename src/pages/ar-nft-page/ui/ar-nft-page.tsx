@@ -7,9 +7,9 @@ import { DarkLayout } from "@/shared/ui/layouts";
 import { SectionTitle, TextP } from "@/shared/ui/text-components";
 
 import dgesLogo from "/images/ar-nft/dges-icon.svg";
-import appStoreButton from "/images/landing/get-started-section/app-store-button.svg";
-import playMarketButton from "/images/landing/get-started-section/play-market-button.svg";
 
+// import appStoreButton from "/images/landing/get-started-section/app-store-button.svg";
+// import playMarketButton from "/images/landing/get-started-section/play-market-button.svg";
 import phone1 from "/images/ar-nft/phone_33.webp";
 import phone2 from "/images/ar-nft/phone_34.webp";
 import nftStPhone from "/images/ar-nft/phone_35.webp";
@@ -38,7 +38,7 @@ const ArNftPage = () => {
                                 reliability of interactions in augmented reality and simplifying NFT integration. This
                                 makes advanced technologies more accessible and efficient.
                             </TextP>
-                            <div className="flex gap-4 mt-auto justify-center md:justify-start flex-wrap">
+                            {/* <div className="flex gap-4 mt-auto justify-center md:justify-start flex-wrap">
                                 <a href={import.meta.env.VITE_APP_NFTST_APPSTORE_URL}>
                                     <DefaultButton className="">
                                         <img src={appStoreButton} />
@@ -49,7 +49,7 @@ const ArNftPage = () => {
                                         <img src={playMarketButton} />
                                     </DefaultButton>
                                 </a>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>

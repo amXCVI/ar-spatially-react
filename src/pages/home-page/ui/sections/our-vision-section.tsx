@@ -1,9 +1,8 @@
 import Spline from "@splinetool/react-spline";
 
-import { DefaultButton } from "@/shared/ui/buttons";
-
-import appStoreButton from "/images/landing/get-started-section/app-store-button.svg";
-import playMarketButton from "/images/landing/get-started-section/play-market-button.svg";
+// import { DefaultButton } from "@/shared/ui/buttons";
+// import appStoreButton from "/images/landing/get-started-section/app-store-button.svg";
+// import playMarketButton from "/images/landing/get-started-section/play-market-button.svg";
 import textParagraphPoint from "/images/landing/our-vision-section/paragraph-point.svg";
 import textItemPointIcon from "/images/landing/start-section/text-item-point.svg";
 
@@ -51,7 +50,7 @@ const OurVisionSection = () => {
                         />
                     </div>
 
-                    <div className="flex gap-2 md:gap-5 mx-auto mt-6">
+                    {/* <div className="flex gap-2 md:gap-5 mx-auto mt-6">
                         <a href={import.meta.env.VITE_APP_NFTST_APPSTORE_URL}>
                             <DefaultButton className="bg-none !py-3">
                                 <img src={appStoreButton} />
@@ -62,7 +61,7 @@ const OurVisionSection = () => {
                                 <img src={playMarketButton} />
                             </DefaultButton>
                         </a>
-                    </div>
+                    </div> */}
                 </div>
 
                 <div className="col-span-1 md:col-span-3 flex flex-col items-center w-full h-min">

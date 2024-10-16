@@ -69,3 +69,16 @@ body {
         transform: translate(-100%, 0);
     }
 }
+
+/* Скрываем скроллбары */
+::-webkit-scrollbar {
+    display: none; /* Для браузеров на основе Webkit */
+}
+
+html {
+    scrollbar-width: none; /* Firefox */
+}
+
+body {
+    -ms-overflow-style: none; /* Internet Explorer и Edge */
+}

@@ -2,9 +2,8 @@ import { routes } from "@/shared/config";
 import { DefaultButton } from "@/shared/ui/buttons";
 import { TextP, Title } from "@/shared/ui/text-components";
 
-import appStoreButton from "/images/landing/get-started-section/app-store-button.svg";
-import playMarketButton from "/images/landing/get-started-section/play-market-button.svg";
-
+// import appStoreButton from "/images/landing/get-started-section/app-store-button.svg";
+// import playMarketButton from "/images/landing/get-started-section/play-market-button.svg";
 import phone2 from "/images/landing/get-started-section/phone_1.webp";
 import phoneForMapOne from "/images/landing/get-started-section/phone_2.webp";
 import phoneForMapTwo from "/images/landing/get-started-section/phone_3.webp";
@@ -99,7 +98,7 @@ const GetStartedSection = () => {
                                         </a>
                                     </div>
 
-                                    <div className="flex justify-around md:justify-end w-full gap-4 flex-wrap md:mt-2.5">
+                                    {/* <div className="flex justify-around md:justify-end w-full gap-4 flex-wrap md:mt-2.5">
                                         <a
                                             href={import.meta.env.VITE_APP_NFTST_APPSTORE_URL}
                                             className="w-full sm:w-auto"
@@ -116,7 +115,7 @@ const GetStartedSection = () => {
                                                 <img src={playMarketButton} />
                                             </DefaultButton>
                                         </a>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </div>
                         </div>

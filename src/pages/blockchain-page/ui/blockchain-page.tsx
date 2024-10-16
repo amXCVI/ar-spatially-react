@@ -5,9 +5,8 @@ import { DefaultButton } from "@/shared/ui/buttons";
 import { DarkLayout } from "@/shared/ui/layouts";
 import { SectionTitle, TextP } from "@/shared/ui/text-components";
 
-import appStoreButton from "/images/landing/get-started-section/app-store-button.svg";
-import playMarketButton from "/images/landing/get-started-section/play-market-button.svg";
-
+// import appStoreButton from "/images/landing/get-started-section/app-store-button.svg";
+// import playMarketButton from "/images/landing/get-started-section/play-market-button.svg";
 import nftStPhone from "/images/blockchain/phone_20.webp";
 import phone1 from "/images/blockchain/phone_21.webp";
 import phone2 from "/images/blockchain/phone_22.webp";
@@ -97,7 +96,7 @@ const BlockchainPage = () => {
                             This collaboration allows artists to explore new forms of self-expression and provides
                             collectors access to a diverse range of artworks and interactive opportunities.
                         </TextP>
-                        <div className="flex gap-4 justify-center 2sm:justify-start flex-wrap">
+                        {/* <div className="flex gap-4 justify-center 2sm:justify-start flex-wrap">
                             <a href={import.meta.env.VITE_APP_NFTST_APPSTORE_URL}>
                                 <DefaultButton className="">
                                     <img src={appStoreButton} />
@@ -108,7 +107,7 @@ const BlockchainPage = () => {
                                     <img src={playMarketButton} />
                                 </DefaultButton>
                             </a>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>
