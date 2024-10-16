@@ -6,14 +6,14 @@ import { AuthContext, SignInPopupModes } from "@/features/login-modal";
 
 import { docsMenuLink, menuLinks, routes } from "@/shared/config";
 import { useUserContext } from "@/shared/stores";
-import { DefaultButton } from "@/shared/ui/buttons";
+// import { DefaultButton } from "@/shared/ui/buttons";
 import { Socials } from "@/shared/ui/socials";
 
-import AppStoreButton from "../assets/app-store-white-icon.svg?react";
+// import AppStoreButton from "../assets/app-store-white-icon.svg?react";
 import BurgerIcon from "../assets/burger-icon.svg?react";
 // import BurgerIcon from "./burger-icon.svg?react";
 import CloseMenuIcon from "../assets/close-menu-icon.svg?react";
-import PlayMarketButton from "../assets/google-play-white-icon.svg?react";
+// import PlayMarketButton from "../assets/google-play-white-icon.svg?react";
 import Logo from "../assets/logo.svg?react";
 import MenuIcon from "../assets/menu-icon.svg?react";
 import PersonIcon from "../assets/person-icon.svg?react";
@@ -173,7 +173,7 @@ export const MobileMenu = ({ white = false, show, className, iconClassname }: Mo
                         </Link>
                     </div>
 
-                    <div className="flex gap-2 md:gap-5">
+                    {/* <div className="flex gap-2 md:gap-5">
                         <Link to={import.meta.env.VITE_APP_NFTST_APPSTORE_URL}>
                             <DefaultButton className="bg-none text-white !py-3 border-none">
                                 <AppStoreButton style={{ fill: "#7a7a7a" }} />
@@ -184,7 +184,7 @@ export const MobileMenu = ({ white = false, show, className, iconClassname }: Mo
                                 <PlayMarketButton style={{ fill: "#7a7a7a" }} />
                             </DefaultButton>
                         </Link>
-                    </div>
+                    </div> */}
 
                     <Socials className="my-10 gap-5 2sm:gap-10" itemClassName="fill-white" />
                 </div>

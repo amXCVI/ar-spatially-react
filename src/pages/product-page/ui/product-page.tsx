@@ -9,9 +9,8 @@ import { DarkLayout } from "@/shared/ui/layouts";
 import { PhoneSlider } from "@/shared/ui/phones-video-slider";
 import { SectionTitle, TextP } from "@/shared/ui/text-components";
 
-import appStoreButton from "/images/landing/get-started-section/app-store-button.svg";
-import playMarketButton from "/images/landing/get-started-section/play-market-button.svg";
-
+// import appStoreButton from "/images/landing/get-started-section/app-store-button.svg";
+// import playMarketButton from "/images/landing/get-started-section/play-market-button.svg";
 import bulb from "/images/product/bulb.png";
 
 const ProductPage = () => {
@@ -87,7 +86,7 @@ const ProductPage = () => {
                         </TextP>
                     </div>
 
-                    <div className="flex gap-2 md:gap-5 justify-start">
+                    {/* <div className="flex gap-2 md:gap-5 justify-start">
                         <a href={import.meta.env.VITE_APP_NFTST_APPSTORE_URL}>
                             <DefaultButton className="bg-none text-gray90 !py-3">
                                 <img src={appStoreButton} />
@@ -98,7 +97,7 @@ const ProductPage = () => {
                                 <img src={playMarketButton} />
                             </DefaultButton>
                         </a>
-                    </div>
+                    </div> */}
                 </div>
             </div>
 
