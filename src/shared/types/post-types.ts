@@ -1,22 +1,12 @@
 export interface PostInterface {
     id: string;
     type: PostTypes;
-    owner: {
-        userId: string;
-        name: string;
-        nickname: string;
-        avatarId?: string;
-    };
+    owner: PostUserInterface;
     quote?: string;
     quoteTags?: QuoteTagInterface[];
     arPostInfo: {
         id: string;
-        author: {
-            userId: string;
-            name: string;
-            nickname: string;
-            avatarId?: string;
-        };
+        author: PostUserInterface;
         content: string;
         postTags?: PostTagInterface[];
         previewId?: string;
@@ -31,6 +21,13 @@ export interface PostInterface {
     countComments: number;
     createdAt: number;
     updatedAt: number;
+}
+
+export interface PostUserInterface {
+    userId: string;
+    name: string;
+    nickname: string;
+    avatarId?: string;
 }
 
 export interface QuoteTagInterface {

@@ -8,6 +8,7 @@ import {
     PostInterface,
     PostTagInterface,
     PostTypes,
+    PostUserInterface,
     PostVideoInterface,
     QuoteTagInterface,
 } from "./post-types";
@@ -29,6 +30,7 @@ export {
     type PostTagInterface,
     type PostImageInterface,
     type PostVideoInterface,
+    type PostUserInterface,
     PostTypes,
     FeedsPageModes,
 };
