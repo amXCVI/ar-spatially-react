@@ -63,6 +63,15 @@ const allFeedsSlice = createSlice({
         onChangeFilterString: (state, action: PayloadAction<string>) => {
             state.feedsFilterString = action.payload;
         },
+
+        // Likes
+        setLikeToPost: (state, action: PayloadAction<{ postId: string; userLike: boolean; likesCount: number }>) => {
+            state.feedsList = state.feedsList.map((feed) =>
+                feed.id === action.payload.postId
+                    ? { ...feed, likes: action.payload.likesCount, userLike: action.payload.userLike }
+                    : { ...feed },
+            );
+        },
     },
 });
 

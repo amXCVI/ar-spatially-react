@@ -15,15 +15,19 @@ interface FeedItemProps {
 }
 
 const DefaultFeedItem = ({ feed }: FeedItemProps) => {
-    const { handleOpenFeedPage } = useFeedItemHook({ feed });
+    const { handleOpenFeedPage, handleLikeFeed } = useFeedItemHook({ feed });
 
     return (
         <div
             className="flex flex-col
                         border border-white rounded-xl p-4"
-            onClick={handleOpenFeedPage}
         >
-            <FeedHeader author={feed.arPostInfo.author} feedType={feed.type} createdAt={feed.createdAt} />
+            <FeedHeader
+                author={feed.arPostInfo.author}
+                feedType={feed.type}
+                createdAt={feed.createdAt}
+                onClick={handleOpenFeedPage}
+            />
 
             <QuotePostContent quote={feed.quote} />
 
@@ -33,10 +37,10 @@ const DefaultFeedItem = ({ feed }: FeedItemProps) => {
 
                     <FeedContentText text={feed.arPostInfo.content} />
 
-                    <FeedActionButtons />
+                    <FeedActionButtons userLike={feed.userLike} handleLikeFeed={handleLikeFeed} />
                 </>
             ) : (
-                <QuoteOrRepostPost feed={feed} />
+                <QuoteOrRepostPost feed={feed} handleLikeFeed={handleLikeFeed} />
             )}
         </div>
     );

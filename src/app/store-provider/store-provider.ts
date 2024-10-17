@@ -1,9 +1,9 @@
 import { Action, Reducer, combineReducers, configureStore } from "@reduxjs/toolkit";
 
-import { allFeedsSlice, userFeedsSlice } from "@/shared/stores/feeds-store";
+import { allFeedsSlice, selectedFeedSlice } from "@/shared/stores/feeds-store";
 
 const combinedReducer = combineReducers({
-    userFeedsSlice: userFeedsSlice,
+    selectedFeedSlice: selectedFeedSlice,
     allFeedsSlice: allFeedsSlice,
 });
 

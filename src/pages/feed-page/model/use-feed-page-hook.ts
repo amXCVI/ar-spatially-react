@@ -1,28 +1,30 @@
-import { useEffect, useState } from "react";
-import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
+import { useEffect } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 import { ApiEndpoints } from "@/shared/api";
 import { routes } from "@/shared/config";
 import { SearchParamsConstants } from "@/shared/config/constants";
-import { PostInterface } from "@/shared/types";
+import { useAppDispatch, useAppSelector } from "@/shared/lib/redux-service";
+import { selectedFeedActions } from "@/shared/stores/feeds-store";
 
 const useFeedPageHook = () => {
-    const location = useLocation();
+    const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
     const [searchParams] = useSearchParams();
     const feedId = searchParams.get(SearchParamsConstants.feedIdSearchParamsKey);
 
-    const [feed, setFeed] = useState<null | PostInterface>(location.state ? location.state.feed : null);
+    const { currentFeed: feed } = useAppSelector((state) => state.selectedFeedSlice);
 
     useEffect(() => {
-        // Если в параметрах не был передан feed
+        // Если в сторе не сохранен feed
         // Запрашиваю его по feedId
+        // Если feedId нет - редирект на список всех feeds
         if (!feed && feedId) {
             ApiEndpoints.post
                 .getPostById({ postId: feedId })
                 .then((res) => {
-                    setFeed(res);
+                    dispatch(selectedFeedActions.setCurrentFeed(res));
                 })
                 .catch(() => {
                     navigate(`/${routes.feeds}`);

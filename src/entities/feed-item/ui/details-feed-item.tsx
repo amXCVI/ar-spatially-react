@@ -1,6 +1,6 @@
 import { PostCommentInterface, PostImageInterface, PostInterface, PostTypes, PostVideoInterface } from "@/shared/types";
 
-// import { useDetailFeedItemHook } from "../model";
+import { useDetailFeedItemHook } from "../model";
 import {
     FeedActionButtons,
     FeedCommentItem,
@@ -18,7 +18,7 @@ interface FeedItemProps {
     feedComments: PostCommentInterface[];
 }
 const DetailsFeedItem = ({ feed, feedImages, feedVideos, feedComments }: FeedItemProps) => {
-    // const { authors } = useDetailFeedItemHook({ feedComments });
+    const { handleLikeFeed } = useDetailFeedItemHook({ feedId: feed.id });
 
     return (
         <div className="flex flex-col p-4">
@@ -36,7 +36,7 @@ const DetailsFeedItem = ({ feed, feedImages, feedVideos, feedComments }: FeedIte
 
                     <FeedContentText text={feed.arPostInfo.content} />
 
-                    <FeedActionButtons />
+                    <FeedActionButtons handleLikeFeed={handleLikeFeed} userLike={feed.userLike} />
                 </>
             ) : (
                 <QuoteOrRepostPost
@@ -48,6 +48,7 @@ const DetailsFeedItem = ({ feed, feedImages, feedVideos, feedComments }: FeedIte
                             previewId={feed.arPostInfo.previewId}
                         />
                     }
+                    handleLikeFeed={handleLikeFeed}
                 />
             )}
 

@@ -1,6 +1,6 @@
 import allFeedsSlice, { allFeedsActions } from "./all-feeds-slice";
-import userFeedsSlice, { userFeedsActions } from "./user-feeds-slice";
+import selectedFeedSlice, { selectedFeedActions } from "./selected-feed-slice";
 
-export { userFeedsActions, userFeedsSlice };
+export { selectedFeedActions, selectedFeedSlice };
 
 export { allFeedsActions, allFeedsSlice };

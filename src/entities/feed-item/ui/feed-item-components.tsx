@@ -22,13 +22,15 @@ const FeedHeader = ({
     author,
     feedType,
     createdAt,
+    onClick,
 }: {
     author: PostUserInterface;
     feedType: PostTypes;
     createdAt: number;
+    onClick?: () => void;
 }) => {
     return (
-        <div className="flex gap-4">
+        <div className="flex gap-4" onClick={onClick}>
             <img
                 src={`${import.meta.env.VITE_APP_API_BASE_URL}gateway/file/get?fileId=${author.avatarId}`}
                 className="rounded-full aspect-square w-16"
@@ -54,7 +56,15 @@ const QuotePostContent = ({ quote }: { quote?: string }) => {
     }
 };
 
-const QuoteOrRepostPost = ({ feed, mediaContent }: { feed: PostInterface; mediaContent?: ReactNode }) => {
+const QuoteOrRepostPost = ({
+    feed,
+    mediaContent,
+    handleLikeFeed,
+}: {
+    feed: PostInterface;
+    mediaContent?: ReactNode;
+    handleLikeFeed: () => void;
+}) => {
     if (feed.type !== PostTypes.QUOTE && feed.type !== PostTypes.REPOST) {
         return <Fragment />;
     }
@@ -63,7 +73,12 @@ const QuoteOrRepostPost = ({ feed, mediaContent }: { feed: PostInterface; mediaC
         <div className="flex flex-col">
             <QuoteOriginalPostHeader author={feed.arPostInfo.author} createdAt={feed.arPostInfo.createdAt} />
             {mediaContent ?? <FeedPreview previewId={feed.arPostInfo.previewId} />}
-            <FeedActionsRow location={feed.arPostInfo.location} likes={feed.likes} />
+            <FeedActionsRow
+                location={feed.arPostInfo.location}
+                likes={feed.likes}
+                userLike={feed.userLike}
+                handleLikeFeed={handleLikeFeed}
+            />
             <FeedContentText text={feed.arPostInfo.content} />
         </div>
     );
@@ -108,11 +123,11 @@ const FeedContentText = ({ text }: { text?: string }) => {
     return <div>{text}</div>;
 };
 
-const FeedActionButtons = () => {
+const FeedActionButtons = ({ handleLikeFeed, userLike }: { handleLikeFeed: () => void; userLike: boolean }) => {
     return (
         <div className="flex gap-8">
-            <div className="cursor-pointer">
-                <LikeIcon />
+            <div className="cursor-pointer" onClick={handleLikeFeed}>
+                <LikeIcon style={{ fill: userLike ? "red" : "white" }} />
             </div>
             <div className="cursor-pointer">
                 <CommentIcon />
@@ -127,7 +142,17 @@ const FeedActionButtons = () => {
     );
 };
 
-const FeedActionsRow = ({ location, likes }: { location?: string; likes: number }) => {
+const FeedActionsRow = ({
+    location,
+    likes,
+    userLike,
+    handleLikeFeed,
+}: {
+    location?: string;
+    likes: number;
+    handleLikeFeed: () => void;
+    userLike: boolean;
+}) => {
     return (
         <div className="flex justify-between gap-10">
             <div className="flex gap-1 items-center text-sm">
@@ -141,7 +166,7 @@ const FeedActionsRow = ({ location, likes }: { location?: string; likes: number 
                 <span>{`${likes} likes`}</span>
             </div>
 
-            <FeedActionButtons />
+            <FeedActionButtons userLike={userLike} handleLikeFeed={handleLikeFeed} />
         </div>
     );
 };
