@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 
 import { useAppDispatch, useAppSelector } from "@/shared/lib/redux-service";
 import { useGetFeedsHook } from "@/shared/lib/use-get-feeds-hook";
@@ -14,12 +14,6 @@ const useAllFeedsHook = () => {
     const { feedsList, loading, currentPage, totalPages, feedsPageMode, feedsFilterString } = useAppSelector(
         (state) => state.allFeedsSlice,
     );
-
-    useEffect(() => {
-        // Загружаю данные при первом открытии страницы
-        fetchFeeds({ page: currentPage, feedsPageMode, filterString: feedsFilterString });
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
 
     const handleScroll = () => {
         const container = containerRef.current;

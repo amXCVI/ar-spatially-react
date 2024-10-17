@@ -1,3 +1,3 @@
-import { FeedsPage } from "./model";
+import { FeedsPage } from "./ui";
 
 export default FeedsPage;

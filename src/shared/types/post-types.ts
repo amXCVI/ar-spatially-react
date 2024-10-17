@@ -58,6 +58,29 @@ export interface PostVideoInterface {
     fileId: string;
 }
 
+export interface PostCommentInterface {
+    id: number;
+    postId: string;
+    author: {
+        avatarId?: string;
+        name?: string;
+        nickname: string;
+        userId: string;
+    };
+    commentText: string;
+    answerToId: number;
+    createdAt: number;
+    updatedAt: number;
+    commentTags: PostCommentTagInterface[] | null;
+}
+
+export interface PostCommentTagInterface {
+    id: number;
+    commentId: number;
+    userId: string;
+    nickname: string;
+}
+
 export enum PostImageTypes {
     JPG = "JPG",
 }

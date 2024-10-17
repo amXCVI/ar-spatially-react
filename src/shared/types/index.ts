@@ -4,6 +4,8 @@ import { AnchorInterface, AnchotTypeEnum, MarkerInterface, MarkerStatusEnum } fr
 import { ObjectInterface } from "./object-types";
 import {
     FeedsPageModes,
+    PostCommentInterface,
+    PostCommentTagInterface,
     PostImageInterface,
     PostInterface,
     PostTagInterface,
@@ -31,6 +33,8 @@ export {
     type PostImageInterface,
     type PostVideoInterface,
     type PostUserInterface,
+    type PostCommentInterface,
+    type PostCommentTagInterface,
     PostTypes,
     FeedsPageModes,
 };

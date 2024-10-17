@@ -1,3 +1,3 @@
-import { FeedItem } from "./ui";
+import { DefaultFeedItem, DetailsFeedItem } from "./ui";
 
-export { FeedItem };
+export { DefaultFeedItem, DetailsFeedItem };

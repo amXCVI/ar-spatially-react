@@ -2,6 +2,8 @@ import { Suspense } from "react";
 import React from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
+import { FeedPagesLayout } from "@/widgets/feed-pages-layout";
+
 import { routes } from "@/shared/config";
 import { BaseLayout } from "@/shared/ui/layouts";
 
@@ -15,6 +17,7 @@ const ArNftPage = React.lazy(() => import("@/pages/ar-nft-page"));
 const FeedsPage = React.lazy(() => import("@/pages/feeds-page"));
 const EventPage = React.lazy(() => import("@/pages/event-page"));
 const ErrorPage = React.lazy(() => import("@/pages/error-page"));
+const FeedPage = React.lazy(() => import("@/pages/feed-page"));
 const HomePage = React.lazy(() => import("@/pages/home-page"));
 const MapPage = React.lazy(() => import("@/pages/map-page"));
 const LkPage = React.lazy(() => import("@/pages/lk"));
@@ -46,13 +49,25 @@ const AppRouter = () => {
 
                 {
                     path: routes.feeds,
-                    element: <PrivateRoute />,
+                    element: (
+                        <FeedPagesLayout>
+                            <PrivateRoute />
+                        </FeedPagesLayout>
+                    ),
                     children: [
                         { index: true, element: <FeedsPage /> },
-                        { path: routes.allFeels, element: <div>all feeds</div> },
-                        { path: routes.userFeeds, element: <div>user feeds</div> },
+                        { path: routes.feed, element: <FeedPage /> },
                     ],
                 },
+                // {
+                //     path: routes.feed,
+                //     element: (
+                //         <FeedPagesLayout>
+                //             <PrivateRoute />
+                //         </FeedPagesLayout>
+                //     ),
+                //     children: [{ index: true, element: <FeedPage /> }],
+                // },
 
                 { path: routes.event, element: <EventPage /> },
 
