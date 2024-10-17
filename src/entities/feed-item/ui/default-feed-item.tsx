@@ -6,6 +6,7 @@ import {
     FeedContentText,
     FeedHeader,
     FeedPreview,
+    FeedTag,
     QuoteOrRepostPost,
     QuotePostContent,
 } from "./feed-item-components";
@@ -15,7 +16,7 @@ interface FeedItemProps {
 }
 
 const DefaultFeedItem = ({ feed }: FeedItemProps) => {
-    const { handleOpenFeedPage, handleLikeFeed } = useFeedItemHook({ feed });
+    const { handleOpenFeedPage, handleLikeFeed, isMyFeed } = useFeedItemHook({ feed });
 
     return (
         <div
@@ -37,7 +38,11 @@ const DefaultFeedItem = ({ feed }: FeedItemProps) => {
 
                     <FeedContentText text={feed.arPostInfo.content} />
 
-                    <FeedActionButtons userLike={feed.userLike} handleLikeFeed={handleLikeFeed} />
+                    {feed.arPostInfo.postTags?.map((item) => {
+                        return <FeedTag key={item.id + item.userId + item.postInfoId} tag={item} />;
+                    })}
+
+                    <FeedActionButtons userLike={feed.userLike} handleLikeFeed={handleLikeFeed} isMyPost={isMyFeed} />
                 </>
             ) : (
                 <QuoteOrRepostPost feed={feed} handleLikeFeed={handleLikeFeed} />

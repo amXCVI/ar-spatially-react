@@ -7,9 +7,11 @@ import {
     PostCommentTagInterface,
     PostImageInterface,
     PostInterface,
+    PostTagInterface,
     PostTypes,
     PostUserInterface,
     PostVideoInterface,
+    QuoteTagInterface,
 } from "@/shared/types";
 
 import CommentIcon from "../assets/comment-icon.svg?react";
@@ -17,6 +19,8 @@ import EditIcon from "../assets/edit-icon.svg?react";
 import LikeIcon from "../assets/like-icon.svg?react";
 import LocationIcon from "../assets/location-icon.svg?react";
 import ShareIcon from "../assets/share-icon.svg?react";
+
+import { useFeedTagHook } from "../model";
 
 const FeedHeader = ({
     author,
@@ -80,6 +84,9 @@ const QuoteOrRepostPost = ({
                 handleLikeFeed={handleLikeFeed}
             />
             <FeedContentText text={feed.arPostInfo.content} />
+            {feed.quoteTags?.map((item) => {
+                return <FeedTag key={item.id + item.userId + item.postId} tag={item} />;
+            })}
         </div>
     );
 };
@@ -123,7 +130,15 @@ const FeedContentText = ({ text }: { text?: string }) => {
     return <div>{text}</div>;
 };
 
-const FeedActionButtons = ({ handleLikeFeed, userLike }: { handleLikeFeed: () => void; userLike: boolean }) => {
+const FeedActionButtons = ({
+    handleLikeFeed,
+    userLike,
+    isMyPost = false,
+}: {
+    handleLikeFeed: () => void;
+    userLike: boolean;
+    isMyPost?: boolean;
+}) => {
     return (
         <div className="flex gap-8">
             <div className="cursor-pointer" onClick={handleLikeFeed}>
@@ -135,9 +150,11 @@ const FeedActionButtons = ({ handleLikeFeed, userLike }: { handleLikeFeed: () =>
             <div className="cursor-pointer">
                 <ShareIcon />
             </div>
-            <div className="cursor-pointer">
-                <EditIcon />
-            </div>
+            {isMyPost && (
+                <div className="cursor-pointer">
+                    <EditIcon />
+                </div>
+            )}
         </div>
     );
 };
@@ -190,15 +207,18 @@ const FeedCommentItem = ({ comment }: { comment: PostCommentInterface }) => {
             <div>{comment.commentText}</div>
             <div className="flex gap-2 flex-wrap">
                 {comment.commentTags?.map((item) => (
-                    <FeedCommentTag key={item.id + item.userId + item.commentId} commentTag={item} />
+                    <FeedTag key={item.id + item.userId + item.commentId} tag={item} />
                 ))}
             </div>
         </div>
     );
 };
 
-const FeedCommentTag = ({ commentTag }: { commentTag: PostCommentTagInterface }) => {
-    return <span className="text-blue-accent cursor-pointer underline">{`@${commentTag.nickname}`}</span>;
+export const FeedTag = ({ tag }: { tag: PostCommentTagInterface | PostTagInterface | QuoteTagInterface }) => {
+    const { handleClickTag } = useFeedTagHook({ tag });
+    return (
+        <span onClick={handleClickTag} className="text-blue-accent cursor-pointer underline">{`@${tag.nickname}`}</span>
+    );
 };
 
 const FeedMediaGallery = ({
@@ -290,6 +310,6 @@ export {
     QuoteOrRepostPost,
     QuotePostContent,
     FeedCommentItem,
-    FeedCommentTag,
+    FeedTag as FeedCommentTag,
     FeedMediaGallery,
 };

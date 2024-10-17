@@ -1,5 +1,7 @@
 import { useRef } from "react";
+import { useSearchParams } from "react-router-dom";
 
+import { SearchParamsConstants } from "@/shared/config/constants";
 import { useAppDispatch, useAppSelector } from "@/shared/lib/redux-service";
 import { useGetFeedsHook } from "@/shared/lib/use-get-feeds-hook";
 import { allFeedsActions } from "@/shared/stores/feeds-store";
@@ -7,11 +9,14 @@ import { allFeedsActions } from "@/shared/stores/feeds-store";
 const useAllFeedsHook = () => {
     const dispatch = useAppDispatch();
 
+    const [searchParams] = useSearchParams();
+    const userId = searchParams.get(SearchParamsConstants.feedsByUserSearchParamsKey);
+
     const containerRef = useRef<HTMLDivElement>(null);
 
     const { fetchFeeds } = useGetFeedsHook();
 
-    const { feedsList, loading, currentPage, totalPages, feedsPageMode, feedsFilterString } = useAppSelector(
+    const { feedsList, loading, currentPage, totalPages, feedsFilterString } = useAppSelector(
         (state) => state.allFeedsSlice,
     );
 
@@ -24,7 +29,7 @@ const useAllFeedsHook = () => {
                     return;
                 }
                 dispatch(allFeedsActions.incrementCurrentPage());
-                fetchFeeds({ page: currentPage, feedsPageMode, filterString: feedsFilterString });
+                fetchFeeds({ page: currentPage, byUser: userId ?? undefined, filterString: feedsFilterString });
             }
         }
     };

@@ -1,10 +1,11 @@
 import { Action, Reducer, combineReducers, configureStore } from "@reduxjs/toolkit";
 
-import { allFeedsSlice, selectedFeedSlice } from "@/shared/stores/feeds-store";
+import { allFeedsSlice, selectedFeedSlice, selectedUserSlice } from "@/shared/stores/feeds-store";
 
 const combinedReducer = combineReducers({
     selectedFeedSlice: selectedFeedSlice,
     allFeedsSlice: allFeedsSlice,
+    selectedUserSlice: selectedUserSlice,
 });
 
 const rootReducer: Reducer = (state: RootStateInterface, action: Action) => {

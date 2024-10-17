@@ -10,6 +10,7 @@ const routes = {
     profileSettings: "profile_settings",
     feeds: "feeds",
     feed: "feed",
+    feedsByUser: "user",
     docs: "https://ar-spatially.gitbook.io/ar-spatially-documentation/platform-architecture/ar-nft",
 
     undefined: "*",

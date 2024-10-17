@@ -1,7 +1,7 @@
 import { AxiosResponse } from "axios";
 
 import { ApiConstants } from "@/shared/config";
-import { ApiResponseInterface, UserInterface, UserStatus } from "@/shared/types";
+import { ApiResponseInterface, UserInterface, UserProfileInterface, UserStatus } from "@/shared/types";
 
 import apiClient from "../api";
 
@@ -193,4 +193,27 @@ const getUser = async ({ userId }: { userId: string }) => {
     }
 };
 
-export const userApi = { login, signup, getMe, signupX, signupGoogle, updateUserPassword, updateUser, touch, getUser };
+const getUserProfile = async ({ userId }: { userId: string }) => {
+    const url = `/gateway/user/profile?userId=${userId}`;
+
+    try {
+        const response: AxiosResponse<ApiResponseInterface<UserProfileInterface>> = await apiClient.post(url);
+
+        return response.data.data;
+    } catch (error) {
+        throw new Error(`${url} ErrorRequest: ${error}`);
+    }
+};
+
+export const userApi = {
+    login,
+    signup,
+    getMe,
+    signupX,
+    signupGoogle,
+    updateUserPassword,
+    updateUser,
+    touch,
+    getUser,
+    getUserProfile,
+};

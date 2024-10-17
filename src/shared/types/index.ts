@@ -14,13 +14,29 @@ import {
     PostVideoInterface,
     QuoteTagInterface,
 } from "./post-types";
-import { SystemName, UserCondition, UserInterface, UserProviders, UserRole, UserStatus } from "./user-types";
+import {
+    SystemName,
+    UserCondition,
+    UserInterface,
+    UserProfileInterface,
+    UserProviders,
+    UserRole,
+    UserStatus,
+} from "./user-types";
 
 export { type MarkerInterface, type AnchorInterface, AnchotTypeEnum, MarkerStatusEnum };
 
 export { type ApiResponseInterface };
 
-export { type UserInterface, UserRole, UserStatus, SystemName, UserCondition, UserProviders };
+export {
+    type UserInterface,
+    type UserProfileInterface,
+    UserRole,
+    UserStatus,
+    SystemName,
+    UserCondition,
+    UserProviders,
+};
 
 export { type LayerInterface, LayerStatus };
 

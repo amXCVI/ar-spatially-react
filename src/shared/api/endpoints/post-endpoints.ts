@@ -48,6 +48,19 @@ const findAllPosts = async ({
     }
 };
 
+// Показывает все посты usera по его id
+const findPostsByUser = async ({ userId }: { userId: string }) => {
+    const url = `/gateway/post/find/user?userId=${userId}`;
+
+    try {
+        const response: AxiosResponse<ApiResponseInterface<{ postsList: PostInterface[] }>> = await apiClient.post(url);
+
+        return response.data.data;
+    } catch (error) {
+        throw new Error(`${url} ErrorRequest: ${error}`);
+    }
+};
+
 // Получает пост по его id
 const getPostById = async ({ postId }: { postId: string }) => {
     const url = `/gateway/post/get?postId=${postId}`;
@@ -119,6 +132,7 @@ const likeUnlikeByPostId = async ({ postId }: { postId: string }) => {
 export const postApi = {
     findMePosts,
     findAllPosts,
+    findPostsByUser,
     getImagesByPostId,
     getVideosByPostId,
     getPostById,

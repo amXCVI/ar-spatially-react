@@ -11,6 +11,7 @@ import { ErrorBoundary } from "./error-boundary";
 import PrivateRoute from "./private-route";
 
 const ProfileSettingsPage = React.lazy(() => import("@/pages/profile-settings-page"));
+const FeedsByUserPage = React.lazy(() => import("@/pages/feeds-by-user-page"));
 const BlockchainPage = React.lazy(() => import("@/pages/blockchain-page"));
 const ProductPage = React.lazy(() => import("@/pages/product-page"));
 const ArNftPage = React.lazy(() => import("@/pages/ar-nft-page"));
@@ -57,17 +58,9 @@ const AppRouter = () => {
                     children: [
                         { index: true, element: <FeedsPage /> },
                         { path: routes.feed, element: <FeedPage /> },
+                        { path: routes.feedsByUser, element: <FeedsByUserPage /> },
                     ],
                 },
-                // {
-                //     path: routes.feed,
-                //     element: (
-                //         <FeedPagesLayout>
-                //             <PrivateRoute />
-                //         </FeedPagesLayout>
-                //     ),
-                //     children: [{ index: true, element: <FeedPage /> }],
-                // },
 
                 { path: routes.event, element: <EventPage /> },
 

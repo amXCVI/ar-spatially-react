@@ -21,7 +21,7 @@ const DetailsFeedItem = ({ feed, feedImages, feedVideos, feedComments }: FeedIte
     const { handleLikeFeed } = useDetailFeedItemHook({ feedId: feed.id });
 
     return (
-        <div className="flex flex-col p-4">
+        <div className="flex flex-col p-4 overflow-scroll h-full">
             <FeedHeader author={feed.arPostInfo.author} feedType={feed.type} createdAt={feed.createdAt} />
 
             <QuotePostContent quote={feed.quote} />
