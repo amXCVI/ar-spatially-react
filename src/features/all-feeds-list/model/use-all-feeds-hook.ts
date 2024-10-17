@@ -25,11 +25,17 @@ const useAllFeedsHook = () => {
         if (container) {
             if (container.scrollTop + container.clientHeight >= container.scrollHeight - 10 && !loading) {
                 // Если достигли низа, загружаем следующую страницу
-                if (currentPage === totalPages) {
+                if (currentPage >= totalPages) {
                     return;
                 }
-                dispatch(allFeedsActions.incrementCurrentPage());
-                fetchFeeds({ page: currentPage, byUser: userId ?? undefined, filterString: feedsFilterString });
+
+                fetchFeeds({
+                    page: currentPage + 1,
+                    byUser: userId ?? undefined,
+                    filterString: feedsFilterString,
+                }).then(() => {
+                    dispatch(allFeedsActions.incrementCurrentPage());
+                });
             }
         }
     };

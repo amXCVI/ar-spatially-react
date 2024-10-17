@@ -6,7 +6,7 @@ import { SearchParamsConstants } from "@/shared/config/constants";
 import { useAppDispatch, useAppSelector } from "@/shared/lib/redux-service";
 import { useGetFeedsHook } from "@/shared/lib/use-get-feeds-hook";
 import { useUserContext } from "@/shared/stores";
-import { allFeedsActions } from "@/shared/stores/feeds-store";
+import { allFeedsActions, selectedUserActions } from "@/shared/stores/feeds-store";
 import { FeedsPageModes } from "@/shared/types";
 
 const useFeedsFilterHook = () => {
@@ -31,6 +31,7 @@ const useFeedsFilterHook = () => {
 
             case FeedsPageModes.MY_FEED:
                 if (user) {
+                    dispatch(selectedUserActions.setCurrentUserProfile(null));
                     fetchFeeds({ page: currentPage, byUser: user.userId, filterString: feedsFilterString });
                     navigate(
                         `/${routes.feeds}/${routes.feedsByUser}?${SearchParamsConstants.feedsByUserSearchParamsKey}=${user.userId}`,
