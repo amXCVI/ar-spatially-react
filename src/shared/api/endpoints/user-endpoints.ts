@@ -1,7 +1,13 @@
 import { AxiosResponse } from "axios";
 
 import { ApiConstants } from "@/shared/config";
-import { ApiResponseInterface, UserInterface, UserProfileInterface, UserStatus } from "@/shared/types";
+import {
+    ApiResponseInterface,
+    UserInterface,
+    UserProfileInterface,
+    UserStatus,
+    UserSubscriberInterface,
+} from "@/shared/types";
 
 import apiClient from "../api";
 
@@ -205,6 +211,30 @@ const getUserProfile = async ({ userId }: { userId: string }) => {
     }
 };
 
+const subscribeUser = async ({ userIdFrom }: { userIdFrom: string }) => {
+    const url = `/gateway/user/subscribe-unsubscribe?userIdFrom=${userIdFrom}`;
+
+    try {
+        const response: AxiosResponse<ApiResponseInterface<string>> = await apiClient.post(url);
+
+        return response.data.data;
+    } catch (error) {
+        throw new Error(`${url} ErrorRequest: ${error}`);
+    }
+};
+
+const getSubscriptions = async () => {
+    const url = `/gateway/user/get-subscriptions`;
+
+    try {
+        const response: AxiosResponse<ApiResponseInterface<UserSubscriberInterface[]>> = await apiClient.post(url);
+
+        return response.data.data;
+    } catch (error) {
+        throw new Error(`${url} ErrorRequest: ${error}`);
+    }
+};
+
 export const userApi = {
     login,
     signup,
@@ -216,4 +246,6 @@ export const userApi = {
     touch,
     getUser,
     getUserProfile,
+    subscribeUser,
+    getSubscriptions,
 };

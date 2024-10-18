@@ -129,6 +129,81 @@ const likeUnlikeByPostId = async ({ postId }: { postId: string }) => {
     }
 };
 
+// Создать пост
+const createPost = async ({
+    imageFiles,
+    videoFiles,
+    content,
+    location,
+    lat,
+    lng,
+}: {
+    imageFiles: File[];
+    videoFiles: File[];
+    content: string;
+    location: string;
+    lat: number;
+    lng: number;
+}) => {
+    const url = `/gateway/post/create`;
+
+    const formData = new FormData();
+
+    if (imageFiles.length) {
+        imageFiles.forEach((item) => {
+            formData.append("imageFiles", item);
+        });
+    } else {
+        formData.append("imageFiles", new Blob());
+    }
+
+    if (imageFiles.length) {
+        videoFiles.forEach((item) => {
+            formData.append("videoFiles", item);
+        });
+    } else {
+        formData.append("videoFiles", new Blob());
+    }
+
+    formData.append(
+        "request",
+        new Blob(
+            [
+                JSON.stringify({
+                    content,
+                    lat,
+                    lng,
+                    location,
+                }),
+            ],
+            {
+                type: "application/json",
+            },
+        ),
+    );
+
+    try {
+        const response: AxiosResponse<ApiResponseInterface<PostInterface>> = await apiClient.post(url, formData);
+
+        return response.data.data;
+    } catch (error) {
+        throw new Error(`${url} ErrorRequest: ${error}`);
+    }
+};
+
+// Удаляет пост
+const deleteByPostId = async ({ postId }: { postId: string }) => {
+    const url = `/gateway/post/delete?postId=${postId}`;
+
+    try {
+        const response: AxiosResponse = await apiClient.delete(url);
+
+        return response.data.data;
+    } catch (error) {
+        throw new Error(`${url} ErrorRequest: ${error}`);
+    }
+};
+
 export const postApi = {
     findMePosts,
     findAllPosts,
@@ -138,4 +213,6 @@ export const postApi = {
     getPostById,
     getCommentsByPostId,
     likeUnlikeByPostId,
+    createPost,
+    deleteByPostId,
 };

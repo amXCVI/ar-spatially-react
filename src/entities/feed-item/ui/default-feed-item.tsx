@@ -16,7 +16,8 @@ interface FeedItemProps {
 }
 
 const DefaultFeedItem = ({ feed }: FeedItemProps) => {
-    const { handleOpenFeedPage, handleLikeFeed, isMyFeed } = useFeedItemHook({ feed });
+    const { handleOpenFeedPage, handleLikeFeed, handleDeleteFeed, handleSubscribe, isMyFeed, subscribtion } =
+        useFeedItemHook({ feed });
 
     return (
         <div
@@ -28,6 +29,10 @@ const DefaultFeedItem = ({ feed }: FeedItemProps) => {
                 feedType={feed.type}
                 createdAt={feed.createdAt}
                 onClick={handleOpenFeedPage}
+                isMyFeed={isMyFeed}
+                subscribtion={subscribtion}
+                handleSubscribe={handleSubscribe}
+                handleDeleteFeed={handleDeleteFeed}
             />
 
             <QuotePostContent quote={feed.quote} />

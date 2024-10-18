@@ -22,6 +22,7 @@ import {
     UserProviders,
     UserRole,
     UserStatus,
+    UserSubscriberInterface,
 } from "./user-types";
 
 export { type MarkerInterface, type AnchorInterface, AnchotTypeEnum, MarkerStatusEnum };
@@ -31,6 +32,7 @@ export { type ApiResponseInterface };
 export {
     type UserInterface,
     type UserProfileInterface,
+    type UserSubscriberInterface,
     UserRole,
     UserStatus,
     SystemName,

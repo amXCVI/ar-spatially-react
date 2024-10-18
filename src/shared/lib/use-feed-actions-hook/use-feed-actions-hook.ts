@@ -27,7 +27,13 @@ const useFeedActionsHook = () => {
         });
     };
 
-    return { handleLikePost };
+    const handleSubscribeUser = ({ userId }: { userId: string }) => {
+        ApiEndpoints.user.subscribeUser({ userIdFrom: userId }).then((res) => {
+            console.log(res);
+        });
+    };
+
+    return { handleLikePost, handleSubscribeUser };
 };
 
 export { useFeedActionsHook };

@@ -12,6 +12,7 @@ import {
     PostUserInterface,
     PostVideoInterface,
     QuoteTagInterface,
+    UserSubscriberInterface,
 } from "@/shared/types";
 
 import CommentIcon from "../assets/comment-icon.svg?react";
@@ -24,22 +25,29 @@ import { useFeedTagHook } from "../model";
 
 const FeedHeader = ({
     author,
-    feedType,
     createdAt,
+    subscribtion,
     onClick,
+    isMyFeed = false,
+    handleSubscribe,
+    handleDeleteFeed,
 }: {
     author: PostUserInterface;
     feedType: PostTypes;
     createdAt: number;
+    isMyFeed?: boolean;
+    subscribtion?: UserSubscriberInterface | undefined;
     onClick?: () => void;
+    handleSubscribe?: () => void;
+    handleDeleteFeed?: () => void;
 }) => {
     return (
-        <div className="flex gap-4" onClick={onClick}>
+        <div className="flex gap-4">
             <img
                 src={`${import.meta.env.VITE_APP_API_BASE_URL}gateway/file/get?fileId=${author.avatarId}`}
                 className="rounded-full aspect-square w-16"
             />
-            <div className="flex flex-col justify-around">
+            <div className="flex flex-col justify-around" onClick={onClick}>
                 <b>{author.name}</b>
                 <div className="flex gap-2">
                     <span>@{author.nickname}</span>
@@ -47,14 +55,24 @@ const FeedHeader = ({
                 </div>
             </div>
 
-            <span className="ml-auto text-green-400">{feedType}</span>
+            <div className="flex flex-col ml-auto">
+                {isMyFeed ? (
+                    <button className="border px-3 rounded-lg text-red-700" onClick={handleDeleteFeed}>
+                        Delete
+                    </button>
+                ) : (
+                    <button className="border px-3 rounded-lg text-green-700" onClick={handleSubscribe}>
+                        {subscribtion ? "Unfollow" : "Follow"}
+                    </button>
+                )}
+            </div>
         </div>
     );
 };
 
 const QuotePostContent = ({ quote }: { quote?: string }) => {
     if (quote) {
-        return <div className="py-4 border-b mb-4">{quote}</div>;
+        return <div className="py-4 border-b mb-4 whitespace-pre-wrap">{quote}</div>;
     } else {
         return <Fragment />;
     }
@@ -127,7 +145,7 @@ const FeedPreview = ({ previewId }: { previewId?: string }) => {
 };
 
 const FeedContentText = ({ text }: { text?: string }) => {
-    return <div>{text}</div>;
+    return <div className="whitespace-pre-wrap">{text}</div>;
 };
 
 const FeedActionButtons = ({

@@ -25,6 +25,10 @@ export interface UserProfileInterface {
     subscriptionsCount: number;
 }
 
+export interface UserSubscriberInterface {
+    userId: string;
+}
+
 export enum UserRole {
     USER = "USER",
     DEVELOPER = "DEVELOPER",

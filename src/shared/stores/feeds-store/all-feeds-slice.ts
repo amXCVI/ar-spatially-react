@@ -50,6 +50,12 @@ const allFeedsSlice = createSlice({
         addPostsToList: (state, action: PayloadAction<{ posts: PostInterface[] }>) => {
             state.feedsList = state.feedsList.concat(action.payload.posts);
         },
+        deletePostFromList: (state, action: PayloadAction<{ postId: string }>) => {
+            state.feedsList = state.feedsList.filter((item) => item.id !== action.payload.postId);
+        },
+        unshiftPostToList: (state, action: PayloadAction<{ post: PostInterface }>) => {
+            state.feedsList.unshift(action.payload.post);
+        },
 
         // Feeds page modes
         setFeedsPageMode: (state, action: PayloadAction<FeedsPageModes>) => {
