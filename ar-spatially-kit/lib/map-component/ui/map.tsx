@@ -1,5 +1,5 @@
 import { MarkerInterface } from "@ar-kit/shared/types/nft-types";
-import { Map as RGCMap, useApiIsLoaded } from "@vis.gl/react-google-maps";
+import { MapProps as DefaultMapProps, Map as RGCMap, useApiIsLoaded } from "@vis.gl/react-google-maps";
 import { FeatureCollection, Point } from "geojson";
 
 import googleMapStyles from "../resources/map_style.json";
@@ -81,5 +81,11 @@ const Map = ({
         </>
     );
 };
+
+const DefaultMap = (props: React.PropsWithChildren<DefaultMapProps>) => {
+    return <RGCMap {...props} styles={googleMapStyles} />;
+};
+
+export { DefaultMap };
 
 export default Map;
