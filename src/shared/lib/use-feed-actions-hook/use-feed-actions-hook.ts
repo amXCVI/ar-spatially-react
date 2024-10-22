@@ -1,5 +1,5 @@
 import { ApiEndpoints } from "@/shared/api";
-import { allFeedsActions, selectedFeedActions } from "@/shared/stores/feeds-store";
+import { allFeedsActions, selectedFeedActions, subscribtionsActions } from "@/shared/stores/feeds-store";
 
 import { useAppDispatch } from "../redux-service";
 
@@ -29,7 +29,11 @@ const useFeedActionsHook = () => {
 
     const handleSubscribeUser = ({ userId }: { userId: string }) => {
         ApiEndpoints.user.subscribeUser({ userIdFrom: userId }).then((res) => {
-            console.log(res);
+            if (res.includes("unsubscribed")) {
+                dispatch(subscribtionsActions.deleteSubscribtion({ subscribtionId: userId }));
+            } else {
+                dispatch(subscribtionsActions.addSubscribtion({ subscribtion: { userId: userId } }));
+            }
         });
     };
 

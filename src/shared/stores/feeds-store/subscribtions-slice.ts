@@ -28,7 +28,7 @@ const subscribtionsSlice = createSlice({
 });
 
 const selectSubscribtionById = (state: RootStateInterface, userId: string) =>
-    state.subscribtionsSlice.subscribtions.find((obj) => obj.userId === userId);
+    state.subscribtionsSlice.subscribtions?.find((obj) => obj.userId === userId);
 
 export const subscribtionsSelectors = { selectSubscribtionById };
 export const subscribtionsActions = subscribtionsSlice.actions;

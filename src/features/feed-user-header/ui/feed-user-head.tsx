@@ -1,7 +1,7 @@
 import { useFeedUserHeadHook } from "../model";
 
 const FeedUserHead = () => {
-    const { user } = useFeedUserHeadHook();
+    const { user, subscribtion, handleFollow } = useFeedUserHeadHook();
 
     return (
         <div className="flex w-full justify-between items-center">
@@ -25,7 +25,9 @@ const FeedUserHead = () => {
                 </div>
             </div>
 
-            <button className="border px-4 py-0.5 rounded-xl">Follow</button>
+            <button className="border px-4 py-0.5 rounded-xl" onClick={handleFollow}>
+                {subscribtion ? "Unfollow" : "Follow"}
+            </button>
         </div>
     );
 };

@@ -20,7 +20,7 @@ const useFeedsFilterHook = () => {
 
     const { fetchFeeds } = useGetFeedsHook();
 
-    const { feedsPageMode, feedsFilterString, loading } = useAppSelector((state) => state.allFeedsSlice);
+    const { feedsPageMode, feedsFilterString } = useAppSelector((state) => state.allFeedsSlice);
 
     const handleSelectPageMode = (e: FeedsPageModes) => {
         switch (e) {
