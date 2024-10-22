@@ -20,19 +20,17 @@ const useFeedsFilterHook = () => {
 
     const { fetchFeeds } = useGetFeedsHook();
 
-    const { feedsPageMode, feedsFilterString, currentPage, loading } = useAppSelector((state) => state.allFeedsSlice);
+    const { feedsPageMode, feedsFilterString, loading } = useAppSelector((state) => state.allFeedsSlice);
 
     const handleSelectPageMode = (e: FeedsPageModes) => {
         switch (e) {
             case FeedsPageModes.ALL_FEED:
-                fetchFeeds({ page: currentPage, filterString: feedsFilterString });
                 navigate(`/${routes.feeds}`);
                 break;
 
             case FeedsPageModes.MY_FEED:
                 if (user) {
                     dispatch(selectedUserActions.setCurrentUserProfile(null));
-                    fetchFeeds({ page: currentPage, byUser: user.userId, filterString: feedsFilterString });
                     navigate(
                         `/${routes.feeds}/${routes.feedsByUser}?${SearchParamsConstants.feedsByUserSearchParamsKey}=${user.userId}`,
                     );
@@ -52,19 +50,9 @@ const useFeedsFilterHook = () => {
         // Поиск доступен только в режиме all feeds
         if (feedsPageMode === FeedsPageModes.ALL_FEED) {
             dispatch(allFeedsActions.onChangeFilterString(e.target.value));
-            dispatch(allFeedsActions.resetCurrentPage());
-            dispatch(allFeedsActions.setPostsToList({ posts: [] }));
             fetchFeeds({ page: 1, filterString: e.target.value });
         }
     };
-
-    useEffect(() => {
-        if (!loading) {
-            // Загружаю данные при первом открытии страницы
-            fetchFeeds({ page: currentPage, byUser: userId ?? undefined, filterString: feedsFilterString });
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
 
     useEffect(() => {
         if (userId === user?.userId) {

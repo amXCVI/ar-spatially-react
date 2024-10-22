@@ -1,24 +1,27 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useSearchParams } from "react-router-dom";
 
 import { SearchParamsConstants } from "@/shared/config/constants";
-import { useAppDispatch, useAppSelector } from "@/shared/lib/redux-service";
+import { useAppSelector } from "@/shared/lib/redux-service";
 import { useGetFeedsHook } from "@/shared/lib/use-get-feeds-hook";
-import { allFeedsActions } from "@/shared/stores/feeds-store";
 
 const useAllFeedsHook = () => {
-    const dispatch = useAppDispatch();
-
     const [searchParams] = useSearchParams();
     const userId = searchParams.get(SearchParamsConstants.feedsByUserSearchParamsKey);
 
     const containerRef = useRef<HTMLDivElement>(null);
 
-    const { fetchFeeds } = useGetFeedsHook();
+    const { fetchFeeds, totalPages, currentPage } = useGetFeedsHook();
 
-    const { feedsList, loading, currentPage, totalPages, feedsFilterString } = useAppSelector(
-        (state) => state.allFeedsSlice,
-    );
+    const { feedsList, loading, feedsFilterString } = useAppSelector((state) => state.allFeedsSlice);
+
+    useEffect(() => {
+        fetchFeeds({ page: 1, byUser: userId ?? undefined, filterString: feedsFilterString });
+        // return () => {
+        //     cleanup
+        // }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [userId]);
 
     const handleScroll = () => {
         const container = containerRef.current;
@@ -33,8 +36,6 @@ const useAllFeedsHook = () => {
                     page: currentPage + 1,
                     byUser: userId ?? undefined,
                     filterString: feedsFilterString,
-                }).then(() => {
-                    dispatch(allFeedsActions.incrementCurrentPage());
                 });
             }
         }
