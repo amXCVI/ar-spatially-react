@@ -157,7 +157,7 @@ const createPost = async ({
         formData.append("imageFiles", new Blob());
     }
 
-    if (imageFiles.length) {
+    if (videoFiles.length) {
         videoFiles.forEach((item) => {
             formData.append("videoFiles", item);
         });
