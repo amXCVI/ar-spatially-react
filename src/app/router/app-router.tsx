@@ -3,6 +3,7 @@ import React from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 import { FeedPagesLayout } from "@/widgets/feed-pages-layout";
+import { ObjectPagesLayout } from "@/widgets/object-pages-layout";
 
 import { routes } from "@/shared/config";
 import { BaseLayout } from "@/shared/ui/layouts";
@@ -14,6 +15,7 @@ const ProfileSettingsPage = React.lazy(() => import("@/pages/profile-settings-pa
 const FeedsByUserPage = React.lazy(() => import("@/pages/feeds-by-user-page"));
 const BlockchainPage = React.lazy(() => import("@/pages/blockchain-page"));
 const ProductPage = React.lazy(() => import("@/pages/product-page"));
+const ObjectsPage = React.lazy(() => import("@/pages/objects-page"));
 const ArNftPage = React.lazy(() => import("@/pages/ar-nft-page"));
 const FeedsPage = React.lazy(() => import("@/pages/feeds-page"));
 const EventPage = React.lazy(() => import("@/pages/event-page"));
@@ -60,6 +62,16 @@ const AppRouter = () => {
                         { path: routes.feed, element: <FeedPage /> },
                         { path: routes.feedsByUser, element: <FeedsByUserPage /> },
                     ],
+                },
+
+                {
+                    path: routes.objects,
+                    element: (
+                        <ObjectPagesLayout>
+                            <PrivateRoute />
+                        </ObjectPagesLayout>
+                    ),
+                    children: [{ index: true, element: <ObjectsPage /> }],
                 },
 
                 { path: routes.event, element: <EventPage /> },
