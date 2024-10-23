@@ -29,3 +29,9 @@ export enum AnchotTypeEnum {
 export enum MarkerStatusEnum {
     NOT_PUBLISHED = "NOT_PUBLISHED",
 }
+
+export enum ObjectsPageModes {
+    ALL_AR_OBJECTS = "All AR Objects",
+    MY_AR_OBJECTS = "My AR Objects",
+    SAVED = "Saved",
+}
