@@ -2,18 +2,26 @@ import { DefaultMap } from "@ar-kit/lib/map-component";
 import { AdvancedMarker, MapMouseEvent, useMap } from "@vis.gl/react-google-maps";
 import { useEffect, useRef, useState } from "react";
 
-import "./index.css";
-
 import { worlds } from "../model/data";
 
-const MapComponent = () => {
+const MapComponent = ({
+    previewSrc,
+    objectLocation,
+    onChangeObjectLocation,
+}: {
+    previewSrc?: string;
+    objectLocation: {
+        lat: number;
+        lng: number;
+    } | null;
+    onChangeObjectLocation: (e: { lat: number; lng: number }) => void;
+}) => {
     const polygonsRef = useRef<google.maps.Polygon[]>([]);
 
     const [cursorPosition, setCursorPosition] = useState<{ lat: number; lng: number } | null>(null);
-    const [savedPosition, setSavedPosition] = useState<{ lat: number; lng: number } | null>(null);
 
     const handleMouseMove = (event: MapMouseEvent) => {
-        if (!savedPosition) {
+        if (!objectLocation) {
             setCursorPosition(event.detail.latLng);
         }
     };
@@ -39,7 +47,7 @@ const MapComponent = () => {
                 polygon.addListener(
                     "click",
                     (e: { domEvent: MouseEvent; latLng: { lat: () => number; lng: () => number } }) => {
-                        setSavedPosition({ lat: e.latLng.lat(), lng: e.latLng.lng() });
+                        onChangeObjectLocation({ lat: e.latLng.lat(), lng: e.latLng.lng() });
                     },
                 );
 
@@ -62,7 +70,7 @@ const MapComponent = () => {
                 });
 
                 polygon.addListener("mousemove", (e: { latLng: { lat: () => number; lng: () => number } }) => {
-                    if (!savedPosition) {
+                    if (!objectLocation) {
                         setCursorPosition({ lat: e.latLng.lat(), lng: e.latLng.lng() });
                     }
                 });
@@ -76,7 +84,7 @@ const MapComponent = () => {
             });
             polygonsRef.current = []; // очищаем массив
         };
-    }, [map, savedPosition]);
+    }, [map, objectLocation, onChangeObjectLocation]);
 
     // Размер картинки Мира зависит от масштаба карты
     const markerSize = mapZoom * mapZoom;
@@ -86,7 +94,7 @@ const MapComponent = () => {
             onMousemove={handleMouseMove}
             defaultCenter={{ lat: 25.1132415, lng: 55.2233329 }}
             mapId={import.meta.env.VITE_APP_GOOGLE_MAP_ID}
-            className="g-map-polygons"
+            className="g-map-polygons h-dvh md:max-h-[60vh] w-full"
             disableDefaultUI={true}
             reuseMaps={true}
             minZoom={3}
@@ -113,12 +121,8 @@ const MapComponent = () => {
                 );
             })}
 
-            <AdvancedMarker position={savedPosition ?? cursorPosition}>
-                <img
-                    src="/event-page/butterflyes/ice/klll_3d_high_poly_textured_model_of_a_butterfly_body_legs_and_w_b29759ff-fdf9-415a-8a6e-5464b6c32519 1.webp"
-                    alt="Cursor"
-                    className="aspect-square rounded-xl w-24 z-50"
-                />
+            <AdvancedMarker position={objectLocation ?? cursorPosition}>
+                <img src={previewSrc} className="rounded-xl !max-w-24 !max-h-24 z-50" />
             </AdvancedMarker>
         </DefaultMap>
     );

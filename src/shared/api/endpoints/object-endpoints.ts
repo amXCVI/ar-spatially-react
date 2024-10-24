@@ -235,6 +235,7 @@ const uploadObject = async ({
     previewFile,
     title,
     description,
+    layerId,
     width,
     height,
     lat,
@@ -245,8 +246,9 @@ const uploadObject = async ({
     previewFile?: File;
     title: string;
     description: string;
-    width: number;
-    height: number;
+    layerId: string;
+    width?: number;
+    height?: number;
     lat: number;
     lng: number;
     alt: number;
@@ -268,6 +270,7 @@ const uploadObject = async ({
                     lat: lat,
                     lng: lng,
                     alt: alt,
+                    layerId: layerId,
                 }),
             ],
             {
@@ -277,7 +280,8 @@ const uploadObject = async ({
     );
 
     try {
-        const response: AxiosResponse<ApiResponseInterface<{ token: string }>> = await apiClient.post(url, formData);
+        const response: AxiosResponse<ApiResponseInterface<{ id: string; modelId: string; previewId: string }>> =
+            await apiClient.post(url, formData);
 
         return response.data.data;
     } catch (error) {

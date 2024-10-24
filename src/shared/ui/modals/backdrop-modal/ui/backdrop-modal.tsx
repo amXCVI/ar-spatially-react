@@ -13,14 +13,16 @@ const BackdropModal = ({ isOpen, closeModal, children }: BackdropModalProps) => 
 
     return (
         <div
-            className={`fixed top-0 ${isOpen ? "right-0 bottom-0 left-0 z-10" : "!h-0 overflow-hidden"} flex justify-center items-center`}
+            className={`fixed top-0 ${isOpen ? "right-0 bottom-0 left-0 z-10" : "!h-0 overflow-hidden"} flex justify-center items-center backdrop-blur-sm`}
         >
             <div
-                className={`container duration-500 ${
+                className={`md:container duration-500 ${
                     isOpen ? "opacity-1" : "opacity-0"
-                } flex flex-col items-center justify-between overflow-hidden z-50
-                backdrop-blur-xl rounded-[34px] border border-white h-min
-                mx-10 max-w-prose
+                } flex flex-col items-center justify-between z-50
+                md:rounded-[34px] md:border border-white
+                w-full md:mx-10 md:max-w-prose
+                h-full md:h-min
+                relative overflow-scroll
                 `}
                 style={{
                     background:
