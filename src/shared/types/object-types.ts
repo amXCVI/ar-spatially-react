@@ -1,3 +1,5 @@
+import { MarkerStatusEnum } from "./marker-types";
+
 export interface ObjectInterface {
     anchorList: AnchorInterface[];
     description: string;
@@ -24,10 +26,6 @@ export interface AnchorInterface {
 export enum AnchotTypeEnum {
     IMAGE = "IMAGE",
     GEO = "GEO",
-}
-
-export enum MarkerStatusEnum {
-    NOT_PUBLISHED = "NOT_PUBLISHED",
 }
 
 export enum ObjectsPageModes {

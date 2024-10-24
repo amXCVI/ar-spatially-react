@@ -39,12 +39,11 @@ const useGetObjectsHook = () => {
                         setTotalPages(res.totalPages);
                     });
             } else {
-                // ApiEndpoints.post.findPostsByUser({ userId: byUser }).then((res) => {
-                //     dispatch(allObjectsActions.addObjectsToList({ objects: res.postsList }));
-                //     // В этом запросе нет пагинации
-                //     // Поэтому ставлю кол-во страниц = 1
-                //     setTotalPages(1);
-                // });
+                // Запрашиваю только свои объекты
+                ApiEndpoints.object.findMe().then((res) => {
+                    dispatch(allObjectsActions.addObjectsToList({ objects: res }));
+                    setTotalPages(1);
+                });
             }
         } catch (error) {
             console.error("Error fetching data:", error);

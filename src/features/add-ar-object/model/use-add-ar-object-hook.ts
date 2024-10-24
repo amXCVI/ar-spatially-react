@@ -1,8 +1,16 @@
 import { ChangeEvent, useEffect, useState } from "react";
 
 import { ApiEndpoints } from "@/shared/api";
+import { useAppDispatch } from "@/shared/lib/redux-service";
+import { allObjectsActions } from "@/shared/stores/objects-store";
+import { useUserHook } from "@/shared/stores/user/use-user-hook";
+import { MarkerStatusEnum } from "@/shared/types";
 
 const useAddArObjectHook = () => {
+    const dispatch = useAppDispatch();
+
+    const { user } = useUserHook();
+
     const [isOpenMapModal, setIsOpenMapModal] = useState<boolean>(false);
     const [step, setStep] = useState<number>(0);
     const [disabledNextStep, setDisabledNextStep] = useState<boolean>(false);
@@ -105,7 +113,11 @@ const useAddArObjectHook = () => {
     };
 
     const saveObject = () => {
-        if (glbModelFile && modelPreviewFile && objectLocation && selectedLayerId) {
+        if (glbModelFile && modelPreviewFile && objectLocation && selectedLayerId && user) {
+            const alt = 1;
+            const width = 1;
+            const height = 1;
+
             ApiEndpoints.object
                 .uploadObject({
                     modelFile: glbModelFile,
@@ -115,13 +127,28 @@ const useAddArObjectHook = () => {
                     layerId: selectedLayerId,
                     lat: objectLocation.lat,
                     lng: objectLocation.lng,
-                    width: 1,
-                    height: 1,
-                    alt: 1,
+                    width: width,
+                    height: height,
+                    alt: alt,
                 })
                 .then((res) => {
+                    dispatch(
+                        allObjectsActions.unshiftObjectToList({
+                            object: {
+                                anchorList: [],
+                                description: objectDescription,
+                                id: res.id,
+                                location: { ...objectLocation, alt: alt },
+                                modelId: res.modelId,
+                                ownerId: user.userId,
+                                previewId: res.previewId,
+                                size: { width: width, height: height },
+                                status: MarkerStatusEnum.NEW,
+                                title: objectName,
+                            },
+                        }),
+                    );
                     closeMapModal();
-                    console.log(res);
                 });
         }
     };
