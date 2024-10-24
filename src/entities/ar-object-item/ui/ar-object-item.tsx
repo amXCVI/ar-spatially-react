@@ -12,7 +12,9 @@ const ArObjectItem = ({ object }: ArObjectItemProps) => {
             <img src={`${import.meta.env.VITE_APP_API_BASE_URL}gateway/file/get?fileId=${object.previewId}`} />
             <Status status={object.status} />
             <div className="flex gap-1 justify-between p-1 bg-object-item-title-bg rounded-t-[13px] absolute bottom-0 left-0 right-0">
-                <span className="regular-16 text-white py-3 pl-4 overflow-hidden text-ellipsis">{object.title}</span>
+                <span className="regular-16 text-white py-3 pl-4 text-nowrap overflow-hidden text-ellipsis">
+                    {object.title}
+                </span>
                 <div className="flex gap-2 items-center rounded-[8px] rounded-br-[25px] p-3 bg-black-olive cursor-pointer">
                     <ArViewIcon />
                     View

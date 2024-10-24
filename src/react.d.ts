@@ -6,4 +6,10 @@ export declare global {
       "model-viewer": React.DetailedHTMLProps<Partial<ModelViewerElement>>;
     }
   }
+
+  interface Window {
+    initMap: () => void;
+  }
 }
+
+      
