@@ -1,8 +1,9 @@
+import { useRef } from "react";
+import { useSearchParams } from "react-router-dom";
+
 import { SearchParamsConstants } from "@/shared/config/constants";
 import { useAppSelector } from "@/shared/lib/redux-service";
 import { useGetObjectsHook } from "@/shared/lib/use-get-objects-hook";
-import { useEffect, useRef } from "react";
-import { useSearchParams } from "react-router-dom";
 
 const useAllObjectsListHook = () => {
     const [searchParams] = useSearchParams();
@@ -13,14 +14,6 @@ const useAllObjectsListHook = () => {
     const { fetchObjects, totalPages, currentPage } = useGetObjectsHook();
 
     const { objectsList, loading, objectsFilterString } = useAppSelector((state) => state.allObjectsSlice);
-
-    useEffect(() => {
-        fetchObjects({ page: 1, byUser: userId ?? undefined, filterString: objectsFilterString });
-        // return () => {
-        //     cleanup
-        // }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [userId]);
 
     const handleScroll = () => {
         const container = containerRef.current;

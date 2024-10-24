@@ -14,6 +14,11 @@ export interface ObjectInterface {
     title: string;
 }
 
+export interface FavoriteObjectInterface extends ObjectInterface {
+    ownerNickname: string;
+    countComments: number;
+}
+
 export interface AnchorInterface {
     id: string;
     imageId: string;

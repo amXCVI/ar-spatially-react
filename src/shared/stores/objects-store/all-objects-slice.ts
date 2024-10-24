@@ -40,6 +40,13 @@ const allObjectsSlice = createSlice({
         onChangeFilterString: (state, action: PayloadAction<string>) => {
             state.objectsFilterString = action.payload;
         },
+
+        // ObjectActions
+        likeUnlikeObject: (state, action: PayloadAction<{ objectId: string; userLike: boolean }>) => {
+            state.objectsList = state.objectsList.map((item) =>
+                item.id === action.payload.objectId ? { ...item } : item,
+            );
+        },
     },
 });
 

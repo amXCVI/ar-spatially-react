@@ -16,10 +16,12 @@ const useGetObjectsHook = () => {
     const fetchObjects = async ({
         page,
         byUser,
+        favorites = false,
         filterString,
     }: {
         page: number;
         byUser?: string;
+        favorites?: boolean;
         filterString: string;
     }) => {
         // if (loading || totalPages === page) return;
@@ -31,7 +33,14 @@ const useGetObjectsHook = () => {
         }
 
         try {
-            if (!byUser) {
+            if (favorites) {
+                // Запрашиваю избранные объекты
+                ApiEndpoints.object.findFavorites().then((res) => {
+                    dispatch(allObjectsActions.addObjectsToList({ objects: res.objectsList }));
+                    setTotalPages(res.totalPages);
+                });
+            } else if (!byUser) {
+                // Запрашиваю все подряд объекты
                 ApiEndpoints.object
                     .findText({ pageNum: page, pageSize: OBJECTS_COUNT_IN_PAGE, searchText: filterString })
                     .then((res) => {
