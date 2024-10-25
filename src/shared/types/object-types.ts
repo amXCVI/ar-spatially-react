@@ -8,6 +8,7 @@ export interface ObjectInterface {
     modelHash?: string;
     modelId: string;
     ownerId: string;
+    ownerNickname?: string;
     previewId: string;
     size: { width: number; height: number };
     status: MarkerStatusEnum;

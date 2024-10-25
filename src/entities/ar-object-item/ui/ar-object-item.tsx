@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom";
+
+import { SearchParamsConstants } from "@/shared/config/constants";
 import { MarkerInterface } from "@/shared/types";
 
 import FavoriteIcon from "../assets/favorite-icon.svg?react";
@@ -27,9 +30,12 @@ const ArObjectItem = ({ object }: ArObjectItemProps) => {
                 <FavoriteIcon />
             </div>
             <div className="flex gap-1 justify-between p-1 bg-object-item-title-bg rounded-t-[13px] absolute bottom-0 left-0 right-0">
-                <span className="regular-16 text-white py-3 pl-4 text-nowrap overflow-hidden text-ellipsis">
-                    {object.title}
-                </span>
+                <Link to={`?${SearchParamsConstants.objectIdSearchParamsKey}=${object.id}`} state={{ object: object }}>
+                    <span className="regular-16 text-white py-3 pl-4 text-nowrap overflow-hidden text-ellipsis">
+                        {object.title}
+                    </span>
+                </Link>
+
                 <div
                     className="flex gap-2 items-center rounded-[8px] rounded-br-[25px] p-3 cursor-pointer"
                     onClick={handleLikeObject}

@@ -1,6 +1,6 @@
 import { ApiResponseInterface } from "./api-types";
 import { LayerInterface, LayerStatus } from "./layer-types";
-import { AnchorInterface, AnchotTypeEnum, MarkerInterface, MarkerStatusEnum } from "./marker-types";
+import { AnchorInterface, AnchotTypeEnum, MarkerInterface, MarkerStatusEnum, ObjectViewerModes } from "./marker-types";
 import { FavoriteObjectInterface, ObjectInterface, ObjectsPageModes } from "./object-types";
 import {
     FeedsPageModes,
@@ -42,7 +42,7 @@ export {
 
 export { type LayerInterface, LayerStatus };
 
-export { type ObjectInterface, type FavoriteObjectInterface, ObjectsPageModes };
+export { type ObjectInterface, type FavoriteObjectInterface, ObjectsPageModes, ObjectViewerModes };
 
 export {
     type PostInterface,
