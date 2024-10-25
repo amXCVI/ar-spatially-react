@@ -13,6 +13,7 @@ export interface ObjectInterface {
     size: { width: number; height: number };
     status: MarkerStatusEnum;
     title: string;
+    countComments?: number;
 }
 
 export interface FavoriteObjectInterface extends ObjectInterface {

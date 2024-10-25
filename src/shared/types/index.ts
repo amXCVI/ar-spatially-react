@@ -1,6 +1,7 @@
 import { ApiResponseInterface } from "./api-types";
 import { LayerInterface, LayerStatus } from "./layer-types";
 import { AnchorInterface, AnchotTypeEnum, MarkerInterface, MarkerStatusEnum, ObjectViewerModes } from "./marker-types";
+import { ObjectCommentInterface, ObjectCommentTagInterface } from "./object-comment-types";
 import { FavoriteObjectInterface, ObjectInterface, ObjectsPageModes } from "./object-types";
 import {
     FeedsPageModes,
@@ -56,3 +57,5 @@ export {
     PostTypes,
     FeedsPageModes,
 };
+
+export { type ObjectCommentInterface, type ObjectCommentTagInterface };

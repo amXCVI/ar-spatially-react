@@ -1,3 +1,3 @@
-import { ObjectViewerInfo } from "./object-viewer-info";
+import { ObjectViewerInfo, ObjectViewerHeader } from "./object-viewer-info";
 
-export { ObjectViewerInfo };
+export { ObjectViewerInfo, ObjectViewerHeader };

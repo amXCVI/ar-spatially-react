@@ -3,7 +3,9 @@ import { ObjectViewerActionButtons } from "@/entities/object-viewer-action-butto
 import { ObjectViewerInfo } from "@/entities/object-viewer-info";
 import { Fragment } from "react/jsx-runtime";
 
-import { FavoriteObjectInterface, MarkerInterface, ObjectViewerModes } from "@/shared/types";
+import { ObjectComments } from "@/features/object-comments";
+
+import { FavoriteObjectInterface, ObjectInterface, ObjectViewerModes } from "@/shared/types";
 import { BackdropModal } from "@/shared/ui/modals";
 
 import { useObjectViewerHook } from "../model";
@@ -30,7 +32,7 @@ const renderModalContent = ({
     viewerModalMode,
     setViewerModalMode,
 }: {
-    selectedObject: MarkerInterface | FavoriteObjectInterface | null;
+    selectedObject: ObjectInterface | FavoriteObjectInterface | null;
     loading: boolean;
     viewerModalMode: ObjectViewerModes;
     setViewerModalMode: (e: ObjectViewerModes) => void;
@@ -41,7 +43,15 @@ const renderModalContent = ({
 
     switch (viewerModalMode) {
         case ObjectViewerModes.COMMENT:
-            return <Fragment />;
+            return (
+                <Fragment>
+                    <ObjectComments object={selectedObject} />
+                    <div className="flex flex-col items-center gap-4">
+                        <ObjectPreview modelId={selectedObject.modelId} previewId={selectedObject.previewId} />
+                        <ObjectViewerActionButtons object={selectedObject} setViewerModalMode={setViewerModalMode} />
+                    </div>
+                </Fragment>
+            );
 
         case ObjectViewerModes.EDIT:
             return <Fragment />;

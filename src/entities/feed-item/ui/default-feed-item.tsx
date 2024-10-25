@@ -1,12 +1,11 @@
 import { PostInterface, PostTypes } from "@/shared/types";
+import { AutoTags } from "@/shared/ui/text-with-tags";
 
 import { useFeedItemHook } from "../model";
 import {
     FeedActionButtons,
-    FeedContentText,
     FeedHeader,
     FeedPreview,
-    FeedTag,
     QuoteOrRepostPost,
     QuotePostContent,
 } from "./feed-item-components";
@@ -35,17 +34,17 @@ const DefaultFeedItem = ({ feed }: FeedItemProps) => {
                 handleDeleteFeed={handleDeleteFeed}
             />
 
-            <QuotePostContent quote={feed.quote} />
+            <QuotePostContent quote={feed.quote} tags={feed.quoteTags} />
 
             {feed.type === PostTypes.POST ? (
                 <>
                     <FeedPreview previewId={feed.arPostInfo.previewId} />
 
-                    <FeedContentText text={feed.arPostInfo.content} />
-
-                    {feed.arPostInfo.postTags?.map((item) => {
-                        return <FeedTag key={item.id + item.userId + item.postInfoId} tag={item} />;
-                    })}
+                    <AutoTags
+                        text={feed.arPostInfo.content}
+                        tags={feed.arPostInfo.postTags}
+                        className="whitespace-pre-wrap"
+                    />
 
                     <FeedActionButtons userLike={feed.userLike} handleLikeFeed={handleLikeFeed} isMyPost={isMyFeed} />
                 </>

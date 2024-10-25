@@ -9,13 +9,7 @@ const ObjectViewerInfo = ({ object }: { object: ObjectInterface }) => {
 
     return (
         <div className="flex flex-col gap-4 max-h-full overflow-y-auto">
-            <div className="flex flex-col items-start mx-auto">
-                <h1 className="text-4xl text-ellipsis overflow-hidden">{object.title}</h1>
-                <span className="text-quick-silver text-sm">{`${object.location.lat.toFixed(6)}, ${object.location.lng.toFixed(6)}`}</span>
-            </div>
-
-            <div className="text-quick-silver text-sm mx-auto">{`@${object.ownerNickname}`}</div>
-
+            <ObjectViewerHeader title={object.title} location={object.location} ownerNickname={object.ownerNickname} />
             <p
                 className={`manrope-regular-18 text-quick-silver relative 
                     ${fullDescription ? "" : "line-clamp-[10]"} duration-500
@@ -44,4 +38,25 @@ const ObjectViewerInfo = ({ object }: { object: ObjectInterface }) => {
     );
 };
 
-export { ObjectViewerInfo };
+const ObjectViewerHeader = ({
+    title,
+    location,
+    ownerNickname,
+}: {
+    title: string;
+    location: { lat: number; lng: number };
+    ownerNickname?: string;
+}) => {
+    return (
+        <Fragment>
+            <div className="flex flex-col items-start mx-auto">
+                <h1 className="text-4xl text-ellipsis overflow-hidden">{title}</h1>
+                <span className="text-quick-silver text-sm">{`${location.lat.toFixed(6)}, ${location.lng.toFixed(6)}`}</span>
+            </div>
+
+            <div className="text-quick-silver text-sm mx-auto">{`@${ownerNickname}`}</div>
+        </Fragment>
+    );
+};
+
+export { ObjectViewerInfo, ObjectViewerHeader };
