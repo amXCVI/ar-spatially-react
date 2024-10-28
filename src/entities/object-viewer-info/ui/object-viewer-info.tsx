@@ -4,7 +4,7 @@ import { ObjectInterface } from "@/shared/types";
 
 import { useObjectViewerInfoHook } from "../model";
 
-const ObjectViewerInfo = ({ object }: { object: ObjectInterface }) => {
+const ObjectViewerInfo = ({ object, likesCount }: { object: ObjectInterface; likesCount: number }) => {
     const { fullDescription, toggleFullDescriptionText } = useObjectViewerInfoHook();
 
     return (
@@ -34,6 +34,7 @@ const ObjectViewerInfo = ({ object }: { object: ObjectInterface }) => {
                     </Fragment>
                 )}
             </p>
+            <div className="text-sm mx-auto">{`${likesCount} likes`}</div>
         </div>
     );
 };

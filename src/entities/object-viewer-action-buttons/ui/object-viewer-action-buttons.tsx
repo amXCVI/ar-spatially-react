@@ -12,17 +12,23 @@ import { useObjectActionsHook } from "../model";
 
 const ObjectViewerActionButtons = ({
     object,
+    userLike,
     setViewerModalMode,
+    handleLikeObject,
 }: {
     object: MarkerInterface;
+    userLike: boolean;
     setViewerModalMode: (e: ObjectViewerModes) => void;
+    handleLikeObject: () => void;
 }) => {
-    const { handleShareObject, handleLikeObject, handleCommentObject, handleViewObjectOnMap, handleViewArObject } =
-        useObjectActionsHook({ object, setViewerModalMode });
+    const { handleShareObject, handleCommentObject, handleViewObjectOnMap, handleViewArObject } = useObjectActionsHook({
+        object,
+        setViewerModalMode,
+    });
 
     return (
         <div className="flex gap-4">
-            <ActionButton action={handleLikeObject} icon={<LikeIcon />} />
+            <ActionButton action={handleLikeObject} icon={<LikeIcon style={{ fill: userLike ? "red" : "white" }} />} />
             <ActionButton action={handleCommentObject} icon={<CommentIcon />} />
             <ActionButton action={handleShareObject} icon={<ShareIcon />} />
             <ActionButton action={handleViewObjectOnMap} icon={<LocationIcon />} />

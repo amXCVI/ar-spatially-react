@@ -11,8 +11,16 @@ import { BackdropModal } from "@/shared/ui/modals";
 import { useObjectViewerHook } from "../model";
 
 const ObjectViewer = () => {
-    const { isOpenMapModal, loading, selectedObject, viewerModalMode, closeModal, setViewerModalMode } =
-        useObjectViewerHook();
+    const {
+        isOpenMapModal,
+        loading,
+        selectedObject,
+        viewerModalMode,
+        likesData,
+        closeModal,
+        setViewerModalMode,
+        handleLikeObject,
+    } = useObjectViewerHook();
 
     return (
         <BackdropModal isOpen={isOpenMapModal} closeModal={closeModal} className="!bg-dark-bg">
@@ -20,7 +28,14 @@ const ObjectViewer = () => {
                 className="grid md:grid-cols-2 gap-6 p-6
                             w-full h-full md:h-[60vh] lg:h-[50vh] xl:h-[40vh]"
             >
-                {renderModalContent({ loading, selectedObject, viewerModalMode, setViewerModalMode })}
+                {renderModalContent({
+                    loading,
+                    selectedObject,
+                    viewerModalMode,
+                    likesData,
+                    setViewerModalMode,
+                    handleLikeObject,
+                })}
             </div>
         </BackdropModal>
     );
@@ -30,12 +45,19 @@ const renderModalContent = ({
     selectedObject,
     loading,
     viewerModalMode,
+    likesData,
     setViewerModalMode,
+    handleLikeObject,
 }: {
     selectedObject: ObjectInterface | FavoriteObjectInterface | null;
     loading: boolean;
     viewerModalMode: ObjectViewerModes;
+    likesData: {
+        likes: number;
+        userLike: boolean;
+    };
     setViewerModalMode: (e: ObjectViewerModes) => void;
+    handleLikeObject: () => void;
 }) => {
     if (loading || !selectedObject) {
         return <Fragment />;
@@ -48,7 +70,12 @@ const renderModalContent = ({
                     <ObjectComments object={selectedObject} />
                     <div className="flex flex-col items-center gap-4">
                         <ObjectPreview modelId={selectedObject.modelId} previewId={selectedObject.previewId} />
-                        <ObjectViewerActionButtons object={selectedObject} setViewerModalMode={setViewerModalMode} />
+                        <ObjectViewerActionButtons
+                            object={selectedObject}
+                            userLike={likesData.userLike}
+                            handleLikeObject={handleLikeObject}
+                            setViewerModalMode={setViewerModalMode}
+                        />
                     </div>
                 </Fragment>
             );
@@ -59,10 +86,15 @@ const renderModalContent = ({
         default:
             return (
                 <Fragment>
-                    <ObjectViewerInfo object={selectedObject} />
+                    <ObjectViewerInfo object={selectedObject} likesCount={likesData.likes} />
                     <div className="flex flex-col items-center gap-4">
                         <ObjectPreview modelId={selectedObject.modelId} previewId={selectedObject.previewId} />
-                        <ObjectViewerActionButtons object={selectedObject} setViewerModalMode={setViewerModalMode} />
+                        <ObjectViewerActionButtons
+                            object={selectedObject}
+                            userLike={likesData.userLike}
+                            handleLikeObject={handleLikeObject}
+                            setViewerModalMode={setViewerModalMode}
+                        />
                     </div>
                 </Fragment>
             );

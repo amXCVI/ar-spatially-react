@@ -19,13 +19,12 @@ const useObjectActionsHook = ({
                 .catch((error) => console.log("Не удалось поделиться", error));
         }
     };
-    const handleLikeObject = () => {};
     const handleCommentObject = () => {
         setViewerModalMode(ObjectViewerModes.COMMENT);
     };
     const handleViewObjectOnMap = () => {};
     const handleViewArObject = () => {};
-    return { handleShareObject, handleLikeObject, handleCommentObject, handleViewObjectOnMap, handleViewArObject };
+    return { handleShareObject, handleCommentObject, handleViewObjectOnMap, handleViewArObject };
 };
 
 export { useObjectActionsHook };
