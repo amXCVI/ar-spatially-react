@@ -1,6 +1,7 @@
 import dayjs from "dayjs";
 
 import { ObjectCommentInterface } from "@/shared/types";
+import { OptionButton, OptionDots } from "@/shared/ui/option-dots";
 import { AutoTags } from "@/shared/ui/text-with-tags";
 
 const Comment = ({ comment }: { comment: ObjectCommentInterface }) => {
@@ -20,6 +21,11 @@ const Comment = ({ comment }: { comment: ObjectCommentInterface }) => {
                         <span>{dayjs(comment.createdAt).format("DD/MM/YYYY")}</span>
                     </div>
                 </div>
+
+                <OptionDots>
+                    <OptionButton>edit</OptionButton>
+                    <OptionButton>delete</OptionButton>
+                </OptionDots>
             </div>
             <AutoTags text={comment.commentText} tags={comment.commentTags} />
         </div>
