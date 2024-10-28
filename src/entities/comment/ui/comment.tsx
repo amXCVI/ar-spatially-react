@@ -4,7 +4,23 @@ import { ObjectCommentInterface } from "@/shared/types";
 import { OptionButton, OptionDots } from "@/shared/ui/option-dots";
 import { AutoTags } from "@/shared/ui/text-with-tags";
 
-const Comment = ({ comment }: { comment: ObjectCommentInterface }) => {
+import { useCommentHook } from "../model";
+
+const Comment = ({
+    comment,
+    onEditComment,
+    onDeleteComent,
+}: {
+    comment: ObjectCommentInterface;
+    onEditComment: ({ commentId, text }: { commentId: number; text: string }) => void;
+    onDeleteComent: ({ commentId }: { commentId: number }) => void;
+}) => {
+    const { isMyComment, handleEditComment, handleDeleteComment } = useCommentHook({
+        comment,
+        onEditComment,
+        onDeleteComent,
+    });
+
     return (
         <div className="flex flex-col w-full">
             <div className="flex gap-2 items-center">
@@ -22,10 +38,12 @@ const Comment = ({ comment }: { comment: ObjectCommentInterface }) => {
                     </div>
                 </div>
 
-                <OptionDots>
-                    <OptionButton>edit</OptionButton>
-                    <OptionButton>delete</OptionButton>
-                </OptionDots>
+                {isMyComment && (
+                    <OptionDots className="ml-auto">
+                        <OptionButton onClick={handleEditComment}>Edit</OptionButton>
+                        <OptionButton onClick={handleDeleteComment}>delete</OptionButton>
+                    </OptionDots>
+                )}
             </div>
             <AutoTags text={comment.commentText} tags={comment.commentTags} />
         </div>

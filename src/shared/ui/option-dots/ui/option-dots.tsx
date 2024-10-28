@@ -6,11 +6,11 @@ import "./index.css";
 
 import { useOptionDotsHook } from "../model";
 
-const OptionDots = ({ children }: { children: ReactNode | ReactNode[] }) => {
+const OptionDots = ({ children, className }: { children: ReactNode | ReactNode[]; className?: string }) => {
     const { isOpenPopup, optionDotsPopupRef, popupPosition, openPopup } = useOptionDotsHook();
 
     return (
-        <div className="option-dots relative" ref={optionDotsPopupRef}>
+        <div className={`option-dots relative ${className}`} ref={optionDotsPopupRef}>
             <button onClick={openPopup} className="px-3">
                 <DotsIcon />
             </button>

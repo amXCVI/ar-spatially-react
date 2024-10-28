@@ -33,6 +33,7 @@ const AutoTags = ({
                     if (tag) {
                         return (
                             <Link
+                                key={i}
                                 to={`/${routes.feeds}/${routes.feedsByUser}?${SearchParamsConstants.feedsByUserSearchParamsKey}=${tag.userId}`}
                                 className="text-blue-accent"
                             >
