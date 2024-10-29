@@ -3,7 +3,6 @@ import { ReactNode, useState } from "react";
 import { Fragment } from "react/jsx-runtime";
 
 import {
-    PostCommentInterface,
     PostCommentTagInterface,
     PostImageInterface,
     PostInterface,
@@ -208,27 +207,6 @@ const FeedActionsRow = ({
     );
 };
 
-const FeedCommentItem = ({ comment }: { comment: PostCommentInterface }) => {
-    return (
-        <div className="flex flex-col">
-            <div className="flex py-2 border-b text-sm">
-                <img
-                    className="w-12 aspect-square rounded-full"
-                    src={`${import.meta.env.VITE_APP_API_BASE_URL}gateway/file/get?fileId=${comment.author.avatarId}`}
-                />
-                <div className="flex flex-col justify-center gap-1">
-                    <span>{comment.author.name ?? `@${comment.author.nickname}`}</span>
-                    <div className="flex gap-2">
-                        <span>{`@${comment.author.nickname}`}</span>
-                        <span>{dayjs(comment.createdAt).format("DD/MM/YYYY")}</span>
-                    </div>
-                </div>
-            </div>
-            <AutoTags text={comment.commentText} tags={comment.commentTags} />
-        </div>
-    );
-};
-
 export const FeedTag = ({ tag }: { tag: PostCommentTagInterface | PostTagInterface | QuoteTagInterface }) => {
     const { handleClickTag } = useFeedTagHook({ tag });
     return (
@@ -324,7 +302,6 @@ export {
     QuoteOriginalPostHeader,
     QuoteOrRepostPost,
     QuotePostContent,
-    FeedCommentItem,
     FeedTag as FeedCommentTag,
     FeedMediaGallery,
 };

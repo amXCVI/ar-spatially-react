@@ -4,7 +4,6 @@ import { AutoTags } from "@/shared/ui/text-with-tags";
 import { useDetailFeedItemHook } from "../model";
 import {
     FeedActionButtons,
-    FeedCommentItem,
     FeedHeader,
     FeedMediaGallery,
     QuoteOrRepostPost,
@@ -15,13 +14,12 @@ interface FeedItemProps {
     feed: PostInterface;
     feedImages: PostImageInterface[];
     feedVideos: PostVideoInterface[];
-    feedComments: PostCommentInterface[];
 }
-const DetailsFeedItem = ({ feed, feedImages, feedVideos, feedComments }: FeedItemProps) => {
+const DetailsFeedItem = ({ feed, feedImages, feedVideos }: FeedItemProps) => {
     const { handleLikeFeed } = useDetailFeedItemHook({ feedId: feed.id });
 
     return (
-        <div className="flex flex-col p-4 overflow-scroll h-full">
+        <div className="flex flex-col p-4 overflow-scroll h-min">
             <FeedHeader author={feed.arPostInfo.author} feedType={feed.type} createdAt={feed.createdAt} />
 
             <QuotePostContent quote={feed.quote} />
@@ -55,10 +53,6 @@ const DetailsFeedItem = ({ feed, feedImages, feedVideos, feedComments }: FeedIte
                     handleLikeFeed={handleLikeFeed}
                 />
             )}
-
-            {feedComments.map((comment) => {
-                return <FeedCommentItem key={comment.id} comment={comment} />;
-            })}
         </div>
     );
 };

@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 
-import { ObjectCommentInterface } from "@/shared/types";
+import { ObjectCommentInterface, PostCommentInterface } from "@/shared/types";
 import { OptionButton, OptionDots } from "@/shared/ui/option-dots";
 import { AutoTags } from "@/shared/ui/text-with-tags";
 
@@ -11,9 +11,9 @@ const Comment = ({
     onEditComment,
     onDeleteComent,
 }: {
-    comment: ObjectCommentInterface;
-    onEditComment: ({ commentId, text }: { commentId: number; text: string }) => void;
-    onDeleteComent: ({ commentId }: { commentId: number }) => void;
+    comment: ObjectCommentInterface | PostCommentInterface;
+    onEditComment?: ({ commentId, text }: { commentId: number; text: string }) => void;
+    onDeleteComent?: ({ commentId }: { commentId: number }) => void;
 }) => {
     const { isMyComment, handleEditComment, handleDeleteComment } = useCommentHook({
         comment,

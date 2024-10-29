@@ -26,7 +26,7 @@ const AutoTags = ({
 
     return (
         <div className={className}>
-            <span>
+            <span className="whitespace-pre-wrap">
                 {parts.map((part, i) => {
                     const tag = tags.find((t) => `@${t.nickname}` === part);
 

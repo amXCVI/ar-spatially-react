@@ -204,6 +204,49 @@ const deleteByPostId = async ({ postId }: { postId: string }) => {
     }
 };
 
+// Комментарии
+const createComment = async ({ postId, commentText }: { postId: string; commentText: string }) => {
+    const url = `/gateway/post/comment/create`;
+
+    try {
+        const response: AxiosResponse<ApiResponseInterface<PostCommentInterface>> = await apiClient.post(url, {
+            postId,
+            commentText,
+        });
+
+        return response.data.data;
+    } catch (error) {
+        throw new Error(`${url} ErrorRequest: ${error}`);
+    }
+};
+
+const updateCommentById = async ({ commentId, commentText }: { commentId: number; commentText: string }) => {
+    const url = `/gateway/post/comment/update`;
+
+    try {
+        const response: AxiosResponse<ApiResponseInterface<PostCommentInterface>> = await apiClient.post(url, {
+            commentId,
+            commentText,
+        });
+
+        return response.data.data;
+    } catch (error) {
+        throw new Error(`${url} ErrorRequest: ${error}`);
+    }
+};
+
+const deleteCommentById = async ({ commentId }: { commentId: number }) => {
+    const url = `/gateway/post/comment/delete?commentId=${commentId}`;
+
+    try {
+        const response: AxiosResponse<ApiResponseInterface<string>> = await apiClient.delete(url);
+
+        return response.data.data;
+    } catch (error) {
+        throw new Error(`${url} ErrorRequest: ${error}`);
+    }
+};
+
 export const postApi = {
     findMePosts,
     findAllPosts,
@@ -215,4 +258,7 @@ export const postApi = {
     likeUnlikeByPostId,
     createPost,
     deleteByPostId,
+    createComment,
+    updateCommentById,
+    deleteCommentById,
 };

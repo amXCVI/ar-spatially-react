@@ -3,7 +3,6 @@ import { DetailsFeedItem } from "./details-feed-item";
 import {
     FeedActionButtons,
     FeedActionsRow,
-    FeedCommentItem,
     FeedCommentTag,
     FeedContentText,
     FeedHeader,
@@ -24,6 +23,5 @@ export {
     QuoteOriginalPostHeader,
     QuoteOrRepostPost,
     QuotePostContent,
-    FeedCommentItem,
     FeedCommentTag,
 };
