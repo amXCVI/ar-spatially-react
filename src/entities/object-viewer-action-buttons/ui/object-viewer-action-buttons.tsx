@@ -1,5 +1,8 @@
 import { ReactNode } from "react";
+import { Link } from "react-router-dom";
 
+import { routes } from "@/shared/config";
+import { SearchParamsConstants } from "@/shared/config/constants";
 import { MarkerInterface, ObjectViewerModes } from "@/shared/types";
 
 import ArIcon from "../assets/ar-icon.svg?react";
@@ -31,7 +34,13 @@ const ObjectViewerActionButtons = ({
             <ActionButton action={handleLikeObject} icon={<LikeIcon style={{ fill: userLike ? "red" : "white" }} />} />
             <ActionButton action={handleCommentObject} icon={<CommentIcon />} />
             <ActionButton action={handleShareObject} icon={<ShareIcon />} />
-            <ActionButton action={handleViewObjectOnMap} icon={<LocationIcon />} />
+            <Link
+                to={`/${routes.map}?${SearchParamsConstants.objectIdSearchParamsKey}=${object.id}`}
+                state={{ object: object }}
+            >
+                <ActionButton action={handleViewObjectOnMap} icon={<LocationIcon />} />
+            </Link>
+
             <ActionButton action={handleViewArObject} icon={<ArIcon />} />
         </div>
     );
