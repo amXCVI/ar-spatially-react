@@ -8,17 +8,12 @@ export interface ObjectInterface {
     modelHash?: string;
     modelId: string;
     ownerId: string;
-    ownerNickname?: string;
+    ownerNickname: string;
     previewId: string;
     size: { width: number; height: number };
     status: MarkerStatusEnum;
     title: string;
     countComments?: number;
-}
-
-export interface FavoriteObjectInterface extends ObjectInterface {
-    ownerNickname: string;
-    countComments: number;
 }
 
 export interface AnchorInterface {

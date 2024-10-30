@@ -1,4 +1,4 @@
-import { PostCommentInterface, PostImageInterface, PostInterface, PostTypes, PostVideoInterface } from "@/shared/types";
+import { PostImageInterface, PostInterface, PostTypes, PostVideoInterface } from "@/shared/types";
 import { AutoTags } from "@/shared/ui/text-with-tags";
 
 import { useDetailFeedItemHook } from "../model";

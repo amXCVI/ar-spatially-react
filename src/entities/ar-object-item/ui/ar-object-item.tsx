@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 import { SearchParamsConstants } from "@/shared/config/constants";
-import { MarkerInterface } from "@/shared/types";
+import { ObjectInterface } from "@/shared/types";
 
 import FavoriteIcon from "../assets/favorite-icon.svg?react";
 import LikeIcon from "../assets/like-icon.svg?react";
@@ -9,7 +9,7 @@ import LikeIcon from "../assets/like-icon.svg?react";
 import { useArObjectItemHook } from "../model";
 
 interface ArObjectItemProps {
-    object: MarkerInterface;
+    object: ObjectInterface;
 }
 
 const ArObjectItem = ({ object }: ArObjectItemProps) => {
@@ -25,6 +25,8 @@ const ArObjectItem = ({ object }: ArObjectItemProps) => {
                 className="rounded-[20px]"
             />
             {/* <Status status={object.status} /> */}
+
+            <div className="absolute top-3 left-3">{`@${object.ownerNickname}`}</div>
 
             <div className="absolute top-3 right-3 cursor-pointer p-1" onClick={handleFavoriteObject}>
                 <FavoriteIcon />
