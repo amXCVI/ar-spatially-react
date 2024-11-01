@@ -78,7 +78,12 @@ const Header = ({ white, actionButton }: HeaderInterface) => {
                         );
                     })}
                     <div className={`hidden lg:flex items-center p-4 bg-white30 rounded-full lg:bg-[#ffffff00]`}>
-                        <Link to={docsMenuLink.href} className={`font-medium font-manrope text-[14px]`}>
+                        <Link
+                            to={docsMenuLink.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={`font-medium font-manrope text-[14px]`}
+                        >
                             <b
                                 className={
                                     white
@@ -167,7 +172,12 @@ export const MobileMenu = ({ white = false, show, className, iconClassname }: Mo
                                 <Fragment key={item.id} />
                             );
                         })}
-                        <Link className="flex flex-col items-center w-1/4" to={docsMenuLink.href}>
+                        <Link
+                            className="flex flex-col items-center w-1/4"
+                            to={docsMenuLink.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
                             <div className="flex justify-center items-center w-10 h-12">{docsMenuLink.icon}</div>
                             <label className="medium-14 text-white">{docsMenuLink.title}</label>
                         </Link>
