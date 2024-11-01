@@ -312,7 +312,7 @@ export const worlds: WorldSphereInterface[] = [
         imagePosition: {
             scale: "1.4",
             transform:
-                "translate(-50%, -50%) rotate(calc(var(--i) * 36deg + 20deg)) translate(29.5vh) rotate(calc(var(--i) * -36deg - 20deg))",
+                "translate(-50%, -50%) rotate(calc(var(--i) * 36deg + 20deg)) translate(30vh) rotate(calc(var(--i) * -36deg - 20deg))",
         },
     },
     {
@@ -355,7 +355,7 @@ export const worlds: WorldSphereInterface[] = [
         imagePosition: {
             scale: "1.4",
             transform:
-                "translate(-50%, -50%) rotate(calc(var(--i) * 36deg + 16deg)) translate(36vh) rotate(calc(var(--i) * -36deg - 16deg))",
+                "translate(-50%, -50%) rotate(calc(var(--i) * 36deg + 16deg)) translate(37vh) rotate(calc(var(--i) * -36deg - 16deg))",
         },
     },
     {
