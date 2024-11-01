@@ -1,3 +1,3 @@
 import { ObjectPagesLayout } from "./ui";
 
-export { ObjectPagesLayout };
+export default ObjectPagesLayout;

@@ -2,14 +2,14 @@ import { Suspense } from "react";
 import React from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
-import { FeedPagesLayout } from "@/widgets/feed-pages-layout";
-import { ObjectPagesLayout } from "@/widgets/object-pages-layout";
-
 import { routes } from "@/shared/config";
 import { BaseLayout } from "@/shared/ui/layouts";
 
 import { ErrorBoundary } from "./error-boundary";
 import PrivateRoute from "./private-route";
+
+const FeedPagesLayout = React.lazy(() => import("@/widgets/feed-pages-layout"));
+const ObjectPagesLayout = React.lazy(() => import("@/widgets/object-pages-layout"));
 
 const ProfileSettingsPage = React.lazy(() => import("@/pages/profile-settings-page"));
 const FeedsByUserPage = React.lazy(() => import("@/pages/feeds-by-user-page"));

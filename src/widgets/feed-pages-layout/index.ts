@@ -1,3 +1,3 @@
 import { FeedPagesLayout } from "./ui";
 
-export { FeedPagesLayout };
+export default FeedPagesLayout;
