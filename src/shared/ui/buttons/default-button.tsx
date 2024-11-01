@@ -23,7 +23,9 @@ export const DefaultButton: FC<PropsWithChildren<PropsButton>> = ({
     button-font
     ${className ?? ""}
     duration-300
-    hover:invert`;
+    hover:invert
+    hover:border-[#b44d0d]
+    `;
     return (
         <button className={variants} onClick={onClick} disabled={disabled}>
             <span>{children}</span>
