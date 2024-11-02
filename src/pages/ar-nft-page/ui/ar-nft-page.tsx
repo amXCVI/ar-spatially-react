@@ -1,3 +1,5 @@
+import { useLayoutEffect, useRef } from "react";
+
 import { Footer } from "@/features/footer";
 import Header from "@/features/header";
 
@@ -10,11 +12,24 @@ import dgesLogo from "/images/ar-nft/dges-icon.svg";
 
 // import appStoreButton from "/images/landing/get-started-section/app-store-button.svg";
 // import playMarketButton from "/images/landing/get-started-section/play-market-button.svg";
-import phone1 from "/images/ar-nft/phone_33.webp";
+// import phone1 from "/images/ar-nft/phone_33.webp";
 import phone2 from "/images/ar-nft/phone_34.webp";
 import nftStPhone from "/images/ar-nft/phone_35.webp";
 
 const ArNftPage = () => {
+    const phoneRef = useRef<null | HTMLImageElement>(null);
+    const videoRef = useRef<null | HTMLDivElement>(null);
+
+    useLayoutEffect(() => {
+        setInterval(() => {
+            if (phoneRef.current && videoRef.current) {
+                videoRef.current.style.width = `${phoneRef.current.offsetWidth * 0.94}px`;
+                videoRef.current.style.height = `${phoneRef.current.offsetHeight * 0.98}px`;
+                videoRef.current.style.borderRadius = `${phoneRef.current.height / 14}px`;
+            }
+        }, 500);
+    }, []);
+
     return (
         <DarkLayout className="flex flex-col justify-between">
             <Header white />
@@ -25,8 +40,35 @@ const ArNftPage = () => {
             >
                 <div className="col-span-3 bg-smoky-black-bg20">
                     <div className="flex flex-col lg:flex-row gap-12">
-                        <div className="flex gap-6 mx-auto">
-                            <img src={phone1} className="object-contain h-full max-h-[50vh] lg:max-h-96 max-w-[30vw]" />
+                        <div className="grid grid-cols-2 gap-6 mx-auto w-full">
+                            <div
+                                className="relative flex justify-center items-center 
+                     max-h-[50vh] lg:max-h-96 max-w-[30vw]"
+                            >
+                                <img
+                                    src="/images/landing/start-section/phone.svg"
+                                    className={`object-contain h-full max-h-[50vh] lg:h-96 max-w-[30vw]`}
+                                    id="phone-border-img"
+                                    ref={phoneRef}
+                                />
+
+                                <div
+                                    id="video-rect-container"
+                                    className="absolute overflow-hidden w-0 h-0"
+                                    ref={videoRef}
+                                >
+                                    <video
+                                        className="h-full w-full object-cover"
+                                        src={"/video/ar-nft.webm"}
+                                        playsInline
+                                        autoPlay
+                                        muted
+                                        preload="auto"
+                                        loop
+                                    />
+                                </div>
+                            </div>
+                            {/* <img src={phone1} className="object-contain h-full max-h-[50vh] lg:max-h-96 max-w-[30vw]" /> */}
                             <img src={phone2} className="object-contain h-full max-h-[50vh] lg:max-h-96 max-w-[30vw]" />
                         </div>
 
