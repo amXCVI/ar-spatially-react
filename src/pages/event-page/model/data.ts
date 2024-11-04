@@ -263,7 +263,7 @@ export const worlds: WorldSphereInterface[] = [
         id: "0",
         worldName: "art",
         description: [
-            "Мир Искусства: здесь искусство царит повсюду, проникая в каждый уголок жизни. Валютой в этом мире служат краски, а вместо военных конфликтов проводятся арт-выставки, где страны соревнуются в мастерстве и оригинальности. Правители здесь — не политики, а лучшие артисты, художники и скульпторы, которые не только глубоко знают культурное наследие своих стран, но и находятся на передовой авангардных течений и мировых трендов. В Мире Искусства самое ценное — это уникальный и неповторимый стиль каждого творца. Ведь в мире, где каждый житель является художником, выделиться крайне сложно. Искусство здесь везде: от невообразимого многообразия картин и инсталляций до того, что даже животные и растения начали мимикрировать под необычайно изменчивый ландшафт из полотен маслом и граффити. Они сами того не зная, становятся частью большого арт-проекта, превращая окружающую среду в живую галерею, где не редкость встретить насекомых или зверей, украшенных в стиле известных мировых художников. Существует даже легенда, что все великие художники нашего мира — это пришельцы из Мира Искусства, которые не могли позволить, чтобы искусство существовало только в их реальности. Они пришли сюда, чтобы разделить свое бесценное искусственное наследие с другими мирами, обогащая нашу культуру и вдохновляя на новые творческие поиски.",
+            "In the World of Art, creativity rules all aspects of life. Paints serve as currency, and nations compete in art exhibitions instead of wars. The rulers are master artists, deeply rooted in cultural heritage and avant-garde trends. Unique style is the highest currency in this society of artists, where even animals and plants mirror the ever-evolving landscape of paintings and graffiti, becoming part of a grand, living gallery. Legends say our greatest artists are visitors from this world, sharing their priceless art to enrich and inspire beyond their realm.",
         ],
         imageSrc: "/event-page/worlds/streer.webp",
         butterflyes: [glitchButterfly, calligraphyButterfly, doodleButterfly],
@@ -277,7 +277,7 @@ export const worlds: WorldSphereInterface[] = [
         id: "1",
         worldName: "asia",
         description: [
-            "Мир Сакуры: Погрузитесь в мир, где элегантность азиатского и японского дизайна сочетается с тихой красотой вишнёвых цветов. Это царство отмечено обширными рощами сакуры, чьи розовые и белые лепестки символизируют мир и размышление. Изящные пагоды украшают ландшафт, их изогнутые крыши и сложные детали гармонично вписываются в зен-сады с аккуратно разровненным песком и тщательно расставленными камнями, служа центрами общественной и духовной жизни. Искусство каллиграфии и оригами здесь почитаемо, отмечено как глубокое выражение духа природы. Каждое произведение является данью уважения к приверженности царства красоте и аккуратности. Жители Мира Сакуры поддерживают свои культурные ценности баланса и гармонии, отмечая мимолетную красоту вишнёвых цветов через фестивали, подчеркивающие важность жизни в данный момент. С наступлением сумерек на реках запускают фонари, освещающие нежные лепестки сакуры на воде, создавая завораживающее переплетение света и цвета. Мир Сакуры — это живая картина, где природа и мастерство сливаются в непрерывное празднование культурного богатства и спокойной красоты.",
+            "World of Asia is a realm where Asian elegance meets the quiet beauty of cherry blossoms. Groves of sakura trees, with pink and white petals, symbolize peace and reflection, while graceful pagodas and Zen gardens enhance the landscape. Here, calligraphy and origami are cherished as spiritual expressions of nature’s essence, reflecting a devotion to beauty and detail. At dusk, lanterns drift along rivers, lighting up the petals, creating a mesmerizing scene that captures the cultural richness and serene beauty of this living painting.",
         ],
         imageSrc: "/event-page/worlds/japan.webp",
         butterflyes: [imperialDragonButterfly, origamiButterfly, crimsonDemonButterfly],
@@ -291,7 +291,7 @@ export const worlds: WorldSphereInterface[] = [
         id: "2",
         worldName: "liquid chrome",
         description: [
-            "Мир Жидкого Хрома: планета, где всё соткано из жидкого металла. Здесь леса вырастают из бронзы, реки текут ртутью, а небеса затянуты тучами из хрома. В этом мире даже дождь — это потоки жидкого металла, под которыми все живое ищет укрытие, не в силах выдержать тяжесть сотен капель. Днём температура повышается, превращая весь металл в жидкость, а ночью падает, и мир замирает в фантастических металлических статуях. Наши учёные до сих пор ломают голову над тем, как возможно существование живых организмов, полностью состоящих из металла. Их лучшая догадка заключается в том, что вместо нервов и питательных веществ эти организмы функционируют за счёт электрического тока, непрерывно протекающего через их тела. Или же это какая-то загадочная магия, оживляющая, казалось бы, самый безжизненный и бездушный материал в мире.",
+            "Liquid Chrome World is a realm of flowing metal, where bronze forests, mercury rivers, and chrome clouds define the landscape. Rain here falls as liquid metal, driving life to seek shelter from the weighty droplets. By day, rising temperatures liquefy the terrain, while nights freeze it into stunning metallic forms. Scientists are mystified by life in this metal world, theorizing that organisms function through electric currents instead of traditional biology—or perhaps a mysterious force animates this seemingly lifeless material.",
         ],
         imageSrc: "/event-page/worlds/chrome.webp",
         butterflyes: [liquidChromeButterfly, liquidBronzeButterfly, liquidFerrumButterfly],
@@ -305,21 +305,21 @@ export const worlds: WorldSphereInterface[] = [
         id: "3",
         worldName: "seaworld",
         description: [
-            "Мир Океана: это планета, полностью покрытая бескрайними океанами, где жизнь никогда не знала суши, кроме морского дна. Тем не менее, флора и фауна, знакомая обитателям нашей земли, существует и здесь, но приспособленная к жизни в водной стихии. Водоемы пронизаны гигантскими зарослями тины, которая растёт со дна до самой поверхности, достигая десятков километров в длину, словно подводные деревья. Океаны этого мира состоят не из обычной воды, как на Земле, а из её изменённой версии, присущей лишь этой планете. У поверхности её плотность значительно ниже, как и гравитация с атмосферным давлением, что позволяет местной фауне свободно парить, словно в невесомости. Но чем глубже, тем условия становятся ближе к земным, и обитатели глубин здесь напоминают существ, знакомых нам по земным океанам.",
+            "Ocean World is a planet fully covered by vast oceans, where life has evolved without land. Familiar flora and fauna have adapted to an aquatic existence, with towering seaweed forests stretching from the seabed to the surface, resembling underwater trees. The water here is unique—near the surface, it’s much lighter, with lower gravity and pressure, allowing creatures to glide almost weightlessly. As depths increase, conditions become more Earth-like, and the deep-sea life mirrors familiar ocean creatures.",
         ],
         imageSrc: "/event-page/worlds/water.webp",
         butterflyes: [deepWaterButterfly, sailButterfly, coralButterfly],
         imagePosition: {
             scale: "1.4",
             transform:
-                "translate(-50%, -50%) rotate(calc(var(--i) * 36deg + 20deg)) translate(29.5vh) rotate(calc(var(--i) * -36deg - 20deg))",
+                "translate(-50%, -50%) rotate(calc(var(--i) * 36deg + 20deg)) translate(30vh) rotate(calc(var(--i) * -36deg - 20deg))",
         },
     },
     {
         id: "4",
         worldName: "luxury",
         description: [
-            "Мир Роскоши — это завораживающая вселенная, где повсюду сверкают драгоценные камни и благородные металлы. Этот мир, созданный природой и древними алхимиками, представляет собой кладезь ослепительного богатства. Его жители адаптировались к яркому блеску окружающей их среды, развив защитные механизмы для глаз, чтобы справляться с ослепительным светом драгоценных камней. Изначально этот мир был похож на другие, но стремление к богатству привело алхимиков к экспериментам по превращению обычных металлов в золото, что вызвало магический хаос, превративший мир в лабиринт из драгоценностей. Это преобразование привело к экономическому краху, когда настоящую ценность приобрели редкие, не затронутые магией материалы, скрытые глубоко под землёй. Со временем жители научились использовать своё окружение, создавая уникальные и изысканные предметы, превращая свой мир в живое произведение искусства, где каждый элемент наполнен роскошью и утончённостью.",
+            "World of Luxury unveils a world glittering with gemstones and noble metals, crafted by nature and ancient alchemists. Here, residents have evolved to live amid blinding radiance, with eyes specially adapted to shield against the reflections of countless jewels. Once an ordinary realm, this world transformed as its inhabitants' thirst for opulence led alchemists to attempt turning base metals into gold. A magical, Midas-like event turned the entire landscape into a labyrinth of gems, collapsing the economy as abundance made everything invaluable. True worth now lies in rare, unaltered materials. Over time, residents learned to use their sparkling surroundings to craft unique and beautiful objects, making luxury a way of life.",
         ],
         imageSrc: "/event-page/worlds/gold.webp",
         butterflyes: [silkButterfly, roseMarbleButterfly, blackMarbleButterfly],
@@ -333,7 +333,7 @@ export const worlds: WorldSphereInterface[] = [
         id: "5",
         worldName: "alien",
         description: [
-            "Геди Прайм: завораживающий инопланетный мир, где природа и жизнь переплетены в единый организм. Величественные леса тянутся к фиолетово-зелёным облакам, а биолюминесцентные споры падают с неба, словно светящийся дождь. Огромные, как медузы, существа парят в воздухе, озаряя ландшафт. Поверхность планеты — это смесь гор и органических структур, которые постоянно меняются, как будто сама планета живая. Насекомоподобные существа с прочными экзоскелетами и биомеханические гибриды — одни из ключевых обитателей Геди Прайм. Защищенные панцирями, они двигаются с пугающей точностью, адаптируясь к среде с помощью сложных узоров маскировки и биолюминесцентных сигналов. Биолюминесценция помогает им привлекать добычу, общаться и сливаться с окружающей природой, а способность к маскировке позволяет мгновенно менять цвет и текстуру тела. Симбиоз — важная часть их выживания: многие виды зависят друг от друга в обмене ресурсами и защитой, создавая сложные сети взаимодействий, поддерживающих баланс в экосистеме. Несмотря на свою красоту, Геди Прайм полон опасностей. Всё в экосистеме взаимосвязано, и любое действие может вызвать непредсказуемые последствия. Выживание требует понимания хрупкого баланса жизни, где всё подчинено циклу адаптации и изменений.",
+            "Gedi Prime is a stunning alien world where life and nature merge into a unified, living organism. The surface is a blend of shifting mountains and organic structures, creating the sense of a living planet. Inhabitants include insect-like and biomechanical hybrids with durable exoskeletons, precise movements, and adaptive camouflage that lets them change color and texture instantly. Symbiosis is crucial, with species relying on each other for survival in a fragile ecosystem where every action has far-reaching consequences, demanding a deep respect for life’s delicate balance.",
         ],
         imageSrc: "/event-page/worlds/alien.webp",
         butterflyes: [fractalMatterButterfly, darkMatterButterfly, bioMatterButterfly],
@@ -347,23 +347,21 @@ export const worlds: WorldSphereInterface[] = [
         id: "6",
         worldName: "ice",
         description: [
-            "Мир Вечной Мерзлоты — это холодное и волшебное царство, где нескончаемые морозы создали уникальный мир, словно сошедший со страниц зимних сказок. Ледяные просторы, замерзшие реки и заснеженные леса с деревьями, сгибающимися под тяжестью снега, доминируют здесь. Жизнь в этом мире существует по строгим законам выживания. Флора и фауна приспособились к постоянным холодам: растения выработали «антифризные» механизмы, не позволяющие им замерзать, а животные научились экономить ресурсы для выживания.",
-            "Особенно выделяются снежные эльфы — разумные существа этого мира. Они высокие и легкие, что помогает им не проваливаться в глубокий снег. В их венах течет ледяная кровь, которая замерзает на воздухе, предотвращая потерю тепла при ранениях. Когда-то этот мир был богат растительностью, но Великая Мерзлота уничтожила большинство видов, и лишь вечнозеленые ели смогли выжить. Остатки древней флоры теперь встречаются лишь в виде окаменелостей внутри ледяных глыб, хранящих секреты прошлого. Эти ледяные архивы напоминают, что даже в самых суровых условиях жизнь находит способы адаптироваться и выжить.",
+            "World of Eternal Frost: a magical yet unforgiving realm, where perpetual cold has sculpted a world like something out of a Christmas tale. Vast snowy plains, frozen rivers, and snow-draped forests fill the landscape, with trees bending under heavy snow. Life here has adapted to survive the relentless frost. Hardy plants have developed natural antifreeze mechanisms, and animals thrive on minimal resources. Among the inhabitants are the snow elves — tall, slender beings adapted to the icy terrain. Their physiology allows them to walk on deep snow without sinking, and their unique, icy blood freezes upon air contact, minimizing heat loss if injured. Once lush with vegetation, most plant life vanished with the great frost, though evergreens like firs endured. Ancient flora remains as fossils, encased in ice blocks scattered throughout the landscape. These frozen archives hint at an ancient, warmer past, reminding us that even in the harshest conditions, life finds ways to adapt and endure.",
         ],
         imageSrc: "/event-page/worlds/ice.webp",
         butterflyes: [northernSeaButterfly, polarShineButterfly, flowericeButterfly],
         imagePosition: {
-            scale: "1.4",
+            scale: "1.6",
             transform:
-                "translate(-50%, -50%) rotate(calc(var(--i) * 36deg + 16deg)) translate(36vh) rotate(calc(var(--i) * -36deg - 16deg))",
+                "translate(-50%, -50%) rotate(calc(var(--i) * 36deg + 16deg)) translate(33vh) rotate(calc(var(--i) * -36deg - 16deg))",
         },
     },
     {
         id: "7",
         worldName: "jungle",
         description: [
-            "Мир Джунглей: первобытное царство, где необъятные, дикие джунгли простираются до бесконечности, кипя жизнью и утопая в густой, непроходимой зелени. Этот мир остаётся нетронутым рукой технологического прогресса, и в каждом уголке царствуют силы природы. Разнообразие флоры и фауны поражает воображение: каждое существо находится в хрупком равновесии, борясь за выживание среди густых зарослей и высоких крон деревьев. Несмотря на отсутствие видимых следов разумной жизни, ходят слухи, что в самых отдалённых и непроходимых уголках джунглей может скрываться неуловимый разум.",
-            "Для учёных даже попытка каталогизировать всё биологическое богатство этого мира почти невозможна, так как сложность природы выходит за пределы человеческого понимания. В Мире Джунглей природа правит безраздельно, неподвластная цивилизации, и единственный закон, который здесь действует, — это беспощадный закон джунглей, где выживают сильнейшие, а жизнь постоянно ведёт борьбу за существование.",
+            "Jungle World is a primordial realm of vast, untamed jungles brimming with life and dense, impenetrable vegetation. Untouched by technology, it’s a place governed by raw nature, where diverse flora and fauna thrive in a delicate, fierce balance. While no signs of intelligent life are confirmed, rumors hint that such life may hide deep within its remotest regions. For scientists, cataloging the full spectrum of life here is nearly impossible, as nature’s complexity eludes understanding. In Jungle World, the law of survival prevails, with life locked in a constant struggle for existence.",
         ],
         imageSrc: "/event-page/worlds/jungle.webp",
         butterflyes: [neonFloralButterfly, frogflyButterfly, forestMoldButterfly],
@@ -377,7 +375,7 @@ export const worlds: WorldSphereInterface[] = [
         id: "8",
         worldName: "middle east",
         description: [
-            "Оазис: Погрузитесь в мир, который воплощает богатое наследие и эстетику Ближнего Востока. Этот мир является пестрым полотном разнообразных культур, пропитанных традициями искусства и архитектуры ислама. Изысканные восточные орнаменты украшают каждую поверхность, от просторных дворов до величественных куполов мечетей, которые пронзают горизонт, создавая завораживающий узор теней и света. Архитектура здесь свидетельствует о изобретательности и духовной глубине народа. Минареты стремительно взмывают в небо, призывая верующих на молитву своими мелодичными адханами. Арочные двери и изысканные геометрические узоры доминируют в структурном дизайне, отражая исламское ударение на аниконизм и бесконечную природу творения. Риады, традиционные внутренние сады, служат уединёнными убежищами, предлагая отдых от оживлённых городских улиц, их дизайн символически изображает рай на земле. Рынки, или суки, пульсируют активностью, их узкие переулки заполнены торговцами, продающими специи, текстиль и ремесленные изделия. Воздух наполнен ароматом благовоний и насыщенными запахами традиционных блюд, приглашая посетителей на сенсорное путешествие сквозь время и вкусы. Этот аравийский мир — не просто место, а живое полотно истории и культуры, где каждый переулок и здание рассказывают историю цивилизации, процветающей благодаря переплетению нитей знаний, искусства и веры в захватывающий мозаичный узор жизни.",
+            "Arabian Oasis is a world that embodies the rich heritage and beauty of the Middle East, filled with Islamic art and architecture. Every surface is adorned with intricate oriental designs, from the spacious courtyards to the grand mosque domes casting patterns of shadow and light. Soaring minarets call the faithful to prayer, while arched doorways and geometric patterns reflect the infinite nature of creation. This world is a sensory tapestry where history, art, and faith weave together, creating a vibrant mosaic of life and culture.",
         ],
         imageSrc: "/event-page/worlds/arabian.webp",
         butterflyes: [blackGoldButterfly, habibiButterfly, whiteGoldButterfly],
@@ -391,7 +389,7 @@ export const worlds: WorldSphereInterface[] = [
         id: "9",
         worldName: "techno punk",
         description: [
-            "Технопанк Мир: планета, где технократия достигла апогея, и технологический прогресс был возвышен обитателями до абсолютного приоритета. Со временем жители этого мира стали настолько сливаться с машинами, которые они создавали, что перестали отличаться от них. Живая земля и растительность исчезли, уступив место жестким условиям непрерывного прогресса. Всё живое преобразилось, адаптировавшись к металлической экосистеме: механические животные и механизированные люди стали звеньями огромного механического организма, напоминающего скорее гигантскую шестерню, чем традиционную планету. Эволюция в этом мире прошла через эпохи технологических революций: от стимпанка, первой волны индустриализации, приведшей к процветанию, до киберпанка, который чуть не привел планету к полному разрушению. Однако, поднявшись из руин, цивилизация усвоила уроки прошлого и построила совершенную технологическую утопию будущего, где каждая деталь и каждый элемент служат общему механизму великого мироздания.",
+            "Technopunk World is a planet where technology reigns supreme, and inhabitants have merged seamlessly with their machines. Natural landscapes disappeared, replaced by a metallic ecosystem of mechanical animals and mechanized humans, all functioning within a vast, gear-like organism. The planet’s evolution passed through epochs of steampunk and cyberpunk revolutions, the latter nearly leading to collapse. From these ruins, a refined, utopian technocracy emerged, where every component serves a grand, unified mechanism of creation.",
         ],
         imageSrc: "/event-page/worlds/techno.webp",
         butterflyes: [futurepunkButterfly, steampunkButterfly, cyberpunkButterfly],

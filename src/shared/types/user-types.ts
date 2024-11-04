@@ -15,6 +15,20 @@ export interface UserInterface {
     provider: string;
 }
 
+export interface UserProfileInterface {
+    userId: string;
+    name: string;
+    nickname: string;
+    avatarId: string;
+    postsCount: number;
+    subscribersCount: number;
+    subscriptionsCount: number;
+}
+
+export interface UserSubscriberInterface {
+    userId: string;
+}
+
 export enum UserRole {
     USER = "USER",
     DEVELOPER = "DEVELOPER",

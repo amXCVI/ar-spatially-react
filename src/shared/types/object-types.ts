@@ -1,3 +1,5 @@
+import { MarkerStatusEnum } from "./marker-types";
+
 export interface ObjectInterface {
     anchorList: AnchorInterface[];
     description: string;
@@ -26,6 +28,8 @@ export enum AnchotTypeEnum {
     GEO = "GEO",
 }
 
-export enum MarkerStatusEnum {
-    NOT_PUBLISHED = "NOT_PUBLISHED",
+export enum ObjectsPageModes {
+    ALL_AR_OBJECTS = "All AR Objects",
+    MY_AR_OBJECTS = "My AR Objects",
+    SAVED = "Saved",
 }

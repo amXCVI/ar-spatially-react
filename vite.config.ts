@@ -1,6 +1,7 @@
 import react from "@vitejs/plugin-react";
 import * as path from "path";
 import { defineConfig } from "vite";
+import Sitemap from "vite-plugin-sitemap";
 
 import svgr from "vite-plugin-svgr";
 
@@ -13,6 +14,14 @@ export default defineConfig({
             },
         }),
         react(),
+        Sitemap({
+            hostname: "https://arspatially.com/",
+            dynamicRoutes: ["product", "ar-nft", "playground", "event", "map", "feeds", "user", "objects"],
+            externalSitemaps: [
+                '"https://ar-spatially.gitbook.io/ar-spatially-documentation/platform-architecture/ar-nft"',
+            ],
+            generateRobotsTxt: true,
+        }),
     ],
     resolve: {
         alias: [

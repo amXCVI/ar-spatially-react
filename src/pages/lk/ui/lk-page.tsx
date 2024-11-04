@@ -3,6 +3,7 @@ import { ProfileInfo } from "@/entities/profile-info";
 import { WalletConnectButton } from "@/entities/wallet-connect-button";
 import { Link } from "react-router-dom";
 
+import { AddArObject } from "@/features/add-ar-object";
 import { ArObjectUploader } from "@/features/ar-objects-uploader";
 import Header from "@/features/header";
 import { MyArObjectsList } from "@/features/my-ar-objects-list";
@@ -62,6 +63,8 @@ const RightPanel = ({ className }: { className?: string }) => {
                 <LogoutButton />
 
                 <ArObjectUploader className="hidden lg:flex" />
+
+                <AddArObject />
             </div>
         </div>
     );

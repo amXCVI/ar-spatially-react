@@ -1,13 +1,24 @@
 const routes = {
     root: "/",
     home: "",
-    map: "map",
+    // Лендинг
     product: "product",
     arNFT: "ar-nft",
-    event: "event",
     playground: "playground",
+    // Ивент
+    event: "event",
+    // Карта
+    map: "map",
+    // Личный кабинет
     lk: "personal_page",
     profileSettings: "profile_settings",
+    // Посты
+    feeds: "feeds",
+    feed: "feed",
+    feedsByUser: "user",
+    // Объекты
+    objects: "objects",
+    // docs
     docs: "https://ar-spatially.gitbook.io/ar-spatially-documentation/platform-architecture/ar-nft",
 
     undefined: "*",
