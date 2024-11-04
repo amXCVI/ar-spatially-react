@@ -92,11 +92,11 @@ const GetStartedSection = () => {
                                     Spatially ecosystem.
                                 </TextP>
                                 <div className="flex flex-col md:flex-row w-full justify-between items-center sm:items-start gap-4">
-                                    <div className="flex gap-4 mt-2.5">
+                                    {/* <div className="flex gap-4 mt-2.5">
                                         <a href={routes.playground}>
                                             <DefaultButton className="bg-none text-gray90">Playground</DefaultButton>
                                         </a>
-                                    </div>
+                                    </div> */}
 
                                     {/* <div className="flex justify-around md:justify-end w-full gap-4 flex-wrap md:mt-2.5">
                                         <a
