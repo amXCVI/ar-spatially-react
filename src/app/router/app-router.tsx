@@ -13,7 +13,7 @@ const ObjectPagesLayout = React.lazy(() => import("@/widgets/object-pages-layout
 
 const ProfileSettingsPage = React.lazy(() => import("@/pages/profile-settings-page"));
 const FeedsByUserPage = React.lazy(() => import("@/pages/feeds-by-user-page"));
-const BlockchainPage = React.lazy(() => import("@/pages/blockchain-page"));
+// const BlockchainPage = React.lazy(() => import("@/pages/blockchain-page"));
 const ProductPage = React.lazy(() => import("@/pages/product-page"));
 const ObjectsPage = React.lazy(() => import("@/pages/objects-page"));
 const ArNftPage = React.lazy(() => import("@/pages/ar-nft-page"));
@@ -39,7 +39,7 @@ const AppRouter = () => {
 
                 { path: routes.arNFT, element: <ArNftPage /> },
 
-                { path: routes.playground, element: <BlockchainPage /> },
+                // { path: routes.playground, element: <BlockchainPage /> },
 
                 {
                     path: routes.lk,
