@@ -20,10 +20,10 @@ export const ZoomButton = ({ onChangeMapZoom, zoom }: ZoomButtonProps) => {
     return (
         <ButtonsContainer className="zoom-buttons">
             <ZoomButtonPlus onClick={handleClickPlusZoom}>
-                <img src={mapPlusIcon} />
+                <img src={mapPlusIcon} alt="" />
             </ZoomButtonPlus>
             <ZoomButtonMinus onClick={handleClickMinusZoom}>
-                <img src={mapMinusIcon} />
+                <img src={mapMinusIcon} alt="" />
             </ZoomButtonMinus>
         </ButtonsContainer>
     );

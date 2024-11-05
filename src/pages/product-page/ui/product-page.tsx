@@ -62,7 +62,7 @@ const ProductPage = () => {
                     <PhoneSlider
                         bgElement={
                             <div className="absolute animate-spin-slow h-full -left-1/2 -right-1/2 z-0 flex justify-center items-center">
-                                <img src={bulb} />
+                                <img src={bulb} alt="" />
                             </div>
                         }
                         videos={["/video/cat1_web.webm", "/video/cat_web.webm", "/video/tuning.webm"]}

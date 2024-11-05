@@ -46,7 +46,7 @@ const ModalContainer: FC<ModalContainerProps> = ({
         <Container ref={ref} style={style}>
             {isIconClose && (
                 <CloseIcon onClick={onClose}>
-                    <img src={iconClose} />
+                    <img src={iconClose} alt="" />
                 </CloseIcon>
             )}
             {children}

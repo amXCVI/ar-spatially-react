@@ -63,6 +63,7 @@ const ArNftPage = () => {
                             >
                                 <img
                                     src="/images/landing/start-section/phone.svg"
+                                    alt=""
                                     className={`object-contain h-full max-h-[50vh] lg:h-96 max-w-[30vw]`}
                                     id="phone-border-img"
                                     ref={phoneRef}
@@ -91,6 +92,7 @@ const ArNftPage = () => {
                             >
                                 <img
                                     src="/images/landing/start-section/phone.svg"
+                                    alt=""
                                     className={`object-contain h-full max-h-[50vh] lg:h-96 max-w-[30vw]`}
                                     id="phone-border-img"
                                     ref={phone1Ref}
@@ -161,7 +163,11 @@ const ArNftPage = () => {
                     className="col-span-3 xl:col-span-2 
                               bg-smoky-black-bg20 flex flex-col-reverse md:flex-row gap-11"
                 >
-                    <img src={nftStPhone} className="object-contain h-full max-h-[50vh] lg:max-h-[40vh] m-auto" />
+                    <img
+                        src={nftStPhone}
+                        alt="DGES (Decentralized Geolocation Ecosystem)"
+                        className="object-contain h-full max-h-[50vh] lg:max-h-[40vh] m-auto"
+                    />
 
                     <div className={`flex flex-col gap-6 xl:mt-11`}>
                         <img src={dgesLogo} className="h-10 mr-auto" />
@@ -173,7 +179,7 @@ const ArNftPage = () => {
                             data. DGES offers a scalable infrastructure for application developers, organizations
                             operating in the physical sector, and consumers of goods and services.
                         </TextP>
-                        <a className="mt-auto mx-auto mt-5 lg:mt-auto" href={import.meta.env.VITE_APP_DGES_URL}>
+                        <a className="mt-auto mx-auto pt-5 lg:mt-auto" href={import.meta.env.VITE_APP_DGES_URL}>
                             <DefaultButton className="">
                                 <span className="text-white">DGES</span>
                             </DefaultButton>

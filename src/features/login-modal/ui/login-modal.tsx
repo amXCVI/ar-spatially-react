@@ -87,7 +87,7 @@ const LoginModal = () => {
                             w-full max-w-2xl max-h-dvh overflow-y-scroll"
             >
                 <div className="flex flex-col items-center gap-4">
-                    <img src={logo} />
+                    <img src={logo} alt="AR Spatially logo" />
                     <div className="text-white60 manrope-medium-18">
                         create an account to get a better AR experience
                     </div>

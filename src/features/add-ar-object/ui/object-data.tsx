@@ -119,7 +119,7 @@ const FileUploader = ({
                     <UploadObjectIcon />
                 </div>
                 <span className="roboto-medium-15 text-spanish-gray text-center z-10">{label}</span>
-                {previewSrc ? <img src={previewSrc} className="absolute z-0" /> : <div />}
+                {previewSrc ? <img src={previewSrc} alt={title} className="absolute z-0" /> : <div />}
             </div>
         </div>
     );

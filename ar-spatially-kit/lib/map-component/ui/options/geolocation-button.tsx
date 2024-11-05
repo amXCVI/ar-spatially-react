@@ -22,7 +22,7 @@ export const GeolocationButton = ({ setCenter, loading }: GeolocationButtonProps
                 {loading ? (
                     <LoaderComponent style={{ transform: "scale(.35)", position: "absolute" }} />
                 ) : (
-                    <img src={iconMapGeolocation} />
+                    <img src={iconMapGeolocation} alt="" />
                 )}
             </GeoButton>
         </ButtonsContainer>

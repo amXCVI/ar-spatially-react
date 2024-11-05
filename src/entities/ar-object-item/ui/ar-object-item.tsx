@@ -9,7 +9,10 @@ interface ArObjectItemProps {
 const ArObjectItem = ({ object }: ArObjectItemProps) => {
     return (
         <div className="w-full bg-nft-viewer-desc-bg rounded-[30px] overflow-hidden p-5 pb-14 relative">
-            <img src={`${import.meta.env.VITE_APP_API_BASE_URL}gateway/file/get?fileId=${object.previewId}`} />
+            <img
+                src={`${import.meta.env.VITE_APP_API_BASE_URL}gateway/file/get?fileId=${object.previewId}`}
+                alt={object.description}
+            />
             <Status status={object.status} />
             <div className="flex gap-1 justify-between p-1 bg-object-item-title-bg rounded-t-[13px] absolute bottom-0 left-0 right-0">
                 <span className="regular-16 text-white py-3 pl-4 text-nowrap overflow-hidden text-ellipsis">

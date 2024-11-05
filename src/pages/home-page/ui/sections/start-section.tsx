@@ -53,7 +53,7 @@ const StartSection = () => {
 
                     <div className="flex flex-col w-full gap-6 items-start z-10">
                         <div className="flex justify-start items-center manrope-regular-26 text-gray70">
-                            <img src={textItemPointIcon} className="mr-2 w-8 h-8 2sm:w-11 2sm:h-11" />
+                            <img src={textItemPointIcon} alt="" className="mr-2 w-8 h-8 2sm:w-11 2sm:h-11" />
                             <div className="text-[1.25rem] lg:text-[1.625rem]">
                                 <b className="text-gray90 text-[1.625rem]">Aggregator of AR apps </b>
                                 <br className="hidden sm:block" />
@@ -62,7 +62,7 @@ const StartSection = () => {
                         </div>
 
                         <div className="flex justify-start items-center  manrope-regular-26 text-gray70 lg:ml-24 2xl:ml-40">
-                            <img src={textItemPointIcon} className="mr-2 w-8 h-8 2sm:w-11 2sm:h-11" />
+                            <img src={textItemPointIcon} alt="" className="mr-2 w-8 h-8 2sm:w-11 2sm:h-11" />
                             <div className="text-[1.25rem] lg:text-[1.625rem]">
                                 <b className="text-gray90 text-[1.625rem]">AR content </b>tied to location
                                 <br className="hidden sm:block" />
@@ -71,7 +71,7 @@ const StartSection = () => {
                         </div>
 
                         <div className="flex justify-start items-center  manrope-regular-26 text-gray70 lg:ml-10 2xl:ml-16">
-                            <img src={textItemPointIcon} className="mr-2 w-8 h-8 2sm:w-11 2sm:h-11" />
+                            <img src={textItemPointIcon} alt="" className="mr-2 w-8 h-8 2sm:w-11 2sm:h-11" />
                             <div className="text-[1.25rem] lg:text-[1.625rem]">
                                 <b className="text-gray90 text-[1.625rem]">AR-NFT</b> is a spatial geolocation token{" "}
                                 <br className="hidden xl:block" />
@@ -82,7 +82,7 @@ const StartSection = () => {
                     </div>
 
                     <div className="flex justify-between lg:justify-center w-full">
-                        <img src={footerStars} className="-ml-2 lg:hidden" />
+                        <img src={footerStars} alt="" className="-ml-2 lg:hidden" />
                         <a href={`${routes.root}#contact`}>
                             <DefaultButton className="backdrop-blur bg-none text-gray90">Try AR</DefaultButton>
                         </a>
@@ -106,6 +106,7 @@ const StartSection = () => {
                     >
                         <img
                             src="/images/landing/start-section/phone.svg"
+                            alt=""
                             className={`object-contain h-[80vh] lg:h-[60vh]`}
                             id="phone-border-img"
                             ref={phoneRef}
@@ -132,12 +133,12 @@ const StartSection = () => {
 
             <div className="container mx-auto hidden lg:flex flex-col items-center px-6 lg:-mt-6 xl:-mt-16">
                 <div className="flex justify-between items-center w-full mb-4 -mt-20">
-                    <img src={footerStars} className="-ml-2" />
+                    <img src={footerStars} alt="" className="-ml-2" />
                 </div>
 
                 <div className="flex justify-between items-center w-full">
                     <div className="flex items-center regular-14 text-gray90">
-                        <img src={scrollDownIcon} className="mr-2" />
+                        <img src={scrollDownIcon} alt="" className="mr-2" />
                         Scroll down
                         <br />
                         to explore
