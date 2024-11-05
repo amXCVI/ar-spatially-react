@@ -59,7 +59,7 @@ const ArNftPage = () => {
                         <div className={`flex gap-6 mx-auto`}>
                             <div
                                 className="relative flex justify-center items-center 
-                     max-h-[50vh] lg:max-h-96 max-w-[30vw]"
+                                           max-h-[50vh] lg:max-h-96 max-w-[30vw]"
                             >
                                 <img
                                     src="/images/landing/start-section/phone.svg"
@@ -88,7 +88,7 @@ const ArNftPage = () => {
                             {/* <img src={phone1} className="object-contain h-full max-h-[50vh] lg:max-h-96 max-w-[30vw]" /> */}
                             <div
                                 className="relative flex justify-center items-center 
-                     max-h-[50vh] lg:max-h-96 max-w-[30vw]"
+                                           max-h-[50vh] lg:max-h-96 max-w-[30vw]"
                             >
                                 <img
                                     src="/images/landing/start-section/phone.svg"
