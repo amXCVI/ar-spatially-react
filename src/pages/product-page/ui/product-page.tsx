@@ -4,6 +4,7 @@ import { Footer } from "@/features/footer";
 import Header from "@/features/header";
 import { AuthContext, SignInPopupModes } from "@/features/login-modal";
 
+import { useTitle } from "@/shared/lib/use-page-meta-hooks";
 import { DefaultButton } from "@/shared/ui/buttons";
 import { DarkLayout } from "@/shared/ui/layouts";
 import { PhoneSlider } from "@/shared/ui/phones-video-slider";
@@ -14,6 +15,8 @@ import { SectionTitle, TextP } from "@/shared/ui/text-components";
 import bulb from "/images/product/bulb.png";
 
 const ProductPage = () => {
+    useTitle("AR Spatially - Product");
+
     const { openLoginModal } = useContext(AuthContext);
 
     return (
@@ -59,7 +62,7 @@ const ProductPage = () => {
                     <PhoneSlider
                         bgElement={
                             <div className="absolute animate-spin-slow h-full -left-1/2 -right-1/2 z-0 flex justify-center items-center">
-                                <img src={bulb} />
+                                <img src={bulb} alt="" />
                             </div>
                         }
                         videos={["/video/cat1_web.webm", "/video/cat_web.webm", "/video/tuning.webm"]}

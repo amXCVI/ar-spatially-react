@@ -23,10 +23,12 @@ const GetStartedSection = () => {
                         <div className="flex gap-6 mx-auto">
                             <img
                                 src={phone1}
+                                alt="Our platform serves four key audiences: developers, businesses, artists, and users"
                                 className="object-contain h-full max-h-[50vh] lg:max-h-[40vh] max-w-[30vw]"
                             />
                             <img
                                 src={phone2}
+                                alt="AR NFT phone image"
                                 className="object-contain h-full max-h-[50vh] lg:max-h-[40vh] max-w-[30vw]"
                             />
                         </div>
@@ -123,10 +125,12 @@ const GetStartedSection = () => {
                         <div className="flex gap-6 mx-auto">
                             <img
                                 src={phoneForMapTwo}
+                                alt="You can now upload 3D objects to the map in your personal Playground"
                                 className="object-contain h-full max-h-[50vh] lg:max-h-[40vh] max-w-[30vw]"
                             />
                             <img
                                 src={phoneForMapOne}
+                                alt="A coordinate system that integrates AR with the real world, allowing geolocation to link and discover AR objects in their actual locations"
                                 className="object-contain h-full max-h-[50vh] lg:max-h-[40vh] max-w-[30vw]"
                             />
                         </div>

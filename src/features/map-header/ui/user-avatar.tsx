@@ -13,7 +13,10 @@ const UserAvatar = ({ className }: { className?: string }) => {
             onClick={handleClickOnAvatar}
         >
             {user?.avatarId ? (
-                <img src={`${import.meta.env.VITE_APP_API_BASE_URL}gateway/file/get?fileId=${user.avatarId}`} />
+                <img
+                    src={`${import.meta.env.VITE_APP_API_BASE_URL}gateway/file/get?fileId=${user.avatarId}`}
+                    alt={user.name}
+                />
             ) : (
                 <DefaultUserAvatar />
             )}

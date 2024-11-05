@@ -114,6 +114,7 @@ const MapComponent = ({
                     >
                         <img
                             src={world.worldImgSrc}
+                            alt={world.worldName}
                             className="w-full h-full duration-500 opacity-50 scale-100 z-0"
                             id={`${world.worldId}Marker`}
                         />
@@ -122,7 +123,7 @@ const MapComponent = ({
             })}
 
             <AdvancedMarker position={objectLocation ?? cursorPosition}>
-                <img src={previewSrc} className="rounded-xl !max-w-24 !max-h-24 z-50" />
+                <img src={previewSrc} alt="" className="rounded-xl !max-w-24 !max-h-24 z-50" />
             </AdvancedMarker>
         </DefaultMap>
     );

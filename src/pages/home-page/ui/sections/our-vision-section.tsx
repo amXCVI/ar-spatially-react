@@ -93,12 +93,12 @@ const Paragraph = ({ title, text, className }: { title: string; text: string; cl
         <div className={`flex items-start gap-2 justify-center text-gray70 ${className}`}>
             <div className="flex flex-col gap-2">
                 <div className="flex items-center">
-                    <img src={textItemPointIcon} className="mr-2 w-8 h-8 2sm:w-11 2sm:h-11" />
+                    <img src={textItemPointIcon} alt="" className="mr-2 w-8 h-8 2sm:w-11 2sm:h-11" />
                     <div className="flex flex-col manrope-semibold-22 text-black mt-2">{title}</div>
                 </div>
 
                 <div className="flex gap-2 items-start ml-10 lg:ml-16">
-                    <img src={textParagraphPoint} className="mt-2" />
+                    <img src={textParagraphPoint} alt="" className="mt-2" />
                     <span className="manrope-regular-16">{text}</span>
                 </div>
             </div>

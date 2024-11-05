@@ -229,6 +229,7 @@ const Profile = () => {
             {user?.avatarId ? (
                 <img
                     src={`${import.meta.env.VITE_APP_API_BASE_URL}gateway/file/get?fileId=${user.avatarId}`}
+                    alt={user.name}
                     className=""
                 />
             ) : (
