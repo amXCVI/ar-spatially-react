@@ -1,6 +1,7 @@
 import { Footer } from "@/features/footer";
 import Header from "@/features/header";
 
+import { useTitle } from "@/shared/lib/use-page-meta-hooks";
 import { DarkLayout } from "@/shared/ui/layouts";
 
 import Arrow from "../assets/arrow.svg?react";
@@ -13,6 +14,8 @@ import { worlds } from "../model/data";
 import { WorldInfo } from "./world-info";
 
 const EventPage = () => {
+    useTitle("AR Spatially - Event");
+
     const {
         spheresImageRef,
         handleRotate,

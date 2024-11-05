@@ -4,6 +4,7 @@ import { Footer } from "@/features/footer";
 import Header from "@/features/header";
 
 import { routes } from "@/shared/config";
+import { useTitle } from "@/shared/lib/use-page-meta-hooks";
 import { DefaultButton } from "@/shared/ui/buttons";
 import { DarkLayout } from "@/shared/ui/layouts";
 import { SectionTitle, TextP } from "@/shared/ui/text-components";
@@ -17,6 +18,8 @@ import dgesLogo from "/images/ar-nft/dges-icon.svg";
 import nftStPhone from "/images/ar-nft/phone_35.webp";
 
 const ArNftPage = () => {
+    useTitle("AR Spatially - AR NFT");
+
     const phoneRef = useRef<null | HTMLImageElement>(null);
     const videoRef = useRef<null | HTMLDivElement>(null);
 
