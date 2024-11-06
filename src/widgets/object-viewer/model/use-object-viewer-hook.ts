@@ -5,7 +5,7 @@ import { useSearchParams } from "react-router-dom";
 import { ApiEndpoints } from "@/shared/api";
 import { SearchParamsConstants } from "@/shared/config/constants";
 import { useObjectActionsHook } from "@/shared/lib/use-object-actions-hook";
-import { FavoriteObjectInterface, ObjectInterface, ObjectViewerModes } from "@/shared/types";
+import { ObjectInterface, ObjectViewerModes } from "@/shared/types";
 
 const useObjectViewerHook = () => {
     const location = useLocation();
@@ -16,7 +16,7 @@ const useObjectViewerHook = () => {
 
     const [viewerModalMode, setViewerModalMode] = useState<ObjectViewerModes>(ObjectViewerModes.VIEW);
 
-    const [selectedObject, setSelectedObject] = useState<ObjectInterface | FavoriteObjectInterface | null>(
+    const [selectedObject, setSelectedObject] = useState<ObjectInterface | null>(
         location.state ? location.state.object : null,
     );
     const [likesData, setLikesData] = useState<{ likes: number; userLike: boolean }>({ likes: 0, userLike: false });
@@ -31,12 +31,12 @@ const useObjectViewerHook = () => {
     }, [isOpenMapModal, selectedObjectId]);
 
     useEffect(() => {
-        if (selectedObjectId && !selectedObject) {
+        if (selectedObjectId) {
             setLoading(true);
             ApiEndpoints.object
                 .getObject({ objectId: selectedObjectId })
                 .then((res) => {
-                    setSelectedObject(res.arObject);
+                    setSelectedObject(res);
                     setLikesData({ likes: res.likes, userLike: res.userLike });
                 })
                 .catch(() => {
@@ -47,7 +47,7 @@ const useObjectViewerHook = () => {
                 });
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [selectedObject, selectedObjectId]);
+    }, [selectedObjectId]);
 
     const closeModal = () => {
         setIsOpenMapModal(false);

@@ -227,13 +227,7 @@ const getObject = async ({ objectId }: { objectId: string }) => {
     formData.append("objectId", objectId);
 
     try {
-        const response: AxiosResponse<
-            ApiResponseInterface<{
-                arObject: ObjectInterface;
-                likes: number;
-                userLike: boolean;
-            }>
-        > = await apiClient.post(url, formData);
+        const response: AxiosResponse<ApiResponseInterface<ObjectInterface>> = await apiClient.post(url, formData);
 
         return response.data.data;
     } catch (error) {

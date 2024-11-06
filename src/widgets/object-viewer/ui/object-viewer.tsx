@@ -5,7 +5,7 @@ import { Fragment } from "react/jsx-runtime";
 
 import { ObjectComments } from "@/features/object-comments";
 
-import { FavoriteObjectInterface, ObjectInterface, ObjectViewerModes } from "@/shared/types";
+import { ObjectInterface, ObjectViewerModes } from "@/shared/types";
 import { BackdropModal } from "@/shared/ui/modals";
 
 import { useObjectViewerHook } from "../model";
@@ -49,7 +49,7 @@ const renderModalContent = ({
     setViewerModalMode,
     handleLikeObject,
 }: {
-    selectedObject: ObjectInterface | FavoriteObjectInterface | null;
+    selectedObject: ObjectInterface | null;
     loading: boolean;
     viewerModalMode: ObjectViewerModes;
     likesData: {
