@@ -1,22 +1,24 @@
-import { useState } from "react";
-
 import { ApiEndpoints } from "@/shared/api";
-import { MarkerInterface } from "@/shared/types";
+import { useAppDispatch } from "@/shared/lib/redux-service";
+import { allObjectsActions } from "@/shared/stores/objects-store";
+import { ObjectInterface } from "@/shared/types";
 
-const useArObjectItemHook = ({ object }: { object: MarkerInterface }) => {
-    const [userLike, setUserLike] = useState<boolean>(false);
+const useArObjectItemHook = ({ object }: { object: ObjectInterface }) => {
+    const dispatch = useAppDispatch();
 
     const handleLikeObject = () => {
         ApiEndpoints.object.likeObject({ objectId: object.id }).then((res) => {
-            setUserLike(res.userLike);
+            dispatch(allObjectsActions.likeUnlikeObject({ objectId: object.id, userLike: res.userLike }));
         });
     };
 
     const handleFavoriteObject = () => {
-        ApiEndpoints.object.favoritePutObject({ objectId: object.id });
+        ApiEndpoints.object.favoriteAddRemove({ objectId: object.id }).then((res) => {
+            dispatch(allObjectsActions.favoriteObject({ objectId: object.id, userFavorite: res }));
+        });
     };
 
-    return { userLike, handleLikeObject, handleFavoriteObject };
+    return { handleLikeObject, handleFavoriteObject };
 };
 
 export { useArObjectItemHook };

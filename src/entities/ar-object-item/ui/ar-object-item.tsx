@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 import { SearchParamsConstants } from "@/shared/config/constants";
-import { MarkerInterface } from "@/shared/types";
+import { ObjectInterface } from "@/shared/types";
 
 import FavoriteIcon from "../assets/favorite-icon.svg?react";
 import LikeIcon from "../assets/like-icon.svg?react";
@@ -9,11 +9,11 @@ import LikeIcon from "../assets/like-icon.svg?react";
 import { useArObjectItemHook } from "../model";
 
 interface ArObjectItemProps {
-    object: MarkerInterface;
+    object: ObjectInterface;
 }
 
 const ArObjectItem = ({ object }: ArObjectItemProps) => {
-    const { userLike, handleLikeObject, handleFavoriteObject } = useArObjectItemHook({ object });
+    const { handleLikeObject, handleFavoriteObject } = useArObjectItemHook({ object });
 
     return (
         <div
@@ -27,7 +27,7 @@ const ArObjectItem = ({ object }: ArObjectItemProps) => {
             {/* <Status status={object.status} /> */}
 
             <div className="absolute top-3 right-3 cursor-pointer p-1" onClick={handleFavoriteObject}>
-                <FavoriteIcon />
+                <FavoriteIcon style={{ fill: object.userFavorite ? "red" : "white" }} />
             </div>
             <div className="flex gap-1 justify-between p-1 bg-object-item-title-bg rounded-t-[13px] absolute bottom-0 left-0 right-0">
                 <Link to={`?${SearchParamsConstants.objectIdSearchParamsKey}=${object.id}`} state={{ object: object }}>
@@ -40,7 +40,7 @@ const ArObjectItem = ({ object }: ArObjectItemProps) => {
                     className="flex gap-2 items-center rounded-[8px] rounded-br-[25px] p-3 cursor-pointer"
                     onClick={handleLikeObject}
                 >
-                    <LikeIcon style={{ fill: userLike ? "red" : "white" }} />
+                    <LikeIcon style={{ fill: object.userLike ? "red" : "white" }} />
                 </div>
             </div>
         </div>

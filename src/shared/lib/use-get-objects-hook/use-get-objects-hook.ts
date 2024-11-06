@@ -35,10 +35,12 @@ const useGetObjectsHook = () => {
         try {
             if (favorites) {
                 // Запрашиваю избранные объекты
-                ApiEndpoints.object.findFavorites().then((res) => {
-                    dispatch(allObjectsActions.addObjectsToList({ objects: res.objectsList }));
-                    setTotalPages(res.totalPages);
-                });
+                ApiEndpoints.object
+                    .findFavorites({ pageNum: page, pageSize: OBJECTS_COUNT_IN_PAGE, searchText: filterString })
+                    .then((res) => {
+                        dispatch(allObjectsActions.addObjectsToList({ objects: res.objects }));
+                        setTotalPages(res.totalPages);
+                    });
             } else if (!byUser) {
                 // Запрашиваю все подряд объекты
                 ApiEndpoints.object
@@ -50,7 +52,12 @@ const useGetObjectsHook = () => {
             } else {
                 // Список всех доступных объектов
                 ApiEndpoints.object
-                    .findText({ pageNum: page, pageSize: OBJECTS_COUNT_IN_PAGE, searchText: filterString })
+                    .findByUser({
+                        pageNum: page,
+                        pageSize: OBJECTS_COUNT_IN_PAGE,
+                        searchText: filterString,
+                        userId: byUser,
+                    })
                     .then((res) => {
                         dispatch(allObjectsActions.addObjectsToList({ objects: res.objects }));
                         setTotalPages(res.totalPages);

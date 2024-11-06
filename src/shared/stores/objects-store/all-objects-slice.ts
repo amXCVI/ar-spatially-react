@@ -44,7 +44,12 @@ const allObjectsSlice = createSlice({
         // ObjectActions
         likeUnlikeObject: (state, action: PayloadAction<{ objectId: string; userLike: boolean }>) => {
             state.objectsList = state.objectsList.map((item) =>
-                item.id === action.payload.objectId ? { ...item } : item,
+                item.id === action.payload.objectId ? { ...item, userLike: action.payload.userLike } : item,
+            );
+        },
+        favoriteObject: (state, action: PayloadAction<{ objectId: string; userFavorite: boolean }>) => {
+            state.objectsList = state.objectsList.map((item) =>
+                item.id === action.payload.objectId ? { ...item, userFavorite: action.payload.userFavorite } : item,
             );
         },
     },

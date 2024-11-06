@@ -14,11 +14,9 @@ export interface ObjectInterface {
     status: MarkerStatusEnum;
     title: string;
     countComments?: number;
-}
-
-export interface FavoriteObjectInterface extends ObjectInterface {
-    ownerNickname: string;
-    countComments: number;
+    userFavorite: boolean;
+    userLike: boolean;
+    likes: number;
 }
 
 export interface AnchorInterface {
