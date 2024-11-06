@@ -5,9 +5,13 @@ import { ObjectViewer } from "@/widgets/object-viewer";
 import MapHeader from "@/features/map-header";
 // import { NftItem } from "@/features/nft-item";
 
+import { useTitle } from "@/shared/lib/use-page-meta-hooks";
+
 import useMapHook from "../model";
 
 const MapPage = () => {
+    useTitle("AR Spatially - Map objects");
+
     const {
         onChangeCoords,
         nftList,

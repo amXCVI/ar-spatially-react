@@ -46,6 +46,7 @@ const FeedHeader = ({
         <div className="flex gap-4">
             <img
                 src={`${import.meta.env.VITE_APP_API_BASE_URL}gateway/file/get?fileId=${author.avatarId}`}
+                alt={author.name}
                 className="rounded-full aspect-square w-16"
             />
             <div className="flex flex-col justify-around" onClick={onClick}>
@@ -116,6 +117,7 @@ const QuoteOriginalPostHeader = ({ author, createdAt }: { author: PostUserInterf
         <div className="flex gap-4">
             <img
                 src={`${import.meta.env.VITE_APP_API_BASE_URL}gateway/file/get?fileId=${author.avatarId}`}
+                alt={author.name}
                 className="rounded-full aspect-square w-12"
             />
             <div className="flex flex-col justify-around">
@@ -137,6 +139,7 @@ const FeedPreview = ({ previewId }: { previewId?: string }) => {
             <div>
                 <img
                     src={`${import.meta.env.VITE_APP_API_BASE_URL}gateway/file/get?fileId=${previewId}`}
+                    alt=""
                     className="max-w-prose w-full"
                 />
             </div>
@@ -214,6 +217,7 @@ const FeedCommentItem = ({ comment }: { comment: PostCommentInterface }) => {
             <div className="flex py-2 border-b text-sm">
                 <img
                     className="w-12 aspect-square rounded-full"
+                    alt={comment.author.name}
                     src={`${import.meta.env.VITE_APP_API_BASE_URL}gateway/file/get?fileId=${comment.author.avatarId}`}
                 />
                 <div className="flex flex-col justify-center gap-1">
@@ -300,7 +304,7 @@ const FeedMediaGallery = ({
                         return (
                             <div key={index} onClick={() => setActive(item)}>
                                 {item.type === MediaTypes.IMAGE ? (
-                                    <img src={src} alt="gallery-image" className={className} />
+                                    <img src={src} alt={"gallery-image"} className={className} />
                                 ) : (
                                     <video src={src} className={className} controls={false} />
                                 )}

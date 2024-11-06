@@ -48,11 +48,13 @@ const useGetObjectsHook = () => {
                         setTotalPages(res.totalPages);
                     });
             } else {
-                // Запрашиваю только свои объекты
-                ApiEndpoints.object.findMe().then((res) => {
-                    dispatch(allObjectsActions.addObjectsToList({ objects: res }));
-                    setTotalPages(1);
-                });
+                // Список всех доступных объектов
+                ApiEndpoints.object
+                    .findText({ pageNum: page, pageSize: OBJECTS_COUNT_IN_PAGE, searchText: filterString })
+                    .then((res) => {
+                        dispatch(allObjectsActions.addObjectsToList({ objects: res.objects }));
+                        setTotalPages(res.totalPages);
+                    });
             }
         } catch (error) {
             console.error("Error fetching data:", error);

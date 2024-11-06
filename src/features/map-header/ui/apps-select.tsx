@@ -181,6 +181,7 @@ const AppItem = ({
                 {appItem.iconId ? (
                     <img
                         src={`${import.meta.env.VITE_APP_API_BASE_URL}gateway/file/get?fileId=${appItem.iconId}`}
+                        alt={appItem.description}
                         className="w-16 lg:w-20 h-16 lg:h-20"
                     />
                 ) : (

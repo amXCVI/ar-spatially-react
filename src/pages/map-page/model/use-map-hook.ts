@@ -108,7 +108,7 @@ const useMapHook = () => {
 
     useEffect(() => {
         if (myObjectsOnly) {
-            ApiEndpoints.object.findMe().then((res) => {
+            ApiEndpoints.object.findMe({ pageNum: 1, pageSize: 10 }).then((res) => {
                 setAllMarkersOnMap(res);
             });
         }

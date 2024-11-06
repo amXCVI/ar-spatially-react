@@ -27,7 +27,7 @@ export const SelectedMapTypeButton = ({
     return (
         <ButtonsContainer onClick={onClickSelectMapTypeButton} className="map-type-button">
             <MapTypeButton isActiveButton={isActiveButton}>
-                <img src={mapTypeIcon} />
+                <img src={mapTypeIcon} alt="" />
             </MapTypeButton>
 
             <SelectMapTypeModal

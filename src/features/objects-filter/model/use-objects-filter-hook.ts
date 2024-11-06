@@ -22,10 +22,6 @@ const useObjectsFilterHook = () => {
 
     const handleSelectPageMode = (e: ObjectsPageModes) => {
         switch (e) {
-            case ObjectsPageModes.ALL_AR_OBJECTS:
-                fetchObjects({ page: 1, byUser: undefined, filterString: "" });
-                break;
-
             case ObjectsPageModes.MY_AR_OBJECTS:
                 if (user) {
                     fetchObjects({ page: 1, byUser: user.userId, filterString: "" });
@@ -39,8 +35,10 @@ const useObjectsFilterHook = () => {
                 break;
 
             default:
+                fetchObjects({ page: 1, byUser: undefined, filterString: "" });
                 break;
         }
+
         setSelectedPageMode(e);
     };
 

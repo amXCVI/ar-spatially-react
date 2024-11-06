@@ -51,6 +51,7 @@ const PhoneSlider = ({ bgElement, videos, className }: PhoneSliderProps) => {
 
                 <img
                     src="/images/product/phone.svg"
+                    alt=""
                     className={`z-10 w-[80%] max-w-[40vh]`}
                     id="phone-border-img"
                     ref={phoneRef}
@@ -73,14 +74,14 @@ const PhoneSlider = ({ bgElement, videos, className }: PhoneSliderProps) => {
             </div>
             <div className="relative flex justify-around items-center mt-8 mx-auto max-w-min z-10">
                 <div className="cursor-pointer w-10" onClick={handlePrevSlide}>
-                    <img src={leftArrow} />
+                    <img src={leftArrow} alt="" />
                 </div>
                 <span className="h2-34-700 text-white ml-9 mr-2.5">
                     {(selectedSlideId + 1).toString().padStart(2, "0")}
                 </span>
                 <span className="light-12 text-spanish-gray mr-9">/{videos.length.toString().padStart(2, "0")}</span>
                 <div className="cursor-pointer w-10" onClick={handleNextSlide}>
-                    <img src={leftArrow} className="rotate-180" />
+                    <img src={leftArrow} alt="" className="rotate-180" />
                 </div>
             </div>
         </div>

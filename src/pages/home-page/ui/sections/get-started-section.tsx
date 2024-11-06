@@ -23,10 +23,12 @@ const GetStartedSection = () => {
                         <div className="flex gap-6 mx-auto">
                             <img
                                 src={phone1}
+                                alt="Our platform serves four key audiences: developers, businesses, artists, and users"
                                 className="object-contain h-full max-h-[50vh] lg:max-h-[40vh] max-w-[30vw]"
                             />
                             <img
                                 src={phone2}
+                                alt="AR NFT phone image"
                                 className="object-contain h-full max-h-[50vh] lg:max-h-[40vh] max-w-[30vw]"
                             />
                         </div>
@@ -92,11 +94,11 @@ const GetStartedSection = () => {
                                     Spatially ecosystem.
                                 </TextP>
                                 <div className="flex flex-col md:flex-row w-full justify-between items-center sm:items-start gap-4">
-                                    <div className="flex gap-4 mt-2.5">
+                                    {/* <div className="flex gap-4 mt-2.5">
                                         <a href={routes.playground}>
                                             <DefaultButton className="bg-none text-gray90">Playground</DefaultButton>
                                         </a>
-                                    </div>
+                                    </div> */}
 
                                     {/* <div className="flex justify-around md:justify-end w-full gap-4 flex-wrap md:mt-2.5">
                                         <a
@@ -123,10 +125,12 @@ const GetStartedSection = () => {
                         <div className="flex gap-6 mx-auto">
                             <img
                                 src={phoneForMapTwo}
+                                alt="You can now upload 3D objects to the map in your personal Playground"
                                 className="object-contain h-full max-h-[50vh] lg:max-h-[40vh] max-w-[30vw]"
                             />
                             <img
                                 src={phoneForMapOne}
+                                alt="A coordinate system that integrates AR with the real world, allowing geolocation to link and discover AR objects in their actual locations"
                                 className="object-contain h-full max-h-[50vh] lg:max-h-[40vh] max-w-[30vw]"
                             />
                         </div>
