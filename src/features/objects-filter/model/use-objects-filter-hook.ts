@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { useAppSelector } from "@/shared/lib/redux-service";
 import { useGetObjectsHook } from "@/shared/lib/use-get-objects-hook";
@@ -11,14 +11,6 @@ const useObjectsFilterHook = () => {
     const { user } = useUserContext();
     const { objectsFilterString } = useAppSelector((state) => state.allObjectsSlice);
     const { fetchObjects } = useGetObjectsHook();
-
-    useEffect(() => {
-        fetchObjects({ page: 1, byUser: undefined, filterString: "" });
-        // return () => {
-        //     cleanup
-        // }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
 
     const handleSelectPageMode = (e: ObjectsPageModes) => {
         switch (e) {

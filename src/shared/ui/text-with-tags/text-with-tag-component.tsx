@@ -34,7 +34,7 @@ const AutoTags = ({
                         return (
                             <Link
                                 key={i}
-                                to={`/${routes.feeds}/${routes.feedsByUser}?${SearchParamsConstants.feedsByUserSearchParamsKey}=${tag.userId}`}
+                                to={`/${routes.user}?${SearchParamsConstants.userIdSearchParamsKey}=${tag.userId}`}
                                 className="text-blue-accent"
                             >
                                 {part}

@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useSearchParams } from "react-router-dom";
 
 import { SearchParamsConstants } from "@/shared/config/constants";
@@ -14,6 +14,11 @@ const useAllObjectsListHook = () => {
     const { fetchObjects, totalPages, currentPage } = useGetObjectsHook();
 
     const { objectsList, loading, objectsFilterString } = useAppSelector((state) => state.allObjectsSlice);
+
+    useEffect(() => {
+        fetchObjects({ page: 1, byUser: userId ?? undefined, filterString: "" });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     const handleScroll = () => {
         const container = containerRef.current;
