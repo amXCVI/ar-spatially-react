@@ -12,11 +12,13 @@ import apiClient from "../api";
 
 // Показывает мои посты
 // Те, которые я создал и репостнул
-const findMePosts = async () => {
+const findMePosts = async ({ pageNum, pageSize }: { pageNum: number; pageSize: number }) => {
     const url = `/gateway/post/find/me`;
 
     try {
-        const response: AxiosResponse<ApiResponseInterface<{ postsList: PostInterface[] }>> = await apiClient.post(url);
+        const response: AxiosResponse<
+            ApiResponseInterface<{ posts: PostInterface[]; pageNum: number; pageSize: number; totalPages: number }>
+        > = await apiClient.post(url, { pageNum, pageSize });
 
         return response.data.data;
     } catch (error) {
@@ -49,11 +51,21 @@ const findAllPosts = async ({
 };
 
 // Показывает все посты usera по его id
-const findPostsByUser = async ({ userId }: { userId: string }) => {
-    const url = `/gateway/post/find/user?userId=${userId}`;
+const findPostsByUser = async ({
+    userId,
+    pageNum,
+    pageSize,
+}: {
+    userId: string;
+    pageNum: number;
+    pageSize: number;
+}) => {
+    const url = `/gateway/post/find/user`;
 
     try {
-        const response: AxiosResponse<ApiResponseInterface<{ postsList: PostInterface[] }>> = await apiClient.post(url);
+        const response: AxiosResponse<
+            ApiResponseInterface<{ posts: PostInterface[]; pageNum: number; pageSize: number; totalPages: number }>
+        > = await apiClient.post(url, { userId, pageNum, pageSize });
 
         return response.data.data;
     } catch (error) {

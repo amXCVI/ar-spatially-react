@@ -105,36 +105,6 @@ const fintPointsByUserLocationLayer = async ({ lat, lng, radius }: { lat: number
         });
 };
 
-const findPointsLocationLayer = async ({
-    lat,
-    lng,
-    radius,
-    layerIds,
-}: {
-    lat: number;
-    lng: number;
-    radius: number;
-    layerIds: string[];
-}) => {
-    return await apiClient
-        .post("/gateway/object/find/location-layer", {
-            lat: lat,
-            lng: lng,
-            // ! Здесь нужно переделать, пока что берется только первый id из всего списка слоев
-            layerId: layerIds.length ? layerIds[0] : "",
-            // Здесь инвертирую радиус (значение подобрал эмпирически)
-            radius: (1 / radius) * 500000,
-        })
-        .then((res) => {
-            const markers: MarkerInterface[] = res.data.data.objectsList;
-
-            return markers;
-        })
-        .catch((err) => {
-            throw err;
-        });
-};
-
 const findPointsByOwner = async ({ ownerId }: { ownerId: string }) => {
     const formData = new FormData();
     formData.append("ownerId", ownerId);
@@ -151,9 +121,32 @@ const findPointsByOwner = async ({ ownerId }: { ownerId: string }) => {
         });
 };
 
-const findMe = async () => {
+const findMe = async ({ pageNum, pageSize }: { pageNum: number; pageSize: number }) => {
     return await apiClient
-        .post("/gateway/object/find/me")
+        .post("/gateway/object/find/me", { pageNum, pageSize })
+        .then((res) => {
+            const markers: MarkerInterface[] = res.data.data.objectsList;
+
+            return markers;
+        })
+        .catch((err) => {
+            throw err;
+        });
+};
+
+const findFavorites = async ({
+    pageNum,
+    pageSize,
+    searchText,
+}: {
+    pageNum: number;
+    pageSize: number;
+    searchText?: string;
+}) => {
+    const url = `/gateway/object/find/favorites`;
+
+    return await apiClient
+        .post(url, { pageNum, pageSize, searchText: searchText ?? "" })
         .then((res) => {
             const markers: MarkerInterface[] = res.data.data.objectsList;
 
@@ -295,10 +288,10 @@ export const objectApi = {
     fintPointsByLocationLayer,
     fintPointsByUserLocationLayer,
     findPointsByOwner,
-    findPointsLocationLayer,
     uploadObject,
     getObject,
     findText,
     findMe,
+    findFavorites,
     updateObject,
 };
