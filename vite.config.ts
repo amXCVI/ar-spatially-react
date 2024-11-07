@@ -16,10 +16,7 @@ export default defineConfig({
         react(),
         Sitemap({
             hostname: "https://arspatially.com/",
-            dynamicRoutes: ["product", "ar-nft", "event", "map", "feeds", "user", "objects", "privacy.html"],
-            externalSitemaps: [
-                '"https://ar-spatially.gitbook.io/ar-spatially-documentation/platform-architecture/ar-nft"',
-            ],
+            dynamicRoutes: ["", "product", "ar-nft", "event", "map", "user"],
             generateRobotsTxt: true,
         }),
     ],

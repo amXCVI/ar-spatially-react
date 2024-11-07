@@ -4,7 +4,7 @@ import { Footer } from "@/features/footer";
 import Header from "@/features/header";
 import { AuthContext, SignInPopupModes } from "@/features/login-modal";
 
-import { useTitle } from "@/shared/lib/use-page-meta-hooks";
+import { useDescription, useTitle } from "@/shared/lib/use-page-meta-hooks";
 import { DefaultButton } from "@/shared/ui/buttons";
 import { DarkLayout } from "@/shared/ui/layouts";
 import { PhoneSlider } from "@/shared/ui/phones-video-slider";
@@ -16,6 +16,10 @@ import bulb from "/images/product/bulb.png";
 
 const ProductPage = () => {
     useTitle("AR Spatially - Product");
+
+    useDescription(
+        "A comprehensive AR toolkit, offering features like object geolocation, 3D object uploads, and real-world interaction. Perfect for creators and collectors alike.",
+    );
 
     const { openLoginModal } = useContext(AuthContext);
 

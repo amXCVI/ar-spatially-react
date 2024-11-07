@@ -2,7 +2,7 @@ import { Footer } from "@/features/footer";
 import Header from "@/features/header";
 
 import { routes } from "@/shared/config";
-import { useTitle } from "@/shared/lib/use-page-meta-hooks";
+import { useDescription, useTitle } from "@/shared/lib/use-page-meta-hooks";
 import { DefaultButton } from "@/shared/ui/buttons";
 import { DarkLayout } from "@/shared/ui/layouts";
 import { VideoInPhone } from "@/shared/ui/phones-video-slider";
@@ -18,6 +18,10 @@ import nftStPhone from "/images/ar-nft/phone_35.webp";
 
 const ArNftPage = () => {
     useTitle("AR Spatially - AR NFT");
+
+    useDescription(
+        "Mint, collect, and interact with AR NFTs. Transform digital art into geo-based, tradeable assets and experience them in augmented reality.",
+    );
 
     return (
         <DarkLayout className="flex flex-col justify-between">
