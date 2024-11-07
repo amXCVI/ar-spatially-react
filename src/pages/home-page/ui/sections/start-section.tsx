@@ -10,6 +10,7 @@ import scrollDownIcon from "/images/landing/footer/scroll-down-to-explore.svg";
 import textItemPointIcon from "/images/landing/start-section/text-item-point.svg";
 
 // import phone from "/images/landing/start-section/phone.webp";
+import bgBulb from "/images/landing/start-section/bulb.webp";
 
 const StartSection = () => {
     return (
@@ -76,15 +77,12 @@ const StartSection = () => {
                     </div>
                 </div>
 
-                <div
-                    className="flex flex-col items-center w-full h-full mt-6 xl:mt-0
-                           relative"
-                >
+                <div className="flex flex-col items-center w-full h-full mt-6 xl:mt-0 relative">
                     <div
                         className="absolute top-0 md:-top-10 lg:-top-2/3 -right-40 lg:-right-[100vw] bottom-0 lg:-bottom-2/3 -left-40 lg:-left-10 xs:-left-20
-                                bg-[url(/images/landing/start-section/bulb.webp)]
-                                bg-no-repeat bg-cover md:bg-contain lg:bg-auto bg-top md:bg-center lg:bg-left 
-                                z-0"
+                                   bg-no-repeat bg-cover md:bg-contain lg:bg-auto bg-top md:bg-center lg:bg-left 
+                                   z-0"
+                        style={{ backgroundImage: `url(${bgBulb})` }}
                     />
 
                     <VideoInPhone
@@ -93,10 +91,6 @@ const StartSection = () => {
                         className="object-contain h-full max-h-[80vh] lg:max-h-[60vh] lg:max-w-[30vw] z-10 my-24 lg:ml-auto xl:mr-auto"
                         phoneImgClassName="object-contain min-h-[70vh] lg:min-h-[60vh]"
                     />
-                    {/* <img
-                        src={phone}
-                        className="object-contain h-full max-h-[80vh] lg:max-h-[60vh] lg:max-w-[30vw] z-10 my-24 lg:ml-auto xl:mr-auto"
-                    /> */}
                 </div>
             </div>
 
