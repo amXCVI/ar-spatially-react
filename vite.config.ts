@@ -31,17 +31,5 @@ export default defineConfig({
     },
     build: {
         chunkSizeWarningLimit: 250, // Максимальный размер чанка в байтах (например, 250 КБ)
-
-        rollupOptions: {
-            output: {
-                manualChunks(id) {
-                    // Разбиваем зависимости по папкам
-                    if (id.includes("node_modules")) {
-                        // Все модули из node_modules будут в отдельном чанке
-                        return id.split("node_modules/")[1].split("/")[0].toString(); // Например: 'lodash'
-                    }
-                },
-            },
-        },
     },
 });
