@@ -108,11 +108,11 @@ const useMapHook = () => {
 
     useEffect(() => {
         if (myObjectsOnly) {
-            ApiEndpoints.object.findMe({ pageNum: 1, pageSize: 10 }).then((res) => {
+            ApiEndpoints.object.findMeLocation({ ...coords }).then((res) => {
                 setAllMarkersOnMap(res);
             });
         }
-    }, [myObjectsOnly]);
+    }, [coords, myObjectsOnly]);
 
     useEffect(() => {
         if (!myObjectsOnly) {
