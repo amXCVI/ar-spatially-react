@@ -27,16 +27,18 @@ const StartSection = () => {
                         lg:pt-12 xl:pt-0"
             >
                 <div className="flex flex-col justify-between w-full h-full gap-10 lg:gap-20">
-                    <div
+                    <h1
                         className="flex flex-wrap flex-col w-full lg:px-6 xl:px-12
                                    h1-90-600 leading-none text-[65px] 2sm:text-[86px] lg:text-[96px] lg:font-[96px]
                                    mt-6 lg:mt-0"
                     >
-                        <h1 className="bg-start-section-text-gradient bg-clip-text text-transparent lg:mr-auto">OUR</h1>
-                        <h1 className="bg-start-section-text-gradient bg-clip-text text-transparent lg:ml-auto -mt-2">
+                        <span className="bg-start-section-text-gradient bg-clip-text text-transparent lg:mr-auto">
+                            OUR
+                        </span>
+                        <span className="bg-start-section-text-gradient bg-clip-text text-transparent lg:ml-auto -mt-2">
                             Solution
-                        </h1>
-                    </div>
+                        </span>
+                    </h1>
 
                     <div className="flex flex-col w-full gap-6 items-start z-10">
                         <div className="flex justify-start items-center manrope-regular-26 text-gray70">

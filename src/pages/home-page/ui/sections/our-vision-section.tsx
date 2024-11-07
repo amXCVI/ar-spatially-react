@@ -27,13 +27,13 @@ const OurVisionSection = () => {
                                pt-6 gap-10 lg:gap-16 xl:gap-20
                                lg:max-w-[40%] lg:mr-auto"
                 >
-                    <div
+                    <h2
                         className="flex flex-col lg:flex-row lg:gap-6 justify-center items-center flex-wrap mr-auto ml-auto lg:ml-0 lg:flex-nowrap
                                     h1-90-600 leading-none text-[65px] 2sm:text-[86px] lg:text-[96px] lg:font-[96px]"
                     >
-                        <h1 className="bg-our-vision-secton-text-gradient bg-clip-text text-transparent">OUR</h1>
-                        <h1 className="bg-our-vision-secton-text-gradient bg-clip-text text-transparent">Vision</h1>
-                    </div>
+                        <span className="bg-our-vision-secton-text-gradient bg-clip-text text-transparent">OUR</span>
+                        <span className="bg-our-vision-secton-text-gradient bg-clip-text text-transparent">Vision</span>
+                    </h2>
 
                     <div className="flex flex-col gap-6 items-start">
                         <Paragraph
