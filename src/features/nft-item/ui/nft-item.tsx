@@ -1,4 +1,5 @@
 import { MapBottomSheet, useMapBottomSheetHook } from "@/entities/map-bottom-sheet";
+import { ObjectPreview } from "@/entities/object-preview";
 import { useEffect } from "react";
 import { Fragment } from "react/jsx-runtime";
 
@@ -79,7 +80,7 @@ const renderDesctopContent = ({
                         <DesctopReceiveButton isMyObject={isMyObject} />
                     </div>
                     <div className="flex flex-col bg-nft-viewer-desc-bg rounded-[30px] w-full lg:w-96 h-60 min-h-40 relative">
-                        <ModelViewer modelId={selectedMarker?.modelId} previewId={selectedMarker?.previewId} />
+                        <ObjectPreview modelId={selectedMarker?.modelId} previewId={selectedMarker?.previewId} />
 
                         <div className="flex justify-between items-center gap-3 px-2.5 absolute bottom-0 left-0 right-0 bg-eerie-black/35">
                             <DesctopViewArButton onClick={handlePreview} />
@@ -101,7 +102,7 @@ const renderDesctopContent = ({
             );
 
         case ViewerModes.PREVIEW:
-            return <ModelViewer modelId={selectedMarker?.modelId} previewId={selectedMarker?.previewId} />;
+            return <ObjectPreview modelId={selectedMarker?.modelId} previewId={selectedMarker?.previewId} />;
 
         default:
             break;
@@ -203,7 +204,7 @@ const NftItem = ({ selectedMarker, onCloseViewer, updatedMarkerCallback }: NftIt
 
                 <div className="flex flex-col gap-2">
                     <div className="flex flex-col bg-nft-viewer-desc-bg rounded-[30px] w-full lg:w-96 h-60 min-h-40 relative">
-                        <ModelViewer modelId={selectedMarker?.modelId} previewId={selectedMarker?.previewId} />
+                        <ObjectPreview modelId={selectedMarker?.modelId} previewId={selectedMarker?.previewId} />
                     </div>
 
                     {previewMode === ViewerModes.VIEW_INFO || previewMode === ViewerModes.PREVIEW ? (
@@ -273,29 +274,6 @@ const CardHeader = ({
                 </div>
             )}
         </div>
-    );
-};
-
-const ModelViewer = ({ modelId, previewId }: { modelId?: string; previewId?: string }) => {
-    return (
-        <model-viewer
-            src={`${import.meta.env.VITE_APP_API_BASE_URL}gateway/file/get?fileId=${modelId}`}
-            id={modelId}
-            loading="lazy"
-            shadow-intensity="1"
-            camera-controls
-            touch-action="pan-y"
-            auto-rotate
-            auto-rotate-delay="0"
-            rotation-per-second="20deg"
-            orbit-sensitivity="0.6"
-            autoplay
-            data-ar
-            ar-status="not-presenting"
-            ar-modes="webxr scene-viewer quick-look"
-            poster={`${import.meta.env.VITE_APP_API_BASE_URL}gateway/file/get?fileId=${previewId}`}
-            style={{ width: "100%", height: "100%" }}
-        />
     );
 };
 

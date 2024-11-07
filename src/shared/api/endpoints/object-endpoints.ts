@@ -105,36 +105,6 @@ const fintPointsByUserLocationLayer = async ({ lat, lng, radius }: { lat: number
         });
 };
 
-const findPointsLocationLayer = async ({
-    lat,
-    lng,
-    radius,
-    layerIds,
-}: {
-    lat: number;
-    lng: number;
-    radius: number;
-    layerIds: string[];
-}) => {
-    return await apiClient
-        .post("/gateway/object/find/location-layer", {
-            lat: lat,
-            lng: lng,
-            // ! Здесь нужно переделать, пока что берется только первый id из всего списка слоев
-            layerId: layerIds.length ? layerIds[0] : "",
-            // Здесь инвертирую радиус (значение подобрал эмпирически)
-            radius: (1 / radius) * 500000,
-        })
-        .then((res) => {
-            const markers: MarkerInterface[] = res.data.data.objectsList;
-
-            return markers;
-        })
-        .catch((err) => {
-            throw err;
-        });
-};
-
 const findPointsByOwner = async ({ ownerId }: { ownerId: string }) => {
     const formData = new FormData();
     formData.append("ownerId", ownerId);
@@ -151,9 +121,14 @@ const findPointsByOwner = async ({ ownerId }: { ownerId: string }) => {
         });
 };
 
-const findMe = async () => {
+const findMeLocation = async ({ lat, lng, radius }: { lat: number; lng: number; radius: number }) => {
     return await apiClient
-        .post("/gateway/object/find/me")
+        .post("/gateway/object/find/me-location", {
+            lat: lat,
+            lng: lng,
+            // Здесь инвертирую радиус (значение подобрал эмпирически)
+            radius: (1 / radius) * 500000,
+        })
         .then((res) => {
             const markers: MarkerInterface[] = res.data.data.objectsList;
 
@@ -162,6 +137,63 @@ const findMe = async () => {
         .catch((err) => {
             throw err;
         });
+};
+
+const findFavorites = async ({
+    pageNum,
+    pageSize,
+    searchText,
+}: {
+    pageNum: number;
+    pageSize: number;
+    searchText?: string;
+}) => {
+    const url = `/gateway/object/find/favorites`;
+
+    const response: AxiosResponse<
+        ApiResponseInterface<{
+            objects: ObjectInterface[];
+            pageNum: number;
+            pageSize: number;
+            totalPages: number;
+        }>
+    > = await apiClient.post(url, {
+        searchText,
+        pageNum,
+        pageSize,
+    });
+
+    return response.data.data;
+};
+
+const findByUser = async ({
+    pageNum,
+    pageSize,
+    searchText,
+    userId,
+}: {
+    pageNum: number;
+    pageSize: number;
+    searchText?: string;
+    userId: string;
+}) => {
+    const url = `/gateway/object/find/user`;
+
+    const response: AxiosResponse<
+        ApiResponseInterface<{
+            objects: ObjectInterface[];
+            pageNum: number;
+            pageSize: number;
+            totalPages: number;
+        }>
+    > = await apiClient.post(url, {
+        searchText,
+        pageNum,
+        pageSize,
+        userId,
+    });
+
+    return response.data.data;
 };
 
 const fintPointsByLocationLayer = async ({
@@ -200,13 +232,7 @@ const getObject = async ({ objectId }: { objectId: string }) => {
     formData.append("objectId", objectId);
 
     try {
-        const response: AxiosResponse<
-            ApiResponseInterface<{
-                arObject: ObjectInterface;
-                likes: number;
-                userLike: boolean;
-            }>
-        > = await apiClient.post(url, formData);
+        const response: AxiosResponse<ApiResponseInterface<ObjectInterface>> = await apiClient.post(url, formData);
 
         return response.data.data;
     } catch (error) {
@@ -289,16 +315,79 @@ const uploadObject = async ({
     }
 };
 
+const likeObject = async ({ objectId }: { objectId: string }) => {
+    const url = `/gateway/object/like-unlike`;
+
+    const formData = new FormData();
+    formData.append("objectId", objectId);
+
+    try {
+        const response: AxiosResponse<ApiResponseInterface<{ likes: number; userLike: boolean }>> =
+            await apiClient.post(url, formData);
+
+        return response.data.data;
+    } catch (error) {
+        throw new Error(`${url} ErrorRequest: ${error}`);
+    }
+};
+
+const favoritePutObject = async ({ objectId }: { objectId: string }) => {
+    const url = `/gateway/object/favorites/put`;
+
+    const formData = new FormData();
+    formData.append("objectId", objectId);
+
+    try {
+        const response: AxiosResponse<ApiResponseInterface<string>> = await apiClient.post(url, formData);
+
+        return response.data.data;
+    } catch (error) {
+        throw new Error(`${url} ErrorRequest: ${error}`);
+    }
+};
+
+const favoriteDeleteObject = async ({ objectId }: { objectId: string }) => {
+    const url = `/gateway/object/favorites/delete?objectId=${objectId}`;
+
+    try {
+        const response: AxiosResponse<ApiResponseInterface<string>> = await apiClient.delete(url);
+
+        return response.data.data;
+    } catch (error) {
+        throw new Error(`${url} ErrorRequest: ${error}`);
+    }
+};
+
+const favoriteAddRemove = async ({ objectId }: { objectId: string }) => {
+    const url = `/gateway/object/favorites/add-remove`;
+
+    const formData = new FormData();
+    formData.append("objectId", objectId);
+
+    try {
+        const response: AxiosResponse<ApiResponseInterface<boolean>> = await apiClient.post(url, formData);
+
+        return response.data.data;
+    } catch (error) {
+        throw new Error(`${url} ErrorRequest: ${error}`);
+    }
+};
+
 export const objectApi = {
     findTextLayer,
     fintPointsByLocation,
     fintPointsByLocationLayer,
     fintPointsByUserLocationLayer,
     findPointsByOwner,
-    findPointsLocationLayer,
     uploadObject,
     getObject,
     findText,
-    findMe,
+    findMeLocation,
     updateObject,
+    likeObject,
+    favoritePutObject,
+    favoriteDeleteObject,
+    favoriteAddRemove,
+    findFavorites,
+    findByUser,
 };

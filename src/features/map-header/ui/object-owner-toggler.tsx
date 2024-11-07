@@ -8,17 +8,17 @@ const ObjectsToggler = () => {
     return (
         <Fragment>
             <span
-                className={`xl:h-14 px-2 3sm:px-5 content-center border rounded-[22px] lg:rounded-[30px] cursor-pointer roboto-regular-13 lg:text-xl
-                            ${myObjectsOnly ? "border-blue-accent text-blue-accent bg-blue-accent/35 xl:bg-granite-gray/35" : "border-white/25 text-quick-silver bg-granite-gray/35"}
+                className={`xl:h-14 px-2 3sm:px-5 content-center border rounded-[30px] lg:rounded-[30px] cursor-pointer roboto-regular-13 3sm:text-lg lg:text-xl
+                            border-white/15 ${myObjectsOnly ? "text-blue-accent bg-ocean-boat-blue/35 xl:bg-granite-gray/35" : "text-quick-silver bg-granite-gray/35"}
                             duration-300 text-nowrap whitespace-nowrap flex justify-center items-center
-                            backdrop-blur-sm`}
+                            backdrop-blur-lg`}
                 onClick={toggleObjectsOwner}
             >
                 {myObjectsOnly ? "My Objects" : "My"}
             </span>
             <span
-                className={`xl:h-14 px-2 3sm:px-5 content-center border rounded-[22px] lg:rounded-[30px] cursor-pointer roboto-regular-13 lg:text-xl
-                            ${myObjectsOnly ? "border-white/25 text-quick-silver bg-granite-gray/35" : "border-blue-accent text-blue-accent bg-blue-accent/35 xl:bg-granite-gray/35"}
+                className={`xl:h-14 px-2 3sm:px-5 content-center border rounded-[30px] lg:rounded-[30px] cursor-pointer roboto-regular-13 3sm:text-lg lg:text-xl
+                            border-white/15 ${myObjectsOnly ? "text-quick-silver bg-granite-gray/35" : "text-blue-accent bg-ocean-boat-blue/35 xl:bg-granite-gray/35"}
                             duration-300 text-nowrap whitespace-nowrap flex justify-center items-center
                             backdrop-blur-sm`}
                 onClick={toggleObjectsOwner}

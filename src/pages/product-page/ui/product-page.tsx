@@ -4,7 +4,7 @@ import { Footer } from "@/features/footer";
 import Header from "@/features/header";
 import { AuthContext, SignInPopupModes } from "@/features/login-modal";
 
-import { useTitle } from "@/shared/lib/use-page-meta-hooks";
+import { useDescription, useTitle } from "@/shared/lib/use-page-meta-hooks";
 import { DefaultButton } from "@/shared/ui/buttons";
 import { DarkLayout } from "@/shared/ui/layouts";
 import { PhoneSlider } from "@/shared/ui/phones-video-slider";
@@ -16,6 +16,10 @@ import bulb from "/images/product/bulb.png";
 
 const ProductPage = () => {
     useTitle("AR Spatially - Product");
+
+    useDescription(
+        "A comprehensive AR toolkit, offering features like object geolocation, 3D object uploads, and real-world interaction. Perfect for creators and collectors alike.",
+    );
 
     const { openLoginModal } = useContext(AuthContext);
 
@@ -54,8 +58,12 @@ const ProductPage = () => {
                     </div>
 
                     <div className="flex gap-4 justify-start">
-                        <DefaultButton onClick={() => openLoginModal(SignInPopupModes.SignIn)}>Log in</DefaultButton>
-                        <DefaultButton onClick={() => openLoginModal(SignInPopupModes.SignUp)}>Sign up</DefaultButton>
+                        <DefaultButton className="text-white" onClick={() => openLoginModal(SignInPopupModes.SignIn)}>
+                            Log in
+                        </DefaultButton>
+                        <DefaultButton className="text-white" onClick={() => openLoginModal(SignInPopupModes.SignUp)}>
+                            Sign up
+                        </DefaultButton>
                     </div>
                 </div>
                 <div className="col-span-8 lg:col-span-3 xl:col-span-2 lg:row-span-5 lg:row-start-1">

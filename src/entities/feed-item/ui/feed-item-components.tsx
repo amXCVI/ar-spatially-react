@@ -14,6 +14,7 @@ import {
     QuoteTagInterface,
     UserSubscriberInterface,
 } from "@/shared/types";
+import { AutoTags } from "@/shared/ui/text-with-tags";
 
 import CommentIcon from "../assets/comment-icon.svg?react";
 import EditIcon from "../assets/edit-icon.svg?react";
@@ -71,9 +72,13 @@ const FeedHeader = ({
     );
 };
 
-const QuotePostContent = ({ quote }: { quote?: string }) => {
+const QuotePostContent = ({ quote, tags }: { quote?: string; tags?: QuoteTagInterface[] }) => {
     if (quote) {
-        return <div className="py-4 border-b mb-4 whitespace-pre-wrap">{quote}</div>;
+        return (
+            <div className="py-4 border-b mb-4 whitespace-pre-wrap">
+                <AutoTags text={quote} tags={tags} className="whitespace-pre-wrap" />
+            </div>
+        );
     } else {
         return <Fragment />;
     }
@@ -102,10 +107,7 @@ const QuoteOrRepostPost = ({
                 userLike={feed.userLike}
                 handleLikeFeed={handleLikeFeed}
             />
-            <FeedContentText text={feed.arPostInfo.content} />
-            {feed.quoteTags?.map((item) => {
-                return <FeedTag key={item.id + item.userId + item.postId} tag={item} />;
-            })}
+            <AutoTags text={feed.arPostInfo.content} tags={feed.arPostInfo.postTags} className="whitespace-pre-wrap" />
         </div>
     );
 };
@@ -226,12 +228,7 @@ const FeedCommentItem = ({ comment }: { comment: PostCommentInterface }) => {
                     </div>
                 </div>
             </div>
-            <div>{comment.commentText}</div>
-            <div className="flex gap-2 flex-wrap">
-                {comment.commentTags?.map((item) => (
-                    <FeedTag key={item.id + item.userId + item.commentId} tag={item} />
-                ))}
-            </div>
+            <AutoTags text={comment.commentText} tags={comment.commentTags} />
         </div>
     );
 };

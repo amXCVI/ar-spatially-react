@@ -33,3 +33,9 @@ export enum MarkerStatusEnum {
     NOT_PUBLISHED = "NOT_PUBLISHED",
     PUBLISHED = "PUBLISHED",
 }
+
+export enum ObjectViewerModes {
+    VIEW = 'VIEW',
+    COMMENT = 'COMMENT',
+    EDIT = 'EDIT',
+}

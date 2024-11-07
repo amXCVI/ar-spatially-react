@@ -45,7 +45,7 @@ const AddArObject = () => {
                 <span className="roboto-medium-15 text-white">Add ar object to world</span>
             </div>
 
-            <BackdropModal isOpen={isOpenMapModal} closeModal={closeMapModal}>
+            <BackdropModal isOpen={isOpenMapModal} closeModal={closeMapModal} className="!bg-dark-bg">
                 {renderPopupContent({
                     step,
                     objectName,

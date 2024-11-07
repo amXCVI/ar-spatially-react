@@ -37,6 +37,7 @@ export default {
                 "american-silver": "#d1d1d1",
                 "american-silver20": "#d1d1d120",
                 "blue-accent": "#4BB2F2",
+                "ocean-boat-blue": "#0276BD",
                 "blue-link": "#366EF9",
                 "black-olive": "#3c3c3c",
                 "granite-gray": "#646464",

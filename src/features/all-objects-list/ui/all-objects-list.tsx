@@ -1,9 +1,9 @@
 import { ArObjectItem } from "@/entities/ar-object-item";
 
-import { useAllObjectsListHook } from "../model/use-all-objects-list-hook";
+import { useAllObjectsListHook } from "../model";
 
-const AllObjectsList = () => {
-    const { objectsList, containerRef, handleScroll } = useAllObjectsListHook();
+const AllObjectsList = ({ userId }: { userId?: string }) => {
+    const { objectsList, containerRef, handleScroll } = useAllObjectsListHook({ userId });
 
     return (
         <div

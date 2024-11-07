@@ -37,8 +37,8 @@ const MobileSearch = ({ onChangeMapCenter, className }: MapHeaderProps) => {
         <Fragment>
             <div
                 className={`flex justify-center items-center duration-500 
-                            border border-white/25 rounded-[30px] bg-granite-gray/35 backdrop-blur-sm
-                            relative w-10 h-10 2sm:w-12 2sm:h-12 lg:w-auto lg:h-14 aspect-square ${className}`}
+                            border border-white/15 rounded-[30px] bg-granite-gray/35 backdrop-blur-lg
+                            relative w-10 h-10 3sm:w-12 3sm:h-12 lg:w-auto lg:h-14 aspect-square ${className}`}
                 onClick={handleSearch}
             >
                 <SearchIcon className="lg:w-6 lg:h-6 m-auto" />

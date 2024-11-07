@@ -8,10 +8,15 @@ export interface ObjectInterface {
     modelHash?: string;
     modelId: string;
     ownerId: string;
+    ownerNickname?: string;
     previewId: string;
     size: { width: number; height: number };
     status: MarkerStatusEnum;
     title: string;
+    countComments?: number;
+    userFavorite: boolean;
+    userLike: boolean;
+    likes: number;
 }
 
 export interface AnchorInterface {

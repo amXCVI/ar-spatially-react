@@ -1,12 +1,13 @@
-import { SearchParamsConstants } from "@/shared/config/constants";
-import { useAppSelector } from "@/shared/lib/redux-service";
-import { useGetObjectsHook } from "@/shared/lib/use-get-objects-hook";
 import { useEffect, useRef } from "react";
 import { useSearchParams } from "react-router-dom";
 
-const useAllObjectsListHook = () => {
+import { SearchParamsConstants } from "@/shared/config/constants";
+import { useAppSelector } from "@/shared/lib/redux-service";
+import { useGetObjectsHook } from "@/shared/lib/use-get-objects-hook";
+
+const useAllObjectsListHook = (props: { userId?: string }) => {
     const [searchParams] = useSearchParams();
-    const userId = searchParams.get(SearchParamsConstants.feedsByUserSearchParamsKey);
+    const userId = props.userId ?? searchParams.get(SearchParamsConstants.feedsByUserSearchParamsKey);
 
     const containerRef = useRef<HTMLDivElement>(null);
 
@@ -15,12 +16,9 @@ const useAllObjectsListHook = () => {
     const { objectsList, loading, objectsFilterString } = useAppSelector((state) => state.allObjectsSlice);
 
     useEffect(() => {
-        fetchObjects({ page: 1, byUser: userId ?? undefined, filterString: objectsFilterString });
-        // return () => {
-        //     cleanup
-        // }
+        fetchObjects({ page: 1, byUser: userId ?? undefined, filterString: "" });
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [userId]);
+    }, []);
 
     const handleScroll = () => {
         const container = containerRef.current;

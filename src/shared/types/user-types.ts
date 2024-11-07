@@ -19,7 +19,7 @@ export interface UserProfileInterface {
     userId: string;
     name: string;
     nickname: string;
-    avatarId: string;
+    avatarId?: string;
     postsCount: number;
     subscribersCount: number;
     subscriptionsCount: number;

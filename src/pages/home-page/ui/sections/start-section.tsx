@@ -1,9 +1,8 @@
-import { useLayoutEffect, useRef } from "react";
-
 import Header from "@/features/header";
 
 import { routes } from "@/shared/config";
 import { DefaultButton } from "@/shared/ui/buttons";
+import { VideoInPhone } from "@/shared/ui/phones-video-slider";
 import { Socials } from "@/shared/ui/socials";
 
 import footerStars from "/images/landing/footer/footer-stars.svg";
@@ -11,21 +10,9 @@ import scrollDownIcon from "/images/landing/footer/scroll-down-to-explore.svg";
 import textItemPointIcon from "/images/landing/start-section/text-item-point.svg";
 
 // import phone from "/images/landing/start-section/phone.webp";
+import bgBulb from "/images/landing/start-section/bulb.webp";
 
 const StartSection = () => {
-    const phoneRef = useRef<null | HTMLImageElement>(null);
-    const videoRef = useRef<null | HTMLDivElement>(null);
-
-    useLayoutEffect(() => {
-        setInterval(() => {
-            if (phoneRef.current && videoRef.current) {
-                videoRef.current.style.width = `${phoneRef.current.offsetWidth * 0.94}px`;
-                videoRef.current.style.height = `${phoneRef.current.offsetHeight * 0.98}px`;
-                videoRef.current.style.borderRadius = `${phoneRef.current.height / 14}px`;
-            }
-        }, 500);
-    }, []);
-
     return (
         <section
             className="h-full min-h-[100vh]
@@ -40,16 +27,18 @@ const StartSection = () => {
                         lg:pt-12 xl:pt-0"
             >
                 <div className="flex flex-col justify-between w-full h-full gap-10 lg:gap-20">
-                    <div
+                    <h1
                         className="flex flex-wrap flex-col w-full lg:px-6 xl:px-12
                                    h1-90-600 leading-none text-[65px] 2sm:text-[86px] lg:text-[96px] lg:font-[96px]
                                    mt-6 lg:mt-0"
                     >
-                        <h1 className="bg-start-section-text-gradient bg-clip-text text-transparent lg:mr-auto">OUR</h1>
-                        <h1 className="bg-start-section-text-gradient bg-clip-text text-transparent lg:ml-auto -mt-2">
+                        <span className="bg-start-section-text-gradient bg-clip-text text-transparent lg:mr-auto">
+                            OUR
+                        </span>
+                        <span className="bg-start-section-text-gradient bg-clip-text text-transparent lg:ml-auto -mt-2">
                             Solution
-                        </h1>
-                    </div>
+                        </span>
+                    </h1>
 
                     <div className="flex flex-col w-full gap-6 items-start z-10">
                         <div className="flex justify-start items-center manrope-regular-26 text-gray70">
@@ -90,44 +79,20 @@ const StartSection = () => {
                     </div>
                 </div>
 
-                <div
-                    className="flex flex-col items-center w-full h-full mt-6 xl:mt-0
-                           relative"
-                >
+                <div className="flex flex-col items-center w-full h-full mt-6 xl:mt-0 relative">
                     <div
                         className="absolute top-0 md:-top-10 lg:-top-2/3 -right-40 lg:-right-[100vw] bottom-0 lg:-bottom-2/3 -left-40 lg:-left-10 xs:-left-20
-                                bg-[url(/images/landing/start-section/bulb.webp)]
-                                bg-no-repeat bg-cover md:bg-contain lg:bg-auto bg-top md:bg-center lg:bg-left 
-                                z-0"
+                                   bg-no-repeat bg-cover md:bg-contain lg:bg-auto bg-top md:bg-center lg:bg-left 
+                                   z-0"
+                        style={{ backgroundImage: `url(${bgBulb})` }}
                     />
-                    <div
-                        className="relative flex justify-center items-center 
-                    object-contain h-full max-h-[80vh] lg:max-h-[60vh] lg:max-w-[30vw] z-10 my-24 lg:ml-auto xl:mr-auto"
-                    >
-                        <img
-                            src="/images/landing/start-section/phone.svg"
-                            alt=""
-                            className={`object-contain h-[80vh] lg:h-[60vh]`}
-                            id="phone-border-img"
-                            ref={phoneRef}
-                        />
 
-                        <div id="video-rect-container" className="absolute overflow-hidden w-0 h-0" ref={videoRef}>
-                            <video
-                                className="h-full w-full object-cover"
-                                src={"/video/home_section.webm"}
-                                playsInline
-                                autoPlay
-                                muted
-                                preload="auto"
-                                loop
-                            />
-                        </div>
-                    </div>
-                    {/* <img
-                        src={phone}
+                    <VideoInPhone
+                        videoSrc="/video/home_section.webm"
+                        phoneSrc="/images/landing/start-section/phone.svg"
                         className="object-contain h-full max-h-[80vh] lg:max-h-[60vh] lg:max-w-[30vw] z-10 my-24 lg:ml-auto xl:mr-auto"
-                    /> */}
+                        phoneImgClassName="object-contain min-h-[70vh] lg:min-h-[60vh]"
+                    />
                 </div>
             </div>
 

@@ -24,8 +24,8 @@ const AppsSelect = ({ className }: { className?: string }) => {
             <div
                 className={`flex gap-3 justify-center items-center p-2 lg:px-4 m-auto
                             cursor-pointer
-                            rounded-[30px] border border-white/25 bg-granite-gray/35 backdrop-blur-sm
-                            h-10 2sm:h-12 lg:h-14
+                            rounded-[30px] border border-white/15 bg-granite-gray/35 backdrop-blur-lg
+                            h-10 3sm:h-12 lg:h-14
                             aspect-square lg:aspect-auto
                            `}
                 onClick={() => {
@@ -33,7 +33,7 @@ const AppsSelect = ({ className }: { className?: string }) => {
                     openBottomSheet();
                 }}
             >
-                <AppsIcon className="z-10 lg:w-6 lg:h-6" />
+                <AppsIcon className="z-10 3sm:w-5 3sm:h-5 lg:w-6 lg:h-6" />
 
                 <span
                     className={`onest-regular-22 text-quick-silver whitespace-nowrap overflow-hidden text-ellipsis

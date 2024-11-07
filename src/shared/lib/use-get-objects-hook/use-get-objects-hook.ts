@@ -16,10 +16,12 @@ const useGetObjectsHook = () => {
     const fetchObjects = async ({
         page,
         byUser,
+        favorites = false,
         filterString,
     }: {
         page: number;
         byUser?: string;
+        favorites?: boolean;
         filterString: string;
     }) => {
         // if (loading || totalPages === page) return;
@@ -31,7 +33,16 @@ const useGetObjectsHook = () => {
         }
 
         try {
-            if (!byUser) {
+            if (favorites) {
+                // Запрашиваю избранные объекты
+                ApiEndpoints.object
+                    .findFavorites({ pageNum: page, pageSize: OBJECTS_COUNT_IN_PAGE, searchText: filterString })
+                    .then((res) => {
+                        dispatch(allObjectsActions.addObjectsToList({ objects: res.objects }));
+                        setTotalPages(res.totalPages);
+                    });
+            } else if (!byUser) {
+                // Запрашиваю все подряд объекты
                 ApiEndpoints.object
                     .findText({ pageNum: page, pageSize: OBJECTS_COUNT_IN_PAGE, searchText: filterString })
                     .then((res) => {
@@ -39,11 +50,18 @@ const useGetObjectsHook = () => {
                         setTotalPages(res.totalPages);
                     });
             } else {
-                // Запрашиваю только свои объекты
-                ApiEndpoints.object.findMe().then((res) => {
-                    dispatch(allObjectsActions.addObjectsToList({ objects: res }));
-                    setTotalPages(1);
-                });
+                // Список всех доступных объектов
+                ApiEndpoints.object
+                    .findByUser({
+                        pageNum: page,
+                        pageSize: OBJECTS_COUNT_IN_PAGE,
+                        searchText: filterString,
+                        userId: byUser,
+                    })
+                    .then((res) => {
+                        dispatch(allObjectsActions.addObjectsToList({ objects: res.objects }));
+                        setTotalPages(res.totalPages);
+                    });
             }
         } catch (error) {
             console.error("Error fetching data:", error);

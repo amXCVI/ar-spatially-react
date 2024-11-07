@@ -215,7 +215,7 @@ const subscribeUser = async ({ userIdFrom }: { userIdFrom: string }) => {
     const url = `/gateway/user/subscribe-unsubscribe?userIdFrom=${userIdFrom}`;
 
     try {
-        const response: AxiosResponse<ApiResponseInterface<string>> = await apiClient.post(url);
+        const response: AxiosResponse<ApiResponseInterface<boolean>> = await apiClient.post(url);
 
         return response.data.data;
     } catch (error) {

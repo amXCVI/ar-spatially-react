@@ -38,12 +38,12 @@ const useGetFeedsHook = () => {
                         setTotalPages(res.totalPages);
                     });
             } else {
-                ApiEndpoints.post.findPostsByUser({ userId: byUser }).then((res) => {
-                    dispatch(allFeedsActions.addPostsToList({ posts: res.postsList }));
-                    // В этом запросе нет пагинации
-                    // Поэтому ставлю кол-во страниц = 1
-                    setTotalPages(1);
-                });
+                ApiEndpoints.post
+                    .findPostsByUser({ userId: byUser, pageNum: page, pageSize: POSTS_COUNT_IN_PAGE })
+                    .then((res) => {
+                        dispatch(allFeedsActions.addPostsToList({ posts: res.posts }));
+                        setTotalPages(res.totalPages);
+                    });
             }
         } catch (error) {
             console.error("Error fetching data:", error);

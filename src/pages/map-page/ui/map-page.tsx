@@ -1,25 +1,31 @@
 import { APIProvider, MapComponent } from "@ar-kit/lib";
 
-import MapHeader from "@/features/map-header";
-import { NftItem } from "@/features/nft-item";
+import { ObjectViewer } from "@/widgets/object-viewer";
 
-import { useTitle } from "@/shared/lib/use-page-meta-hooks";
+import MapHeader from "@/features/map-header";
+
+// import { NftItem } from "@/features/nft-item";
+import { useDescription, useTitle } from "@/shared/lib/use-page-meta-hooks";
 
 import useMapHook from "../model";
 
 const MapPage = () => {
     useTitle("AR Spatially - Map objects");
 
+    useDescription(
+        "Explore a global map of AR objects, each geolocated and ready for interaction. Discover, collect, and engage with 3D art across real-world locations.",
+    );
+
     const {
         onChangeCoords,
         nftList,
         onClickMarker,
         googpeMapApiKey,
-        selectedMarker,
-        onCloseViewer,
+        // selectedMarker,
+        // onCloseViewer,
         onChangeMapCenter,
         mapComponentRef,
-        updatedMarkerCallback,
+        // updatedMarkerCallback,
     } = useMapHook();
 
     return (
@@ -37,11 +43,12 @@ const MapPage = () => {
                     mapId={import.meta.env.VITE_APP_GOOGLE_MAP_ID}
                 />
 
-                <NftItem
+                <ObjectViewer />
+                {/* <NftItem
                     selectedMarker={selectedMarker}
                     onCloseViewer={onCloseViewer}
                     updatedMarkerCallback={updatedMarkerCallback}
-                />
+                /> */}
             </APIProvider>
         </div>
     );

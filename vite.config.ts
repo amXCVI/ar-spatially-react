@@ -16,10 +16,7 @@ export default defineConfig({
         react(),
         Sitemap({
             hostname: "https://arspatially.com/",
-            dynamicRoutes: ["product", "ar-nft", "event", "map", "feeds", "user", "objects", "privacy.html"],
-            externalSitemaps: [
-                '"https://ar-spatially.gitbook.io/ar-spatially-documentation/platform-architecture/ar-nft"',
-            ],
+            dynamicRoutes: ["", "product", "ar-nft", "event", "map"],
             generateRobotsTxt: true,
         }),
     ],
@@ -28,5 +25,8 @@ export default defineConfig({
             { find: "@", replacement: path.resolve(__dirname, "src") },
             { find: "@ar-kit", replacement: path.resolve(__dirname, "ar-spatially-kit") },
         ],
+    },
+    build: {
+        chunkSizeWarningLimit: 250, // Максимальный размер чанка в байтах (например, 250 КБ)
     },
 });

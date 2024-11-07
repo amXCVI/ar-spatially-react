@@ -96,7 +96,7 @@ const useMapHook = () => {
                 setSelectedMarker(markerItem);
             } else {
                 ApiEndpoints.object.getObject({ objectId: selectedMarkerId }).then((res) => {
-                    setSelectedMarker(res.arObject);
+                    setSelectedMarker(res);
                 });
             }
         }
@@ -108,11 +108,11 @@ const useMapHook = () => {
 
     useEffect(() => {
         if (myObjectsOnly) {
-            ApiEndpoints.object.findMe().then((res) => {
+            ApiEndpoints.object.findMeLocation({ ...coords }).then((res) => {
                 setAllMarkersOnMap(res);
             });
         }
-    }, [myObjectsOnly]);
+    }, [coords, myObjectsOnly]);
 
     useEffect(() => {
         if (!myObjectsOnly) {
