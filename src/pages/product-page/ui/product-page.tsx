@@ -54,8 +54,12 @@ const ProductPage = () => {
                     </div>
 
                     <div className="flex gap-4 justify-start">
-                        <DefaultButton onClick={() => openLoginModal(SignInPopupModes.SignIn)}>Log in</DefaultButton>
-                        <DefaultButton onClick={() => openLoginModal(SignInPopupModes.SignUp)}>Sign up</DefaultButton>
+                        <DefaultButton className="text-white" onClick={() => openLoginModal(SignInPopupModes.SignIn)}>
+                            Log in
+                        </DefaultButton>
+                        <DefaultButton className="text-white" onClick={() => openLoginModal(SignInPopupModes.SignUp)}>
+                            Sign up
+                        </DefaultButton>
                     </div>
                 </div>
                 <div className="col-span-8 lg:col-span-3 xl:col-span-2 lg:row-span-5 lg:row-start-1">

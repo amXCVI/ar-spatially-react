@@ -1,9 +1,8 @@
-import { useLayoutEffect, useRef } from "react";
-
 import Header from "@/features/header";
 
 import { routes } from "@/shared/config";
 import { DefaultButton } from "@/shared/ui/buttons";
+import { VideoInPhone } from "@/shared/ui/phones-video-slider";
 import { Socials } from "@/shared/ui/socials";
 
 import footerStars from "/images/landing/footer/footer-stars.svg";
@@ -13,19 +12,6 @@ import textItemPointIcon from "/images/landing/start-section/text-item-point.svg
 // import phone from "/images/landing/start-section/phone.webp";
 
 const StartSection = () => {
-    const phoneRef = useRef<null | HTMLImageElement>(null);
-    const videoRef = useRef<null | HTMLDivElement>(null);
-
-    useLayoutEffect(() => {
-        setInterval(() => {
-            if (phoneRef.current && videoRef.current) {
-                videoRef.current.style.width = `${phoneRef.current.offsetWidth * 0.94}px`;
-                videoRef.current.style.height = `${phoneRef.current.offsetHeight * 0.98}px`;
-                videoRef.current.style.borderRadius = `${phoneRef.current.height / 14}px`;
-            }
-        }, 500);
-    }, []);
-
     return (
         <section
             className="h-full min-h-[100vh]
@@ -100,30 +86,13 @@ const StartSection = () => {
                                 bg-no-repeat bg-cover md:bg-contain lg:bg-auto bg-top md:bg-center lg:bg-left 
                                 z-0"
                     />
-                    <div
-                        className="relative flex justify-center items-center 
-                    object-contain h-full max-h-[80vh] lg:max-h-[60vh] lg:max-w-[30vw] z-10 my-24 lg:ml-auto xl:mr-auto"
-                    >
-                        <img
-                            src="/images/landing/start-section/phone.svg"
-                            alt=""
-                            className={`object-contain h-[80vh] lg:h-[60vh]`}
-                            id="phone-border-img"
-                            ref={phoneRef}
-                        />
 
-                        <div id="video-rect-container" className="absolute overflow-hidden w-0 h-0" ref={videoRef}>
-                            <video
-                                className="h-full w-full object-cover"
-                                src={"/video/home_section.webm"}
-                                playsInline
-                                autoPlay
-                                muted
-                                preload="auto"
-                                loop
-                            />
-                        </div>
-                    </div>
+                    <VideoInPhone
+                        videoSrc="/video/home_section.webm"
+                        phoneSrc="/images/landing/start-section/phone.svg"
+                        className="object-contain h-full max-h-[80vh] lg:max-h-[60vh] lg:max-w-[30vw] z-10 my-24 lg:ml-auto xl:mr-auto"
+                        phoneImgClassName="object-contain min-h-[70vh] lg:min-h-[60vh]"
+                    />
                     {/* <img
                         src={phone}
                         className="object-contain h-full max-h-[80vh] lg:max-h-[60vh] lg:max-w-[30vw] z-10 my-24 lg:ml-auto xl:mr-auto"
