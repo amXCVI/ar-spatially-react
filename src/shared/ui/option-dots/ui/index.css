@@ -1,0 +1,11 @@
+.option-dots .option-dots__popup button {
+    border-bottom: 1px solid white;
+    /* with flexbox:
+    width: calc(50% - 21px);
+    */
+}
+
+/* Remove border bottom from last item & from second last if its odd */
+.option-dots .option-dots__popup button:last-child {
+    border-bottom: none;
+}

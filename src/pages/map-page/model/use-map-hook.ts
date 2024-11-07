@@ -96,7 +96,7 @@ const useMapHook = () => {
                 setSelectedMarker(markerItem);
             } else {
                 ApiEndpoints.object.getObject({ objectId: selectedMarkerId }).then((res) => {
-                    setSelectedMarker(res.arObject);
+                    setSelectedMarker(res);
                 });
             }
         }

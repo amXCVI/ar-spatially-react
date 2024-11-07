@@ -1,5 +1,4 @@
-import { Suspense } from "react";
-import React from "react";
+import { Suspense, lazy } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 import { routes } from "@/shared/config";
@@ -8,22 +7,24 @@ import { BaseLayout } from "@/shared/ui/layouts";
 import { ErrorBoundary } from "./error-boundary";
 import PrivateRoute from "./private-route";
 
-const FeedPagesLayout = React.lazy(() => import("@/widgets/feed-pages-layout"));
-const ObjectPagesLayout = React.lazy(() => import("@/widgets/object-pages-layout"));
+const FeedPagesLayout = lazy(() => import("@/widgets/feed-pages-layout"));
+const ObjectPagesLayout = lazy(() => import("@/widgets/object-pages-layout"));
+const UserPagesLayout = lazy(() => import("@/widgets/user-pages-layout"));
 
-const ProfileSettingsPage = React.lazy(() => import("@/pages/profile-settings-page"));
-const FeedsByUserPage = React.lazy(() => import("@/pages/feeds-by-user-page"));
-// const BlockchainPage = React.lazy(() => import("@/pages/blockchain-page"));
-const ProductPage = React.lazy(() => import("@/pages/product-page"));
-const ObjectsPage = React.lazy(() => import("@/pages/objects-page"));
-const ArNftPage = React.lazy(() => import("@/pages/ar-nft-page"));
-const FeedsPage = React.lazy(() => import("@/pages/feeds-page"));
-const EventPage = React.lazy(() => import("@/pages/event-page"));
-const ErrorPage = React.lazy(() => import("@/pages/error-page"));
-const FeedPage = React.lazy(() => import("@/pages/feed-page"));
-const HomePage = React.lazy(() => import("@/pages/home-page"));
-const MapPage = React.lazy(() => import("@/pages/map-page"));
-const LkPage = React.lazy(() => import("@/pages/lk"));
+const ProfileSettingsPage = lazy(() => import("@/pages/profile-settings-page"));
+const FeedsByUserPage = lazy(() => import("@/pages/feeds-by-user-page"));
+// const BlockchainPage = lazy(() => import("@/pages/blockchain-page"));
+const ProductPage = lazy(() => import("@/pages/product-page"));
+const ObjectsPage = lazy(() => import("@/pages/objects-page"));
+const ArNftPage = lazy(() => import("@/pages/ar-nft-page"));
+const FeedsPage = lazy(() => import("@/pages/feeds-page"));
+const EventPage = lazy(() => import("@/pages/event-page"));
+const ErrorPage = lazy(() => import("@/pages/error-page"));
+const FeedPage = lazy(() => import("@/pages/feed-page"));
+const HomePage = lazy(() => import("@/pages/home-page"));
+const UserPage = lazy(() => import("@/pages/user-page"));
+const MapPage = lazy(() => import("@/pages/map-page"));
+const LkPage = lazy(() => import("@/pages/lk"));
 
 const AppRouter = () => {
     const routers = createBrowserRouter([
@@ -72,6 +73,21 @@ const AppRouter = () => {
                         </ObjectPagesLayout>
                     ),
                     children: [{ index: true, element: <ObjectsPage /> }],
+                },
+
+                {
+                    path: routes.user,
+                    element: (
+                        <UserPagesLayout>
+                            <PrivateRoute />
+                        </UserPagesLayout>
+                    ),
+                    children: [
+                        {
+                            index: true,
+                            element: <UserPage />,
+                        },
+                    ],
                 },
 
                 { path: routes.event, element: <EventPage /> },

@@ -18,6 +18,9 @@ const routes = {
     feedsByUser: "user",
     // Объекты
     objects: "objects",
+    // User
+    user: "user",
+
     // docs
     docs: "https://ar-spatially.gitbook.io/ar-spatially-documentation/platform-architecture/ar-nft",
 

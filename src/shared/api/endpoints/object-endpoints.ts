@@ -145,16 +145,50 @@ const findFavorites = async ({
 }) => {
     const url = `/gateway/object/find/favorites`;
 
-    return await apiClient
-        .post(url, { pageNum, pageSize, searchText: searchText ?? "" })
-        .then((res) => {
-            const markers: MarkerInterface[] = res.data.data.objectsList;
+    const response: AxiosResponse<
+        ApiResponseInterface<{
+            objects: ObjectInterface[];
+            pageNum: number;
+            pageSize: number;
+            totalPages: number;
+        }>
+    > = await apiClient.post(url, {
+        searchText,
+        pageNum,
+        pageSize,
+    });
 
-            return markers;
-        })
-        .catch((err) => {
-            throw err;
-        });
+    return response.data.data;
+};
+
+const findByUser = async ({
+    pageNum,
+    pageSize,
+    searchText,
+    userId,
+}: {
+    pageNum: number;
+    pageSize: number;
+    searchText?: string;
+    userId: string;
+}) => {
+    const url = `/gateway/object/find/user`;
+
+    const response: AxiosResponse<
+        ApiResponseInterface<{
+            objects: ObjectInterface[];
+            pageNum: number;
+            pageSize: number;
+            totalPages: number;
+        }>
+    > = await apiClient.post(url, {
+        searchText,
+        pageNum,
+        pageSize,
+        userId,
+    });
+
+    return response.data.data;
 };
 
 const fintPointsByLocationLayer = async ({
@@ -193,13 +227,7 @@ const getObject = async ({ objectId }: { objectId: string }) => {
     formData.append("objectId", objectId);
 
     try {
-        const response: AxiosResponse<
-            ApiResponseInterface<{
-                arObject: ObjectInterface;
-                likes: number;
-                userLike: boolean;
-            }>
-        > = await apiClient.post(url, formData);
+        const response: AxiosResponse<ApiResponseInterface<ObjectInterface>> = await apiClient.post(url, formData);
 
         return response.data.data;
     } catch (error) {
@@ -282,6 +310,64 @@ const uploadObject = async ({
     }
 };
 
+const likeObject = async ({ objectId }: { objectId: string }) => {
+    const url = `/gateway/object/like-unlike`;
+
+    const formData = new FormData();
+    formData.append("objectId", objectId);
+
+    try {
+        const response: AxiosResponse<ApiResponseInterface<{ likes: number; userLike: boolean }>> =
+            await apiClient.post(url, formData);
+
+        return response.data.data;
+    } catch (error) {
+        throw new Error(`${url} ErrorRequest: ${error}`);
+    }
+};
+
+const favoritePutObject = async ({ objectId }: { objectId: string }) => {
+    const url = `/gateway/object/favorites/put`;
+
+    const formData = new FormData();
+    formData.append("objectId", objectId);
+
+    try {
+        const response: AxiosResponse<ApiResponseInterface<string>> = await apiClient.post(url, formData);
+
+        return response.data.data;
+    } catch (error) {
+        throw new Error(`${url} ErrorRequest: ${error}`);
+    }
+};
+
+const favoriteDeleteObject = async ({ objectId }: { objectId: string }) => {
+    const url = `/gateway/object/favorites/delete?objectId=${objectId}`;
+
+    try {
+        const response: AxiosResponse<ApiResponseInterface<string>> = await apiClient.delete(url);
+
+        return response.data.data;
+    } catch (error) {
+        throw new Error(`${url} ErrorRequest: ${error}`);
+    }
+};
+
+const favoriteAddRemove = async ({ objectId }: { objectId: string }) => {
+    const url = `/gateway/object/favorites/add-remove`;
+
+    const formData = new FormData();
+    formData.append("objectId", objectId);
+
+    try {
+        const response: AxiosResponse<ApiResponseInterface<boolean>> = await apiClient.post(url, formData);
+
+        return response.data.data;
+    } catch (error) {
+        throw new Error(`${url} ErrorRequest: ${error}`);
+    }
+};
+
 export const objectApi = {
     findTextLayer,
     fintPointsByLocation,
@@ -292,6 +378,11 @@ export const objectApi = {
     getObject,
     findText,
     findMe,
-    findFavorites,
     updateObject,
+    likeObject,
+    favoritePutObject,
+    favoriteDeleteObject,
+    favoriteAddRemove,
+    findFavorites,
+    findByUser,
 };

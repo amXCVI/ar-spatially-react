@@ -1,6 +1,7 @@
 import { ApiResponseInterface } from "./api-types";
 import { LayerInterface, LayerStatus } from "./layer-types";
-import { AnchorInterface, AnchotTypeEnum, MarkerInterface, MarkerStatusEnum } from "./marker-types";
+import { AnchorInterface, AnchotTypeEnum, MarkerInterface, MarkerStatusEnum, ObjectViewerModes } from "./marker-types";
+import { ObjectCommentInterface, ObjectCommentTagInterface } from "./object-comment-types";
 import { ObjectInterface, ObjectsPageModes } from "./object-types";
 import {
     FeedsPageModes,
@@ -42,7 +43,7 @@ export {
 
 export { type LayerInterface, LayerStatus };
 
-export { type ObjectInterface, ObjectsPageModes };
+export { type ObjectInterface, ObjectsPageModes, ObjectViewerModes };
 
 export {
     type PostInterface,
@@ -56,3 +57,5 @@ export {
     PostTypes,
     FeedsPageModes,
 };
+
+export { type ObjectCommentInterface, type ObjectCommentTagInterface };

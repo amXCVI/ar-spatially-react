@@ -1,7 +1,9 @@
 import { APIProvider, MapComponent } from "@ar-kit/lib";
 
+import { ObjectViewer } from "@/widgets/object-viewer";
+
 import MapHeader from "@/features/map-header";
-import { NftItem } from "@/features/nft-item";
+// import { NftItem } from "@/features/nft-item";
 
 import { useTitle } from "@/shared/lib/use-page-meta-hooks";
 
@@ -15,11 +17,11 @@ const MapPage = () => {
         nftList,
         onClickMarker,
         googpeMapApiKey,
-        selectedMarker,
-        onCloseViewer,
+        // selectedMarker,
+        // onCloseViewer,
         onChangeMapCenter,
         mapComponentRef,
-        updatedMarkerCallback,
+        // updatedMarkerCallback,
     } = useMapHook();
 
     return (
@@ -37,11 +39,12 @@ const MapPage = () => {
                     mapId={import.meta.env.VITE_APP_GOOGLE_MAP_ID}
                 />
 
-                <NftItem
+                <ObjectViewer />
+                {/* <NftItem
                     selectedMarker={selectedMarker}
                     onCloseViewer={onCloseViewer}
                     updatedMarkerCallback={updatedMarkerCallback}
-                />
+                /> */}
             </APIProvider>
         </div>
     );

@@ -1,10 +1,10 @@
 import { PostCommentInterface, PostImageInterface, PostInterface, PostTypes, PostVideoInterface } from "@/shared/types";
+import { AutoTags } from "@/shared/ui/text-with-tags";
 
 import { useDetailFeedItemHook } from "../model";
 import {
     FeedActionButtons,
     FeedCommentItem,
-    FeedContentText,
     FeedHeader,
     FeedMediaGallery,
     QuoteOrRepostPost,
@@ -34,7 +34,11 @@ const DetailsFeedItem = ({ feed, feedImages, feedVideos, feedComments }: FeedIte
                         previewId={feed.arPostInfo.previewId}
                     />
 
-                    <FeedContentText text={feed.arPostInfo.content} />
+                    <AutoTags
+                        text={feed.arPostInfo.content}
+                        tags={feed.arPostInfo.postTags}
+                        className="whitespace-pre-wrap"
+                    />
 
                     <FeedActionButtons handleLikeFeed={handleLikeFeed} userLike={feed.userLike} />
                 </>

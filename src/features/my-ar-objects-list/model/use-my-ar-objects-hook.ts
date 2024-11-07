@@ -16,7 +16,7 @@ const useMyArObjectsHook = () => {
         }
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [user]);
+    }, [user, objectsList]);
 
     return { objectsList };
 };

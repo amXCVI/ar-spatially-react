@@ -5,7 +5,7 @@ import { allObjectsActions } from "@/shared/stores/objects-store";
 
 import { useAppDispatch } from "../redux-service";
 
-const OBJECTS_COUNT_IN_PAGE = 3; // Кол-во постов на странице | в одном запросе
+const OBJECTS_COUNT_IN_PAGE = 10; // Кол-во постов на странице | в одном запросе
 
 const useGetObjectsHook = () => {
     const [currentPage, setCurrentPage] = useState<number>(0);
@@ -16,12 +16,12 @@ const useGetObjectsHook = () => {
     const fetchObjects = async ({
         page,
         byUser,
-        isFavorite,
+        favorites = false,
         filterString,
     }: {
         page: number;
         byUser?: string;
-        isFavorite?: boolean;
+        favorites?: boolean;
         filterString: string;
     }) => {
         // if (loading || totalPages === page) return;
@@ -33,34 +33,35 @@ const useGetObjectsHook = () => {
         }
 
         try {
-            switch (true) {
-                case isFavorite:
-                    // Запрашиваю избранные объекты
-                    ApiEndpoints.object
-                        .findFavorites({ pageNum: page, pageSize: OBJECTS_COUNT_IN_PAGE })
-                        .then((res) => {
-                            dispatch(allObjectsActions.addObjectsToList({ objects: res }));
-                            setTotalPages(1);
-                        });
-                    break;
-
-                case !!byUser:
-                    // Запрашиваю только свои объекты
-                    ApiEndpoints.object.findMe({ pageNum: page, pageSize: OBJECTS_COUNT_IN_PAGE }).then((res) => {
-                        dispatch(allObjectsActions.addObjectsToList({ objects: res }));
-                        setTotalPages(1);
+            if (favorites) {
+                // Запрашиваю избранные объекты
+                ApiEndpoints.object
+                    .findFavorites({ pageNum: page, pageSize: OBJECTS_COUNT_IN_PAGE, searchText: filterString })
+                    .then((res) => {
+                        dispatch(allObjectsActions.addObjectsToList({ objects: res.objects }));
+                        setTotalPages(res.totalPages);
                     });
-                    break;
-
-                default:
-                    // Список всех доступных объектов
-                    ApiEndpoints.object
-                        .findText({ pageNum: page, pageSize: OBJECTS_COUNT_IN_PAGE, searchText: filterString })
-                        .then((res) => {
-                            dispatch(allObjectsActions.addObjectsToList({ objects: res.objects }));
-                            setTotalPages(res.totalPages);
-                        });
-                    break;
+            } else if (!byUser) {
+                // Запрашиваю все подряд объекты
+                ApiEndpoints.object
+                    .findText({ pageNum: page, pageSize: OBJECTS_COUNT_IN_PAGE, searchText: filterString })
+                    .then((res) => {
+                        dispatch(allObjectsActions.addObjectsToList({ objects: res.objects }));
+                        setTotalPages(res.totalPages);
+                    });
+            } else {
+                // Список всех доступных объектов
+                ApiEndpoints.object
+                    .findByUser({
+                        pageNum: page,
+                        pageSize: OBJECTS_COUNT_IN_PAGE,
+                        searchText: filterString,
+                        userId: byUser,
+                    })
+                    .then((res) => {
+                        dispatch(allObjectsActions.addObjectsToList({ objects: res.objects }));
+                        setTotalPages(res.totalPages);
+                    });
             }
         } catch (error) {
             console.error("Error fetching data:", error);

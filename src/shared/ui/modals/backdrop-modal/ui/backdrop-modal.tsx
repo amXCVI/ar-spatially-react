@@ -6,9 +6,10 @@ interface BackdropModalProps {
     isOpen: boolean;
     closeModal?: () => void;
     children: ReactNode;
+    className?: string;
 }
 
-const BackdropModal = ({ isOpen, closeModal, children }: BackdropModalProps) => {
+const BackdropModal = ({ isOpen, closeModal, children, className }: BackdropModalProps) => {
     const { modalRef } = useBackdropModalHook({ closeModal });
 
     return (
@@ -23,6 +24,7 @@ const BackdropModal = ({ isOpen, closeModal, children }: BackdropModalProps) => 
                 w-full md:mx-10 md:max-w-prose
                 h-full md:h-min
                 relative overflow-scroll
+                ${className}
                 `}
                 style={{
                     background:
