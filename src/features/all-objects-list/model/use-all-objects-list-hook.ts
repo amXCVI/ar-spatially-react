@@ -5,9 +5,9 @@ import { SearchParamsConstants } from "@/shared/config/constants";
 import { useAppSelector } from "@/shared/lib/redux-service";
 import { useGetObjectsHook } from "@/shared/lib/use-get-objects-hook";
 
-const useAllObjectsListHook = () => {
+const useAllObjectsListHook = (props: { userId?: string }) => {
     const [searchParams] = useSearchParams();
-    const userId = searchParams.get(SearchParamsConstants.feedsByUserSearchParamsKey);
+    const userId = props.userId ?? searchParams.get(SearchParamsConstants.feedsByUserSearchParamsKey);
 
     const containerRef = useRef<HTMLDivElement>(null);
 
@@ -17,7 +17,7 @@ const useAllObjectsListHook = () => {
 
     useEffect(() => {
         fetchObjects({ page: 1, byUser: userId ?? undefined, filterString: "" });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const handleScroll = () => {
