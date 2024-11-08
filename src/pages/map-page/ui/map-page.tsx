@@ -26,6 +26,7 @@ const MapPage = () => {
         onChangeMapCenter,
         mapComponentRef,
         // updatedMarkerCallback,
+        onBoundsChanged,
     } = useMapHook();
 
     return (
@@ -34,9 +35,9 @@ const MapPage = () => {
                 <MapHeader onChangeMapCenter={onChangeMapCenter} />
 
                 <MapComponent
-                    onChangeMapCenter={onChangeMapCenter}
                     onChangeCoords={onChangeCoords}
                     onClickMarker={onClickMarker}
+                    onBoundsChanged={onBoundsChanged}
                     nftList={nftList}
                     ref={mapComponentRef}
                     googleApiKey={googpeMapApiKey}

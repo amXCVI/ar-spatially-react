@@ -1,4 +1,5 @@
 import { MarkerInterface } from "@ar-kit/shared/types/nft-types";
+import { MapCameraChangedEvent } from "@vis.gl/react-google-maps";
 import { Ref, forwardRef, useImperativeHandle } from "react";
 
 import useMapControlHook from "../model";
@@ -12,6 +13,7 @@ interface MapComponentProps {
     googleApiKey: string;
     mapId?: string;
     onChangeMapCenter?: (e: { lat: number; lng: number; zoom: number }) => void;
+    onBoundsChanged?: (event: MapCameraChangedEvent) => void;
 }
 export interface MapRefType {
     setMapCenter: (e: {
@@ -54,6 +56,7 @@ const MapComponent = forwardRef((props: MapComponentProps, ref: Ref<MapRefType>)
             mapTypes={mapTypes}
             selectedMapTypeId={selectedMapTypeId}
             onSelectMapType={onSelectMapType}
+            onBoundsChanged={props.onBoundsChanged}
             markersList={{
                 type: "FeatureCollection",
                 features:

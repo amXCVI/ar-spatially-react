@@ -1,10 +1,14 @@
 import { MarkerInterface as ArMarkerInterface, MapRefType } from "@ar-kit/lib";
+import { MapCameraChangedEvent } from "@ar-kit/lib/map-component";
 import { useContext, useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
 import { ApiEndpoints } from "@/shared/api";
 import { SearchParamsConstants } from "@/shared/config/constants";
+import { useAppDispatch, useAppSelector } from "@/shared/lib/redux-service";
+import { useDistanceCalculatorHook } from "@/shared/lib/use-distance-calculator-hook";
 import { MapContext } from "@/shared/stores";
+import { allObjectsActions } from "@/shared/stores/objects-store";
 import { MarkerInterface } from "@/shared/types";
 
 const defaultMapPosition = {
@@ -16,7 +20,10 @@ const defaultMapPosition = {
     ).lng,
     radius: JSON.parse(localStorage.getItem("localStorageMapOptionsZoomKey") ?? "10"),
 };
+
 const useMapHook = () => {
+    const dispatch = useAppDispatch();
+
     const mapComponentRef = useRef<MapRefType>(null);
 
     const [searchParams, setSearchParams] = useSearchParams();
@@ -30,7 +37,10 @@ const useMapHook = () => {
         radius: number;
     }>(defaultMapPosition);
 
-    const [allMarkersOnMap, setAllMarkersOnMap] = useState<MarkerInterface[]>([]);
+    // const [bounds, setBounds] = useState<google.maps.LatLngBoundsLiteral | null>(null);
+
+    const { objectsList } = useAppSelector((state) => state.allObjectsSlice);
+
     const [nftList, setNftList] = useState<ArMarkerInterface[]>([]);
     const [selectedMarker, setSelectedMarker] = useState<MarkerInterface | null>(null);
 
@@ -38,13 +48,14 @@ const useMapHook = () => {
 
     const googpeMapApiKey = import.meta.env.VITE_APP_GOOGLE_MAP_API_KEY;
 
+    const { haversineDistance } = useDistanceCalculatorHook();
+
     const onChangeCoords = (e: { center?: { lat: number; lng: number }; zoom?: number }) => {
         const newCoords = {
             lat: e.center ? e.center.lat : coords!.lat,
             lng: e.center ? e.center.lng : coords!.lng,
             radius: e.zoom ? e.zoom : coords!.radius,
         };
-
         setCoords(newCoords);
     };
 
@@ -59,24 +70,6 @@ const useMapHook = () => {
 
     const onChangeMapCenter = (e: { lat: number; lng: number; zoom: number }) => {
         mapComponentRef.current?.setMapCenter({ zoom: e.zoom, center: { lat: e.lat, lng: e.lng } });
-
-        // Очищаем предыдущий таймер
-        if (timerRef.current) {
-            clearTimeout(timerRef.current);
-        }
-
-        // Устанавливаем новый таймер
-        timerRef.current = setTimeout(() => {
-            ApiEndpoints.object
-                .fintPointsByLocation({
-                    lat: e.lat,
-                    lng: e.lng,
-                    radius: e.zoom,
-                })
-                .then((res) => {
-                    setAllMarkersOnMap(res);
-                });
-        }, 500); // 500 мс, можете настроить по необходимости
     };
 
     useEffect(() => {
@@ -88,9 +81,10 @@ const useMapHook = () => {
         };
     }, []);
 
+    // если есть objectId, но нет самого object - запрашиваю его
     useEffect(() => {
         if (selectedMarkerId) {
-            const markerItem = allMarkersOnMap.find((item) => item.id === selectedMarkerId);
+            const markerItem = objectsList.find((item) => item.id === selectedMarkerId);
 
             if (markerItem) {
                 setSelectedMarker(markerItem);
@@ -104,30 +98,10 @@ const useMapHook = () => {
         return () => {
             setSelectedMarker(null);
         };
-    }, [allMarkersOnMap, selectedMarkerId]);
-
-    useEffect(() => {
-        if (myObjectsOnly) {
-            ApiEndpoints.object.findMeLocation({ ...coords }).then((res) => {
-                setAllMarkersOnMap(res);
-            });
-        }
-    }, [coords, myObjectsOnly]);
-
-    useEffect(() => {
-        if (!myObjectsOnly) {
-            ApiEndpoints.object
-                .fintPointsByLocation({
-                    ...coords,
-                })
-                .then((res) => {
-                    setAllMarkersOnMap(res);
-                });
-        }
-    }, [coords, myObjectsOnly]);
+    }, [objectsList, selectedMarkerId]);
 
     useMemo(() => {
-        const markers = allMarkersOnMap.map((item) => {
+        const markers = objectsList.map((item) => {
             return {
                 description: item.description,
                 imageUrl: `${import.meta.env.VITE_APP_API_BASE_URL}gateway/file/get?fileId=${item.previewId}`,
@@ -143,7 +117,7 @@ const useMapHook = () => {
         });
 
         setNftList(markers);
-    }, [allMarkersOnMap]);
+    }, [objectsList]);
 
     const updatedMarkerCallback = ({ updatedMarker }: { updatedMarker: MarkerInterface }) => {
         // Если объект был изменен - меняю его и на карте и в памяти
@@ -160,6 +134,49 @@ const useMapHook = () => {
         );
     };
 
+    const onBoundsChanged = (e: MapCameraChangedEvent) => {
+        mapComponentRef.current?.setMapCenter({
+            zoom: e.detail.zoom,
+            center: { lat: e.detail.center.lat, lng: e.detail.center.lng },
+        });
+
+        // Очищаем предыдущий таймер
+        if (timerRef.current) {
+            clearTimeout(timerRef.current);
+        }
+
+        // Устанавливаем новый таймер
+        timerRef.current = setTimeout(() => {
+            const radius =
+                haversineDistance(
+                    { lat: e.detail.center.lat, lng: e.detail.center.lng },
+                    { lat: e.detail.bounds.south, lng: e.detail.bounds.east },
+                ) * 1000;
+
+            if (myObjectsOnly) {
+                ApiEndpoints.object
+                    .findMeLocation({
+                        lat: e.detail.center.lat,
+                        lng: e.detail.center.lng,
+                        radius,
+                    })
+                    .then((res) => {
+                        dispatch(allObjectsActions.setObjectsToList({ objects: res.objectsList }));
+                    });
+            } else {
+                ApiEndpoints.object
+                    .fintPointsByLocation({
+                        lat: e.detail.center.lat,
+                        lng: e.detail.center.lng,
+                        radius,
+                    })
+                    .then((res) => {
+                        dispatch(allObjectsActions.setObjectsToList({ objects: res.objectsList }));
+                    });
+            }
+        }, 500); // 500 мс, можете настроить по необходимости
+    };
+
     return {
         onChangeCoords,
         nftList,
@@ -170,6 +187,7 @@ const useMapHook = () => {
         onChangeMapCenter,
         mapComponentRef,
         updatedMarkerCallback,
+        onBoundsChanged,
     };
 };
 

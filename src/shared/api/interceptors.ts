@@ -26,8 +26,9 @@ const onResponse = (response: AxiosResponse): AxiosResponse => {
     const cookies = new Cookies(null, { path: "/" });
 
     const cookieExists = cookies.get(CookiesConstants.accessTokenLifeTime);
+    const accessToken = localStorage.getItem(LSConstants.accessToken);
 
-    if (!cookieExists) {
+    if (!cookieExists && accessToken) {
         ApiEndpoints.user.touch().then((res) => {
             localStorage.setItem(LSConstants.accessToken, res);
 

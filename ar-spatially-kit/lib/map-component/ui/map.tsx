@@ -1,5 +1,10 @@
 import { MarkerInterface } from "@ar-kit/shared/types/nft-types";
-import { MapProps as DefaultMapProps, Map as RGCMap, useApiIsLoaded } from "@vis.gl/react-google-maps";
+import {
+    MapProps as DefaultMapProps,
+    MapCameraChangedEvent,
+    Map as RGCMap,
+    useApiIsLoaded,
+} from "@vis.gl/react-google-maps";
 import { FeatureCollection, Point } from "geojson";
 
 import googleMapStyles from "../resources/map_style.json";
@@ -21,6 +26,7 @@ interface MapProps {
     markersList: FeatureCollection<Point, MarkerInterface>;
     onClickMarker?: (markerId: string) => void;
     mapId?: string;
+    onBoundsChanged?: (event: MapCameraChangedEvent) => void;
 }
 
 const Map = ({
@@ -35,6 +41,7 @@ const Map = ({
     markersList,
     onClickMarker,
     mapId,
+    onBoundsChanged,
 }: MapProps) => {
     const apiIsLoaded = useApiIsLoaded();
 
@@ -49,12 +56,14 @@ const Map = ({
                 disableDefaultUI={true}
                 //
                 defaultZoom={zoom}
-                zoom={zoom}
-                onZoomChanged={(ev) => onChangeMapZoom(ev.detail.zoom)}
+                // zoom={zoom}
+                // onZoomChanged={(ev) => onChangeMapZoom(ev.detail.zoom)}
                 //
                 defaultCenter={center}
                 center={center}
                 onCenterChanged={(ev) => onChangeMapCenter(ev.detail.center)}
+                //
+                onBoundsChanged={onBoundsChanged}
                 //
                 reuseMaps={true}
                 mapId={mapId}

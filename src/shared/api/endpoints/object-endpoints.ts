@@ -70,21 +70,24 @@ const findText = async ({
 };
 
 const fintPointsByLocation = async ({ lat, lng, radius }: { lat: number; lng: number; radius: number }) => {
-    return await apiClient
-        .post("/gateway/object/find/location", {
+    const url = `/gateway/object/find/location`;
+
+    try {
+        const response: AxiosResponse<
+            ApiResponseInterface<{
+                objectsList: ObjectInterface[];
+            }>
+        > = await apiClient.post(url, {
             lat: lat,
             lng: lng,
             // Здесь инвертирую радиус (значение подобрал эмпирически)
-            radius: (1 / radius) * 500000,
-        })
-        .then((res) => {
-            const markers: MarkerInterface[] = res.data.data.objectsList;
-
-            return markers;
-        })
-        .catch((err) => {
-            throw err;
+            radius: radius,
         });
+
+        return response.data.data;
+    } catch (error) {
+        throw new Error(`${url} ErrorRequest: ${error}`);
+    }
 };
 
 const fintPointsByUserLocationLayer = async ({ lat, lng, radius }: { lat: number; lng: number; radius: number }) => {
@@ -93,7 +96,7 @@ const fintPointsByUserLocationLayer = async ({ lat, lng, radius }: { lat: number
             lat: lat,
             lng: lng,
             // Здесь инвертирую радиус (значение подобрал эмпирически)
-            radius: (1 / radius) * 500000,
+            radius: radius,
         })
         .then((res) => {
             const markers: MarkerInterface[] = res.data.data.objectsList;
@@ -122,21 +125,24 @@ const findPointsByOwner = async ({ ownerId }: { ownerId: string }) => {
 };
 
 const findMeLocation = async ({ lat, lng, radius }: { lat: number; lng: number; radius: number }) => {
-    return await apiClient
-        .post("/gateway/object/find/me-location", {
+    const url = `/gateway/object/find/me-location`;
+
+    try {
+        const response: AxiosResponse<
+            ApiResponseInterface<{
+                objectsList: ObjectInterface[];
+            }>
+        > = await apiClient.post(url, {
             lat: lat,
             lng: lng,
             // Здесь инвертирую радиус (значение подобрал эмпирически)
-            radius: (1 / radius) * 500000,
-        })
-        .then((res) => {
-            const markers: MarkerInterface[] = res.data.data.objectsList;
-
-            return markers;
-        })
-        .catch((err) => {
-            throw err;
+            radius: radius,
         });
+
+        return response.data.data;
+    } catch (error) {
+        throw new Error(`${url} ErrorRequest: ${error}`);
+    }
 };
 
 const findFavorites = async ({
@@ -213,7 +219,7 @@ const fintPointsByLocationLayer = async ({
             lng: lng,
             layerId: layerId,
             // Здесь инвертирую радиус (значение подобрал эмпирически)
-            radius: (1 / radius) * 500000,
+            radius: radius,
         })
         .then((res) => {
             const markers: MarkerInterface[] = res.data.data.objectsList;
