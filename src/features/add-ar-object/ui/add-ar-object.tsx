@@ -8,6 +8,7 @@ import PlusIcon from "../assets/plus-icon.svg?react";
 import { useAddArObjectHook } from "../model";
 import { MapComponent } from "./map-component";
 import { ObjectData } from "./object-data";
+import { PreviewComponent } from "./preview-component";
 
 const AddArObject = () => {
     const {
@@ -19,10 +20,9 @@ const AddArObject = () => {
         nextStep,
         prevStep,
         onDropGlbModelCallback,
+        glbModelFile,
         previewSrc,
-        glbModelFileName,
         objectLocation,
-        onDropModelPreviewCallback,
         objectName,
         onChangeObjectName,
         objectDescription,
@@ -49,14 +49,13 @@ const AddArObject = () => {
                 {renderPopupContent({
                     step,
                     objectName,
-                    previewSrc,
+                    previewSrc: previewSrc ?? undefined,
                     objectDescription,
                     objectLocation,
                     onChangeObjectName,
                     onChangeObjectDescription,
                     onDropGlbModelCallback,
-                    glbModelFileName,
-                    onDropModelPreviewCallback,
+                    glbModelFile,
                     onChangeObjectLocation,
                     selectedLayerId,
                     onChangeSelectLayer,
@@ -82,32 +81,31 @@ const renderPopupContent = ({
     step,
     objectName,
     previewSrc,
-    glbModelFileName,
     objectDescription,
     objectLocation,
     selectedLayerId,
+    glbModelFile,
     onChangeObjectName,
     onChangeObjectDescription,
     onChangeSelectLayer,
     onDropGlbModelCallback,
-    onDropModelPreviewCallback,
+
     onChangeObjectLocation,
 }: {
     step: number;
     objectName: string;
     objectDescription: string;
     previewSrc?: string;
-    glbModelFileName?: string;
     selectedLayerId?: string;
     objectLocation: {
         lat: number;
         lng: number;
     } | null;
+    glbModelFile: File | null;
     onChangeObjectName: (e: ChangeEvent<HTMLInputElement>) => void;
     onChangeObjectDescription: (e: ChangeEvent<HTMLTextAreaElement>) => void;
     onChangeSelectLayer: (e: ChangeEvent<HTMLSelectElement>) => void;
     onDropGlbModelCallback: (e: File) => void;
-    onDropModelPreviewCallback: (e: File) => void;
     onChangeObjectLocation: (e: { lat: number; lng: number }) => void;
 }) => {
     switch (step) {
@@ -116,18 +114,22 @@ const renderPopupContent = ({
                 <ObjectData
                     objectName={objectName}
                     objectDescription={objectDescription}
-                    previewSrc={previewSrc}
-                    glbModelFileName={glbModelFileName}
+                    glbModelFileName={glbModelFile?.name}
                     selectedLayerId={selectedLayerId}
                     onChangeSelectLayer={onChangeSelectLayer}
                     onChangeObjectName={onChangeObjectName}
                     onChangeObjectDescription={onChangeObjectDescription}
                     onDropGlbModelCallback={onDropGlbModelCallback}
-                    onDropModelPreviewCallback={onDropModelPreviewCallback}
                 />
             );
 
         case 1:
+            if (glbModelFile) {
+                return <PreviewComponent glbModelFile={glbModelFile} />;
+            }
+            return <Fragment />;
+
+        case 2:
             return (
                 <APIProvider apiKey={import.meta.env.VITE_APP_GOOGLE_MAP_API_KEY} region="EN" language="en">
                     <MapComponent
