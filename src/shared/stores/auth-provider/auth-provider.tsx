@@ -86,6 +86,7 @@ const AuthProvider = ({ children }: Props) => {
         }
     };
 
+    // ф-я проверяет, авторизован юзер или нет. Если авторизован - resolve, иначе - reject
     const checkAuth = async () => {
         if (authenticated) {
             return true;
