@@ -2,7 +2,6 @@ import { useContext } from "react";
 
 import { Footer } from "@/features/footer";
 import Header from "@/features/header";
-import { AuthContext, SignInPopupModes } from "@/features/login-modal";
 
 import { useDescription, useTitle } from "@/shared/lib/use-page-meta-hooks";
 import { DefaultButton } from "@/shared/ui/buttons";
@@ -13,6 +12,7 @@ import { SectionTitle, TextP } from "@/shared/ui/text-components";
 // import appStoreButton from "/images/landing/get-started-section/app-store-button.svg";
 // import playMarketButton from "/images/landing/get-started-section/play-market-button.svg";
 import bulb from "/images/product/bulb.png";
+import { AuthContext, SignInPopupModes } from "@/shared/stores/auth-provider";
 
 const ProductPage = () => {
     useTitle("AR Spatially - Product");

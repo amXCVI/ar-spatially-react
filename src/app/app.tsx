@@ -1,8 +1,7 @@
 import { Provider } from "react-redux";
 
-import { AuthProvider } from "@/features/login-modal";
-
 import { UserContextProvider, WalletProvider } from "@/shared/stores";
+import { AuthProvider } from "@/shared/stores/auth-provider";
 
 import AppRouter from "./router/app-router";
 import store from "./store-provider";

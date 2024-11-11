@@ -5,7 +5,7 @@ import { ApiEndpoints } from "@/shared/api";
 import { useAuthorizeHook } from "@/shared/lib/authorize-hook";
 
 import { LoginFormInterface } from "../types";
-import { AuthContext, SignInPopupModes } from "../ui";
+import { AuthContext, SignInPopupModes } from "@/shared/stores/auth-provider";
 
 const useLoginHook = () => {
     const { onLogin } = useAuthorizeHook();
