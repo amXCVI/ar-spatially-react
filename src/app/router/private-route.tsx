@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 
-import { AuthContext } from "@/features/login-modal";
 
 import { routes } from "@/shared/config";
+import { AuthContext } from "@/shared/stores/auth-provider";
 
 const PrivateRoute = () => {
     const { authenticated } = useContext(AuthContext);

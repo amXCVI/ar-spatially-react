@@ -2,10 +2,9 @@ import { useOutsideClick } from "@ar-kit/shared/hooks";
 import { Fragment, ReactNode, useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-import { AuthContext, SignInPopupModes } from "@/features/login-modal";
-
 import { docsMenuLink, menuLinks, routes } from "@/shared/config";
 import { useUserContext } from "@/shared/stores";
+import { AuthContext, SignInPopupModes } from "@/shared/stores/auth-provider";
 // import { DefaultButton } from "@/shared/ui/buttons";
 import { Socials } from "@/shared/ui/socials";
 

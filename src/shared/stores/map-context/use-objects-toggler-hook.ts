@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 
-import { AuthContext, SignInPopupModes } from "@/features/login-modal";
+import { AuthContext, SignInPopupModes } from "../auth-provider";
 
 const useObjectsTogglerHook = () => {
     const [myObjectsOnly, setMyObjectsOnly] = useState<boolean>(false);

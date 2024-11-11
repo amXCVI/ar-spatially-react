@@ -1,10 +1,9 @@
 import { useCallback, useContext, useEffect, useState } from "react";
 
-import { AuthContext } from "@/features/login-modal";
-
 import { ApiEndpoints } from "@/shared/api";
 import { LSConstants } from "@/shared/config/constants";
 import { UserInterface } from "@/shared/types";
+import { AuthContext } from "../auth-provider";
 
 const useUserHook = () => {
     const { authenticated } = useContext(AuthContext);

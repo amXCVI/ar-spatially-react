@@ -1,9 +1,8 @@
 import { useContext } from "react";
 import { NavigateFunction, To } from "react-router-dom";
 
-import { AuthContext } from "@/features/login-modal";
-
 import { LSConstants } from "@/shared/config/constants";
+import { AuthContext } from "@/shared/stores/auth-provider";
 
 const useAuthorizeHook = () => {
     const { closeLoginModal, setAuthenticated } = useContext(AuthContext);

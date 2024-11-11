@@ -1,10 +1,9 @@
 import { useContext } from "react";
 
-import { AuthContext, SignInPopupModes } from "@/features/login-modal";
-
 import { ApiEndpoints } from "@/shared/api";
 import { LayerStatus } from "@/shared/types";
 
+import { AuthContext, SignInPopupModes } from "../auth-provider";
 import { useUserLayersHook } from "../user-layers/use-user-layers-hook";
 
 const useSelectedAppsHook = () => {

@@ -50,7 +50,7 @@ const AuthProvider = ({ children }: Props) => {
     const [isOpenLoginPopup, setIsOpenLoginPopup] = useState<SignInPopupModes>(initialValue.isOpenLoginPopup);
     const [successAuthCallback, setSuccessAuthCallback] = useState<{ callback: VoidFunction } | null>(null);
 
-    const openLoginModal = (e: SignInPopupModes, authCallback?: () => void) => {
+    const openLoginModal = (e: SignInPopupModes = SignInPopupModes.SignIn, authCallback?: () => void) => {
         setIsOpenLoginPopup(e);
 
         if (authCallback) {

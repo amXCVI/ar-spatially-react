@@ -1,10 +1,9 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { AuthContext, SignInPopupModes } from "@/features/login-modal";
-
 import { routes } from "@/shared/config";
 import { useUserContext } from "@/shared/stores";
+import { AuthContext, SignInPopupModes } from "@/shared/stores/auth-provider";
 
 const useUserAvatarHook = () => {
     const navigation = useNavigate();
