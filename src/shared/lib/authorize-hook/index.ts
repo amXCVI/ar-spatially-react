@@ -1,12 +1,10 @@
-import { useContext } from "react";
 import { NavigateFunction, To } from "react-router-dom";
 
-import { AuthContext } from "@/features/login-modal";
-
 import { LSConstants } from "@/shared/config/constants";
+import { useAuthContext } from "@/shared/stores/auth-provider";
 
 const useAuthorizeHook = () => {
-    const { closeLoginModal, setAuthenticated } = useContext(AuthContext);
+    const { closeLoginModal, setAuthenticated } = useAuthContext();
 
     const onLogin = ({ token, navigate, to }: { token: string; navigate?: NavigateFunction; to?: To }) => {
         localStorage.setItem(LSConstants.accessToken, token);

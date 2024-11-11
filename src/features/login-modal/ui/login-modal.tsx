@@ -8,7 +8,7 @@ import XIcon from "./../icons/x.svg?react";
 import logo from "/images/login-popup/logo.svg";
 
 import { useGoogleOauthHook, useLoginHook, useXOauthHook } from "../model";
-import { SignInPopupModes } from "./auth-provider";
+import { SignInPopupModes } from "@/shared/stores/auth-provider";
 
 const LoginModal = () => {
     const {

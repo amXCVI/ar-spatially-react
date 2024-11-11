@@ -22,13 +22,14 @@ type Props = {
     children?: ReactNode;
 };
 
-type IAuthContext = {
+export type IAuthContext = {
     authenticated: boolean;
     setAuthenticated: (newState: boolean) => void;
     isOpenLoginPopup: SignInPopupModes;
     openLoginModal: (e: SignInPopupModes, authCallback?: () => void) => void;
     closeLoginModal: (success?: boolean) => void;
     logout: (logoutCallback?: () => void) => void;
+    checkAuth: (e?: SignInPopupModes) => Promise<unknown>;
 };
 
 const initialValue = {
@@ -40,6 +41,8 @@ const initialValue = {
     closeLoginModal: () => {},
 
     logout: () => {},
+
+    checkAuth: () => Promise.reject(),
 };
 
 const AuthContext = createContext<IAuthContext>(initialValue);
@@ -50,7 +53,7 @@ const AuthProvider = ({ children }: Props) => {
     const [isOpenLoginPopup, setIsOpenLoginPopup] = useState<SignInPopupModes>(initialValue.isOpenLoginPopup);
     const [successAuthCallback, setSuccessAuthCallback] = useState<{ callback: VoidFunction } | null>(null);
 
-    const openLoginModal = (e: SignInPopupModes, authCallback?: () => void) => {
+    const openLoginModal = (e: SignInPopupModes = SignInPopupModes.SignIn, authCallback?: () => void) => {
         setIsOpenLoginPopup(e);
 
         if (authCallback) {
@@ -66,6 +69,11 @@ const AuthProvider = ({ children }: Props) => {
         if (successAuthCallback && success) {
             successAuthCallback.callback();
         }
+
+        if (window.handleCloseAuthModal) {
+            window.handleCloseAuthModal(success ?? false);
+            window.handleCloseAuthModal = undefined;
+        }
     };
 
     const logout = (logoutCallback?: () => void) => {
@@ -78,6 +86,27 @@ const AuthProvider = ({ children }: Props) => {
         }
     };
 
+    // ф-я проверяет, авторизован юзер или нет. Если авторизован - resolve, иначе - reject
+    const checkAuth = async () => {
+        if (authenticated) {
+            return true;
+        }
+
+        return new Promise((resolve, reject) => {
+            const handleClose = (res: boolean) => {
+                if (res) {
+                    resolve(true);
+                } else {
+                    reject(false);
+                }
+            };
+
+            openLoginModal();
+
+            window.handleCloseAuthModal = handleClose;
+        });
+    };
+
     return (
         <AuthContext.Provider
             value={{
@@ -87,6 +116,7 @@ const AuthProvider = ({ children }: Props) => {
                 openLoginModal,
                 closeLoginModal,
                 logout,
+                checkAuth,
             }}
         >
             {children}

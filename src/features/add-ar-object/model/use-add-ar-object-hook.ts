@@ -2,6 +2,7 @@ import { ChangeEvent, useEffect, useState } from "react";
 
 import { ApiEndpoints } from "@/shared/api";
 import { useAppDispatch } from "@/shared/lib/redux-service";
+import { useAuthContext } from "@/shared/stores/auth-provider";
 import { allObjectsActions } from "@/shared/stores/objects-store";
 import { useUserHook } from "@/shared/stores/user/use-user-hook";
 import { MarkerStatusEnum } from "@/shared/types";
@@ -10,6 +11,7 @@ const useAddArObjectHook = () => {
     const dispatch = useAppDispatch();
 
     const { user } = useUserHook();
+    const { checkAuth } = useAuthContext();
 
     const [isOpenMapModal, setIsOpenMapModal] = useState<boolean>(false);
     const [step, setStep] = useState<number>(0);
@@ -23,7 +25,9 @@ const useAddArObjectHook = () => {
     const [objectLocation, setObjectLocation] = useState<{ lat: number; lng: number } | null>(null);
 
     const openMapModal = () => {
-        setIsOpenMapModal(true);
+        checkAuth().then(() => {
+            setIsOpenMapModal(true);
+        });
     };
 
     const closeMapModal = () => {

@@ -1,16 +1,15 @@
-import { useContext } from "react";
 import { useForm } from "react-hook-form";
 
 import { ApiEndpoints } from "@/shared/api";
 import { useAuthorizeHook } from "@/shared/lib/authorize-hook";
+import { SignInPopupModes, useAuthContext } from "@/shared/stores/auth-provider";
 
 import { LoginFormInterface } from "../types";
-import { AuthContext, SignInPopupModes } from "../ui";
 
 const useLoginHook = () => {
     const { onLogin } = useAuthorizeHook();
 
-    const { isOpenLoginPopup, closeLoginModal, openLoginModal } = useContext(AuthContext);
+    const { isOpenLoginPopup, closeLoginModal, openLoginModal } = useAuthContext();
 
     const {
         register,

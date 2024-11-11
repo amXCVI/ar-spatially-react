@@ -1,13 +1,13 @@
-import { useCallback, useContext, useEffect, useState } from "react";
-
-import { AuthContext } from "@/features/login-modal";
+import { useCallback, useEffect, useState } from "react";
 
 import { ApiEndpoints } from "@/shared/api";
 import { LSConstants } from "@/shared/config/constants";
 import { UserInterface } from "@/shared/types";
 
+import { useAuthContext } from "../auth-provider";
+
 const useUserHook = () => {
-    const { authenticated } = useContext(AuthContext);
+    const { authenticated } = useAuthContext();
 
     const [user, setUser] = useState<UserInterface | null>(
         JSON.parse(localStorage.getItem(LSConstants.userData) || "null"),

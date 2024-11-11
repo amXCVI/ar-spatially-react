@@ -1,10 +1,8 @@
-import { useContext } from "react";
-
 import { Footer } from "@/features/footer";
 import Header from "@/features/header";
-import { AuthContext, SignInPopupModes } from "@/features/login-modal";
 
 import { useDescription, useTitle } from "@/shared/lib/use-page-meta-hooks";
+import { SignInPopupModes, useAuthContext } from "@/shared/stores/auth-provider";
 import { DefaultButton } from "@/shared/ui/buttons";
 import { DarkLayout } from "@/shared/ui/layouts";
 import { PhoneSlider } from "@/shared/ui/phones-video-slider";
@@ -21,7 +19,7 @@ const ProductPage = () => {
         "A comprehensive AR toolkit, offering features like object geolocation, 3D object uploads, and real-world interaction. Perfect for creators and collectors alike.",
     );
 
-    const { openLoginModal } = useContext(AuthContext);
+    const { openLoginModal } = useAuthContext();
 
     return (
         <DarkLayout
