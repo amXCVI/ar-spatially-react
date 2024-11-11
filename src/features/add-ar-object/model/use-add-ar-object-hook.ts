@@ -149,6 +149,9 @@ const useAddArObjectHook = () => {
                                 size: { width: width, height: height },
                                 status: MarkerStatusEnum.NEW,
                                 title: objectName,
+                                userFavorite: false,
+                                userLike: false,
+                                likes: 0,
                             },
                         }),
                     );
