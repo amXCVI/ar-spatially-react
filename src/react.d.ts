@@ -9,7 +9,7 @@ export declare global {
 
   interface Window {
     initMap: () => void;
-    handleCloseAuthModal: (res: boolean) => void;
+    handleCloseAuthModal?: (res: boolean) => void;
   }
 }
 

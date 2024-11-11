@@ -70,7 +70,10 @@ const AuthProvider = ({ children }: Props) => {
             successAuthCallback.callback();
         }
 
-        window.handleCloseAuthModal(success ?? false);
+        if (window.handleCloseAuthModal) {
+            window.handleCloseAuthModal(success ?? false);
+            window.handleCloseAuthModal = undefined;
+        }
     };
 
     const logout = (logoutCallback?: () => void) => {
