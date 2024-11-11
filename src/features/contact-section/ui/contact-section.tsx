@@ -7,7 +7,7 @@ import { Title } from "@/shared/ui/text-components";
 import { useContactSectionHook } from "../model";
 
 const ContactSection = () => {
-    const { project, setProject, subject, setSubject, mail, setMail, description, setDescription } =
+    const { project, setProject, subject, setSubject, mail, setMail, description, setDescription, handleSend } =
         useContactSectionHook();
 
     return (
@@ -58,7 +58,9 @@ const ContactSection = () => {
 
                             <div className="col-span-8 md:row-start-5 flex justify-end mt-1">
                                 <Link to={`mailto:spatiallyar@gmail.com&body=${description}?subject=${subject}`}>
-                                    <DefaultButton className="text-gray90 h-min">Send info</DefaultButton>
+                                    <DefaultButton onClick={handleSend} className="text-gray90 h-min">
+                                        Send info
+                                    </DefaultButton>
                                 </Link>
                             </div>
                         </div>

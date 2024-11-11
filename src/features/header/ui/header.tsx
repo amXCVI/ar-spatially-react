@@ -1,10 +1,10 @@
 import { useOutsideClick } from "@ar-kit/shared/hooks";
-import { Fragment, ReactNode, useContext, useEffect, useState } from "react";
+import { Fragment, ReactNode, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import { docsMenuLink, menuLinks, routes } from "@/shared/config";
 import { useUserContext } from "@/shared/stores";
-import { AuthContext, SignInPopupModes } from "@/shared/stores/auth-provider";
+import { SignInPopupModes, useAuthContext } from "@/shared/stores/auth-provider";
 // import { DefaultButton } from "@/shared/ui/buttons";
 import { Socials } from "@/shared/ui/socials";
 
@@ -205,7 +205,7 @@ export const MobileMenu = ({ white = false, show, className, iconClassname }: Mo
 const Profile = () => {
     const navigation = useNavigate();
 
-    const { openLoginModal, authenticated } = useContext(AuthContext);
+    const { openLoginModal, authenticated } = useAuthContext();
 
     const { user } = useUserContext();
 

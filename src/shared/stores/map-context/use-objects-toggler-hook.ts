@@ -1,11 +1,11 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 
-import { AuthContext, SignInPopupModes } from "../auth-provider";
+import { SignInPopupModes, useAuthContext } from "../auth-provider";
 
 const useObjectsTogglerHook = () => {
     const [myObjectsOnly, setMyObjectsOnly] = useState<boolean>(false);
 
-    const { authenticated, openLoginModal } = useContext(AuthContext);
+    const { authenticated, openLoginModal } = useAuthContext();
 
     const handleMyObjects = () => {};
 

@@ -22,13 +22,14 @@ type Props = {
     children?: ReactNode;
 };
 
-type IAuthContext = {
+export type IAuthContext = {
     authenticated: boolean;
     setAuthenticated: (newState: boolean) => void;
     isOpenLoginPopup: SignInPopupModes;
     openLoginModal: (e: SignInPopupModes, authCallback?: () => void) => void;
     closeLoginModal: (success?: boolean) => void;
     logout: (logoutCallback?: () => void) => void;
+    checkAuth: (e?: SignInPopupModes) => Promise<unknown>;
 };
 
 const initialValue = {
@@ -40,6 +41,8 @@ const initialValue = {
     closeLoginModal: () => {},
 
     logout: () => {},
+
+    checkAuth: () => Promise.reject(),
 };
 
 const AuthContext = createContext<IAuthContext>(initialValue);
@@ -66,6 +69,8 @@ const AuthProvider = ({ children }: Props) => {
         if (successAuthCallback && success) {
             successAuthCallback.callback();
         }
+
+        window.handleCloseAuthModal(success ?? false);
     };
 
     const logout = (logoutCallback?: () => void) => {
@@ -78,6 +83,26 @@ const AuthProvider = ({ children }: Props) => {
         }
     };
 
+    const checkAuth = async () => {
+        if (authenticated) {
+            return true;
+        }
+
+        return new Promise((resolve, reject) => {
+            const handleClose = (res: boolean) => {
+                if (res) {
+                    resolve(true);
+                } else {
+                    reject(false);
+                }
+            };
+
+            openLoginModal();
+
+            window.handleCloseAuthModal = handleClose;
+        });
+    };
+
     return (
         <AuthContext.Provider
             value={{
@@ -87,6 +112,7 @@ const AuthProvider = ({ children }: Props) => {
                 openLoginModal,
                 closeLoginModal,
                 logout,
+                checkAuth,
             }}
         >
             {children}

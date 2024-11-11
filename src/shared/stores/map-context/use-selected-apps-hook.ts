@@ -1,15 +1,13 @@
-import { useContext } from "react";
-
 import { ApiEndpoints } from "@/shared/api";
 import { LayerStatus } from "@/shared/types";
 
-import { AuthContext, SignInPopupModes } from "../auth-provider";
+import { SignInPopupModes, useAuthContext } from "../auth-provider";
 import { useUserLayersHook } from "../user-layers/use-user-layers-hook";
 
 const useSelectedAppsHook = () => {
     const { layersList, setLayersList, user } = useUserLayersHook();
 
-    const { authenticated, openLoginModal } = useContext(AuthContext);
+    const { authenticated, openLoginModal } = useAuthContext();
 
     const updateLayerStatus = ({ layerId, status }: { layerId: string; status: LayerStatus }) => {
         ApiEndpoints.layer

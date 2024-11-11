@@ -1,14 +1,13 @@
-import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { routes } from "@/shared/config";
 import { useUserContext } from "@/shared/stores";
-import { AuthContext, SignInPopupModes } from "@/shared/stores/auth-provider";
+import { SignInPopupModes, useAuthContext } from "@/shared/stores/auth-provider";
 
 const useUserAvatarHook = () => {
     const navigation = useNavigate();
 
-    const { authenticated, openLoginModal } = useContext(AuthContext);
+    const { authenticated, openLoginModal } = useAuthContext();
 
     const { user } = useUserContext();
 
