@@ -20,8 +20,6 @@ const useCommentHook = ({
         onDeleteComent({ commentId: comment.id });
     };
 
-    console.log(user, comment);
-
     return { isMyComment: user && user.userId === comment.author.userId, handleEditComment, handleDeleteComment };
 };
 

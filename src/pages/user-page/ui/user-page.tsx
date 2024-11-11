@@ -1,3 +1,5 @@
+import { ObjectViewer } from "@/widgets/object-viewer";
+
 import { AllFeedsList } from "@/features/all-feeds-list";
 import { AllObjectsList } from "@/features/all-objects-list/ui/all-objects-list";
 
@@ -30,6 +32,8 @@ const UserPage = () => {
             </div>
 
             {pageMode === UserPageModes.OBJECTS ? <AllObjectsList /> : <AllFeedsList />}
+
+            <ObjectViewer />
         </div>
     );
 };

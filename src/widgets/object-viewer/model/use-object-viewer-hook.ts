@@ -52,7 +52,11 @@ const useObjectViewerHook = () => {
     const closeModal = () => {
         setIsOpenMapModal(false);
         setSelectedObject(null);
-        setSearchParams({});
+
+        setSearchParams({
+            ...Object.fromEntries(searchParams.entries()),
+            [SearchParamsConstants.objectIdSearchParamsKey]: "",
+        });
     };
 
     const handleLikeObject = () => {
