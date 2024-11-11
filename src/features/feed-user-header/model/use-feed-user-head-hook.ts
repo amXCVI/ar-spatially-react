@@ -27,10 +27,10 @@ const useFeedUserHeadHook = () => {
     const handleFollow = () => {
         if (userId) {
             ApiEndpoints.user.subscribeUser({ userIdFrom: userId }).then((res) => {
-                if (res.includes("unsubscribed")) {
-                    dispatch(subscribtionsActions.deleteSubscribtion({ subscribtionId: userId }));
-                } else {
+                if (res) {
                     dispatch(subscribtionsActions.addSubscribtion({ subscribtion: { userId: userId } }));
+                } else {
+                    dispatch(subscribtionsActions.deleteSubscribtion({ subscribtionId: userId }));
                 }
             });
         }
