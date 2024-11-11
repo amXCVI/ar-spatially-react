@@ -1,4 +1,4 @@
-import Spline from "@splinetool/react-spline";
+// import Spline from "@splinetool/react-spline";
 import { Link } from "react-router-dom";
 
 import { routes } from "@/shared/config";
@@ -73,10 +73,10 @@ const OurVisionSection = () => {
                                    scale-90 lg:scale-125 xl:scale-150 
                                    w-[100vw] sm:w-full"
                     >
-                        <Spline
+                        {/* <Spline
                             scene="https://prod.spline.design/oMmUby6YEqG3VTjS/scene.splinecode"
                             className="!h-[400px] !xl:h-[600px] !w-[600px]"
-                        />
+                        /> */}
 
                         <Link to={routes.event}>
                             <div className="absolute left-0 right-0 bottom-0 h-16 cursor-pointer"></div>

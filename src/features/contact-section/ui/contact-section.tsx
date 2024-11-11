@@ -1,4 +1,4 @@
-import Spline from "@splinetool/react-spline";
+// import Spline from "@splinetool/react-spline";
 import { Link } from "react-router-dom";
 
 import { DefaultButton } from "@/shared/ui/buttons";
@@ -65,10 +65,10 @@ const ContactSection = () => {
                             </div>
                         </div>
                         <div className="hidden lg:block w-[700px]">
-                            <Spline
+                            {/* <Spline
                                 scene="https://prod.spline.design/K1GucrIZAgAvvtHu/scene.splinecode"
                                 className="h-full lg:max-h-[40dvh]"
-                            />
+                            /> */}
                         </div>
                     </div>
                 </div>
