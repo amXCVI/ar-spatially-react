@@ -3,6 +3,7 @@ import dayjs from "dayjs";
 import { ObjectCommentInterface } from "@/shared/types";
 import { OptionButton, OptionDots } from "@/shared/ui/option-dots";
 import { AutoTags } from "@/shared/ui/text-with-tags";
+import { UserAvatar } from "@/shared/ui/user-avatar";
 
 import { useCommentHook } from "../model";
 
@@ -25,10 +26,7 @@ const Comment = ({
         <div className="flex flex-col w-full">
             <div className="flex gap-2 items-center">
                 <div className="w-9 h-9 aspect-square rounded-full overflow-hidden">
-                    <img
-                        src={`${import.meta.env.VITE_APP_API_BASE_URL}gateway/file/get?fileId=${comment.author.avatarId}`}
-                        className="w-full h-full"
-                    />
+                    <UserAvatar avatarId={comment.author.avatarId} className="w-full h-full" />
                 </div>
                 <div className="flex flex-col text-white">
                     <span>{comment.author.name ?? comment.author.nickname}</span>
