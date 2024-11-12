@@ -42,6 +42,7 @@ const useProfileSettingsGroupHook = () => {
                     if (err.status === 409) {
                         setError("nickname", { message: "Nickname already exists" });
                     }
+                    // ! Добавить обработку остальных ошибок
                 });
         }
     };
