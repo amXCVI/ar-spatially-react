@@ -93,7 +93,7 @@ const MapComponent = ({
         <DefaultMap
             onMousemove={handleMouseMove}
             defaultCenter={{ lat: 25.1132415, lng: 55.2233329 }}
-            // mapId={import.meta.env.VITE_APP_GOOGLE_MAP_ID}
+            mapId={import.meta.env.VITE_APP_GOOGLE_MAP_ID}
             className="g-map-polygons h-dvh md:max-h-[60vh] w-full"
             disableDefaultUI={true}
             reuseMaps={true}
