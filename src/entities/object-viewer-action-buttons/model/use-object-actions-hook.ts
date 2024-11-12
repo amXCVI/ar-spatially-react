@@ -1,3 +1,4 @@
+import { useUserContext } from "@/shared/stores";
 import { useAuthContext } from "@/shared/stores/auth-provider";
 import { MarkerInterface, ObjectViewerModes } from "@/shared/types";
 
@@ -11,6 +12,7 @@ const useObjectActionsHook = ({
     handleLikeObject: () => void;
 }) => {
     const { checkAuth } = useAuthContext();
+    const { user } = useUserContext();
 
     const likeObject = () => {
         checkAuth().then(() => {
@@ -37,8 +39,17 @@ const useObjectActionsHook = ({
     };
     const handleViewObjectOnMap = () => {};
     const handleViewArObject = () => {};
+    const handleEditIcon = () => {};
 
-    return { handleShareObject, handleCommentObject, handleViewObjectOnMap, handleViewArObject, likeObject };
+    return {
+        handleShareObject,
+        handleCommentObject,
+        handleViewObjectOnMap,
+        handleViewArObject,
+        likeObject,
+        handleEditIcon,
+        isMyObject: user?.userId === object.ownerId,
+    };
 };
 
 export { useObjectActionsHook };

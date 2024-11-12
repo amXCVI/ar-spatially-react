@@ -7,6 +7,7 @@ import { MarkerInterface, ObjectViewerModes } from "@/shared/types";
 
 import ArIcon from "../assets/ar-icon.svg?react";
 import CommentIcon from "../assets/comment-icon.svg?react";
+import EditIcon from "../assets/edit-icon.svg?react";
 import LikeIcon from "../assets/like-icon.svg?react";
 import LocationIcon from "../assets/location-icon.svg?react";
 import ShareIcon from "../assets/share-icon.svg?react";
@@ -24,12 +25,19 @@ const ObjectViewerActionButtons = ({
     setViewerModalMode: (e: ObjectViewerModes) => void;
     handleLikeObject: () => void;
 }) => {
-    const { handleShareObject, handleCommentObject, handleViewObjectOnMap, handleViewArObject, likeObject } =
-        useObjectActionsHook({
-            object,
-            setViewerModalMode,
-            handleLikeObject,
-        });
+    const {
+        handleShareObject,
+        handleCommentObject,
+        handleViewObjectOnMap,
+        handleViewArObject,
+        likeObject,
+        handleEditIcon,
+        isMyObject,
+    } = useObjectActionsHook({
+        object,
+        setViewerModalMode,
+        handleLikeObject,
+    });
 
     return (
         <div className="flex gap-4">
@@ -42,8 +50,8 @@ const ObjectViewerActionButtons = ({
             >
                 <ActionButton action={handleViewObjectOnMap} icon={<LocationIcon />} />
             </Link>
-
             <ActionButton action={handleViewArObject} icon={<ArIcon />} />
+            {isMyObject && <ActionButton action={handleEditIcon} icon={<EditIcon />} />}
         </div>
     );
 };

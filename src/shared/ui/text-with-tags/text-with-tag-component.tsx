@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-
 import { routes } from "@/shared/config";
 import { SearchParamsConstants } from "@/shared/config/constants";
 import {
@@ -8,6 +6,8 @@ import {
     PostTagInterface,
     QuoteTagInterface,
 } from "@/shared/types";
+
+import { useTagHook } from "./use-tag-hook";
 
 const AutoTags = ({
     text,
@@ -18,6 +18,8 @@ const AutoTags = ({
     tags?: (PostCommentTagInterface | PostTagInterface | QuoteTagInterface | ObjectCommentTagInterface)[] | null;
     className?: string;
 }) => {
+    const { handleClickOnTag } = useTagHook();
+
     if (!tags) {
         return <div className={className}>{text}</div>;
     }
@@ -32,13 +34,17 @@ const AutoTags = ({
 
                     if (tag) {
                         return (
-                            <Link
+                            <span
+                                onClick={() =>
+                                    handleClickOnTag(
+                                        `/${routes.user}?${SearchParamsConstants.userIdSearchParamsKey}=${tag.userId}`,
+                                    )
+                                }
                                 key={i}
-                                to={`/${routes.user}?${SearchParamsConstants.userIdSearchParamsKey}=${tag.userId}`}
-                                className="text-blue-accent"
+                                className="text-blue-accent cursor-pointer"
                             >
                                 {part}
-                            </Link>
+                            </span>
                         );
                     } else {
                         return <span key={i}>{part}</span>;

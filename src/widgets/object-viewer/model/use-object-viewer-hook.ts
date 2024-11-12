@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import { useSearchParams } from "react-router-dom";
 
@@ -24,11 +24,26 @@ const useObjectViewerHook = () => {
 
     const { handleLikeObject: onLikeObject } = useObjectActionsHook();
 
+    const closeModal = useCallback(() => {
+        setIsOpenMapModal(false);
+        setSelectedObject(null);
+        setViewerModalMode(ObjectViewerModes.VIEW);
+
+        setSearchParams({
+            ...Object.fromEntries(searchParams.entries()),
+            [SearchParamsConstants.objectIdSearchParamsKey]: "",
+        });
+    }, [searchParams, setSearchParams]);
+
     useEffect(() => {
         if (selectedObjectId && !isOpenMapModal) {
             setIsOpenMapModal(true);
         }
-    }, [isOpenMapModal, selectedObjectId]);
+
+        if (!selectedObjectId && isOpenMapModal) {
+            closeModal();
+        }
+    }, [closeModal, isOpenMapModal, selectedObjectId]);
 
     useEffect(() => {
         if (selectedObjectId) {
@@ -48,16 +63,6 @@ const useObjectViewerHook = () => {
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selectedObjectId]);
-
-    const closeModal = () => {
-        setIsOpenMapModal(false);
-        setSelectedObject(null);
-
-        setSearchParams({
-            ...Object.fromEntries(searchParams.entries()),
-            [SearchParamsConstants.objectIdSearchParamsKey]: "",
-        });
-    };
 
     const handleLikeObject = () => {
         if (selectedObject) {
