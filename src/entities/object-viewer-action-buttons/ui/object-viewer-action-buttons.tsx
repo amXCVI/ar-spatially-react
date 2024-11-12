@@ -24,14 +24,16 @@ const ObjectViewerActionButtons = ({
     setViewerModalMode: (e: ObjectViewerModes) => void;
     handleLikeObject: () => void;
 }) => {
-    const { handleShareObject, handleCommentObject, handleViewObjectOnMap, handleViewArObject } = useObjectActionsHook({
-        object,
-        setViewerModalMode,
-    });
+    const { handleShareObject, handleCommentObject, handleViewObjectOnMap, handleViewArObject, likeObject } =
+        useObjectActionsHook({
+            object,
+            setViewerModalMode,
+            handleLikeObject,
+        });
 
     return (
         <div className="flex gap-4">
-            <ActionButton action={handleLikeObject} icon={<LikeIcon style={{ fill: userLike ? "red" : "white" }} />} />
+            <ActionButton action={likeObject} icon={<LikeIcon style={{ fill: userLike ? "red" : "white" }} />} />
             <ActionButton action={handleCommentObject} icon={<CommentIcon />} />
             <ActionButton action={handleShareObject} icon={<ShareIcon />} />
             <Link

@@ -99,8 +99,6 @@ const renderModalContent = ({
                 </Fragment>
             );
     }
-
-    return <div></div>;
 };
 
 export { ObjectViewer };

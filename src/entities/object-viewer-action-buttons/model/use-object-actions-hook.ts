@@ -1,12 +1,23 @@
+import { useAuthContext } from "@/shared/stores/auth-provider";
 import { MarkerInterface, ObjectViewerModes } from "@/shared/types";
 
 const useObjectActionsHook = ({
     object,
     setViewerModalMode,
+    handleLikeObject,
 }: {
     object: MarkerInterface;
     setViewerModalMode: (e: ObjectViewerModes) => void;
+    handleLikeObject: () => void;
 }) => {
+    const { checkAuth } = useAuthContext();
+
+    const likeObject = () => {
+        checkAuth().then(() => {
+            handleLikeObject();
+        });
+    };
+
     const handleShareObject = () => {
         if (navigator.share) {
             navigator
@@ -20,11 +31,14 @@ const useObjectActionsHook = ({
         }
     };
     const handleCommentObject = () => {
-        setViewerModalMode(ObjectViewerModes.COMMENT);
+        checkAuth().then(() => {
+            setViewerModalMode(ObjectViewerModes.COMMENT);
+        });
     };
     const handleViewObjectOnMap = () => {};
     const handleViewArObject = () => {};
-    return { handleShareObject, handleCommentObject, handleViewObjectOnMap, handleViewArObject };
+
+    return { handleShareObject, handleCommentObject, handleViewObjectOnMap, handleViewArObject, likeObject };
 };
 
 export { useObjectActionsHook };
