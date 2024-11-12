@@ -15,6 +15,7 @@ import {
     UserSubscriberInterface,
 } from "@/shared/types";
 import { AutoTags } from "@/shared/ui/text-with-tags";
+import { UserAvatar } from "@/shared/ui/user-avatar";
 
 import CommentIcon from "../assets/comment-icon.svg?react";
 import EditIcon from "../assets/edit-icon.svg?react";
@@ -44,11 +45,8 @@ const FeedHeader = ({
 }) => {
     return (
         <div className="flex gap-4">
-            <img
-                src={`${import.meta.env.VITE_APP_API_BASE_URL}gateway/file/get?fileId=${author.avatarId}`}
-                alt={author.name}
-                className="rounded-full aspect-square w-16"
-            />
+            <UserAvatar avatarId={author.avatarId} className="w-16" />
+
             <div className="flex flex-col justify-around" onClick={onClick}>
                 <b>{author.name}</b>
                 <div className="flex gap-2">

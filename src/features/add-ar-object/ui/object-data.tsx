@@ -11,25 +11,21 @@ import { useFileUploaderHook } from "../model";
 const ObjectData = ({
     objectName,
     glbModelFileName,
-    previewSrc,
     objectDescription,
     selectedLayerId,
     onChangeObjectName,
     onChangeObjectDescription,
     onChangeSelectLayer,
     onDropGlbModelCallback,
-    onDropModelPreviewCallback,
 }: {
     objectName: string;
     glbModelFileName?: string;
-    previewSrc?: string;
     objectDescription: string;
     selectedLayerId?: string;
     onChangeObjectName: (e: ChangeEvent<HTMLInputElement>) => void;
     onChangeObjectDescription: (e: ChangeEvent<HTMLTextAreaElement>) => void;
     onChangeSelectLayer: (e: ChangeEvent<HTMLSelectElement>) => void;
     onDropGlbModelCallback: (e: File) => void;
-    onDropModelPreviewCallback: (e: File) => void;
 }) => {
     const { layersList } = useUserLayersHook();
 
@@ -51,7 +47,7 @@ const ObjectData = ({
                     accept={{ "model/gltf-binary": [".glb"] }}
                     onDropFileCallback={onDropGlbModelCallback}
                 />
-                <FileUploader
+                {/* <FileUploader
                     title="Load AR Object preview"
                     label={
                         <span>
@@ -62,7 +58,7 @@ const ObjectData = ({
                     previewSrc={previewSrc}
                     accept={{ "image/jpeg": [".jpeg", ".png"] }}
                     onDropFileCallback={onDropModelPreviewCallback}
-                />
+                /> */}
             </div>
             <DarkSilverTextAreaField
                 label="Description"

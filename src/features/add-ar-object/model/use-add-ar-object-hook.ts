@@ -1,3 +1,4 @@
+import { ModelViewerElement } from "@google/model-viewer";
 import { ChangeEvent, useEffect, useState } from "react";
 
 import { ApiEndpoints } from "@/shared/api";
@@ -14,13 +15,13 @@ const useAddArObjectHook = () => {
     const { checkAuth } = useAuthContext();
 
     const [isOpenMapModal, setIsOpenMapModal] = useState<boolean>(false);
-    const [step, setStep] = useState<number>(0);
+    const [step, setStep] = useState<number>(2);
     const [disabledNextStep, setDisabledNextStep] = useState<boolean>(false);
 
     const [objectName, setObjectName] = useState<string>("");
     const [objectDescription, setObjectDescription] = useState<string>("");
     const [glbModelFile, setGlbModelFile] = useState<File | null>(null);
-    const [modelPreviewFile, setModelPreviewFile] = useState<File | null>(null);
+    const [modelPreviewSrc, setModelPreviewSrc] = useState<string | null>(null);
     const [selectedLayerId, setSelectedLayerId] = useState<string | undefined>(undefined);
     const [objectLocation, setObjectLocation] = useState<{ lat: number; lng: number } | null>(null);
 
@@ -35,36 +36,46 @@ const useAddArObjectHook = () => {
         setObjectName("");
         setObjectDescription("");
         setGlbModelFile(null);
-        setModelPreviewFile(null);
         setObjectLocation(null);
+        setStep(0);
     };
 
     useEffect(() => {
         if (step === 0) {
-            if (objectName && glbModelFile && modelPreviewFile && selectedLayerId) {
+            if (objectName && glbModelFile && selectedLayerId) {
                 setDisabledNextStep(false);
             } else {
                 setDisabledNextStep(true);
             }
         }
         if (step === 1) {
+            setDisabledNextStep(false);
+        }
+        if (step === 2) {
             if (objectLocation) {
                 setDisabledNextStep(false);
             } else {
                 setDisabledNextStep(true);
             }
         }
-    }, [glbModelFile, modelPreviewFile, objectName, step, objectLocation, selectedLayerId]);
+    }, [glbModelFile, objectName, step, objectLocation, selectedLayerId, modelPreviewSrc]);
 
     const nextStep = () => {
         if (!disabledNextStep) {
             switch (step) {
                 case 0:
-                    // to map
+                    // to preview
                     setStep(1);
                     break;
 
                 case 1:
+                    // to map
+                    getPreviewFromGlbModel().then(() => {
+                        setStep(2);
+                    });
+                    break;
+
+                case 2:
                     // save object
                     saveObject();
                     break;
@@ -77,6 +88,11 @@ const useAddArObjectHook = () => {
 
     const prevStep = () => {
         switch (step) {
+            case 2:
+                // to preview
+                setStep(1);
+                break;
+
             case 1:
                 // to data
                 setStep(0);
@@ -96,10 +112,6 @@ const useAddArObjectHook = () => {
         setGlbModelFile(file);
     };
 
-    const onDropModelPreviewCallback = (file: File) => {
-        setModelPreviewFile(file);
-    };
-
     const onChangeObjectName = (e: ChangeEvent<HTMLInputElement>) => {
         setObjectName(e.target.value);
     };
@@ -116,16 +128,30 @@ const useAddArObjectHook = () => {
         setObjectLocation(e);
     };
 
-    const saveObject = () => {
-        if (glbModelFile && modelPreviewFile && objectLocation && selectedLayerId && user) {
+    const getPreviewFromGlbModel = async () => {
+        if (glbModelFile) {
+            const modelViewer: ModelViewerElement = document.getElementById(glbModelFile.name) as ModelViewerElement;
+
+            if (modelViewer) {
+                const blob = await modelViewer.toBlob({ idealAspect: false });
+
+                setModelPreviewSrc(URL.createObjectURL(blob));
+            }
+        }
+    };
+
+    const saveObject = async () => {
+        if (glbModelFile && modelPreviewSrc && objectLocation && selectedLayerId && user) {
             const alt = 1;
             const width = 1;
             const height = 1;
 
+            const previewFile = await fetch(modelPreviewSrc).then((response) => response.blob());
+
             ApiEndpoints.object
                 .uploadObject({
                     modelFile: glbModelFile,
-                    previewFile: modelPreviewFile,
+                    previewFile: new File([previewFile], `${objectName}.png`),
                     title: objectName,
                     description: objectDescription,
                     layerId: selectedLayerId,
@@ -149,6 +175,9 @@ const useAddArObjectHook = () => {
                                 size: { width: width, height: height },
                                 status: MarkerStatusEnum.NEW,
                                 title: objectName,
+                                userFavorite: false,
+                                userLike: false,
+                                likes: 0,
                             },
                         }),
                     );
@@ -166,10 +195,9 @@ const useAddArObjectHook = () => {
         nextStep,
         prevStep,
 
-        previewSrc: modelPreviewFile ? URL.createObjectURL(modelPreviewFile) : undefined,
+        previewSrc: modelPreviewSrc,
+        glbModelFile,
         onDropGlbModelCallback,
-        glbModelFileName: glbModelFile?.name,
-        onDropModelPreviewCallback,
         objectName,
         onChangeObjectName,
         objectDescription,

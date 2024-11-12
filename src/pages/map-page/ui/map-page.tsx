@@ -1,7 +1,5 @@
 import { APIProvider, MapComponent } from "@ar-kit/lib";
 
-import { ObjectViewer } from "@/widgets/object-viewer";
-
 import MapHeader from "@/features/map-header";
 
 // import { NftItem } from "@/features/nft-item";
@@ -44,7 +42,6 @@ const MapPage = () => {
                     mapId={import.meta.env.VITE_APP_GOOGLE_MAP_ID}
                 />
 
-                <ObjectViewer />
                 {/* <NftItem
                     selectedMarker={selectedMarker}
                     onCloseViewer={onCloseViewer}

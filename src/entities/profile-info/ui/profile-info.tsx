@@ -1,5 +1,6 @@
+import { UserAvatar } from "@/shared/ui/user-avatar";
+
 import CopyIcon from "../assets/copy-icon.svg?react";
-import DefaultUserAvatar from "../assets/default-avatar.svg?react";
 
 import { useProfileHook } from "../model";
 
@@ -16,15 +17,7 @@ const ProfileInfo = ({ className }: { className?: string }) => {
                   bg-dark-gray min-w-24 lg:min-w-32 max-w-24 lg:max-w-32 aspect-square
                     flex justify-center items-center cursor-pointer`}
             >
-                {user?.avatarId ? (
-                    <img
-                        src={`${import.meta.env.VITE_APP_API_BASE_URL}gateway/file/get?fileId=${user.avatarId}`}
-                        alt={user.name}
-                        className="w-full h-full"
-                    />
-                ) : (
-                    <DefaultUserAvatar />
-                )}
+                <UserAvatar avatarId={user?.avatarId} className="w-full h-full" />
             </div>
             {!!user && (
                 <div className="flex flex-col gap-3 max-w-full overflow-hidden">

@@ -1,14 +1,17 @@
-import React from "react";
+import { lazy } from "react";
 import { Outlet } from "react-router-dom";
 
-const WalletConnectModal = React.lazy(() => import("@/features/wallets-connect-modal"));
-const LoginModal = React.lazy(() => import("@/features/login-modal"));
+const ObjectViewer = lazy(() => import("@/widgets/object-viewer"));
+
+const WalletConnectModal = lazy(() => import("@/features/wallets-connect-modal"));
+const LoginModal = lazy(() => import("@/features/login-modal"));
 
 const BaseLayout = () => {
     return (
         <>
             <LoginModal />
             <WalletConnectModal />
+            <ObjectViewer />
             <Outlet />
         </>
     );

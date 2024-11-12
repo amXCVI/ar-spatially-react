@@ -68,8 +68,7 @@ const useObjectCommentsHook = ({ objectId, countComments }: { objectId: string; 
             ApiEndpoints.objectComment
                 .createComment({ objectId, commentText: newCommentValue })
                 .then((res) => {
-                    console.log(res);
-                    //! setCommentsList((e) => [...e, res]);
+                    setCommentsList((e) => [...e, res]);
                 })
                 .finally(() => {
                     setNewCommentValue("");

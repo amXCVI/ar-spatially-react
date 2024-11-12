@@ -5,7 +5,7 @@ import { UserProviders } from "@/shared/types";
 import EditIcon from "../assets/edit-icon.svg?react";
 
 import { useProfileSettingsGroupHook } from "../model";
-import { ProfileSettingsGroup, BlackTextField } from "./components";
+import { BlackTextField, ProfileSettingsGroup } from "./components";
 
 export const PersonalInfoBlock = () => {
     const { register, handleSubmit, handleEditPersonalInfo, control, userProvider, errors } =
@@ -31,6 +31,7 @@ export const PersonalInfoBlock = () => {
                 <Controller
                     control={control}
                     name="nickname"
+                    defaultValue=""
                     rules={{
                         required: "Required field",
                         pattern: {

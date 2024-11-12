@@ -1,3 +1,3 @@
 import { ObjectViewer } from "./ui";
 
-export { ObjectViewer };
+export default ObjectViewer;

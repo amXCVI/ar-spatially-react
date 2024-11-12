@@ -1,6 +1,3 @@
-import { Link } from "react-router-dom";
-
-import { SearchParamsConstants } from "@/shared/config/constants";
 import { ObjectInterface } from "@/shared/types";
 
 import FavoriteIcon from "../assets/favorite-icon.svg?react";
@@ -13,7 +10,7 @@ interface ArObjectItemProps {
 }
 
 const ArObjectItem = ({ object }: ArObjectItemProps) => {
-    const { handleLikeObject, handleFavoriteObject } = useArObjectItemHook({ object });
+    const { handleLikeObject, handleFavoriteObject, handleOpenObject } = useArObjectItemHook({ object });
 
     return (
         <div
@@ -30,11 +27,15 @@ const ArObjectItem = ({ object }: ArObjectItemProps) => {
                 <FavoriteIcon style={{ fill: object.userFavorite ? "red" : "white" }} />
             </div>
             <div className="flex gap-1 justify-between p-1 bg-object-item-title-bg rounded-t-[13px] absolute bottom-0 left-0 right-0">
-                <Link to={`?${SearchParamsConstants.objectIdSearchParamsKey}=${object.id}`} state={{ object: object }}>
-                    <span className="regular-16 text-white py-3 pl-4 text-nowrap overflow-hidden text-ellipsis">
+                <div
+                    onClick={handleOpenObject}
+                    className="w-full cursor-pointer"
+                    style={{ maxWidth: "calc(100% - 44px)" }}
+                >
+                    <span className="regular-16 text-white py-3 pl-4 text-nowrap overflow-hidden text-ellipsis w-full block">
                         {object.title}
                     </span>
-                </Link>
+                </div>
 
                 <div
                     className="flex gap-2 items-center rounded-[8px] rounded-br-[25px] p-3 cursor-pointer"
