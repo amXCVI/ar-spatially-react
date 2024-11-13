@@ -107,7 +107,10 @@ jobs:
         env:
           DOCKER_REGISTRY_TOKEN: ${{ secrets.DOCKER_REGISTRY_TOKEN }}
         run: |
+          registry_name="arspatially-reg"
+          
           echo "Triggering garbage collection..."
           curl -s -X POST \
+            -H "Content-Type: application/json" \
             -H "Authorization: Bearer $DOCKER_REGISTRY_TOKEN" \
             "https://api.digitalocean.com/v2/registry/${registry_name}/garbage-collection"
