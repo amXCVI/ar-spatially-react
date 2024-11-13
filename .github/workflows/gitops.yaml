@@ -22,7 +22,7 @@ jobs:
         run: |
           echo "Branch: ${{ env.BRANCH_NAME }}"
           echo "Matrix: ${{ matrix.project }}"
-          echo "Tag: registry.digitalocean.com/arspatially-reg/${{ matrix.project }}:${{ github.sha }}"
+          echo "Tag: registry.digitalocean.com/arspatially-reg/${{ matrix.project }}:${{ env.BRANCH_NAME }}-${{ github.sha }}"
 
       - name: Checkout repository
         uses: actions/checkout@v3
