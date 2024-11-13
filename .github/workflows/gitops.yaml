@@ -35,7 +35,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: ./${{ matrix.project }}/Dockerfile  # Указываем путь к Dockerfile
+          file: ./Dockerfile  # Указываем путь к Dockerfile
           push: true
           build-args: |
             TARGET_ENV=${{ env.BRANCH_NAME }}
