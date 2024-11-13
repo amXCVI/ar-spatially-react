@@ -38,7 +38,7 @@ const MobileSearch = ({ onChangeMapCenter, className }: MapHeaderProps) => {
             <div
                 className={`flex justify-center items-center duration-500 
                             border border-white/15 rounded-[30px] bg-granite-gray/35 backdrop-blur-lg
-                            relative w-10 h-10 3sm:w-12 3sm:h-12 lg:w-auto lg:h-14 aspect-square ${className}`}
+                            relative h-10 3sm:h-12 lg:h-14 lg:w-auto aspect-square ${className}`}
                 onClick={handleSearch}
             >
                 <SearchIcon className="lg:w-6 lg:h-6 m-auto" />
@@ -47,10 +47,10 @@ const MobileSearch = ({ onChangeMapCenter, className }: MapHeaderProps) => {
             {fieldMode === FieldModes.SEARCH && (
                 <div
                     ref={searchFieldRef}
-                    className="fixed bottom-7 lg:bottom-10 left-0 right-0 flex flex-col-reverse gap-2 z-[1000]"
+                    className="fixed bottom-7 lg:bottom-10 left-0 right-0 flex flex-col-reverse gap-2 px-2 z-[1000]"
                 >
                     <form
-                        className="container mx-auto bg-granite-gray/35 rounded-[30px] p-2 2sm:p-3 lg:p-4 border border-white/25 backdrop-blur-2xl"
+                        className="sm:container mx-auto w-full bg-granite-gray/35 rounded-[30px] p-2 3sm:p-3 lg:p-4 border border-white/25 backdrop-blur-2xl"
                         onSubmit={() => {
                             resetSearch();
                             handleSetInactive();
@@ -75,7 +75,7 @@ const MobileSearch = ({ onChangeMapCenter, className }: MapHeaderProps) => {
                     </form>
 
                     <div
-                        className={`container mx-auto flex flex-col gap-1 rounded-[30px] bg-dark-charcoal/75 backdrop-blur-sm
+                        className={`sm:container w-full mx-auto flex flex-col gap-1 rounded-[30px] bg-dark-charcoal/75 backdrop-blur-sm
                                     ${findedObjects.length || predictionResults.length ? "p-1 border border-white/25" : ""}
                                     duration-200`}
                     >
