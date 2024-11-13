@@ -11,7 +11,7 @@ const HomePage = () => {
     useTitle("AR Spatially - Home");
 
     useDescription(
-        "Unique AR platform where digital meets. Dive into immersive experiences, engage with 3D AR objects, and explore geolocation-based interactions.",
+        "Unique AR platform where digital meets reality. Dive into immersive experiences, engage with 3D AR objects, and explore geolocation-based interactions.",
     );
 
     return (
