@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 
 import { ApiEndpoints } from "@/shared/api";
 import { useAuthorizeHook } from "@/shared/lib/authorize-hook";
+import { useUserContext } from "@/shared/stores";
 import { SignInPopupModes, useAuthContext } from "@/shared/stores/auth-provider";
 
 import { LoginFormInterface } from "../types";
@@ -10,12 +11,16 @@ const useLoginHook = () => {
     const { onLogin } = useAuthorizeHook();
 
     const { isOpenLoginPopup, closeLoginModal, openLoginModal } = useAuthContext();
+    const { setData } = useUserContext();
 
     const {
         register,
         handleSubmit,
+        setError,
+        reset,
+        watch,
         formState: { errors, isValid },
-    } = useForm<LoginFormInterface>();
+    } = useForm<LoginFormInterface>({ mode: "onBlur" });
 
     const login = (e: LoginFormInterface) => {
         return ApiEndpoints.user.login(e);
@@ -27,9 +32,15 @@ const useLoginHook = () => {
 
     const handleClickSignIn = (e: LoginFormInterface) => {
         if (isValid) {
-            login(e).then((res) => {
-                onLogin({ token: res.token });
-            });
+            login(e)
+                .then((res) => {
+                    setData({ user: res.user });
+                    onLogin({ token: res.token });
+                })
+                .catch((err) => {
+                    setError("login", { message: err.error });
+                    setError("password", { message: err.error });
+                });
         }
     };
 
@@ -42,6 +53,8 @@ const useLoginHook = () => {
     };
 
     const toggleSigninModalMode = (e: SignInPopupModes) => {
+        reset(watch(), { keepValues: false, keepDirty: false, keepDefaultValues: false });
+
         openLoginModal(e);
     };
 

@@ -1,6 +1,8 @@
 import { useOutsideClick } from "@ar-kit/shared/hooks";
 import React from "react";
 
+import { SignInPopupModes } from "@/shared/stores/auth-provider";
+
 import AppleIcon from "./../icons/apple.svg?react";
 import FacebookIcon from "./../icons/facebook.svg?react";
 import GoogleIcon from "./../icons/google.svg?react";
@@ -8,7 +10,6 @@ import XIcon from "./../icons/x.svg?react";
 import logo from "/images/login-popup/logo.svg";
 
 import { useGoogleOauthHook, useLoginHook, useXOauthHook } from "../model";
-import { SignInPopupModes } from "@/shared/stores/auth-provider";
 
 const LoginModal = () => {
     const {
@@ -217,11 +218,11 @@ const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
 
                 <input
                     id={id}
-                    className={`border ${errorMessage ? "border-gray70" : "border-gray70"} bg-dark-bg text-white onest-regular-18 px-6 py-3 rounded-[25px]`}
+                    className={`border ${errorMessage ? "border-red-500" : "border-gray70"} bg-dark-bg text-white onest-regular-18 px-6 py-3 rounded-[25px] duration-300`}
                     ref={ref}
                     {...props}
                 />
-                {/* <div className="absolute -bottom-4 manrope-regular-12 text-red-500">{errorMessage}</div> */}
+                <div className="absolute -bottom-4 left-6 manrope-regular-12 text-red-500">{errorMessage}</div>
             </div>
         );
     },

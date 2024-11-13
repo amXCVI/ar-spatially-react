@@ -15,14 +15,15 @@ const login = async ({ login, password }: { login: string; password: string }) =
     const url = `/gateway/user/login`;
 
     try {
-        const response = await apiClient.post(url, {
-            email: login,
-            password,
-        });
+        const response: AxiosResponse<ApiResponseInterface<{ token: string; user: UserInterface }>> =
+            await apiClient.post(url, {
+                email: login,
+                password,
+            });
 
         return response.data.data;
-    } catch (error) {
-        throw new Error(`${url} ErrorRequest: ${error}`);
+    } catch (err) {
+        throw err;
     }
 };
 

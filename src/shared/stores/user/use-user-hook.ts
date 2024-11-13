@@ -6,12 +6,20 @@ import { UserInterface } from "@/shared/types";
 
 import { useAuthContext } from "../auth-provider";
 
+const getUserDataFromLS = () => {
+    try {
+        const userDataStr = localStorage.getItem(LSConstants.userData);
+
+        return JSON.parse(userDataStr ?? "");
+    } catch (error) {
+        return null;
+    }
+};
+
 const useUserHook = () => {
     const { authenticated } = useAuthContext();
 
-    const [user, setUser] = useState<UserInterface | null>(
-        JSON.parse(localStorage.getItem(LSConstants.userData) || "null"),
-    );
+    const [user, setUser] = useState<UserInterface | null>(getUserDataFromLS());
 
     const setUserData = (e: UserInterface | null) => {
         setUser(e);

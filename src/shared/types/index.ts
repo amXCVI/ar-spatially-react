@@ -1,4 +1,4 @@
-import { ApiResponseInterface } from "./api-types";
+import { ApiResponseErrorInterface, ApiResponseInterface } from "./api-types";
 import { LayerInterface, LayerStatus } from "./layer-types";
 import { AnchorInterface, AnchotTypeEnum, MarkerInterface, MarkerStatusEnum, ObjectViewerModes } from "./marker-types";
 import { ObjectCommentInterface, ObjectCommentTagInterface } from "./object-comment-types";
@@ -28,7 +28,7 @@ import {
 
 export { type MarkerInterface, type AnchorInterface, AnchotTypeEnum, MarkerStatusEnum };
 
-export { type ApiResponseInterface };
+export { type ApiResponseInterface, type ApiResponseErrorInterface };
 
 export {
     type UserInterface,

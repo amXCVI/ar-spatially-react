@@ -51,7 +51,8 @@ const onResponseError = (error: AxiosError<ApiResponseInterface<string>>): Promi
             }
             localStorage.removeItem(LSConstants.accessToken);
             // window.location.pathname = routes.root;
-            break;
+
+            throw error.response?.data;
 
         default:
             throw error.response?.data;
