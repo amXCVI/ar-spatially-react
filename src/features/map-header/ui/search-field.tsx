@@ -55,6 +55,11 @@ const SearchField = ({ className, onChangeMapCenter }: MapHeaderProps) => {
                         className="w-full border-none outline-none z-10 bg-transparent onest-medium-22 text-quick-silver"
                         value={searchInputValue}
                         type="search"
+                        onBlur={() => {
+                            setTimeout(() => {
+                                resetSearch();
+                            }, 500);
+                        }}
                     />
                 ) : (
                     <span

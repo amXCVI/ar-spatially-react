@@ -7,11 +7,13 @@ const useAppsSelectHook = () => {
 
     const { layersList, handleClickApp } = useContext(MapContext);
 
-    const toggleIsActiveSearchField = () => {
-        setIsActive((e) => !e);
+    const toggleIsActiveSearchField = (e?: boolean) => {
+        if (e !== undefined) {
+            setIsActive(e);
+        } else {
+            setIsActive((e) => !e);
+        }
     };
-
-    
 
     return { isActive, toggleIsActiveSearchField, handleClickApp, layersList };
 };

@@ -1,7 +1,8 @@
 import { MapBottomSheet, useMapBottomSheetHook } from "@/entities/map-bottom-sheet";
+import { Fragment } from "react/jsx-runtime";
 
-import { useOutsideClick } from "@/shared/lib/use-outside-click";
 import { LayerInterface, LayerStatus } from "@/shared/types";
+import { BackdropModal } from "@/shared/ui/modals";
 
 import AddAppIcon from "../assets/add-app.svg?react";
 import AppsIcon from "../assets/apps-icon.svg?react";
@@ -22,11 +23,12 @@ const AppsSelect = ({ className }: { className?: string }) => {
                         relative ${className}`}
         >
             <div
-                className={`flex gap-3 justify-center items-center p-2 lg:px-4 m-auto
+                className={`flex gap-3 justify-center items-center p-2 lg:px-4
                             cursor-pointer
                             rounded-[30px] border border-white/15 bg-granite-gray/35 backdrop-blur-lg
                             h-10 3sm:h-12 lg:h-14
                             aspect-square lg:aspect-auto
+                            mb-auto
                            `}
                 onClick={() => {
                     toggleIsActiveSearchField();
@@ -64,7 +66,14 @@ const AppsSelect = ({ className }: { className?: string }) => {
                     })}
             </div> */}
 
-            <MapBottomSheet isOpen={isOpen} closeBottomSheet={closeBottomSheet} className="xl:hidden">
+            <MapBottomSheet
+                isOpen={isOpen}
+                closeBottomSheet={() => {
+                    closeBottomSheet();
+                    toggleIsActiveSearchField(false);
+                }}
+                className="xl:hidden"
+            >
                 <div
                     className={`flex flex-row gap-6 justify-center flex-wrap
                                 p-4 pb-24 lg:pb-32`}
@@ -84,72 +93,36 @@ const AppsSelect = ({ className }: { className?: string }) => {
                 </div>
             </MapBottomSheet>
 
-            <AppsPopup
-                layersList={layersList}
-                isOpenAppsPopup={isActive}
-                className="hidden xl:flex"
-                handleClickApp={handleClickApp}
-                toggleIsActiveSearchField={toggleIsActiveSearchField}
-            />
-        </div>
-    );
-};
-
-export const AppsPopup = ({
-    className,
-    layersList,
-    isOpenAppsPopup,
-    handleClickApp,
-    toggleIsActiveSearchField,
-}: {
-    className?: string;
-    layersList: LayerInterface[];
-    isOpenAppsPopup: boolean;
-    handleClickApp: (e: string) => void;
-    toggleIsActiveSearchField: () => void;
-}) => {
-    const appsSelectRef = useOutsideClick(() => {
-        if (isOpenAppsPopup) {
-            toggleIsActiveSearchField();
-        }
-    });
-
-    return (
-        <div
-            className={`fixed top-0 ${isOpenAppsPopup ? "right-0 bottom-0 left-0 z-10" : "!h-0 overflow-hidden"} flex justify-center items-center ${className}`}
-        >
-            <div
-                className={`container duration-500 flex flex-col items-center justify-between overflow-hidden z-50
-                backdrop-blur-xl rounded-[34px] border border-white/25 h-min
-                mx-10 max-w-prose
-                p-9
-                `}
-                style={{
-                    background:
-                        "linear-gradient(105.87deg, rgba(133, 133, 133, 0.4) 3.04%, rgba(82, 82, 82, 0.24) 99.24%)",
-                }}
-                ref={appsSelectRef}
+            <BackdropModal
+                isOpen={isActive}
+                closeModal={() => toggleIsActiveSearchField(false)}
+                className={`!bg-dark-bg p-6 hidden xl:flex`}
             >
-                <div className="flex justify-between w-full cursor-pointer" onClick={toggleIsActiveSearchField}>
-                    <div className="w-4" />
-                    <b className="text-white roboto-regular-24">Apps</b>
-                    <CloseMenuIcon />
-                </div>
-                <div className={`flex gap-1 flex-wrap justify-center my-5`}>
-                    {layersList.map((item) => {
-                        const isSelectedApp = item.status === LayerStatus.ACTIVE;
+                <Fragment>
+                    <div
+                        className="flex justify-between w-full cursor-pointer"
+                        onClick={() => toggleIsActiveSearchField(false)}
+                    >
+                        <div className="w-4" />
+                        <b className="text-white roboto-regular-24">Apps</b>
+                        <CloseMenuIcon />
+                    </div>
+                    <div className={`flex gap-1 flex-wrap justify-center my-5`}>
+                        {layersList.map((item) => {
+                            const isSelectedApp = item.status === LayerStatus.ACTIVE;
 
-                        return (
-                            <AppItem
-                                key={item.id}
-                                appItem={item}
-                                handleClickApp={handleClickApp}
-                                isSelectedApp={isSelectedApp}
-                            />
-                        );
-                    })}
-                </div>
-            </div>
+                            return (
+                                <AppItem
+                                    key={item.id}
+                                    appItem={item}
+                                    handleClickApp={handleClickApp}
+                                    isSelectedApp={isSelectedApp}
+                                />
+                            );
+                        })}
+                    </div>
+                </Fragment>
+            </BackdropModal>
         </div>
     );
 };

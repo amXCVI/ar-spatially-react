@@ -10,11 +10,11 @@ interface BackdropModalProps {
 }
 
 const BackdropModal = ({ isOpen, closeModal, children, className }: BackdropModalProps) => {
-    const { modalRef } = useBackdropModalHook({ closeModal });
+    const { modalRef } = useBackdropModalHook({ closeModal, isOpenModal: isOpen });
 
     return (
         <div
-            className={`fixed top-0 ${isOpen ? "right-0 bottom-0 left-0 z-10" : "!h-0 overflow-hidden"} flex justify-center items-center backdrop-blur-sm`}
+            className={`fixed top-0 ${isOpen ? "right-0 bottom-0 left-0 z-10 backdrop-blur-sm" : "!h-0 overflow-hidden backdrop-blur-none"} flex justify-center items-center`}
         >
             <div
                 className={`md:container duration-500 ${
