@@ -88,7 +88,7 @@ jobs:
             "https://api.digitalocean.com/v2/registry/${registry_name}/repositories/${repository_name}/digests?per_page=100")
           
           # Проверяем, что запрос успешен
-          digests=$(echo "$response" | jq -r 'if .digests then .digests | sort_by(.updated_at) | .[0:-5] | .[].digest else empty end')
+          digests=$(echo "$response" | jq -r 'if .manifests then .manifests | sort_by(.updated_at) | .[0:-5] | .[].digest else empty end')
       
           if [ -z "$digests" ]; then
             echo "No digests found or failed to fetch digests."
