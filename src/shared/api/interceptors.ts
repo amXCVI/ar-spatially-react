@@ -1,7 +1,6 @@
 import { AxiosError, AxiosInstance, AxiosResponse, InternalAxiosRequestConfig } from "axios";
 import Cookies from "universal-cookie";
 
-import { routes } from "../config";
 import { CookiesConstants, LSConstants } from "../config/constants";
 import { ApiResponseInterface } from "../types";
 import { ApiEndpoints } from "./endpoints";
@@ -51,7 +50,7 @@ const onResponseError = (error: AxiosError<ApiResponseInterface<string>>): Promi
                 break;
             }
             localStorage.removeItem(LSConstants.accessToken);
-            window.location.pathname = routes.root;
+            // window.location.pathname = routes.root;
             break;
 
         default:

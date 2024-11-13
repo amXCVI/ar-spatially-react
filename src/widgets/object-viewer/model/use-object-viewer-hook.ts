@@ -29,9 +29,11 @@ const useObjectViewerHook = () => {
         setSelectedObject(null);
         setViewerModalMode(ObjectViewerModes.VIEW);
 
+        const newSearchParams = Object.fromEntries(searchParams.entries());
+        delete newSearchParams[SearchParamsConstants.objectIdSearchParamsKey];
+
         setSearchParams({
-            ...Object.fromEntries(searchParams.entries()),
-            [SearchParamsConstants.objectIdSearchParamsKey]: "",
+            ...newSearchParams,
         });
     }, [searchParams, setSearchParams]);
 

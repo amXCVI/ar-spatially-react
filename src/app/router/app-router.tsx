@@ -53,7 +53,11 @@ const AppRouter = () => {
 
                 {
                     path: routes.feeds,
-                    element: <FeedPagesLayout />,
+                    element: (
+                        <FeedPagesLayout>
+                            <PrivateRoute />
+                        </FeedPagesLayout>
+                    ),
                     children: [
                         { index: true, element: <FeedsPage /> },
                         { path: routes.feed, element: <FeedPage /> },

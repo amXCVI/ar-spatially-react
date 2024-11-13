@@ -1,5 +1,4 @@
 import { ReactNode } from "react";
-import { Outlet } from "react-router-dom";
 
 import { CreateFeedModal } from "@/features/create-feed-modal";
 import { FeedsFilter } from "@/features/feeds-filter";
@@ -15,8 +14,6 @@ const FeedPagesLayout = ({ children }: { children?: ReactNode }) => {
         <FeedsLayout>
             <FeedsFilter />
             {children}
-
-            <Outlet />
 
             <CreateFeedModal />
         </FeedsLayout>

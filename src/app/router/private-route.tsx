@@ -1,19 +1,25 @@
-import { Navigate, Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 
 import { routes } from "@/shared/config";
 import { useAuthContext } from "@/shared/stores/auth-provider";
 
 const PrivateRoute = () => {
-    const { authenticated } = useAuthContext();
+    const { authenticated, checkAuth, closeLoginModal } = useAuthContext();
+    const navigate = useNavigate();
 
-    switch (authenticated) {
-        // неавторизован
-        case false:
-            return <Navigate to={routes.root} replace />;
-
+    if (authenticated) {
         // авторизован
-        case true:
-            return <Outlet />;
+        return <Outlet />;
+    } else {
+        // неавторизован
+        checkAuth()
+            .then(() => {
+                return <Outlet />;
+            })
+            .catch(() => {
+                closeLoginModal();
+                navigate(routes.root, { replace: true });
+            });
     }
 };
 
