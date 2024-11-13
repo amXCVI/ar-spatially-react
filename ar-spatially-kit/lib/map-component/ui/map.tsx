@@ -56,7 +56,7 @@ const Map = ({
                 disableDefaultUI={true}
                 //
                 defaultZoom={zoom}
-                // zoom={zoom}
+                zoom={zoom}
                 // onZoomChanged={(ev) => onChangeMapZoom(ev.detail.zoom)}
                 //
                 defaultCenter={center}
