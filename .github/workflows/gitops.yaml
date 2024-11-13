@@ -1,0 +1,113 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - dev
+      - main
+
+env:
+  BRANCH_NAME: ${{ github.ref_name }}
+  DOCKER_REGISTRY: registry.digitalocean.com
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        project: [ web ]
+
+    steps:
+      - name: Info
+        run: |
+          echo "Branch: ${{ env.BRANCH_NAME }}"
+          echo "Matrix: ${{ matrix.project }}"
+          echo "Tag: registry.digitalocean.com/arspatially-reg/${{ matrix.project }}:${{ github.sha }}"
+
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Log in to Docker Hub
+        run: echo "${{ secrets.DOCKER_REGISTRY_TOKEN }}" | docker login -u "${{ secrets.DOCKER_REGISTRY_USER }}" --password-stdin "${{ env.DOCKER_REGISTRY }}"
+
+      - name: Build and push Docker image for ${{ matrix.project }}
+
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./${{ matrix.project }}/Dockerfile  # Указываем путь к Dockerfile
+          push: true
+          build-args: |
+            TARGET_ENV=${{ env.BRANCH_NAME }}
+          tags: |
+            registry.digitalocean.com/arspatially-reg/${{ matrix.project }}:${{ env.BRANCH_NAME }}-${{ github.sha }}
+
+      - name: Checkout deployment repository
+        uses: actions/checkout@v4
+        with:
+          repository: tkzmrv/spatially-devops  # Указываем нужный репозиторий
+          token: ${{ secrets.DEVOPS_DEPLOY_TOKEN }}  # Используем секрет для доступа к репозиторию
+
+      - name: Update ${{ matrix.project }}-deployment.yaml with new Docker image
+        if: ${{ env.BRANCH_NAME == 'dev' }}
+        run: |
+          cd spatially-dev/applications/frontend
+          echo "Current directory: $(pwd)"
+          ls -la
+          sed -i 's|registry.digitalocean.com/arspatially-reg/${{ matrix.project }}:.*|registry.digitalocean.com/arspatially-reg/${{ matrix.project }}:${{ env.BRANCH_NAME }}-${{ github.sha }}|g' ${{ matrix.project }}-deployment.yaml
+          git config --global user.name "spatially-web action"
+          git config --global user.email "spatially-web-action"
+          git add ${{ matrix.project }}-deployment.yaml
+          git commit -m "Update ${{ matrix.project }}-deployment.yaml with new Docker image"
+          git push origin HEAD:main
+
+      - name: Update ${{ matrix.project }}-deployment.yaml with new Docker image
+        if: ${{ env.BRANCH_NAME == 'main' }}
+        run: |
+          cd spatially-prod/applications/frontend
+          echo "Current directory: $(pwd)"
+          ls -la
+          sed -i 's|registry.digitalocean.com/arspatially-reg/${{ matrix.project }}:.*|registry.digitalocean.com/arspatially-reg/${{ matrix.project }}:${{ env.BRANCH_NAME }}-${{ github.sha }}|g' ${{ matrix.project }}-deployment.yaml
+          git config --global user.name "spatially-web action"
+          git config --global user.email "spatially-web-action"
+          git add ${{ matrix.project }}-deployment.yaml
+          git commit -m "Update ${{ matrix.project }}-deployment.yaml with new Docker image"
+          git push origin HEAD:main
+
+      - name: Remove old Docker images from DigitalOcean
+        env:
+          DOCKER_REGISTRY_TOKEN: ${{ secrets.DOCKER_REGISTRY_TOKEN }}
+        run: |
+          # Название реестра и репозитория
+          registry_name="arspatially-reg"
+          repository_name="web"
+          
+          # Получаем список тегов (отсортированных по дате обновления) и оставляем только последние 5
+          response=$(curl -s -X GET \
+            -H "Authorization: Bearer $DOCKER_REGISTRY_TOKEN" \
+            "https://api.digitalocean.com/v2/registry/${registry_name}/repositories/${repository_name}/tags?per_page=100")
+          
+          # Проверяем, что запрос успешен
+          tags=$(echo "$response" | jq -r 'if .tags then .tags | sort_by(.updated_at) | .[0:-5] | .[].tag else empty end')
+      
+          if [ -z "$tags" ]; then
+            echo "No tags found or failed to fetch tags."
+            exit 1
+          fi
+      
+          # Удаляем старые теги
+          for tag in $tags; do
+            echo "Deleting tag: $tag"
+            curl -s -X DELETE \
+              -H "Authorization: Bearer $DOCKER_REGISTRY_TOKEN" \
+              "https://api.digitalocean.com/v2/registry/${registry_name}/repositories/${repository_name}/tags/$tag"
+          done
+
+      - name: Trigger Garbage Collection on DO
+        env:
+          DOCKER_REGISTRY_TOKEN: ${{ secrets.DOCKER_REGISTRY_TOKEN }}
+        run: |
+          echo "Triggering garbage collection..."
+          curl -s -X POST \
+            -H "Authorization: Bearer $DOCKER_REGISTRY_TOKEN" \
+            "https://api.digitalocean.com/v2/registry/${registry_name}/garbage_collection"
