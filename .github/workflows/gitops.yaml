@@ -82,25 +82,25 @@ jobs:
           registry_name="arspatially-reg"
           repository_name="web"
           
-          # Получаем список тегов (отсортированных по дате обновления) и оставляем только последние 5
+          # Получаем список образов (отсортированных по дате обновления) и оставляем только последние 5
           response=$(curl -s -X GET \
             -H "Authorization: Bearer $DOCKER_REGISTRY_TOKEN" \
-            "https://api.digitalocean.com/v2/registry/${registry_name}/repositories/${repository_name}/tags?per_page=100")
+            "https://api.digitalocean.com/v2/registry/${registry_name}/repositories/${repository_name}/digests?per_page=100")
           
           # Проверяем, что запрос успешен
-          tags=$(echo "$response" | jq -r 'if .tags then .tags | sort_by(.updated_at) | .[0:-5] | .[].tag else empty end')
+          digests=$(echo "$response" | jq -r 'if .digests then .digests | sort_by(.updated_at) | .[0:-5] | .[].digest else empty end')
       
-          if [ -z "$tags" ]; then
-            echo "No tags found or failed to fetch tags."
+          if [ -z "$digests" ]; then
+            echo "No digests found or failed to fetch digests."
             exit 1
           fi
       
-          # Удаляем старые теги
-          for tag in $tags; do
-            echo "Deleting tag: $tag"
+          # Удаляем старые образы
+          for digest in $digests; do
+            echo "Deleting digest: $digest"
             curl -s -X DELETE \
               -H "Authorization: Bearer $DOCKER_REGISTRY_TOKEN" \
-              "https://api.digitalocean.com/v2/registry/${registry_name}/repositories/${repository_name}/tags/$tag"
+              "https://api.digitalocean.com/v2/registry/${registry_name}/repositories/${repository_name}/digests/$digest"
           done
 
       - name: Trigger Garbage Collection on DO
@@ -110,4 +110,4 @@ jobs:
           echo "Triggering garbage collection..."
           curl -s -X POST \
             -H "Authorization: Bearer $DOCKER_REGISTRY_TOKEN" \
-            "https://api.digitalocean.com/v2/registry/${registry_name}/garbage_collection"
+            "https://api.digitalocean.com/v2/registry/${registry_name}/garbage-collection"
