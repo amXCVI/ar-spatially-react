@@ -15,7 +15,7 @@ const useAddArObjectHook = () => {
     const { checkAuth } = useAuthContext();
 
     const [isOpenMapModal, setIsOpenMapModal] = useState<boolean>(false);
-    const [step, setStep] = useState<number>(2);
+    const [step, setStep] = useState<number>(0);
     const [disabledNextStep, setDisabledNextStep] = useState<boolean>(false);
 
     const [objectName, setObjectName] = useState<string>("");
