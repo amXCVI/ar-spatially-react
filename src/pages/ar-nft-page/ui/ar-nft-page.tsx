@@ -78,10 +78,11 @@ const ArNftPage = () => {
                              bg-smoky-black-bg20 flex flex-col gap-6
                              lg:mt-11 mb-10 lg:mb-0"
                 >
-                    <SectionTitle title="AR Demo" className="text-white" />
-                    <h2 className="manrope-medium-22 text-white">Test your first AR object now </h2>
+                    <SectionTitle title="AR Feed" className="text-white" />
+                    <h2 className="manrope-medium-22 text-white">Share your AR world in our interactive AR Feed. </h2>
                     <TextP className="text-spanish-gray text-start">
-                        This is our Web AR demo experience. You can try it now and explore our solution in practice.
+                        Start your own channel, post updates, and promote your AR space to connect with a like-minded
+                        community. With AR Spatially’s library at your fingertips, content creation is easier than ever.
                     </TextP>
                     <a className="mx-auto mt-5 xl:mt-auto" href={`${routes.root}#contact`}>
                         <DefaultButton className="">
