@@ -1,21 +1,22 @@
+import { ClowerButton } from "@/entities/clower-button";
 import { useOutsideClick } from "@ar-kit/shared/hooks";
 import { Fragment, ReactNode, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { docsMenuLink, menuLinks, routes } from "@/shared/config";
-import { useUserContext } from "@/shared/stores";
-import { SignInPopupModes, useAuthContext } from "@/shared/stores/auth-provider";
+// import { useUserContext } from "@/shared/stores";
+// import { SignInPopupModes, useAuthContext } from "@/shared/stores/auth-provider";
+import { CloseModalIcon } from "@/shared/ui/modals";
 // import { DefaultButton } from "@/shared/ui/buttons";
 import { Socials } from "@/shared/ui/socials";
 
 // import AppStoreButton from "../assets/app-store-white-icon.svg?react";
 import BurgerIcon from "../assets/burger-icon.svg?react";
 // import BurgerIcon from "./burger-icon.svg?react";
-import CloseMenuIcon from "../assets/close-menu-icon.svg?react";
 // import PlayMarketButton from "../assets/google-play-white-icon.svg?react";
 import Logo from "../assets/logo.svg?react";
 import MenuIcon from "../assets/menu-icon.svg?react";
-import PersonIcon from "../assets/person-icon.svg?react";
+// import PersonIcon from "../assets/person-icon.svg?react";
 
 // import shortLogo from "/images/landing/header/short-logo.svg";
 
@@ -99,7 +100,7 @@ const Header = ({ white, actionButton }: HeaderInterface) => {
                 <MobileMenu show={show} />
 
                 <div className={`fixed ${show ? "top-20 right-4 lg:top-6" : "bottom-20 right-4 lg:top-[5.5rem]"}`}>
-                    {actionButton ?? <Profile />}
+                    {actionButton ?? <ClowerButton />}
                 </div>
             </div>
         </header>
@@ -158,7 +159,7 @@ export const MobileMenu = ({ white = false, show, className, iconClassname }: Mo
                     <div className="flex justify-between w-full p-10 cursor-pointer" onClick={toggleMobileMenu}>
                         <div className="w-4" />
                         <b className="text-white">Menu</b>
-                        <CloseMenuIcon />
+                        <CloseModalIcon />
                     </div>
                     <div className={`flex gap-6 flex-wrap justify-center my-10`}>
                         {menuLinks.map((item) => {
@@ -202,40 +203,40 @@ export const MobileMenu = ({ white = false, show, className, iconClassname }: Mo
     );
 };
 
-const Profile = () => {
-    const navigation = useNavigate();
+// const Profile = () => {
+//     const navigation = useNavigate();
 
-    const { openLoginModal, authenticated } = useAuthContext();
+//     const { openLoginModal, authenticated } = useAuthContext();
 
-    const { user } = useUserContext();
+//     const { user } = useUserContext();
 
-    const handleClickProfile = () => {
-        if (authenticated) {
-            navigation(`/${routes.lk}`);
-        } else {
-            openLoginModal(SignInPopupModes.SignUp);
-        }
-    };
+//     const handleClickProfile = () => {
+//         if (authenticated) {
+//             navigation(`/${routes.lk}`);
+//         } else {
+//             openLoginModal(SignInPopupModes.SignUp);
+//         }
+//     };
 
-    return (
-        <div
-            onClick={handleClickProfile}
-            className={`flex justify-center items-center z-[1]
-                        cursor-pointer hover:bg-white50 w-14 h-14
-                        border border-blue-accent bg-white30 rounded-full backdrop-blur
-                        overflow-hidden`}
-        >
-            {user?.avatarId ? (
-                <img
-                    src={`${import.meta.env.VITE_APP_API_BASE_URL}gateway/file/get?fileId=${user.avatarId}`}
-                    alt={user.name}
-                    className=""
-                />
-            ) : (
-                <PersonIcon />
-            )}
-        </div>
-    );
-};
+//     return (
+//         <div
+//             onClick={handleClickProfile}
+//             className={`flex justify-center items-center z-[1]
+//                         cursor-pointer hover:bg-white50 w-14 h-14
+//                         border border-blue-accent bg-white30 rounded-full backdrop-blur
+//                         overflow-hidden`}
+//         >
+//             {user?.avatarId ? (
+//                 <img
+//                     src={`${import.meta.env.VITE_APP_API_BASE_URL}gateway/file/get?fileId=${user.avatarId}`}
+//                     alt={user.name}
+//                     className=""
+//                 />
+//             ) : (
+//                 <PersonIcon />
+//             )}
+//         </div>
+//     );
+// };
 
 export default Header;
