@@ -1,8 +1,9 @@
 import { Suspense, lazy } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
+import { RootLayout } from "@/widgets/root-layout";
+
 import { routes } from "@/shared/config";
-import { BaseLayout } from "@/shared/ui/layouts";
 
 import { ErrorBoundary } from "./error-boundary";
 import PrivateRoute from "./private-route";
@@ -30,7 +31,7 @@ const AppRouter = () => {
     const routers = createBrowserRouter([
         {
             path: routes.root,
-            element: <BaseLayout />,
+            element: <RootLayout />,
             children: [
                 { index: true, element: <HomePage /> },
 

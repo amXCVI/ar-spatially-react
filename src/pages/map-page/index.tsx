@@ -1,12 +1,6 @@
-import { MapContextProvider } from "@/shared/stores";
-
 import Map from "./ui";
 
 const MapPage = () => {
-    return (
-        <MapContextProvider>
-            <Map />
-        </MapContextProvider>
-    );
+    return <Map />;
 };
 export default MapPage;

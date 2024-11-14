@@ -1,17 +1,16 @@
-import { ReactNode } from "react";
 import { Outlet } from "react-router-dom";
 
-import { ObjectsFilter } from "@/features/objects-filter";
+import Header from "@/features/header";
 
-import { ObjectsLayout } from "@/shared/ui/layouts";
+import { DarkLayout } from "@/shared/ui/layouts";
 
-const ObjectPagesLayout = ({ children }: { children?: ReactNode }) => {
+const ObjectPagesLayout = () => {
     return (
-        <ObjectsLayout>
-            {children}
+        <DarkLayout className="flex flex-col">
+            <Header white />
+
             <Outlet />
-            <ObjectsFilter />
-        </ObjectsLayout>
+        </DarkLayout>
     );
 };
 

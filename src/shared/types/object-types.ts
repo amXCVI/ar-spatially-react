@@ -34,7 +34,7 @@ export enum AnchotTypeEnum {
 }
 
 export enum ObjectsPageModes {
-    ALL_AR_OBJECTS = "All AR Objects",
-    MY_AR_OBJECTS = "My AR Objects",
-    SAVED = "Saved",
+    LIBRARY = "Objects library",
+    MY_OBJECTS = "My objects",
+    FAVORITES = "Favorite",
 }

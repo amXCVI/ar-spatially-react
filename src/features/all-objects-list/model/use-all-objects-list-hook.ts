@@ -15,10 +15,15 @@ const useAllObjectsListHook = (props: { userId?: string }) => {
 
     const { objectsList, loading, objectsFilterString } = useAppSelector((state) => state.allObjectsSlice);
 
+    const { layersList } = useAppSelector((state) => state.layersSlice);
+
     useEffect(() => {
-        fetchObjects({ page: 1, byUser: userId ?? undefined, filterString: "" });
+        if (layersList.length) {
+            fetchObjects({ page: 1, byUser: userId ?? undefined, filterString: "" });
+        }
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [layersList]);
 
     const handleScroll = () => {
         const container = containerRef.current;
