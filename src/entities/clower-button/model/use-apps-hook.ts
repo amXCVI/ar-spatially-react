@@ -3,7 +3,8 @@ import { useNavigate } from "react-router-dom";
 
 import { ApiEndpoints } from "@/shared/api";
 import { routes } from "@/shared/config";
-import { useUserLayersHook } from "@/shared/stores";
+import { useAppDispatch, useAppSelector } from "@/shared/lib/redux-service";
+import { layersActions } from "@/shared/stores";
 import { useAuthContext } from "@/shared/stores/auth-provider";
 import { LayerInterface, LayerStatus } from "@/shared/types";
 
@@ -30,11 +31,13 @@ const layersToApps = (layers: LayerInterface[]) => {
 };
 
 const useAppsHook = () => {
+    const dispatch = useAppDispatch();
+
     const navigate = useNavigate();
 
     const { checkAuth } = useAuthContext();
 
-    const { layersList, setLayersList } = useUserLayersHook();
+    const { layersList } = useAppSelector((state) => state.layersSlice);
 
     const defaultApps: AppInterface[] = useMemo(
         () => [
@@ -95,7 +98,7 @@ const useAppsHook = () => {
                 status: status,
             })
             .then(() => {
-                setLayersList((e) => e.map((item) => (item.id === layerId ? { ...item, status: status } : item)));
+                dispatch(layersActions.setLayerStatus({ layerId, status }));
             });
     };
 

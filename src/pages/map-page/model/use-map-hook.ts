@@ -1,13 +1,12 @@
 import { MarkerInterface as ArMarkerInterface, MapRefType } from "@ar-kit/lib";
 import { MapCameraChangedEvent } from "@ar-kit/lib/map-component";
-import { useContext, useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
 import { ApiEndpoints } from "@/shared/api";
 import { SearchParamsConstants } from "@/shared/config/constants";
 import { useAppDispatch, useAppSelector } from "@/shared/lib/redux-service";
 import { useDistanceCalculatorHook } from "@/shared/lib/use-distance-calculator-hook";
-import { MapContext } from "@/shared/stores";
 import { allObjectsActions } from "@/shared/stores/objects-store";
 import { MarkerInterface } from "@/shared/types";
 
@@ -29,7 +28,7 @@ const useMapHook = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const selectedMarkerId = searchParams.get(SearchParamsConstants.objectIdSearchParamsKey);
 
-    const { myObjectsOnly } = useContext(MapContext);
+    const { myObjectsOnly } = useAppSelector((state) => state.layersSlice);
 
     const [coords, setCoords] = useState<{
         lat: number;
@@ -40,6 +39,7 @@ const useMapHook = () => {
     // const [bounds, setBounds] = useState<google.maps.LatLngBoundsLiteral | null>(null);
 
     const { objectsList } = useAppSelector((state) => state.allObjectsSlice);
+    const { layersList } = useAppSelector((state) => state.layersSlice);
 
     const [nftList, setNftList] = useState<ArMarkerInterface[]>([]);
     const [selectedMarker, setSelectedMarker] = useState<MarkerInterface | null>(null);
@@ -71,6 +71,21 @@ const useMapHook = () => {
     const onChangeMapCenter = (e: { lat: number; lng: number; zoom: number }) => {
         mapComponentRef.current?.setMapCenter({ zoom: e.zoom, center: { lat: e.lat, lng: e.lng } });
     };
+
+    useEffect(() => {
+        if (layersList.length) {
+            if (myObjectsOnly) {
+                ApiEndpoints.object.findMeLocation(coords).then((res) => {
+                    dispatch(allObjectsActions.setObjectsToList({ objects: res.objectsList }));
+                });
+            } else {
+                ApiEndpoints.object.fintPointsByLocation(coords).then((res) => {
+                    dispatch(allObjectsActions.setObjectsToList({ objects: res.objectsList }));
+                });
+            }
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [coords, layersList, myObjectsOnly]);
 
     useEffect(() => {
         return () => {
@@ -153,27 +168,13 @@ const useMapHook = () => {
                     { lat: e.detail.bounds.south, lng: e.detail.bounds.east },
                 ) * 1000;
 
-            if (myObjectsOnly) {
-                ApiEndpoints.object
-                    .findMeLocation({
-                        lat: e.detail.center.lat,
-                        lng: e.detail.center.lng,
-                        radius,
-                    })
-                    .then((res) => {
-                        dispatch(allObjectsActions.setObjectsToList({ objects: res.objectsList }));
-                    });
-            } else {
-                ApiEndpoints.object
-                    .fintPointsByLocation({
-                        lat: e.detail.center.lat,
-                        lng: e.detail.center.lng,
-                        radius,
-                    })
-                    .then((res) => {
-                        dispatch(allObjectsActions.setObjectsToList({ objects: res.objectsList }));
-                    });
-            }
+            const newCoords = {
+                lat: e.detail.center.lat,
+                lng: e.detail.center.lng,
+                radius: radius,
+            };
+
+            setCoords(newCoords);
         }, 500); // 500 мс, можете настроить по необходимости
     };
 

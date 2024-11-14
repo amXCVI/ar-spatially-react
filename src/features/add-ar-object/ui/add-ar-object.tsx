@@ -35,8 +35,9 @@ const AddArObject = () => {
     return (
         <Fragment>
             <div
-                className="flex items-center
-    border-2 border-silver-sand hover:border-spanish-gray duration-300 cursor-pointer rounded-[90px]"
+                className="hidden 
+                           lg:flex items-center h-min w-full
+                           border-2 border-silver-sand hover:border-spanish-gray duration-300 cursor-pointer rounded-[90px]"
                 onClick={openMapModal}
             >
                 <div className="p-5">

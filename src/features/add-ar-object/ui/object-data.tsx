@@ -1,7 +1,7 @@
 import { ChangeEvent, ReactNode } from "react";
 import { Accept } from "react-dropzone";
 
-import { useUserLayersHook } from "@/shared/stores";
+import { useAppSelector } from "@/shared/lib/redux-service";
 import { DarkSilverTextAreaField, DarkSilverTextField } from "@/shared/ui/text-fields";
 
 import UploadObjectIcon from "../assets/upload-object-icon.svg?react";
@@ -27,7 +27,7 @@ const ObjectData = ({
     onChangeSelectLayer: (e: ChangeEvent<HTMLSelectElement>) => void;
     onDropGlbModelCallback: (e: File) => void;
 }) => {
-    const { layersList } = useUserLayersHook();
+    const { layersList } = useAppSelector((state) => state.layersSlice);
 
     return (
         <div className="flex flex-col gap-6 w-full p-4">
