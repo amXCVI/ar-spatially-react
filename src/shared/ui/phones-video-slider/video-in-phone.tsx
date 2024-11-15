@@ -9,7 +9,7 @@ const VideoInPhone = ({
     phoneSrc: string;
     videoSrc: string;
     className?: string;
-    phoneImgClassName?: string
+    phoneImgClassName?: string;
 }) => {
     const phoneRef = useRef<null | HTMLImageElement>(null);
     const videoRef = useRef<null | HTMLDivElement>(null);
@@ -32,21 +32,15 @@ const VideoInPhone = ({
             <img
                 src={phoneSrc}
                 alt=""
-                className={`${phoneImgClassName ?? 'object-contain'}`}
+                className={`${phoneImgClassName ?? "object-contain"}`}
                 id="phone-border-img"
                 ref={phoneRef}
             />
 
             <div id="video-rect-container" className="absolute overflow-hidden w-0 h-0" ref={videoRef}>
-                <video
-                    className="h-full w-full object-cover"
-                    src={videoSrc}
-                    playsInline
-                    autoPlay
-                    muted
-                    preload="auto"
-                    loop
-                />
+                <video className="h-full w-full object-cover" playsInline autoPlay muted preload="true" loop>
+                    <source src={videoSrc} type="video/webm" />
+                </video>
             </div>
         </div>
     );
