@@ -1,14 +1,16 @@
-import { useEffect, useLayoutEffect, useRef } from "react";
+import { ReactNode, useEffect, useLayoutEffect, useRef } from "react";
 
 const VideoInPhone = ({
     phoneSrc,
     videoSrc,
     posterSrc,
+    videoSourcesArray,
     className,
     phoneImgClassName,
 }: {
     phoneSrc: string;
     videoSrc: string;
+    videoSourcesArray?: ReactNode[];
     posterSrc?: string;
     className?: string;
     phoneImgClassName?: string;
@@ -70,10 +72,12 @@ const VideoInPhone = ({
                     muted
                     preload="true"
                     loop
-                    src={videoSrc}
+                    src={videoSourcesArray ? undefined : videoSrc}
                     ref={videoRef}
                     poster={posterSrc}
-                />
+                >
+                    {videoSourcesArray && videoSourcesArray.map((item) => item)}
+                </video>
             </div>
         </div>
     );

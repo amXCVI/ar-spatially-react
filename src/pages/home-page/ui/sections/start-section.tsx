@@ -93,6 +93,10 @@ const StartSection = () => {
                         className="object-contain h-full max-h-[80vh] lg:max-h-[60vh] lg:max-w-[30vw] z-10 my-24 lg:ml-auto xl:mr-auto"
                         phoneImgClassName="object-contain min-h-[70vh] lg:min-h-[60vh]"
                         posterSrc="/images/landing/start-section/phone.webp"
+                        videoSourcesArray={[
+                            <source src="/video/home_section.webm" type="video/webm" key="/video/home_section.webm" />,
+                            <source src="/video/home_section.mp4" type="video/mp4" key="/video/home_section.mp4" />,
+                        ]}
                     />
                 </div>
             </div>
