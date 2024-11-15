@@ -14,7 +14,8 @@ const BackdropModal = ({ isOpen, closeModal, children, className }: BackdropModa
 
     return (
         <div
-            className={`fixed top-0 ${isOpen ? "right-0 bottom-0 left-0 z-10" : "!h-0 overflow-hidden backdrop-blur-none"} flex justify-center items-center`}
+            className={`fixed top-0 ${isOpen ? "right-0 bottom-0 left-0 z-10" : "!h-0 overflow-hidden backdrop-blur-none"} flex justify-center items-center
+            before:content-[''] before:backdrop-blur-sm before:absolute before:top-0 before:right-0 before:bottom-0 before:left-0`}
         >
             <div
                 className={`md:container duration-500 ${
