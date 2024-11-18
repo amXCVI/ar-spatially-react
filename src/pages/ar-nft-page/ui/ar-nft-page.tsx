@@ -24,7 +24,7 @@ const ArNftPage = () => {
     );
 
     return (
-        <DarkLayout className="flex flex-col justify-between">
+        <DarkLayout className="justify-between">
             <Header white />
             <div
                 className="container mx-auto px-6

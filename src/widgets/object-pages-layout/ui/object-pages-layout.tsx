@@ -6,7 +6,7 @@ import { DarkLayout } from "@/shared/ui/layouts";
 
 const ObjectPagesLayout = () => {
     return (
-        <DarkLayout className="flex flex-col">
+        <DarkLayout>
             <Header white />
 
             <Outlet />

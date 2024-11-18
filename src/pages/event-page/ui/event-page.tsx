@@ -34,7 +34,7 @@ const EventPage = () => {
     } = useSpheresHook();
 
     return (
-        <DarkLayout className="flex flex-col justify-between">
+        <DarkLayout className="justify-between">
             <Header white />
 
             <div

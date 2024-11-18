@@ -5,36 +5,31 @@ import { Link } from "react-router-dom";
 
 import { AddArObject } from "@/features/add-ar-object";
 import { ArObjectUploader } from "@/features/ar-objects-uploader";
-import Header from "@/features/header";
 import { MyArObjectsList } from "@/features/my-ar-objects-list";
 
 import { routes } from "@/shared/config";
-import { DarkLayout } from "@/shared/ui/layouts";
 
 import AccountIcon from "../assets/account-icon.svg?react";
-import PlusIcon from "../assets/plus-icon.svg?react";
+
+// import PlusIcon from "../assets/plus-icon.svg?react";
 
 const LkPage = () => {
     return (
-        <DarkLayout className="flex flex-col">
-            <Header white actionButton={<HeaderActionButton />} />
-
-            <div
-                className="grid grid-cols-4
+        <div
+            className="grid grid-cols-4
                     container mx-auto h-full px-6"
-            >
-                <div className="col-span-4 lg:col-span-3 flex flex-col gap-14 py-12 lg:mx-9">
-                    <div className="flex flex-col gap-6">
-                        <h1 className="onest-extra-bold text-white">Profile</h1>
-                        <ProfileInfo />
-                    </div>
-
-                    <MyArObjectsList />
+        >
+            <div className="col-span-4 lg:col-span-3 flex flex-col gap-14 py-12 lg:mx-9">
+                <div className="flex flex-col gap-6">
+                    <h1 className="onest-extra-bold text-white">Profile</h1>
+                    <ProfileInfo />
                 </div>
 
-                <RightPanel className="col-span-4 lg:col-span-1" />
+                <MyArObjectsList />
             </div>
-        </DarkLayout>
+
+            <RightPanel className="col-span-4 lg:col-span-1" />
+        </div>
     );
 };
 
@@ -70,17 +65,17 @@ const RightPanel = ({ className }: { className?: string }) => {
     );
 };
 
-const HeaderActionButton = () => {
-    return (
-        <div
-            className={`flex justify-center items-center z-[1]
-                cursor-pointer hover:bg-white50 w-14 h-14
-                border border-blue-accent bg-white30 rounded-full p-4 backdrop-blur
-                overflow-hidden lg:hidden`}
-        >
-            <PlusIcon />
-        </div>
-    );
-};
+// const HeaderActionButton = () => {
+//     return (
+//         <div
+//             className={`flex justify-center items-center z-[1]
+//                 cursor-pointer hover:bg-white50 w-14 h-14
+//                 border border-blue-accent bg-white30 rounded-full p-4 backdrop-blur
+//                 overflow-hidden lg:hidden`}
+//         >
+//             <PlusIcon />
+//         </div>
+//     );
+// };
 
 export { LkPage };

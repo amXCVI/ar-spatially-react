@@ -23,7 +23,7 @@ const ProductPage = () => {
 
     return (
         <DarkLayout
-            className="flex flex-col justify-between 
+            className="justify-between 
                        bg-[url(/images/product/bg.svg)] bg-cover bg-no-repeat bg-center
                        "
         >
