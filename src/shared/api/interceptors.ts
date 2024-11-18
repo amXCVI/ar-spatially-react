@@ -5,6 +5,19 @@ import { CookiesConstants, LSConstants } from "../config/constants";
 import { ApiResponseInterface } from "../types";
 import { ApiEndpoints } from "./endpoints";
 
+const logoutFunction = () => {
+    localStorage.removeItem(LSConstants.accessToken);
+    localStorage.removeItem(LSConstants.userData);
+
+    const cookies = new Cookies(null, { path: "/" });
+
+    if (cookies) {
+        cookies.set(CookiesConstants.accessTokenLifeTime, "");
+    }
+
+    window.location.reload();
+};
+
 const onRequest = (config: InternalAxiosRequestConfig): InternalAxiosRequestConfig => {
     const accessToken = localStorage.getItem(LSConstants.accessToken);
 
@@ -28,16 +41,21 @@ const onResponse = (response: AxiosResponse): AxiosResponse => {
     const accessToken = localStorage.getItem(LSConstants.accessToken);
 
     if (!cookieExists && accessToken) {
-        ApiEndpoints.user.touch().then((res) => {
-            localStorage.setItem(LSConstants.accessToken, res);
+        ApiEndpoints.user
+            .touch()
+            .then((res) => {
+                localStorage.setItem(LSConstants.accessToken, res);
 
-            cookies.set(CookiesConstants.accessTokenLifeTime, "true", {
-                path: "/",
-                expires: new Date(
-                    Date.now() + Number(import.meta.env.VITE_APP_ACCESS_TOKEN_LIFE_TIME_DAYS) * 24 * 60 * 60 * 1000,
-                ),
+                cookies.set(CookiesConstants.accessTokenLifeTime, "true", {
+                    path: "/",
+                    expires: new Date(
+                        Date.now() + Number(import.meta.env.VITE_APP_ACCESS_TOKEN_LIFE_TIME_DAYS) * 24 * 60 * 60 * 1000,
+                    ),
+                });
+            })
+            .catch(() => {
+                logoutFunction();
             });
-        });
     }
 
     return response;
@@ -49,8 +67,8 @@ const onResponseError = (error: AxiosError<ApiResponseInterface<string>>): Promi
             if (error.config?.url?.includes("user/touch")) {
                 break;
             }
-            localStorage.removeItem(LSConstants.accessToken);
-            // window.location.pathname = routes.root;
+
+            logoutFunction();
 
             throw error.response?.data;
 
