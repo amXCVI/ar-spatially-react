@@ -1,4 +1,3 @@
-import Spline from "@splinetool/react-spline";
 import { Link } from "react-router-dom";
 
 import { routes } from "@/shared/config";
@@ -68,20 +67,26 @@ const OurVisionSection = () => {
                 </div>
 
                 <div className="col-span-1 md:col-span-3 flex flex-col items-center w-full h-min">
-                    <div
-                        className="relative flex justify-center h-min
-                                   scale-90 lg:scale-125 xl:scale-150 
-                                   w-[100vw] sm:w-full"
-                    >
-                        <Spline
-                            scene="https://prod.spline.design/oMmUby6YEqG3VTjS/scene.splinecode"
-                            className="!h-[400px] !xl:h-[600px] !w-[600px]"
-                        />
+                    <model-viewer
+                        src={"/3d-objects/DadecaedrDark.glb"}
+                        id={"modelId"}
+                        loading="lazy"
+                        camera-controls
+                        touch-action="pan-y"
+                        auto-rotate={true}
+                        auto-rotate-delay="0"
+                        rotation-per-second="20deg"
+                        autoplay
+                        data-ar
+                        ar-status="not-presenting"
+                        disable-zoom={true}
+                        disable-tap={true}
+                        style={{ width: "100%", height: "100%", minHeight: "50vh" }}
+                    />
 
-                        <Link to={routes.event}>
-                            <div className="absolute left-0 right-0 bottom-0 h-16 cursor-pointer"></div>
-                        </Link>
-                    </div>
+                    <Link to={routes.event}>
+                        <div className="absolute left-0 right-0 bottom-0 h-16 cursor-pointer"></div>
+                    </Link>
                 </div>
             </div>
         </section>
