@@ -12,11 +12,17 @@ const useResetPasswordHook = () => {
     const {
         register,
         handleSubmit,
+        setError,
         formState: { errors },
     } = useForm<{ password: string; newPassword: string; pushToken: string }>();
 
     const handleEditPassword = (e: { password: string; newPassword: string; pushToken: string }) => {
-        ApiEndpoints.user.updateUserPassword({ newPassword: e.newPassword, password: e.password, pushToken: "" });
+        ApiEndpoints.user
+            .updateUserPassword({ newPassword: e.newPassword, password: e.password, pushToken: "" })
+            .then(() => {})
+            .catch((err) => {
+                setError("password", err.error);
+            });
     };
 
     const toggleFieldsMode = () => {

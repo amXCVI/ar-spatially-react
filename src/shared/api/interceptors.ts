@@ -64,8 +64,14 @@ const onResponse = (response: AxiosResponse): AxiosResponse => {
 const onResponseError = (error: AxiosError<ApiResponseInterface<string>>): Promise<AxiosError> => {
     switch (error.response?.status) {
         case 401:
-            if (error.config?.url?.includes("user/touch")) {
-                break;
+            // Для этих запросов нужно игнорировать 401 статус и не делать разлогин
+            // ? было бы неплохо придумать что-то покрасивее
+            if (
+                error.config?.url?.includes("user/touch") ||
+                error.config?.url?.includes("user/signup") ||
+                error.config?.url?.includes("user/password/change")
+            ) {
+                throw error.response?.data;
             }
 
             logoutFunction();

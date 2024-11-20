@@ -27,14 +27,14 @@ const login = async ({ login, password }: { login: string; password: string }) =
     }
 };
 
-const signup = async ({ login, password }: { login: string; password: string }) => {
+const signup = async ({ login, password, code }: { login: string; password: string; code: string }) => {
     const url = `/gateway/user/signup`;
 
     const formData = new FormData();
     formData.append("avatarFile", new Blob());
     formData.append(
         "request",
-        new Blob([JSON.stringify({ email: login, password: password })], {
+        new Blob([JSON.stringify({ email: login, password: password, code: code })], {
             type: "application/json",
         }),
     );
@@ -45,10 +45,23 @@ const signup = async ({ login, password }: { login: string; password: string }) 
 
         return response.data.data;
     } catch (error) {
-        throw new Error(`${url} ErrorRequest: ${error}`);
+        throw error;
     }
 };
 
+const getVerificationCode = async ({ email }: { email: string }) => {
+    const url = `/gateway/user/get-verification-code?email=${email}
+
+`;
+
+    try {
+        const response: AxiosResponse<ApiResponseInterface<object>> = await apiClient.post(url);
+
+        return response.data.data;
+    } catch (error) {
+        throw error;
+    }
+};
 const getMe = async () => {
     const url = `/gateway/user/get-me`;
 
@@ -161,7 +174,7 @@ const updateUserPassword = async ({
     password: string;
     pushToken: string;
 }) => {
-    const url = `/gateway/user/password/reset`;
+    const url = `/gateway/user/password/change`;
 
     try {
         const response: AxiosResponse = await apiClient.post(url, {
@@ -172,7 +185,7 @@ const updateUserPassword = async ({
 
         return response.data.data;
     } catch (error) {
-        throw new Error(`${url} ErrorRequest: ${error}`);
+        throw error;
     }
 };
 
@@ -249,4 +262,5 @@ export const userApi = {
     getUserProfile,
     subscribeUser,
     getSubscriptions,
+    getVerificationCode,
 };
