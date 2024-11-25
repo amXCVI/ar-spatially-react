@@ -1,18 +1,18 @@
-import Discord from "./socials/discord.svg?react";
+// import Discord from "./socials/discord.svg?react";
 import Instagram from "./socials/instagram.svg?react";
 import Medium from "./socials/medium.svg?react";
 // import Linkedin from "./socials/linkedin.svg?react";
 import Telegram from "./socials/telegram.svg?react";
-import TicToc from "./socials/tik-tok.svg?react";
+// import TicToc from "./socials/tik-tok.svg?react";
 import X from "./socials/x.svg?react";
 
 const socials = [
-    {
-        icon: <Discord />,
-        title: "Discord",
-        link: "",
-        id: "Discord",
-    },
+    // {
+    //     icon: <Discord />,
+    //     title: "Discord",
+    //     link: "",
+    //     id: "Discord",
+    // },
     // {
     //     icon: <Linkedin />,
     //     title: "Linkedin",
@@ -22,15 +22,15 @@ const socials = [
     {
         icon: <Telegram />,
         title: "Telegram",
-        link: "https://t.me/arspatially",
+        link: "https://t.me/ar_spatially",
         id: "Telegram",
     },
-    {
-        icon: <TicToc />,
-        title: "Tic Toc",
-        link: "https://www.tiktok.com/@ar.spatially",
-        id: "Tic Toc",
-    },
+    // {
+    //     icon: <TicToc />,
+    //     title: "Tic Toc",
+    //     link: "https://www.tiktok.com/@ar.spatially",
+    //     id: "Tic Toc",
+    // },
     {
         icon: <Instagram />,
         title: "Instagram",
