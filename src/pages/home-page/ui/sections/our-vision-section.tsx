@@ -1,4 +1,3 @@
-import Spline from "@splinetool/react-spline";
 import { Link } from "react-router-dom";
 
 import { routes } from "@/shared/config";
@@ -67,9 +66,9 @@ const OurVisionSection = () => {
                     </div> */}
                 </div>
 
-                {/* <div className="col-span-1 md:col-span-3 flex flex-col items-center w-full h-min">
+                <div className="col-span-1 md:col-span-3 flex flex-col items-center w-full h-min">
                     <model-viewer
-                        src={"/3d-objects/DadecaedrDark.glb"}
+                        src={"/3d-objects/manrope bold anim.glb"}
                         id={"modelId"}
                         loading="lazy"
                         camera-controls
@@ -88,9 +87,9 @@ const OurVisionSection = () => {
                     <Link to={routes.event}>
                         <div className="absolute left-0 right-0 bottom-0 h-16 cursor-pointer"></div>
                     </Link>
-                </div> */}
+                </div>
 
-                <div className="col-span-1 md:col-span-3 flex flex-col items-center w-full h-min">
+                {/* <div className="col-span-1 md:col-span-3 flex flex-col items-center w-full h-min">
                     <div
                         className="relative flex justify-center h-min
                                    scale-90 lg:scale-125 xl:scale-150 
@@ -105,7 +104,7 @@ const OurVisionSection = () => {
                             <div className="absolute left-0 right-0 bottom-0 h-16 cursor-pointer"></div>
                         </Link>
                     </div>
-                </div>
+                </div> */}
             </div>
         </section>
     );
