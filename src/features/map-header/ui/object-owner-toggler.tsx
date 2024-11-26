@@ -1,9 +1,24 @@
-import { Fragment, useContext } from "react";
+import { Fragment } from "react";
 
-import { MapContext } from "@/shared/stores";
+import { useAppDispatch, useAppSelector } from "@/shared/lib/redux-service";
+import { layersActions } from "@/shared/stores";
+import { useAuthContext } from "@/shared/stores/auth-provider";
 
 const ObjectsToggler = () => {
-    const { myObjectsOnly, toggleObjectsOwner } = useContext(MapContext);
+    const dispatch = useAppDispatch();
+
+    const { checkAuth } = useAuthContext();
+    const { myObjectsOnly } = useAppSelector((state) => state.layersSlice);
+
+    const myObjects = () => {
+        checkAuth().then(() => {
+            dispatch(layersActions.myObjectsOnly());
+        });
+    };
+
+    const allObjects = () => {
+        dispatch(layersActions.allObjects());
+    };
 
     return (
         <Fragment>
@@ -12,7 +27,7 @@ const ObjectsToggler = () => {
                             border-white/15 ${myObjectsOnly ? "text-blue-accent bg-ocean-boat-blue/35 xl:bg-granite-gray/35" : "text-quick-silver bg-granite-gray/35"}
                             duration-300 text-nowrap whitespace-nowrap flex justify-center items-center
                             backdrop-blur-lg`}
-                onClick={toggleObjectsOwner}
+                onClick={myObjects}
             >
                 {myObjectsOnly ? "My Objects" : "My"}
             </span>
@@ -21,7 +36,7 @@ const ObjectsToggler = () => {
                             border-white/15 ${myObjectsOnly ? "text-quick-silver bg-granite-gray/35" : "text-blue-accent bg-ocean-boat-blue/35 xl:bg-granite-gray/35"}
                             duration-300 text-nowrap whitespace-nowrap flex justify-center items-center
                             backdrop-blur-sm`}
-                onClick={toggleObjectsOwner}
+                onClick={allObjects}
             >
                 {myObjectsOnly ? "All" : "All Objects"}
             </span>

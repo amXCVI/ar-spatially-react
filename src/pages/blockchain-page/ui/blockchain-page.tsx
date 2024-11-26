@@ -14,7 +14,7 @@ import phone2 from "/images/blockchain/phone_22.webp";
 const BlockchainPage = () => {
     return (
         <DarkLayout
-            className="flex flex-col justify-between 
+            className="justify-between 
                        bg-[url(/images/product/bg.svg)] bg-cover bg-no-repeat bg-center
                       "
         >

@@ -1,5 +1,7 @@
 import { ReactNode, useEffect, useState } from "react";
 
+import ErrorPage from "@/pages/error-page";
+
 interface ErrorBoundaryProps {
     children: ReactNode;
 }
@@ -25,7 +27,7 @@ const ErrorBoundary = ({ children }: ErrorBoundaryProps) => {
     }, []);
 
     if (hasError) {
-        return <h1>Что-то пошло не так.</h1>;
+        return <ErrorPage />;
     }
 
     return children;

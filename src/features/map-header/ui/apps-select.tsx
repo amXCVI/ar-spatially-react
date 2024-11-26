@@ -29,11 +29,8 @@ const AppsSelect = ({ className }: { className?: string }) => {
                             h-10 3sm:h-12 lg:h-14
                             aspect-square lg:aspect-auto
                             mb-auto
+                            relative
                            `}
-                onClick={() => {
-                    toggleIsActiveSearchField();
-                    openBottomSheet();
-                }}
             >
                 <AppsIcon className="z-10 3sm:w-5 3sm:h-5 lg:w-6 lg:h-6" />
 
@@ -43,34 +40,21 @@ const AppsSelect = ({ className }: { className?: string }) => {
                 >
                     {"Apps"}
                 </span>
-            </div>
-            {/* <div
-                ref={appsSelectRef}
-                className={`hidden xl:flex flex-row gap-6 justify-between flex-wrap
-                            absolute xl:-top-1 xl:-left-1 w-56 ${isActive ? "max-w-80" : "max-w-0"}
-                            border-white/25 rounded-[30px] bg-granite-gray/35 backdrop-blur-sm
-                            ${isActive ? "p-4 pb-14 xl:pb-0 xl:pt-14" : "p-0"} duration-500`}
-            >
-                {isActive &&
-                    layersList.map((appItem) => {
-                        const isSelectedApp = appItem.status === LayerStatus.ACTIVE;
 
-                        return (
-                            <AppItem
-                                key={appItem.id}
-                                appItem={appItem}
-                                handleClickApp={handleClickApp}
-                                isSelectedApp={isSelectedApp}
-                            />
-                        );
-                    })}
-            </div> */}
+                <div className="absolute top-0 right-0 bottom-0 left-0 xl:hidden z-10" onClick={openBottomSheet} />
+                <div
+                    className="absolute top-0 right-0 bottom-0 left-0 hidden xl:block z-10"
+                    onClick={() => toggleIsActiveSearchField()}
+                />
+            </div>
 
             <MapBottomSheet
                 isOpen={isOpen}
                 closeBottomSheet={() => {
-                    closeBottomSheet();
-                    toggleIsActiveSearchField(false);
+                    if (isOpen) {
+                        closeBottomSheet();
+                        toggleIsActiveSearchField(false);
+                    }
                 }}
                 className="xl:hidden"
             >
@@ -133,7 +117,7 @@ const AppItem = ({
     isSelectedApp,
 }: {
     appItem: LayerInterface;
-    handleClickApp: (e: string) => void;
+    handleClickApp: (e: LayerInterface) => void;
     isSelectedApp: boolean;
 }) => {
     return (
@@ -144,7 +128,7 @@ const AppItem = ({
             key={appItem.id}
             onClick={(e) => {
                 e.preventDefault();
-                handleClickApp(appItem.id);
+                handleClickApp(appItem);
             }}
         >
             <div

@@ -49,11 +49,10 @@ const GetStartedSection = () => {
                             </div>
 
                             <div>
-                                <Title title="AR NFT" />
+                                <Title title="AR NFTs" />
                                 <TextP className="mt-2.5 !text-justify">
-                                    A unique NFT format for AR objects enables the creation and exchange of digital
-                                    rights for advertising, objects, facts, and achievements in the AR space, with their
-                                    spatial position and volume recorded on the blockchain.
+                                    Transform your 3D creations into AR NFTs and take them to the next level. With DGES
+                                    Marketplace, display, trade, and unlock new possibilities for your digital assets.
                                 </TextP>
                             </div>
 

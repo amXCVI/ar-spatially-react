@@ -2,10 +2,7 @@ import { LogoutButton } from "@/entities/logout-button";
 import { ProfileInfo } from "@/entities/profile-info";
 import { NavLink } from "react-router-dom";
 
-import Header from "@/features/header";
-
 import { routes } from "@/shared/config";
-import { DarkLayout } from "@/shared/ui/layouts";
 
 import BackIcon from "../assets/back-icon.svg?react";
 
@@ -15,31 +12,27 @@ import { UserStatusBlock } from "./user-status";
 
 const ProfileSettingsPage = () => {
     return (
-        <DarkLayout className="flex flex-col">
-            <Header white />
-
-            <div
-                className="grid grid-cols-4
+        <div
+            className="grid grid-cols-4
                     container mx-auto h-full px-6"
-            >
-                <div className="col-span-4 lg:col-span-3 flex flex-col gap-14 py-12 lg:mx-9">
-                    <div className="flex flex-col gap-6">
-                        <h1 className="onest-extra-bold text-white">Profile</h1>
-                        <ProfileInfo />
-                    </div>
-
-                    <div className="flex flex-col xl:flex-row gap-6 max-w-screen-2sm xl:max-w-full w-full">
-                        <PersonalInfoBlock />
-
-                        <ResetPasswordBlock />
-
-                        <UserStatusBlock />
-                    </div>
+        >
+            <div className="col-span-4 lg:col-span-3 flex flex-col gap-14 py-12 lg:mx-9">
+                <div className="flex flex-col gap-6">
+                    <h1 className="onest-extra-bold text-white">Profile</h1>
+                    <ProfileInfo />
                 </div>
 
-                <RightPanel className="hidden lg:flex" />
+                <div className="flex flex-col xl:flex-row gap-6 max-w-screen-2sm xl:max-w-full w-full">
+                    <PersonalInfoBlock />
+
+                    <ResetPasswordBlock />
+
+                    <UserStatusBlock />
+                </div>
             </div>
-        </DarkLayout>
+
+            <RightPanel className="hidden lg:flex" />
+        </div>
     );
 };
 

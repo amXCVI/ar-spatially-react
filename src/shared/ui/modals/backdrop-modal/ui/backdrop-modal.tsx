@@ -14,7 +14,8 @@ const BackdropModal = ({ isOpen, closeModal, children, className }: BackdropModa
 
     return (
         <div
-            className={`fixed top-0 ${isOpen ? "right-0 bottom-0 left-0 z-10 backdrop-blur-sm" : "!h-0 overflow-hidden backdrop-blur-none"} flex justify-center items-center`}
+            className={`fixed top-0 ${isOpen ? "right-0 bottom-0 left-0 z-10" : "!h-0 overflow-hidden backdrop-blur-none"} flex justify-center items-center
+            before:content-[''] before:backdrop-blur-sm before:absolute before:top-0 before:right-0 before:bottom-0 before:left-0`}
         >
             <div
                 className={`md:container duration-500 ${
@@ -24,12 +25,10 @@ const BackdropModal = ({ isOpen, closeModal, children, className }: BackdropModa
                 w-full md:mx-10 md:max-w-prose
                 h-full md:h-min
                 relative overflow-scroll
+                bg-modal-gradient
+                backdrop-blur-xl
                 ${className}
                 `}
-                style={{
-                    background:
-                        "linear-gradient(105.87deg, rgba(133, 133, 133, 0.4) 3.04%, rgba(82, 82, 82, 0.24) 99.24%)",
-                }}
                 ref={modalRef}
             >
                 {children}

@@ -1,15 +1,17 @@
 import { Suspense, lazy } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
+import { RootLayout } from "@/widgets/root-layout";
+
 import { routes } from "@/shared/config";
-import { BaseLayout } from "@/shared/ui/layouts";
 
 import { ErrorBoundary } from "./error-boundary";
 import PrivateRoute from "./private-route";
 
-const FeedPagesLayout = lazy(() => import("@/widgets/feed-pages-layout"));
 const ObjectPagesLayout = lazy(() => import("@/widgets/object-pages-layout"));
 const UserPagesLayout = lazy(() => import("@/widgets/user-pages-layout"));
+const FeedPagesLayout = lazy(() => import("@/widgets/feed-pages-layout"));
+const LkPagesLayout = lazy(() => import("@/widgets/lk-pages-layout"));
 
 const ProfileSettingsPage = lazy(() => import("@/pages/profile-settings-page"));
 const FeedsByUserPage = lazy(() => import("@/pages/feeds-by-user-page"));
@@ -30,7 +32,7 @@ const AppRouter = () => {
     const routers = createBrowserRouter([
         {
             path: routes.root,
-            element: <BaseLayout />,
+            element: <RootLayout />,
             children: [
                 { index: true, element: <HomePage /> },
 
@@ -44,7 +46,11 @@ const AppRouter = () => {
 
                 {
                     path: routes.lk,
-                    element: <PrivateRoute />,
+                    element: (
+                        <LkPagesLayout>
+                            <PrivateRoute />
+                        </LkPagesLayout>
+                    ),
                     children: [
                         { index: true, element: <LkPage /> },
                         { path: routes.profileSettings, element: <ProfileSettingsPage /> },

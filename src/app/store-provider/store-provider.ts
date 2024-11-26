@@ -1,7 +1,13 @@
 import { Action, Reducer, combineReducers, configureStore } from "@reduxjs/toolkit";
 
-import { allFeedsSlice, selectedFeedSlice, selectedUserSlice, subscribtionsSlice } from "@/shared/stores/feeds-store";
-import { allObjectsSlice } from "@/shared/stores/objects-store";
+import {
+    allFeedsSlice,
+    allObjectsSlice,
+    layersSlice,
+    selectedFeedSlice,
+    selectedUserSlice,
+    subscribtionsSlice,
+} from "@/shared/stores";
 
 const combinedReducer = combineReducers({
     selectedFeedSlice: selectedFeedSlice,
@@ -9,6 +15,7 @@ const combinedReducer = combineReducers({
     selectedUserSlice: selectedUserSlice,
     subscribtionsSlice: subscribtionsSlice,
     allObjectsSlice: allObjectsSlice,
+    layersSlice: layersSlice,
 });
 
 const rootReducer: Reducer = (state: RootStateInterface, action: Action) => {

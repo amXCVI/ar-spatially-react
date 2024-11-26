@@ -20,6 +20,10 @@
         "noUnusedParameters": true,
         "noFallthroughCasesInSwitch": true,
 
+        // js
+        "allowJs": true,
+        "checkJs": false,
+
         //
         "types": ["vite-plugin-svgr/client", "google.maps", "markerclustererplus", "three"],
         "paths": {

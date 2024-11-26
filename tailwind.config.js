@@ -64,6 +64,8 @@ export default {
                 "our-vision-secton-text-gradient": "linear-gradient(93.8deg, #4946A3 12.46%, #8583C4 87.54%)",
                 "text-shadow": "linear-gradient(90deg, rgba(17, 17, 17, 0) 0%, #111111 100%)",
                 "object-item-title-bg": "linear-gradient(90deg, #1A1A1A 0%, #1A1A1A 50%, #1A1A1A 100%)",
+                "modal-gradient":
+                    "linear-gradient(105.87deg, rgba(133, 133, 133, 0.4) 3.04%, rgba(82, 82, 82, 0.24) 99.24%)",
             },
             lineHeight: {
                 12: "3rem",

@@ -6,7 +6,7 @@ import { useResetPasswordHook } from "../model";
 import { BlackTextField, ProfileSettingsGroup } from "./components";
 
 export const ResetPasswordBlock = () => {
-    const { register, handleSubmit, handleEditPassword, toggleFieldsMode, fieldsMode, userProvider } =
+    const { register, handleSubmit, handleEditPassword, toggleFieldsMode, fieldsMode, userProvider, errors } =
         useResetPasswordHook();
 
     if (userProvider === UserProviders.EMAIL)
@@ -34,6 +34,7 @@ export const ResetPasswordBlock = () => {
                                 onClick={toggleFieldsMode}
                             />
                         }
+                        errorMessage={errors.password?.message}
                     />
                     <BlackTextField
                         label="New password"
@@ -49,9 +50,9 @@ export const ResetPasswordBlock = () => {
                             />
                         }
                     />
-                    <button className="ml-auto px-4 py-2 border border-white rounded-[20px]" role="submit">
+                    {/* <button className="ml-auto px-4 py-2 border border-white rounded-[20px]" role="submit">
                         Reset password
-                    </button>
+                    </button> */}
                 </form>
             </ProfileSettingsGroup>
         );
