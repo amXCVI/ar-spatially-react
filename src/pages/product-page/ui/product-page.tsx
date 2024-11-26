@@ -41,17 +41,17 @@ const ProductPage = () => {
 
                     <div className="flex flex-col gap-6">
                         <TextP className="text-spanish-gray text-start">
-                            <b className="text-xl text-white mr-2">For AR Artists</b>
-                            we offer space to upload 3D objects and a unified AR space for showcasing your work. Create
-                            and sell AR-NFTs, receive commissions from developers and businesses, and connect with
-                            peers, brands, and collectors.
+                            <b className="text-xl text-white mr-2">Artists</b>
+                            can showcase 3D objects in a unified AR space, upload creations to a global library, and let
+                            users add them to their spaces with custom geopositions. Create and sell AR NFTs to secure
+                            ownership and monetize your work through the DGES Marketplace.
                         </TextP>
 
                         <TextP className="text-spanish-gray text-start">
-                            <b className="text-xl text-white mr-2">For developers </b>
-                            we aim to create a comprehensive toolkit that allows both existing and emerging applications
-                            to connect and utilise the open features of other applications in the ecosystem, including
-                            blockchain functions.
+                            <b className="text-xl text-white mr-2">Developers </b>
+                            can seamlessly integrate AR and blockchain into projects using our toolkit, APIs, and SDKs.
+                            Add AR Objects, enhance them with AR NFTs, and access resources to accelerate development.
+                            Collaborate and monetize through the DGES Marketplace.
                         </TextP>
                     </div>
 
@@ -83,15 +83,16 @@ const ProductPage = () => {
                     <div className="flex flex-col gap-6">
                         <TextP className="text-spanish-gray text-start">
                             <b className="text-xl text-white mr-2">Users</b>
-                            can personalise their space by adding or removing applications and AR objects based on their
-                            preferences. They can also search for objects, goods, and services within the visibility
-                            zone. Beyond this, users have access to AR content libraries, allowing them to pin AR
-                            content to specific locations and create AR NFTs.
+                            can personalize their AR space with objects and applications, browse the AR library, and pin
+                            content to real-world locations. Invite friends to shared spaces to collaborate, explore,
+                            and create together. Upload AR Objects to receive AR NFTs, trade them, or share through the
+                            DGES Marketplace.
                         </TextP>
                         <TextP className="text-spanish-gray text-start">
-                            <b className="text-xl text-white mr-2">For Businesses</b>
-                            we utilize AR to attract nearby consumers. Inform customers about promotions and discounts
-                            directly through AR-driven advertising events.
+                            <b className="text-xl text-white mr-2">Businesses</b>
+                            can attract consumers with AR promotions and ads tied to specific locations. Create shared
+                            spaces with brand assets, launch campaigns, and design interactive AR experiences. Monetize
+                            your digital assets through the DGES Marketplace.
                         </TextP>
                     </div>
 
