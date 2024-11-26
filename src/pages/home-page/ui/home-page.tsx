@@ -6,6 +6,7 @@ import { useDescription, useTitle } from "@/shared/lib/use-page-meta-hooks";
 import { GetStartedSection } from "./sections/get-started-section";
 import { OurVisionSection } from "./sections/our-vision-section";
 import { StartSection } from "./sections/start-section";
+import { TestSection } from "./sections/test-section";
 
 const HomePage = () => {
     useTitle("AR Spatially - Home");
@@ -24,6 +25,7 @@ const HomePage = () => {
             <OurVisionSection />
             <GetStartedSection />
             <ContactSection />
+            <TestSection />
             <Footer />
         </div>
     );
