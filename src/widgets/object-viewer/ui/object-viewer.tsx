@@ -3,6 +3,7 @@ import { ObjectViewerActionButtons } from "@/entities/object-viewer-action-butto
 import { ObjectViewerInfo } from "@/entities/object-viewer-info";
 import { Fragment } from "react/jsx-runtime";
 
+import ArViewer from "@/features/ar-viewer";
 import { ObjectComments } from "@/features/object-comments";
 
 import { ObjectInterface, ObjectViewerModes } from "@/shared/types";
@@ -82,6 +83,9 @@ const renderModalContent = ({
 
         case ObjectViewerModes.EDIT:
             return <Fragment />;
+
+        case ObjectViewerModes.AR_VIEW:
+            return <ArViewer object={selectedObject} />;
 
         default:
             return (

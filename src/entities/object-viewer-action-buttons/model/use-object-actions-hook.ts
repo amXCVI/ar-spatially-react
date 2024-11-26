@@ -38,7 +38,9 @@ const useObjectActionsHook = ({
         });
     };
     const handleViewObjectOnMap = () => {};
-    const handleViewArObject = () => {};
+    const handleViewArObject = () => {
+        setViewerModalMode(ObjectViewerModes.AR_VIEW);
+    };
     const handleEditIcon = () => {};
 
     return {
