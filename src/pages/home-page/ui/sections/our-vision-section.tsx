@@ -85,7 +85,6 @@ const OurVisionSection = () => {
                         skybox-height="1.5m"
                         shadow-intensity="2"
                         exposure="0.5"
-                        ar
                     />
 
                     <Link to={routes.event}>
