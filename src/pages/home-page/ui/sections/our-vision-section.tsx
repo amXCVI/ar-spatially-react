@@ -82,6 +82,10 @@ const OurVisionSection = () => {
                         disable-zoom={true}
                         disable-tap={true}
                         style={{ width: "100%", height: "100%", minHeight: "50vh" }}
+                        skybox-height="1.5m"
+                        shadow-intensity="2"
+                        exposure="1"
+                        ar
                     />
 
                     <Link to={routes.event}>

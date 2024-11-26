@@ -82,3 +82,9 @@ html {
 body {
     -ms-overflow-style: none; /* Internet Explorer и Edge */
 }
+
+/* Убирает полосу загрузки для @google/model-viewer */
+#modelId {
+    --progress-bar-color: none;
+    --progress-bar-height: 0px;
+}
