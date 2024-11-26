@@ -35,7 +35,8 @@ export enum MarkerStatusEnum {
 }
 
 export enum ObjectViewerModes {
-    VIEW = 'VIEW',
-    COMMENT = 'COMMENT',
-    EDIT = 'EDIT',
+    VIEW = "VIEW",
+    COMMENT = "COMMENT",
+    EDIT = "EDIT",
+    AR_VIEW = "AR_VIEW",
 }

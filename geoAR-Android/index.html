@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link type="text/css" rel="stylesheet" href="main.css" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
+  
+</head>
+
+<body>
+
+  <!-- Затемнение фона -->
+  <div class="overlays" id="overlays"></div>
+
+  <!-- Pop-up окно -->
+  <div class="popup" id="popup">
+    <div class="text-block"> Введите широту и долготу положения 3D модели в реальном мире </div>
+    <input type="number" value="" placeholder="Пример 48.859691" id="inputLat">
+    <input type="number" value="" placeholder="Пример 2.292245" id="inputLon">
+    <button class="buttonOpen" id="closePopup">Закрыть</button>
+  </div>
+  
+  <!-- Инфо-панель -->
+  <div class="info-panel" id="infoPanel">
+    <div class="text-block">Старайтесь не двигаться <br> и не вращаться ДО ВКЛЮЧЕНИЯ КАМЕРЫ! <br> Получаем данные вашего устройства)</div>
+    <img src="https://cdn.glitch.global/ccb48a0d-9a6b-4b12-8142-563a460af515/device.png?v=1729077065605" alt="Информационное изображение" class="info-image">
+    <button class="buttonReady" id="readyButton">Я готов</button>
+  </div>
+
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.150.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.150.0/examples/jsm/"
+      }
+    }
+  </script>
+
+  <script type="module" src="./moduls/geoMODs.js"></script>
+
+
+</body>
+
+</html>
