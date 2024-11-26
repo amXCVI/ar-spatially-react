@@ -32,43 +32,43 @@ window.addEventListener("load", function () {
 });
 
 /* При нажатии на кнопку "я готов" */
-document.getElementById("readyButton").addEventListener("click", function () {
-    if (arSupport) {
-        //----------------------------------------------------------------------------------- Если режим AR поддерживается
-        /* Расчет положения 3Dmodels на сцене */
-        let xPosition = 0.0;
-        let zPosition = 0.0;
+// document.getElementById("readyButton").addEventListener("click", function () {
+//     if (arSupport) {
+//         //----------------------------------------------------------------------------------- Если режим AR поддерживается
+//         /* Расчет положения 3Dmodels на сцене */
+//         let xPosition = 0.0;
+//         let zPosition = 0.0;
 
-        const inputLat = parseFloat(document.getElementById("inputLat").value);
-        const inputLon = parseFloat(document.getElementById("inputLon").value);
+//         const inputLat = parseFloat(document.getElementById("inputLat").value);
+//         const inputLon = parseFloat(document.getElementById("inputLon").value);
 
-        if (!isNaN(inputLat) && !isNaN(inputLon)) {
-            //---------------------------------------------------- Если координаты 3D модели получены...
+//         if (!isNaN(inputLat) && !isNaN(inputLon)) {
+//             //---------------------------------------------------- Если координаты 3D модели получены...
 
-            let calcDevice = calcToPlane(deviceData.latitudeDevice, deviceData.longitudeDevice); //------ Device to Plane
-            let calcObj = calcToPlane(inputLat, inputLon); //-------------------------------------------- 3Dmodels to Plane
+//             let calcDevice = calcToPlane(deviceData.latitudeDevice, deviceData.longitudeDevice); //------ Device to Plane
+//             let calcObj = calcToPlane(inputLat, inputLon); //-------------------------------------------- 3Dmodels to Plane
 
-            if (calcDevice.x && calcDevice.z && calcObj.x && calcObj.z) {
-                //------------------------------ Расчет положения 3Dmodels на сцене
-                xPosition = calcDevice.x - calcObj.x;
-                zPosition = calcDevice.z - calcObj.z;
-            }
-        }
+//             if (calcDevice.x && calcDevice.z && calcObj.x && calcObj.z) {
+//                 //------------------------------ Расчет положения 3Dmodels на сцене
+//                 xPosition = calcDevice.x - calcObj.x;
+//                 zPosition = calcDevice.z - calcObj.z;
+//             }
+//         }
 
-        /* Внесение изменений в положение 3Dmodels на сцене и запуск AR*/
-        if (xPosition !== undefined && zPosition !== undefined && xPosition != 0.0 && zPosition != 0.0) {
-            updateModel(xPosition, zPosition);
-            deviceData.angleDevice ? updateRotateGroup(deviceData.angleDevice) : undefined;
-            document.getElementById("ARButton").click();
-        } else {
-            document.getElementById("ARButton").click();
-        }
+//         /* Внесение изменений в положение 3Dmodels на сцене и запуск AR*/
+//         if (xPosition !== undefined && zPosition !== undefined && xPosition != 0.0 && zPosition != 0.0) {
+//             updateModel(xPosition, zPosition);
+//             deviceData.angleDevice ? updateRotateGroup(deviceData.angleDevice) : undefined;
+//             document.getElementById("ARButton").click();
+//         } else {
+//             document.getElementById("ARButton").click();
+//         }
 
-        console.log(xPosition + " / " + zPosition);
-    } else {
-        alert("Ваше устройство не поддерживает WebXR");
-    }
-});
+//         console.log(xPosition + " / " + zPosition);
+//     } else {
+//         alert("Ваше устройство не поддерживает WebXR");
+//     }
+// });
 
 /* ОТЛАДКА */
 
@@ -88,22 +88,23 @@ function closePopup() {
 }
 
 /* Кнопка скрытия popup */
-document.getElementById("closePopup").addEventListener("click", function () {
-    const inputLat = parseFloat(document.getElementById("inputLat").value);
-    const inputLon = parseFloat(document.getElementById("inputLon").value);
-    if (!isNaN(inputLat) && !isNaN(inputLon)) {
-        document.getElementById("popup").style.display = "none";
-        document.getElementById("infoPanel").style.display = "block";
-    }
-    // Задержка в 3 секунды перед отображением кнопки "Я готов"
-    setTimeout(function () {
-        document.getElementById("readyButton").style.display = "block";
-    }, 5000);
-});
+// document.getElementById("closePopup").addEventListener("click", function () {
+//     const inputLat = parseFloat(document.getElementById("inputLat").value);
+//     const inputLon = parseFloat(document.getElementById("inputLon").value);
+//     if (!isNaN(inputLat) && !isNaN(inputLon)) {
+//         document.getElementById("popup").style.display = "none";
+//         document.getElementById("infoPanel").style.display = "block";
+//     }
+//     // Задержка в 3 секунды перед отображением кнопки "Я готов"
+//     setTimeout(function () {
+//         document.getElementById("readyButton").style.display = "block";
+//     }, 5000);
+// });
+
 /* Кнопка скрытия инфо панели*/
-document.getElementById("readyButton").addEventListener("click", function () {
-    document.getElementById("infoPanel").style.display = "none";
-});
+// document.getElementById("readyButton").addEventListener("click", function () {
+//     document.getElementById("infoPanel").style.display = "none";
+// });
 
 /* ================================================= */
 
