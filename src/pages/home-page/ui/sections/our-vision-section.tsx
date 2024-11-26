@@ -75,7 +75,7 @@ const OurVisionSection = () => {
                         touch-action="pan-y"
                         auto-rotate={true}
                         auto-rotate-delay="0"
-                        rotation-per-second="20deg"
+                        rotation-per-second="5deg"
                         autoplay
                         data-ar
                         ar-status="not-presenting"
