@@ -46,7 +46,7 @@ const socials = [
     {
         icon: <Medium />,
         title: "Medium",
-        link: "https://medium.com/@spatiallyar",
+        link: "https://medium.com/ar-vr-spatially",
         id: "Medium",
     },
 ];
