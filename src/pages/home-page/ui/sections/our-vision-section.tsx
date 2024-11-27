@@ -83,7 +83,6 @@ const OurVisionSection = () => {
                         disable-tap={true}
                         style={{ width: "100%", height: "100%", minHeight: "50vh" }}
                         skybox-height="1.5m"
-                        shadow-intensity="2"
                         exposure="0.5"
                     />
 

@@ -79,20 +79,18 @@ const ArNftPage = () => {
                              bg-smoky-black-bg20 flex flex-col gap-6
                              lg:mt-11 mb-10 lg:mb-0"
                 >
-                    <SectionTitle title="AR Feed" className="text-white" />
+                    <SectionTitle title="AR NFT" className="text-white" />
                     <h2 className="manrope-medium-22 text-white">
-                        AR NFT: Protect Your Creations and Unlock New Opportunities
+                        Protect Your Creations and Unlock New Opportunities
                     </h2>
                     <TextP className="text-spanish-gray text-start">
                         Receive an AR NFT when you upload an AR Object to your space—a digital token stored in your
                         wallet that secures your ownership and digital rights. These NFTs reserve the intellectual
-                        property of your AR Objects and open up new monetization channels.
+                        property of your AR Objects and open up new monetization channels. Connect your AR NFT to the
+                        Decentralized Geo Ecosystem (DGES), so you can list and sell your AR Objects on the DGES
+                        Marketplace
                     </TextP>
-                    <TextP className="text-spanish-gray text-start">
-                        Connect your AR NFT to the Decentralized Geo Ecosystem (DGES), so you can list and sell your AR
-                        Objects on the DGES Marketplace, enabling seamless trading of augmented reality assets while
-                        safeguarding your digital creations.
-                    </TextP>
+
                     {/* <a className="mx-auto mt-5 xl:mt-auto" href={`${routes.root}#contact`}>
                         <DefaultButton className="">
                             <span className="text-white">Try AR Now</span>
