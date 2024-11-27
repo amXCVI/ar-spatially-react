@@ -49,8 +49,8 @@ const ArNftPage = () => {
                         </div>
 
                         <div className="flex flex-col lg:pt-12 gap-6">
-                            <SectionTitle title="AR NFT" className="text-white" />
-                            <h2 className="manrope-medium-22 text-white">AR Objects: Build, Discover, and Share</h2>
+                            <SectionTitle title="AR OBJECT" className="text-white" />
+                            <h2 className="manrope-medium-22 text-white">Build, Discover, and Share</h2>
                             <TextP className="text-spanish-gray mb-6 text-start">
                                 Build your own AR space by uploading your AR Objects and inviting friends to explore,
                                 collaborate, and interact. Discover and customize your AR environment by choosing from
